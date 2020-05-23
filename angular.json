@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "solarco"
+    }
+  },
+  "defaultProject": "solarco",
+  "cli": {
+    "analytics": "a125ea67-9dac-4259-bc3e-05c376cfc0c9"
+  }
 }
