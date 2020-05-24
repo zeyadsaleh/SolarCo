@@ -1,5 +1,6 @@
-import {Component, OnInit, EventEmitter, Output} from '@angular/core';
-import {AngularTokenService} from "angular-token";
+import {Component, OnInit, EventEmitter,} from '@angular/core';
+import { AngularTokenService } from "angular-token";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -8,15 +9,15 @@ import {AngularTokenService} from "angular-token";
 })
 export class RegisterFormComponent implements OnInit {
 
+  errorMessage = '';
+
   signUpUser = {
     email: '',
     password: '',
     passwordConfirmation: ''
   };
 
-  @Output() onFormResult = new EventEmitter<any>();
-
-  constructor(private tokenAuthSerivce:AngularTokenService) { }
+  constructor(private tokenAuthSerivce:AngularTokenService, private router: Router) { }
 
   ngOnInit() {}
 
@@ -30,11 +31,11 @@ export class RegisterFormComponent implements OnInit {
     }).subscribe(
       res => {
         console.log(res);
-        this.onFormResult.emit({ signedUp: true, res });
+        this.router.navigate(['home']);
       } ,   
       error => {
         console.log(error);
-        this.onFormResult.emit({ signedUp: false, error });
+        this.errorMessage = error.error.errors['full_messages']                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
       }
     );
 

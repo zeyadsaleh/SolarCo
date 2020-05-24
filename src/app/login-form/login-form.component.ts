@@ -1,5 +1,6 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, EventEmitter} from '@angular/core';
 import {AngularTokenService} from "angular-token";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -8,13 +9,15 @@ import {AngularTokenService} from "angular-token";
 })
 export class LoginFormComponent implements OnInit {
 
+  errorMessage = '';
+
   signInUser = {
     email: '',
     password: ''
   };
 
-  @Output() onFormResult = new EventEmitter<any>();
-  constructor(private tokenAuthSerivce:AngularTokenService) { }
+  onFormResult = new EventEmitter<any>();
+  constructor(private tokenAuthSerivce:AngularTokenService,  private router: Router) { }
 
   ngOnInit() {}
 
@@ -26,11 +29,11 @@ export class LoginFormComponent implements OnInit {
     }).subscribe(
       res => {
         console.log(res);
-        this.onFormResult.emit({ signedIn: true, res });
+        this.router.navigate(['home']);
         } ,
       error => {
         console.log(error);
-        this.onFormResult.emit({signedIn: false, error});
+        this.errorMessage =error.error.errors[0]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
         } 
           
     );
