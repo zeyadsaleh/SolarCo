@@ -12,4 +12,9 @@ export class AuthDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openDialog(mode: 'login' | 'register' = 'login'){
+    // this.authMode = mode;
+    // this.modalActions.emit({action:"modal", params:['open']});
+  }
+
 }

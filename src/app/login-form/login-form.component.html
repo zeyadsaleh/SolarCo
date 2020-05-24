@@ -1,0 +1,30 @@
+
+
+
+<form (ngSubmit)="onSignInSubmit()" #f="ngForm" class="m-4">
+
+  
+      <div class="form-group">
+        <input 
+                placeholder="Enter email"
+               id="email"
+               type="email"
+               required
+               name='email' [(ngModel)]="signInUser.email" class="form-control validate">
+      </div>
+  
+  
+  
+  
+      <div class="form-group">
+        <input id="password" type="password" required  name='password' placeholder="Password" [(ngModel)]="signInUser.password" class=" form-control validate">
+      </div>
+  
+      <div>
+        <button type="submit" [disabled]="!(f.valid)" class="btn btn-primary"> Login </button>
+      </div>
+  
+  
+  </form>
+  
+  

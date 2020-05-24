@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild} from '@angular/core';
 import {AngularTokenService} from "angular-token";
 
 @Component({
@@ -8,9 +8,17 @@ import {AngularTokenService} from "angular-token";
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(public tokenAuthService:AngularTokenService) { }
 
+  constructor(public tokenAuthService:AngularTokenService) { }
+ 
   ngOnInit(): void {
   }
+
+  signOut() {
+    this.tokenAuthService.signOut().subscribe(
+      res =>      console.log(res),
+      error =>    console.log(error)
+    );
+}
 
 }
