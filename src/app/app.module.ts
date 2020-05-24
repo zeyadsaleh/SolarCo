@@ -9,10 +9,16 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    ToolbarComponent,
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
