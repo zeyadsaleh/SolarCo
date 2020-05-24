@@ -12,7 +12,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 
@@ -21,7 +20,6 @@ import { LoginFormComponent } from './login-form/login-form.component';
     AppComponent,
     HomeComponent,
     ToolbarComponent,
-    AuthDialogComponent,
     RegisterFormComponent,
     LoginFormComponent
   ],
