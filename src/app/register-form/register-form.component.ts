@@ -15,7 +15,10 @@ export class RegisterFormComponent implements OnInit {
     name: '',
     email: '',
     password: '',
-    passwordConfirmation: ''
+    passwordConfirmation: '',
+    name: '',
+    nickname: '',
+    image: ''
   };
 
   constructor(private tokenAuthSerivce:AngularTokenService, private router: Router) { }
@@ -29,7 +32,10 @@ export class RegisterFormComponent implements OnInit {
       name:                "zeyad",
       login:                this.signUpUser.email,
       password:             this.signUpUser.password,
-      passwordConfirmation: this.signUpUser.passwordConfirmation
+      passwordConfirmation: this.signUpUser.passwordConfirmation,
+      name : this.signUpUser.name,
+      nickname: this.signUpUser.nickname,
+      image: this.signUpUser.image
     }).subscribe(
       res => {
         console.log(res);
