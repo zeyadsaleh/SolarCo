@@ -24,6 +24,45 @@
                   </div>
                 </div>  
               </div>
+
+      <div class="form-group">
+        <input id="name"
+                type="text"
+                required
+                name='name'
+                [(ngModel)]="signUpUser.name"
+                class="validate form-control"
+                placeholder="Enter name" 
+                #name="ngModel">
+                
+                <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                    class="alert alert-danger">
+                
+                  <div *ngIf="name.errors.required">
+                    name is required.
+                  </div>
+                </div>  
+      </div>
+
+      <div class="form-group">
+        <input id="nickname"
+                type="text"
+                name='nickname'
+                [(ngModel)]="signUpUser.nickname"
+                class="form-control"
+                placeholder="Enter nickname" 
+                #nickname="ngModel"> 
+      </div>
+
+      <div class="form-group">
+        <input id="image"
+                type="file"
+                name='image'
+                [(ngModel)]="signUpUser.image"
+                class="form-control"
+                #image="ngModel"> 
+      </div>
+
       <div class="form-group">
         <input id="password"
                type="password"
@@ -32,15 +71,15 @@
                [(ngModel)]="signUpUser.password"
                class="validate form-control"
                placeholder="Enter Password"
-               #passowrd="ngModel">
+               #password="ngModel">
 
-               <div *ngIf="passowrd.invalid && (passowrd.dirty || passowrd.touched)"
+               <div *ngIf="password.invalid && (password.dirty || password.touched)"
                class="alert alert-danger">
            
-             <div *ngIf="passowrd.errors.required">
-               passowrd is required.
+             <div *ngIf="password.errors.required">
+              password is required.
              </div>
-             <div *ngIf="passowrd.errors.minlength">
+             <div *ngIf="password.errors.minlength">
                password must be at least 6 characters long.
              </div>
           </div>
