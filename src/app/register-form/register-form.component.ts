@@ -12,7 +12,6 @@ export class RegisterFormComponent implements OnInit {
   errorMessage = '';
 
   signUpUser = {
-    name: '',
     email: '',
     password: '',
     passwordConfirmation: '',
@@ -29,7 +28,6 @@ export class RegisterFormComponent implements OnInit {
   onSignUpSubmit(){
 
     this.tokenAuthSerivce.registerAccount({
-      name:                "zeyad",
       login:                this.signUpUser.email,
       password:             this.signUpUser.password,
       passwordConfirmation: this.signUpUser.passwordConfirmation,
