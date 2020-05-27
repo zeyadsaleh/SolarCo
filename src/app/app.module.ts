@@ -15,7 +15,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +31,11 @@ import { ProfileComponent } from './profile/profile.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatToolbarModule,
     AngularTokenModule.forRoot({
       apiBase: 'http://localhost:3000'
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [AngularTokenModule],
   bootstrap: [AppComponent]
