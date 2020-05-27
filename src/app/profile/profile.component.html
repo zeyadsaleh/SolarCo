@@ -5,8 +5,8 @@
                 <div class="profile-sidebar position-fixed">
                     <!-- SIDEBAR USERPIC -->
                     <div class="profile-userpic">
-                        <img [src]="userData.image ? userData.image : '/assets/images/tony.png'"
-                            class="img-fluid" alt="">
+                        <img [src]="userData.avatar ? userData.avatar : '/assets/images/tony.png'" class="img-fluid"
+                            alt="">
                     </div>
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->
@@ -55,7 +55,9 @@
             </div>
             <div class="col-md-9">
                 <div class="profile-content">
-                    Some user related content goes here...
+                    <p>Some user related content goes here...</p>
+                    <h2>Change your avatar</h2>
+                    <input type="file" name="avatar" (change)="uploadAvatar($event)">
                 </div>
             </div>
         </div>
