@@ -1,125 +1,82 @@
-<div *ngIf="errorMessage.length > 0" class="bg-danger m-2">
-  <span>{{ errorMessage }}</span>
-</div>
-<form (ngSubmit)="onSignUpSubmit()" #f="ngForm" >
-      
-      <div class="form-group">
-        <input id="email"
-               type="email"
-               required email
-               name='email'
-               [(ngModel)]="signUpUser.email"
-               class="validate form-control"
-               placeholder="Enter email" 
-               #email="ngModel">
-               
-                <div *ngIf="email.invalid && (email.dirty || email.touched)"
-                    class="alert alert-danger">
-                
-                  <div *ngIf="email.errors.required">
-                    email is required.
-                  </div>
+<div class="container">
+  <div *ngIf="errorMessage.length > 0" class="bg-danger m-2">
+    <span>{{ errorMessage }}</span>
+  </div>
+  <form (ngSubmit)="onSignUpSubmit()" #f="ngForm">
+    <div class="form-group">
+      <input id="email" type="email" required email name='email' [(ngModel)]="signUpUser.email"
+        class="validate form-control" placeholder="Enter email" #email="ngModel">
 
-                  <div *ngIf="email.errors.email">
-                    email is invalid.
-                  </div>
-                </div>  
-              </div>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
 
-      <div class="form-group">
-        <input id="name"
-                type="text"
-                required
-                name='name'
-                [(ngModel)]="signUpUser.name"
-                class="validate form-control"
-                placeholder="Enter name" 
-                #name="ngModel">
-                
-                <div *ngIf="name.invalid && (name.dirty || name.touched)"
-                    class="alert alert-danger">
-                
-                  <div *ngIf="name.errors.required">
-                    name is required.
-                  </div>
-                </div>  
+        <div *ngIf="email.errors.required">
+          email is required.
+        </div>
+
+        <div *ngIf="email.errors.email">
+          email is invalid.
+        </div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <input id="nickname"
-                type="text"
-                name='nickname'
-                [(ngModel)]="signUpUser.nickname"
-                class="form-control"
-                placeholder="Enter nickname" 
-                #nickname="ngModel"> 
+    <div class="form-group">
+      <input id="name" type="text" required name='name' [(ngModel)]="signUpUser.name" class="validate form-control"
+        placeholder="Enter name" #name="ngModel">
+
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+        <div *ngIf="name.errors.required">
+          name is required.
+        </div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <input id="image"
-                type="file"
-                name='image'
-                [(ngModel)]="signUpUser.image"
-                class="form-control"
-                #image="ngModel"> 
+    <div class="form-group">
+      <input id="nickname" type="text" name='nickname' [(ngModel)]="signUpUser.nickname" class="form-control"
+        placeholder="Enter nickname" #nickname="ngModel">
+    </div>
+
+    <div class="form-group">
+      <input id="password" type="password" required minlength="6" name='password' [(ngModel)]="signUpUser.password"
+        class="validate form-control" placeholder="Enter Password" #password="ngModel">
+
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+
+        <div *ngIf="password.errors.required">
+          password is required.
+        </div>
+        <div *ngIf="password.errors.minlength">
+          password must be at least 6 characters long.
+        </div>
       </div>
+    </div>
+    <div class="form-group">
+      <input id="password_confirmation" type="password" required name='password_confirmation'
+        [(ngModel)]="signUpUser.passwordConfirmation" class="validate form-control"
+        placeholder="Enter Password confirmation" #passowrd_confirmation="ngModel">
 
-      <div class="form-group">
-        <input id="password"
-               type="password"
-               required minlength="6"
-               name='password'
-               [(ngModel)]="signUpUser.password"
-               class="validate form-control"
-               placeholder="Enter Password"
-               #password="ngModel">
+      <div *ngIf="passowrd_confirmation.invalid && (passowrd_confirmation.dirty || passowrd_confirmation.touched)"
+        class="alert alert-danger">
 
-               <div *ngIf="password.invalid && (password.dirty || password.touched)"
-               class="alert alert-danger">
-           
-             <div *ngIf="password.errors.required">
-              password is required.
-             </div>
-             <div *ngIf="password.errors.minlength">
-               password must be at least 6 characters long.
-             </div>
-          </div>
+        <div *ngIf="passowrd_confirmation.errors.required">
+          passowrd confirmation is required.
+        </div>
+
       </div>
-      <div class="form-group">
-        <input id="password_confirmation"
-               type="password"
-               required 
-               name='password_confirmation'
-               [(ngModel)]="signUpUser.passwordConfirmation"
-               class="validate form-control"
-               placeholder="Enter Password confirmation"
-               #passowrd_confirmation="ngModel">
+    </div>
 
-               <div *ngIf="passowrd_confirmation.invalid && (passowrd_confirmation.dirty || passowrd_confirmation.touched)"
-               class="alert alert-danger">
-           
-             <div *ngIf="passowrd_confirmation.errors.required">
-               passowrd confirmation is required.
-             </div>
+    <span *ngIf="signUpUser.password != signUpUser.passwordConfirmation" style="color:red">
+      Passwords must match
+    </span>
 
-          </div>
-      </div>
-  
-      <span *ngIf="signUpUser.password != signUpUser.passwordConfirmation"
-            style="color:red">
-        Passwords must match
-      </span>
+    <div>
 
-      <div>
-  
-        <button type="submit"
-                [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
-                class="btn btn-primary">
-          Sign up
-        </button>
-  
-      </div>
+      <button type="submit" [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
+        class="btn btn-primary">
+        Sign up
+      </button>
+
+    </div>
 
   </form>
-  
-  
+</div>

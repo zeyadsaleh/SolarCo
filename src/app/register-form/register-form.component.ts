@@ -17,7 +17,6 @@ export class RegisterFormComponent implements OnInit {
     passwordConfirmation: '',
     name: '',
     nickname: '',
-    image: ''
   };
 
   constructor(private tokenAuthSerivce:AngularTokenService, private router: Router) { }
@@ -33,7 +32,6 @@ export class RegisterFormComponent implements OnInit {
       passwordConfirmation: this.signUpUser.passwordConfirmation,
       name : this.signUpUser.name,
       nickname: this.signUpUser.nickname,
-      image: this.signUpUser.image
     }).subscribe(
       res => {
         console.log(res);
