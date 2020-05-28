@@ -1,6 +1,7 @@
 import {Component, OnInit, EventEmitter,Input} from '@angular/core';
 import { AngularTokenService } from "angular-token";
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-register-form',
@@ -8,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./register-form.component.sass']
 })
 export class RegisterFormComponent implements OnInit {
+
+  apiUrl:String = 'http://localhost:3000';
 
   @Input() type: string = "";
 
@@ -21,7 +24,7 @@ export class RegisterFormComponent implements OnInit {
     type: '',
   };
 
-  constructor(private tokenAuthSerivce:AngularTokenService, private router: Router) { }
+  constructor(private tokenAuthSerivce:AngularTokenService, private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
   }

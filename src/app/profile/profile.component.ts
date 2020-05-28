@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+ 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',

@@ -21,7 +21,7 @@
 
     <div class="form-group">
       <input id="name" type="text" required name='name' [(ngModel)]="signUpUser.name" class="validate form-control"
-        placeholder="Enter name" #name="ngModel">
+     [placeholder]="(type == 'Client') ? 'Enter your full name' : 'Enter Company name'" #name="ngModel">
 
       <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
 
@@ -85,7 +85,7 @@
 </div>
 
 <ng-template #noTypeTemplate>
-  <h4 class="text-center main">
+  <h3 class=" p-4 text-danger ">
     Please Select a registration type
-  </h4>
+  </h3>
 </ng-template>
