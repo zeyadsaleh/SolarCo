@@ -16,6 +16,6 @@ export class RegisterComponent implements OnInit {
 
   handleType(ev) {
     this.type = ev.target.name
-    }
+  }
 
 }
