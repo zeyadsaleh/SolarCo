@@ -10,15 +10,15 @@ export class AppComponent {
   title = 'solarco';
   
   constructor(private tokenAuthSerivce:AngularTokenService){
-    this.tokenAuthSerivce.registerAccount({
-      login:                'example@examplef.org',
-      password:             'secretPassword',
-      passwordConfirmation: 'secretPassword',
-      name:                 'dd'         
-    }).subscribe(
-      res =>      console.log(res),
-      error =>    console.log(error)
-    );
+    // this.tokenAuthSerivce.registerAccount({
+    //   login:                'example@examplef.org',
+    //   password:             'secretPassword',
+    //   passwordConfirmation: 'secretPassword',
+    //   name:                 'dd'         
+    // }).subscribe(
+    //   res =>      console.log(res),
+    //   error =>    console.log(error)
+    // );
    
   }
 

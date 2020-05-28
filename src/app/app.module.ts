@@ -17,6 +17,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RegisterChoiceComponent } from './register-choice/register-choice.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     ToolbarComponent,
     RegisterFormComponent,
     LoginFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegisterChoiceComponent
   ],
   imports: [
     BrowserModule,
