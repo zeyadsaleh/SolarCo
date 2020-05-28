@@ -1,5 +1,8 @@
 <div id="profile">
     <div class="container content">
+        <div class="alert alert-danger" #avatarAlert role="alert" style="display: none">
+            Your uploaded file is not a valid image
+        </div>
         <div class="row profile">
             <div class="col-md-3">
                 <div class="profile-sidebar position-fixed">
@@ -21,7 +24,7 @@
                     <!-- END SIDEBAR USER TITLE -->
                     <!-- SIDEBAR BUTTONS -->
                     <div class="profile-userbuttons">
-                        <input type="file" name="avatar" #avatarUploader (change)="uploadAvatar($event)" style="display: none">
+                        <input type="file" name="avatar" #avatarUploader accept="image/*" (change)="uploadAvatar($event)" style="display: none">
                         <button type="button" class="btn btn-success btn-sm" (click)="openUploader()">Change Avatar</button>
                     </div>
                     <!-- END SIDEBAR BUTTONS -->
