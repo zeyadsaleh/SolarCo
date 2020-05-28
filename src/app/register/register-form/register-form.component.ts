@@ -1,6 +1,7 @@
-import {Component, OnInit, EventEmitter,} from '@angular/core';
+import {Component, OnInit, EventEmitter,Input} from '@angular/core';
 import { AngularTokenService } from "angular-token";
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-register-form',
@@ -9,6 +10,10 @@ import { Router } from '@angular/router';
 })
 export class RegisterFormComponent implements OnInit {
 
+  apiUrl:String = 'http://localhost:3000';
+
+  @Input() type: string = "";
+
   errorMessage = '';
 
   signUpUser = {
@@ -16,24 +21,23 @@ export class RegisterFormComponent implements OnInit {
     password: '',
     passwordConfirmation: '',
     name: '',
-    nickname: '',
-    image: ''
+    type: '',
   };
 
-  constructor(private tokenAuthSerivce:AngularTokenService, private router: Router) { }
+  constructor(private tokenAuthSerivce:AngularTokenService, private router: Router, private http: HttpClient) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 
   onSignUpSubmit(){
-
+    this.signUpUser.type = this.type
     this.tokenAuthSerivce.registerAccount({
       login:                this.signUpUser.email,
       password:             this.signUpUser.password,
       passwordConfirmation: this.signUpUser.passwordConfirmation,
-      name : this.signUpUser.name,
-      nickname: this.signUpUser.nickname,
-      image: this.signUpUser.image
+      name :                this.signUpUser.name,
+      type:                 this.signUpUser.type,
     }).subscribe(
       res => {
         console.log(res);

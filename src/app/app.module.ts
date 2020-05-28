@@ -12,25 +12,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
-
+import { ProfileComponent } from './profile/profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ToolbarComponent,
-    RegisterFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatToolbarModule,
     AngularTokenModule.forRoot({
       apiBase: 'http://localhost:3000'
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [AngularTokenModule],
   bootstrap: [AppComponent]
