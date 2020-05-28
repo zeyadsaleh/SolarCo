@@ -1,5 +1,5 @@
 <div class="container" *ngIf="type else noTypeTemplate">
-  <div *ngIf="errorMessage.length > 0" class="bg-danger m-2">
+  <div *ngIf="errorMessage.length > 0" class="text-danger m-2">
     <span>{{ errorMessage }}</span>
   </div>
   <form (ngSubmit)="onSignUpSubmit()" #f="ngForm">
