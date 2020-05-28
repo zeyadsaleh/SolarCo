@@ -21,8 +21,8 @@
                     <!-- END SIDEBAR USER TITLE -->
                     <!-- SIDEBAR BUTTONS -->
                     <div class="profile-userbuttons">
-                        <button type="button" class="btn btn-success btn-sm">Follow</button>
-                        <button type="button" class="btn btn-danger btn-sm">Message</button>
+                        <input type="file" name="avatar" #avatarUploader (change)="uploadAvatar($event)" style="display: none">
+                        <button type="button" class="btn btn-success btn-sm" (click)="openUploader()">Change Avatar</button>
                     </div>
                     <!-- END SIDEBAR BUTTONS -->
                     <!-- SIDEBAR MENU -->
@@ -56,8 +56,6 @@
             <div class="col-md-9">
                 <div class="profile-content">
                     <p>Some user related content goes here...</p>
-                    <h2>Change your avatar</h2>
-                    <input type="file" name="avatar" (change)="uploadAvatar($event)">
                 </div>
             </div>
         </div>

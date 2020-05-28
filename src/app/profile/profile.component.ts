@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../shared/interfaces/user';
@@ -12,6 +12,8 @@ import { UserService } from '../shared/services/user.service';
 export class ProfileComponent implements OnInit {
 
   userData;
+
+  @ViewChild('avatarUploader') avatarUploader: any;
 
   constructor(private tokenAuthService: AngularTokenService, private userService: UserService) {}
 
@@ -42,6 +44,11 @@ export class ProfileComponent implements OnInit {
       },
       error => console.log(error)
     );
+  }
+
+  openUploader() {
+    // Open File Uploader
+    this.avatarUploader.nativeElement.click();
   }
 
 }
