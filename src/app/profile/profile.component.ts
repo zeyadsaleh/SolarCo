@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularTokenService } from 'angular-token';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../shared/interfaces/user';
+import { UserService } from '../shared/services/user.service';
  
 @Component({
   selector: 'app-profile',
@@ -11,25 +13,14 @@ export class ProfileComponent implements OnInit {
 
   userData;
 
-  apiUrl:String = 'http://localhost:3000';
-
-  constructor(private tokenAuthService: AngularTokenService, private http: HttpClient) {}
+  constructor(private tokenAuthService: AngularTokenService, private userService: UserService) {}
 
   ngOnInit(): void {
     // Get the data of the logged in user after validating token
     this.tokenAuthService.validateToken().subscribe(
       res => {
         this.userData = this.tokenAuthService.currentUserData;
-
-        // Get all the data of the client with its avatar
-        this.http.get(`${this.apiUrl}/clients/${this.userData.id}`).subscribe(
-          res => {
-            if(res['avatar_url'])
-              this.userData.avatar = this.apiUrl + res['avatar_url']
-          },
-          error => console.log(error)
-        );
-
+        console.log(this.userData)
       },
       error => console.log(error)
       );
@@ -45,13 +36,12 @@ export class ProfileComponent implements OnInit {
     headers.set('Content-Type', 'multipart/form-data')
 
     // Send the request and store the response in the avatar variable
-    this.http.put(`${this.apiUrl}/clients/avatar/${this.userData.id}`, formData, {headers: headers}).subscribe(
+    this.userService.updateAvatar(this.userData.id, formData, headers).subscribe(
       res => {
-        if(res['avatar_url'])
-          this.userData.avatar = this.apiUrl + res['avatar_url']
+        this.userData.avatar = res['avatar']
       },
       error => console.log(error)
-    )
+    );
   }
 
 }

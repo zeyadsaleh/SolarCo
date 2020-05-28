@@ -2,6 +2,7 @@ import {Component, OnInit, EventEmitter,Input} from '@angular/core';
 import { AngularTokenService } from "angular-token";
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from 'src/app/shared/interfaces/user';
 
 @Component({
   selector: 'app-register-form',
@@ -16,12 +17,12 @@ export class RegisterFormComponent implements OnInit {
 
   errorMessage = '';
 
-  signUpUser = {
+  signUpUser:User = {
     email: '',
     password: '',
     passwordConfirmation: '',
     name: '',
-    type: '',
+    type: ''
   };
 
   constructor(private tokenAuthSerivce:AngularTokenService, private router: Router, private http: HttpClient) { }
@@ -45,7 +46,7 @@ export class RegisterFormComponent implements OnInit {
       } ,   
       error => {
         console.log(error);
-        this.errorMessage = error.error.errors['full_messages']                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
+        this.errorMessage = error.error.message                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
       }
     );
 
