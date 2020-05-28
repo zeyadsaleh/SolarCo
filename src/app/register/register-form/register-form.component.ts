@@ -1,4 +1,4 @@
-import {Component, OnInit, EventEmitter,} from '@angular/core';
+import {Component, OnInit, EventEmitter,Input} from '@angular/core';
 import { AngularTokenService } from "angular-token";
 import { Router } from '@angular/router';
 
@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class RegisterFormComponent implements OnInit {
 
+  @Input() type: string = "";
+
   errorMessage = '';
 
   signUpUser = {
@@ -16,22 +18,23 @@ export class RegisterFormComponent implements OnInit {
     password: '',
     passwordConfirmation: '',
     name: '',
-    nickname: '',
+    type: '',
   };
 
   constructor(private tokenAuthSerivce:AngularTokenService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 
   onSignUpSubmit(){
-
+    this.signUpUser.type = this.type
     this.tokenAuthSerivce.registerAccount({
       login:                this.signUpUser.email,
       password:             this.signUpUser.password,
       passwordConfirmation: this.signUpUser.passwordConfirmation,
-      name : this.signUpUser.name,
-      nickname: this.signUpUser.nickname,
+      name :                this.signUpUser.name,
+      type:                 this.signUpUser.type,
     }).subscribe(
       res => {
         console.log(res);

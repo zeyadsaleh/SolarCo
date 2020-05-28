@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" *ngIf="type else noTypeTemplate">
   <div *ngIf="errorMessage.length > 0" class="bg-danger m-2">
     <span>{{ errorMessage }}</span>
   </div>
   <form (ngSubmit)="onSignUpSubmit()" #f="ngForm">
-    <div class="form-group">
+    <div class="form-group" >
       <input id="email" type="email" required email name='email' [(ngModel)]="signUpUser.email"
         class="validate form-control" placeholder="Enter email" #email="ngModel">
 
@@ -31,9 +31,12 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <input id="nickname" type="text" name='nickname' [(ngModel)]="signUpUser.nickname" class="form-control"
-        placeholder="Enter nickname" #nickname="ngModel">
+    <div class="form-group" *ngIf="type == 'Contractor'">
+      <input id="prev_work" type="text"  name='prev_work'
+        class="validate form-control"
+        placeholder="Enter your previous work" >
+
+    
     </div>
 
     <div class="form-group">
@@ -80,3 +83,9 @@
 
   </form>
 </div>
+
+<ng-template #noTypeTemplate>
+  <h4 class="text-center main">
+    Please Select a registration type
+  </h4>
+</ng-template>

@@ -1,34 +1,16 @@
-<div class="container main mt-3">
+<div class="container main mt-3 ">
     <h1 class="text-center">Register As</h1>
     <hr>
     <div class="row">
-      <!-- <div class="col-6">
-      <select name="" id="" class="form-control" (change)="onLimitChange($event)">
-        <option value="8">Defualt</option>
-        <option value="1">1</option>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-  
-      </select>
-      </div> -->
       <div class="col-6">
-        <a class="btn btn-primary float-right" name="client" (click)="handleType($event)">Client</a>
+        <input id="client" type="button" name='Client' value="Client"  (click)="handleType($event)" class="text-dark btn btn-light float-right">
       </div>
       <div class="col-6">
-        <a class="btn btn-primary float-left" name="contructor" (click)="handleType($event)">Contructor</a>
+        <input id="contructor" type="button" name='Contractor' value="Contructor"  (click)="handleType($event)" class="text-dark btn btn-light ">
       </div>
-    <!-- </div>
-    <hr> -->
-    <!-- <div class="row">
-      <div class="col-6">
-        <app-courses-list></app-courses-list>
+      <div class="col">
+        <app-register-form [type]="type"></app-register-form>
       </div>
-  
-      <div class="col-6">
-        <app-course-details></app-course-details>
-        <router-outlet></router-outlet>
-      </div>
-    </div> -->
+    </div>
   
   </div>

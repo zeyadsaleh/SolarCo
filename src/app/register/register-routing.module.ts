@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './register.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 
 const routes: Routes = [
@@ -8,7 +9,8 @@ const routes: Routes = [
     path: '',
     component: RegisterComponent,
     children: [
-      { path: ':type', component: CourseDetailsComponent },
+      // { path: 'new', component: RegisterFormComponent },
+      { path: ':type', component: RegisterFormComponent },
     ],
   }
 ];
