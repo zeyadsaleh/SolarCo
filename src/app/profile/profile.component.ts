@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
 
   userData;
 
+  isLoading:boolean = true;
+
   @ViewChild('avatarUploader') avatarUploader: any;
   @ViewChild('avatarAlert') avatarAlert: any;
 
@@ -24,6 +26,7 @@ export class ProfileComponent implements OnInit {
       res => {
         this.userData = this.tokenAuthService.currentUserData;
         console.log(this.userData)
+        this.isLoading = false;
       },
       error => console.log(error)
       );

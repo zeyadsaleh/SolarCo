@@ -13,3 +13,7 @@ body {
     background-color: whitesmoke;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.spinner-border {
+    margin-top: 28%;
+}
