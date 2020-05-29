@@ -11,6 +11,7 @@ import { PvSystemComponent } from './pv-calculation/pv-system/pv-system.componen
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ContractorGuard } from './shared/guards/contractor.guard';
 import { ClientGuard } from './shared/guards/client.guard';
+import { UpdatePostFormComponent } from './post/update-post-form/update-post-form.component';
 
 const routes: Routes = [
   {
@@ -38,11 +39,15 @@ const routes: Routes = [
   {
     path: 'posts',
     component: HomepageComponent,
-    canActivate: [AuthGuard, ContractorGuard]
+    // canActivate: [AuthGuard, ContractorGuard]
   },
   {
     path: 'create/post',
     component: CreatePostFormComponent
+  },
+  {
+    path: 'update/posts/:id',
+    component: UpdatePostFormComponent
   },
   {
     path: 'posts/:id',
@@ -52,6 +57,8 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
+  },
+  {
     path: 'system-info',
     component: UserInputComponent,
     canActivate: [AuthGuard]
