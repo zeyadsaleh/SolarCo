@@ -1,5 +1,6 @@
 import { Component, OnInit , ViewChild} from '@angular/core';
 import {AngularTokenService} from "angular-token";
+import { Ability } from '@casl/ability';
 
 @Component({
   selector: 'app-toolbar',
@@ -9,14 +10,17 @@ import {AngularTokenService} from "angular-token";
 export class ToolbarComponent implements OnInit {
 
 
-  constructor(public tokenAuthService:AngularTokenService) { }
+  constructor(public tokenAuthService:AngularTokenService, private ability: Ability) { }
  
   ngOnInit(): void {
   }
 
   signOut() {
     this.tokenAuthService.signOut().subscribe(
-      res =>      console.log(res),
+      res =>      {
+        console.log(res);
+        this.ability.update([]);
+      },
       error =>    console.log(error)
     );
 }

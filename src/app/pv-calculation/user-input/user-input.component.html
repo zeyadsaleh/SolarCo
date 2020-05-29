@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row justify-content-center text-center">
+        <mat-card *ngIf="!client_data['city']">
+            <mat-card-title>Electricity Consumption</mat-card-title>
+            <mat-card-content>
+                <mat-form-field class="example-form-field">
+                    <mat-label>Electricity Consumption</mat-label>
+                    <input matInput type="number" name="consumption" [(ngModel)]="consumption">
+                    <mat-hint align="start"><strong>Consumption per month (kwh)</strong> </mat-hint>
+                    <mat-hint align="end"> {{ consumption }} </mat-hint>
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions *ngIf="consumption">
+                <a mat-button class="btn btn-sm btn-warning" (click)="getLocation()">GetLocation</a>
+                <a mat-button class="btn btn-sm btn-primary" (click)="calculate()">Calculte</a>
+            </mat-card-actions>
+            <mat-card-footer class="text-center" *ngIf="consumption">
+                <p class="text-warning text-center" *ngIf="!client_request['lat']">you can Igonre GetLocation, If it's not allowed</p>
+                <p class="text-success text-center" *ngIf="client_request['lat']">We Get Your Location succeffully!</p>
+            </mat-card-footer>
+        </mat-card>
+        <mat-card *ngIf="client_data['city']">
+            <mat-card-title>Client Data</mat-card-title>
+            <mat-card-content>
+                <p>{{ client_data['city'] }}</p>
+                <p>{{ client_data['country'] }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <a mat-button class="btn btn-sm btn-primary" (click)="confirm()">Confirm</a>
+                <a mat-button class="btn btn-sm btn-warning" (click)="cancel()">Cancel</a>
+            </mat-card-actions>
+            <mat-card-footer>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>

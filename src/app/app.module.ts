@@ -4,7 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ProfileComponent } from './profile/profile.component';
-import { PvCalculationComponent } from './pv-calculation/pv-calculation.component';
+import { UserInputComponent } from './pv-calculation/user-input/user-input.component';
+import { PvSystemComponent } from './pv-calculation/pv-system/pv-system.component';
 // ########### END ##########
 
 // Modules ##START##
@@ -16,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostModule } from './post/post.module';
+import { AbilityModule } from '@casl/angular';
+import { Ability, PureAbility } from '@casl/ability';
 // ########### END ##########
 
 // Services ##START##
@@ -39,7 +42,8 @@ import {MatCardModule} from '@angular/material/card';
     ToolbarComponent,
     LoginFormComponent,
     ProfileComponent,
-    PvCalculationComponent,
+    UserInputComponent,
+    PvSystemComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,8 +61,12 @@ import {MatCardModule} from '@angular/material/card';
     }),
     BrowserAnimationsModule,
     PostModule,
+    AbilityModule
   ],
-  providers: [AngularTokenModule, GeoLoactionService, PvCalculationService,PostService],
+  providers: [AngularTokenModule, GeoLoactionService, PvCalculationService,PostService,
+    { provide: Ability, useValue: new Ability() },
+    { provide: PureAbility, useExisting: Ability }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

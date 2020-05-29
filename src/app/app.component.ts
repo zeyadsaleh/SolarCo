@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AngularTokenService } from "angular-token";
+import { Ability } from '@casl/ability';
+import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +9,22 @@ import { AngularTokenService } from "angular-token";
 })
 export class AppComponent {
   title = 'solarco';
+
+  isLoading:boolean = true;
   
-  constructor(private tokenAuthSerivce:AngularTokenService){
-    // this.tokenAuthSerivce.registerAccount({
-    //   login:                'example@examplef.org',
-    //   password:             'secretPassword',
-    //   passwordConfirmation: 'secretPassword',
-    //   name:                 'dd'         
-    // }).subscribe(
-    //   res =>      console.log(res),
-    //   error =>    console.log(error)
-    // );
-   
+  constructor(private ability: Ability, private tokenService: AngularTokenService){
+    if(this.tokenService.userSignedIn()) {
+      this.tokenService.validateToken().subscribe(
+        res => {
+          this.ability.update(res.data.rules);
+          this.isLoading = false;
+        },
+        error => console.log(error)
+        ); 
+    } else {
+      this.isLoading = false;
+    }
   }
+
 
 }

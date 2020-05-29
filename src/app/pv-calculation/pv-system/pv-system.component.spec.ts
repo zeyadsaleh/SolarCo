@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PvCalculationComponent } from './pv-calculation.component';
+import { PvSystemComponent } from './pv-system.component';
 
-describe('PvCalculationComponent', () => {
-  let component: PvCalculationComponent;
-  let fixture: ComponentFixture<PvCalculationComponent>;
+describe('PvSystemComponent', () => {
+  let component: PvSystemComponent;
+  let fixture: ComponentFixture<PvSystemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PvCalculationComponent ]
+      declarations: [ PvSystemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PvCalculationComponent);
+    fixture = TestBed.createComponent(PvSystemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

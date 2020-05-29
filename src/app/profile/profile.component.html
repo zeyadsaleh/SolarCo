@@ -3,7 +3,7 @@
         <div class="alert alert-danger" #avatarAlert role="alert" style="display: none">
             Your uploaded file is not a valid image
         </div>
-        <div class="row profile">
+        <div class="row profile" *ngIf="!isLoading else loading">
             <div class="col-md-3">
                 <div class="profile-sidebar position-fixed">
                     <!-- SIDEBAR USERPIC -->
@@ -64,3 +64,11 @@
         </div>
     </div>
 </div>
+
+<ng-template #loading>
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</ng-template>
