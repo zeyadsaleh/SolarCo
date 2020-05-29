@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {LoginFormComponent} from "./login-form/login-form.component"
 import { ProfileComponent } from './profile/profile.component';
-import { PvCalculationComponent } from './pv-calculation/pv-calculation.component';
 import { HomepageComponent } from './post/homepage/homepage.component';
 import { SinglePostComponent } from './post/single-post/single-post.component';
+import { UserInputComponent } from './pv-calculation/user-input/user-input.component';
+import { PvSystemComponent } from './pv-calculation/pv-system/pv-system.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ContractorGuard } from './shared/guards/contractor.guard';
 import { ClientGuard } from './shared/guards/client.guard';
@@ -27,16 +28,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, ClientGuard]
   },
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
-  },
-  {
-    path: 'pv-calculation',
-    component: PvCalculationComponent,
-    canActivate: [AuthGuard, ClientGuard]
   },
   {
     path: 'posts',
@@ -49,9 +45,19 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'system-info',
+    component: UserInputComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'pv-calculation/:id',
+    component: PvSystemComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: '**',
     component: HomeComponent
-  }
+  },
 
 ];
 @NgModule({
