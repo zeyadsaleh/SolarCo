@@ -18,10 +18,19 @@
                 <p>you can Igonre GetLocation, If it's not allowed</p>
             </mat-card-footer>
         </mat-card>
-        <mat-card *ngIf="client_request['lat'] && client_request['ip'] ">
-            <p>Ip: {{ client_request['ip'] }}</p>
-            <p>Latitude: {{ client_request['lat'] }}</p>
-            <p>Longitude: {{ client_request['long'] }}</p>
+        <mat-card *ngIf="consumption">
+            <section *ngIf="client_request['ip'] && !client_request['lat']">
+                <mat-card-title>Ip Address</mat-card-title>
+                <mat-card-footer>
+                    <p>{{ client_request['ip'] }}</p>
+                </mat-card-footer>
+            </section>
+            <section *ngIf="client_request['lat'] && client_request['ip']">
+                <mat-card-title>Latitude, Longitude</mat-card-title>
+                <mat-card-footer>
+                    <p>{{ client_request['lat'] }} , {{ client_request['long'] }}</p>
+                </mat-card-footer>
+            </section>
         </mat-card>
     </div>
 </div>

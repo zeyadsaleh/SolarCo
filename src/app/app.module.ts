@@ -5,6 +5,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PvCalculationComponent } from './pv-calculation/pv-calculation.component';
+import { UserInputComponent } from './pv-calculation/user-input/user-input.component';
+import { PvSystemComponent } from './pv-calculation/pv-system/pv-system.component';
 // ########### END ##########
 
 // Modules ##START##
@@ -40,6 +42,8 @@ import {MatCardModule} from '@angular/material/card';
     LoginFormComponent,
     ProfileComponent,
     PvCalculationComponent,
+    UserInputComponent,
+    PvSystemComponent,
   ],
   imports: [
     BrowserModule,
