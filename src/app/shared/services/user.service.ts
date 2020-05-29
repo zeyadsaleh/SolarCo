@@ -25,4 +25,8 @@ export class UserService {
   updateAvatar(id, body, headers) {
     return this.http.put(`${this.apiUrl}/clients/avatar/${id}`, body, {headers: headers});
   }
+
+  updateContractor(id, body) {
+    return this.http.put(`${this.apiUrl}/contractors/${id}`, body);
+  }
 }

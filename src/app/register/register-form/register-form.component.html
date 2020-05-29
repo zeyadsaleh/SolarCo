@@ -1,4 +1,4 @@
-<div class="container" *ngIf="type else noTypeTemplate">
+<div class="container p-4" *ngIf="type else noTypeTemplate">
   <div *ngIf="errorMessage.length > 0" class="text-danger m-2">
     <span>{{ errorMessage }}</span>
   </div>
@@ -31,13 +31,7 @@
       </div>
     </div>
 
-    <div class="form-group" *ngIf="type == 'Contractor'">
-      <input id="prev_work" type="text"  name='prev_work'
-        class="validate form-control"
-        placeholder="Enter your previous work" >
-
-    
-    </div>
+   
 
     <div class="form-group">
       <input id="password" type="password" required minlength="6" name='password' [(ngModel)]="signUpUser.password"
@@ -58,19 +52,19 @@
         [(ngModel)]="signUpUser.passwordConfirmation" class="validate form-control"
         placeholder="Enter Password confirmation" #passowrd_confirmation="ngModel">
 
-      <div *ngIf="passowrd_confirmation.invalid && (passowrd_confirmation.dirty || passowrd_confirmation.touched)"
-        class="alert alert-danger">
-
-        <div *ngIf="passowrd_confirmation.errors.required">
-          passowrd confirmation is required.
-        </div>
-
+        <span *ngIf="signUpUser.password != signUpUser.passwordConfirmation" style="color:red">
+          Passwords must match
+        </span>
+        
       </div>
-    </div>
-
-    <span *ngIf="signUpUser.password != signUpUser.passwordConfirmation" style="color:red">
-      Passwords must match
-    </span>
+      <div class="form-check pb-2" *ngIf="type == 'Contractor'">
+        <input id="has_office" type="checkbox" name='has_office'
+          class="form-check-input" [(ngModel)]="contractor.has_office">
+        <label class="form-check-label" for="has_office">Has Office</label>
+      </div>
+      <div class="form-group" *ngIf="contractor.has_office">
+            <textarea name='address' required class="form-control" placeholder="Address" [(ngModel)]="contractor.address"></textarea>
+      </div>
 
     <div>
 
