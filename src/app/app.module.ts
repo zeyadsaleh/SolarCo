@@ -15,6 +15,7 @@ import { AngularTokenService, AngularTokenModule, AngularTokenOptions } from 'an
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 // ########### END ##########
 
 // Services ##START##
@@ -22,7 +23,7 @@ import { PvCalculationService } from './shared/services/pv-calculation.service';
 import { GeoLoactionService } from './shared/services/geo-loaction.service';
 // ########### END ##########
 
-// Material Modules 
+// Material Modules
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
@@ -30,6 +31,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 // ########### END ##########
 
+import { PostModule } from './post/post.module';
+import { PostService } from './shared/services/post.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,8 +56,10 @@ import {MatCardModule} from '@angular/material/card';
     AngularTokenModule.forRoot({
       apiBase: 'http://localhost:3000'
     }),
+    BrowserAnimationsModule,
+    PostModule,
   ],
-  providers: [AngularTokenModule, GeoLoactionService, PvCalculationService],
+  providers: [AngularTokenModule, GeoLoactionService, PvCalculationService,PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
