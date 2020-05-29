@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PvCalculationComponent } from './pv-calculation/pv-calculation.component';
 import { HomepageComponent } from './post/homepage/homepage.component';
 import { SinglePostComponent } from './post/single-post/single-post.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
