@@ -16,6 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostModule } from './post/post.module';
+import { AbilityModule } from '@casl/angular';
+import { Ability, PureAbility } from '@casl/ability';
 // ########### END ##########
 
 // Services ##START##
@@ -57,8 +59,12 @@ import {MatCardModule} from '@angular/material/card';
     }),
     BrowserAnimationsModule,
     PostModule,
+    AbilityModule
   ],
-  providers: [AngularTokenModule, GeoLoactionService, PvCalculationService,PostService],
+  providers: [AngularTokenModule, GeoLoactionService, PvCalculationService,PostService,
+    { provide: Ability, useValue: new Ability() },
+    { provide: PureAbility, useExisting: Ability }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

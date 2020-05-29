@@ -7,6 +7,8 @@ import { PvCalculationComponent } from './pv-calculation/pv-calculation.componen
 import { HomepageComponent } from './post/homepage/homepage.component';
 import { SinglePostComponent } from './post/single-post/single-post.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { ContractorGuard } from './shared/guards/contractor.guard';
+import { ClientGuard } from './shared/guards/client.guard';
 
 const routes: Routes = [
   {
@@ -33,15 +35,22 @@ const routes: Routes = [
   },
   {
     path: 'pv-calculation',
-    component: PvCalculationComponent
+    component: PvCalculationComponent,
+    canActivate: [AuthGuard, ClientGuard]
   },
   {
     path: 'posts',
-    component: HomepageComponent
+    component: HomepageComponent,
+    canActivate: [AuthGuard, ContractorGuard]
   },
   {
     path: 'posts/:id',
-    component: SinglePostComponent
+    component: SinglePostComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    component: HomeComponent
   }
 
 ];

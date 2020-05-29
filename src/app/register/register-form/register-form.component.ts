@@ -60,7 +60,7 @@ export class RegisterFormComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.errorMessage = error.message;
+        this.errorMessage = error.error.errors.full_messages;
       }
     );
 

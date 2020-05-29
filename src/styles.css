@@ -17,4 +17,6 @@ body {
 
 .spinner-border {
     margin-top: 28%;
+    width: 3rem;
+    height: 3rem;
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit, EventEmitter} from '@angular/core';
 import {AngularTokenService} from "angular-token";
 import { Router } from '@angular/router';
+import { Ability } from '@casl/ability';
 
 @Component({
   selector: 'app-login-form',
@@ -17,7 +18,7 @@ export class LoginFormComponent implements OnInit {
   };
 
   onFormResult = new EventEmitter<any>();
-  constructor(private tokenAuthSerivce:AngularTokenService,  private router: Router) { }
+  constructor(private tokenAuthSerivce:AngularTokenService,  private router: Router, private ability: Ability) { }
 
   ngOnInit() {}
 
@@ -29,12 +30,14 @@ export class LoginFormComponent implements OnInit {
     }).subscribe(
       res => {
         console.log(res);
+        this.ability.update(res.body.data.rules); // Casl Abilities
         this.router.navigate(['home']);
-        } ,
+        console.log(this.ability.rules)
+      },
       error => {
         console.log(error);
-        this.errorMessage =error.error.errors[0]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
-        } 
+        this.errorMessage = error.error.errors[0]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
+      } 
           
     );
 
