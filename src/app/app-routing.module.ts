@@ -5,7 +5,6 @@ import {LoginFormComponent} from "./login-form/login-form.component"
 import { ProfileComponent } from './profile/profile.component';
 import { HomepageComponent } from './post/homepage/homepage.component';
 import { SinglePostComponent } from './post/single-post/single-post.component';
-import { PvCalculationComponent } from './pv-calculation/pv-calculation.component';
 import { UserInputComponent } from './pv-calculation/user-input/user-input.component';
 import { PvSystemComponent } from './pv-calculation/pv-system/pv-system.component';
 
@@ -30,10 +29,6 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
-  },
-  {
-    path: 'pv-calculation',
-    component: PvCalculationComponent
   },
   {
     path: 'posts',

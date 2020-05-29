@@ -24,9 +24,6 @@
             <mat-card-content>
                 <p>{{ client_data['city'] }}</p>
                 <p>{{ client_data['country'] }}</p>
-                <p *ngIf="client_data['road']">{{ client_data['road'] }}</p>
-                <p *ngIf="client_data['neighbourhood']">{{ client_data['neighbourhood'] }}</p>
-                <p *ngIf="client_data['hamlet']">{{ client_data['hamlet'] }}</p>
             </mat-card-content>
             <mat-card-actions>
                 <a mat-button class="btn btn-sm btn-primary" (click)="confirm()">Confirm</a>

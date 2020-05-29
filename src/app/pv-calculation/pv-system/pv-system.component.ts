@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PvCalculationService } from '../../shared/services/pv-calculation.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pv-system',
@@ -10,31 +11,30 @@ export class PvSystemComponent implements OnInit {
 
   system_data: object;
 
-  constructor( private data: PvCalculationService) { }
+  constructor(private data: PvCalculationService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.route.params.subscribe(params => {
-    //   this.getInfo(+params['id']);
-    // });
+    this.route.params.subscribe(params => {
+      this.getInfo(+params['id']);
+    });
   }
 
   getInfo(id){
-    // this.data.getUserInfo({"id": id}, response =>{
-    //   if(response){
-    //     this.system_data = response;
-    //     console.log(response);  
-    //   }
-    // });
+    this.data.getSystem(id, response =>{
+      if(response){
+        this.system_data = response;
+        console.log(response);  
+      }
+    });
   }
 
-  // calcSystem(id){
-  //   this.data.setSystem({"id": id}, response =>{
-  //     if(response){
-  //       this.system_data = response;
-  //       console.log(response);  
-  //     }
-  //   });
-  // }
+  confirm(){
+
+  }
+
+  cancel(){
+
+  }
 
 }
 
