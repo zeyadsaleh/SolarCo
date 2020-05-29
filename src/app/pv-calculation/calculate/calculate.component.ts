@@ -35,7 +35,7 @@ export class CalculateComponent implements OnInit {
   calculate(){ 
       this.data.setSystem(this.api_response, response =>{
         if(response){ 
-          this.__service.setData(response)
+          this.__service.setData(response);
           this.router.navigate(['pv-calculation/', response['id']]);
         }
       });

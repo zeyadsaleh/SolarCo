@@ -3,6 +3,8 @@ import { AngularTokenService, UserData } from 'angular-token';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../shared/interfaces/user';
 import { UserService } from '../shared/services/user.service';
+import { PvCalculationService } from '../shared/services/pv-calculation.service';
+import { Router } from '@angular/router';
  
 @Component({
   selector: 'app-profile',
@@ -18,7 +20,12 @@ export class ProfileComponent implements OnInit {
   @ViewChild('avatarUploader') avatarUploader: any;
   @ViewChild('avatarAlert') avatarAlert: any;
 
-  constructor(private tokenAuthService: AngularTokenService, private userService: UserService) {}
+  constructor(private data: PvCalculationService, 
+              private tokenAuthService: AngularTokenService,
+              private router: Router,
+              private userService: UserService) {}
+
+  systems:object;
 
   ngOnInit(): void {
     // Get the data of the logged in user after validating token
@@ -27,9 +34,19 @@ export class ProfileComponent implements OnInit {
         this.userData = this.tokenAuthService.currentUserData;
         console.log(this.userData)
         this.isLoading = false;
+        this.getSystems();
       },
       error => console.log(error)
       );
+
+  }
+
+  getSystems(){
+    this.data.getSystems(response =>{
+        if(response){ 
+          this.systems = response;
+        }
+    });
   }
 
   uploadAvatar(ev) {
@@ -62,6 +79,11 @@ export class ProfileComponent implements OnInit {
   openUploader() {
     // Open File Uploader
     this.avatarUploader.nativeElement.click();
+  }
+
+  getCalc(event){
+    console.log(event.target.id);
+    this.router.navigate(['pv-calculation/', event.target.id]);
   }
 
 }

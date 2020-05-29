@@ -2,7 +2,31 @@
 <div class="container main mt-3 ">
   <h1 class="text-center">Create Post for your generated system</h1>
   <hr>
-  <div class="row">
+  <div class="row" *ngIf="system_data">
+    <table class="table table-sm table-dark">
+      <tbody>
+        <tr>
+          <th scope="row">Panel</th>
+          <td>{{ system_data['calculation']['panels_num'] }}</td>
+          <td>{{ system_data['calculation']['panel_watt'] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Battery</th>
+          <td>{{ system_data['calculation']['batteries_num'] }}</td>
+          <td>{{ system_data['calculation']['battery_Ah'] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Inverter</th>
+          <td>{{ system_data['calculation']['inverter_watt'] }}</td>
+          <td>{{ system_data['calculation']['system_circuits'] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Mppt</th>
+          <td>{{ system_data['calculation']['mppt_amp'] }}</td>
+          <td>{{ system_data['calculation']['system_circuits'] }}</td>
+        </tr>
+      </tbody>
+    </table>
       <form (ngSubmit)="onSubmit()" class="mx-auto">
         <div class="form-group">
           <label for="title">Title</label>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PvCalculationService } from '../../shared/services/pv-calculation.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ShareService } from 'src/app/shared/services/share.service';
 
 @Component({
   selector: 'app-pv-system',
@@ -13,7 +14,8 @@ export class PvSystemComponent implements OnInit {
 
   constructor(private data: PvCalculationService, 
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private __service: ShareService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -32,11 +34,13 @@ export class PvSystemComponent implements OnInit {
   }
 
   publish(){
-
+    this.__service.setData(this.system_data);
+    this.router.navigate(['create/post']);
   }
 
   save(){
-
+    this.__service.setData(this.system_data);
+    this.router.navigate(['create/post']);
   }
 
   cancel(){

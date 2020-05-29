@@ -23,13 +23,21 @@ export class PvCalculationService {
     });
   }
 
-  // get
+  // get/:id
   getSystem(calc_id, callback){
     this.http.get(`${this.apiUrl}/pv-calculation/${calc_id}`).subscribe(response =>{
       console.log(response);
       callback(response);
     });
   }
+  // get
+  getSystems(callback){
+    this.http.get(`${this.apiUrl}/pv-calculations`).subscribe(response =>{
+      console.log(response);
+      callback(response);
+    });
+  }
+
 
   // SYSTEM API
   

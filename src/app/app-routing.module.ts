@@ -44,11 +44,13 @@ const routes: Routes = [
   },
   {
     path: 'create/post',
-    component: CreatePostFormComponent
+    component: CreatePostFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'update/posts/:id',
-    component: UpdatePostFormComponent
+    component: UpdatePostFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'posts/:id',
@@ -66,7 +68,8 @@ const routes: Routes = [
   },
   {
     path: 'calculate',
-    component: CalculateComponent
+    component: CalculateComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'pv-calculation/:id',
