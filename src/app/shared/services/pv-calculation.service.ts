@@ -6,7 +6,7 @@ export class PvCalculationService {
 
   constructor(private http: HttpClient) { }
 
-  public apiUrl:String = 'http://localhost:3000';
+  private apiUrl:String = 'http://localhost:3000';
 
   // CALC API
 
@@ -31,9 +31,8 @@ export class PvCalculationService {
     });
   }
 
-
   // SYSTEM API
-
+  
   //post
   setSystemInfo(client_data, callback){
     this.http.post(`${this.apiUrl}/system-info`, client_data).subscribe(response =>{

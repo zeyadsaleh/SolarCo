@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GeoLoactionService } from '../../shared/services/geo-loaction.service';
-import { PvCalculationService } from '../../shared/services/pv-calculation.service';
 import { HttpClient } from '@angular/common/http';
+import { GeoLoactionService } from 'src/app/shared/services/geo-loaction.service';
+import { ShareService } from 'src/app/shared/services/share.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,19 +11,16 @@ import { Router } from '@angular/router';
 })
 export class UserInputComponent implements OnInit {
 
-  consumption: number;
   client_request: object;
-  src: string;
-  client_data: object;
+  api_response: object;
   
   constructor(private geolocation: GeoLoactionService, 
-              private data: PvCalculationService,
               private http: HttpClient,
-              private router: Router) { }
-
+              private router: Router,
+              private __service: ShareService) { }
+              
   ngOnInit(): void {
     this.client_request = new Object();
-    this.client_data = new Object();
     this.getIpAddress();
   }
 
@@ -33,8 +30,7 @@ export class UserInputComponent implements OnInit {
         console.log(location);
         this.client_request["lat"] = location.latitude;
         this.client_request["long"] = location.longitude;
-        this.src = this.geolocation.getMapLink(location);
-        console.log(this.src);  
+        // this.src = this.geolocation.getMapLink(location);
       }
     });
   }
@@ -45,29 +41,15 @@ export class UserInputComponent implements OnInit {
     }); 
   }
 
-  calculate(){
-    this.client_request["consump"] = this.consumption; 
-    this.data.setSystemInfo(this.client_request, response =>{
-      if(response){
-        this.client_data = response;
-        this.client_request = new Object();
-        console.log(response);  
-      }
-    });
-  }
-
-  cancel(){
-    this.data.delSystemInfo(this.client_data['id']);
-    this.client_request = new Object();
-    this.client_data = new Object();  
-  }
-
   confirm(){
-    this.data.setSystem({"id": this.client_data['id']}, response =>{
-      if(response['id']){ 
-        this.router.navigate(['pv-calculation/', response['id']]);
+    this.geolocation.getLocation(this.client_request, response =>{
+      if(response){
+        this.client_request['api'] = response; 
+        this.__service.setData(this.client_request)
+        this.router.navigate(['calculate']);
       }
     });
   }
+
 }
 

@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class GeoLoactionService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  private apiUrl:String = 'http://localhost:3000';
 
   requestLocation(callback){
     //W3C Geolaction API
@@ -29,5 +32,13 @@ export class GeoLoactionService {
       query = `${location.address},${location.city}`;
     }
     return `https://maps.google.com/?q=${query}`;
+  }
+
+  // get
+  getLocation(client_data, callback){
+    this.http.post(`${this.apiUrl}/geocoder`, client_data).subscribe(response =>{
+      console.log(response);
+      callback(response);
+    });
   }
 }
