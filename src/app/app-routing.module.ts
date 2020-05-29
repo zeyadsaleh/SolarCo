@@ -50,21 +50,20 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
-    path: 'system-info',
-    component: UserInputComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'pv-calculation/:id',
     component: PvSystemComponent,
     canActivate: [AuthGuard]
   },
   {
+    path: 'system-info',
+    component: UserInputComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: '**',
     component: HomeComponent
-  },
+  }
+
 
 ];
 @NgModule({
