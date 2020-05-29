@@ -8,17 +8,17 @@
                 <div class="profile-sidebar position-fixed">
                     <!-- SIDEBAR USERPIC -->
                     <div class="profile-userpic">
-                        <img [src]="userData.avatar && userData.type == 'Client' ? userData.avatar : '/assets/images/tony.png'" class="img-fluid"
+                        <img [src]="userData?.avatar && userData?.type == 'Client' ? userData?.avatar : '/assets/images/tony.png'" class="img-fluid"
                             alt="">
                     </div>
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->
                     <div class="profile-usertitle">
                         <div class="profile-usertitle-name">
-                            {{userData.name}}
+                            {{userData?.name}}
                         </div>
                         <div class="profile-usertitle-job">
-                            {{userData.email}}
+                            {{userData?.email}}
                         </div>
                     </div>
                     <!-- END SIDEBAR USER TITLE -->
@@ -64,3 +64,5 @@
         </div>
     </div>
 </div>
+
+<ng-template #loading>Loading User Data...</ng-template>
