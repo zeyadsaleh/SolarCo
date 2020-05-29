@@ -7,6 +7,7 @@ import { HomepageComponent } from './post/homepage/homepage.component';
 import { SinglePostComponent } from './post/single-post/single-post.component';
 import { UserInputComponent } from './pv-calculation/user-input/user-input.component';
 import { PvSystemComponent } from './pv-calculation/pv-system/pv-system.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
@@ -49,7 +51,8 @@ const routes: Routes = [
   {
     path: 'pv-calculation/:id',
     component: PvSystemComponent
-  },
+  }
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

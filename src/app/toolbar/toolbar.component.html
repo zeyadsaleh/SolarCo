@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">  
+<mat-toolbar color="primary">
   <mat-toolbar-row>
     <span><a class="nav-link text-white material-icons" [routerLink]="['']">home</a></span>
     <span *ngIf="tokenAuthService.userSignedIn()"><a class="nav-link text-white material-icons" [routerLink]="['/system-info']">SOLAR</a></span>
@@ -7,6 +7,6 @@
     <span class="example-spacer"></span>
     <span *ngIf="!tokenAuthService.userSignedIn()"><a class="nav-link text-white material-icons" [routerLink]="['/login']" >LOGIN</a></span>
     <span  *ngIf="!tokenAuthService.userSignedIn()"> <a class="nav-link text-white material-icons" [routerLink]="['/register']">REGISTER</a></span>
-    <h2 *ngIf="tokenAuthService.userSignedIn()"><a class="nav-link text-white material-icons" [routerLink]="['/']" (click)="signOut()">LOGOUT</a></h2>
+    <span *ngIf="tokenAuthService.userSignedIn()"><a class="nav-link text-white material-icons" [routerLink]="['/']" (click)="signOut()">LOGOUT</a></span>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AngularTokenService } from 'angular-token';
+import { AngularTokenService, UserData } from 'angular-token';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../shared/interfaces/user';
 import { UserService } from '../shared/services/user.service';
@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
 
   userData;
 
+  isLoading:boolean = true;
+
   @ViewChild('avatarUploader') avatarUploader: any;
   @ViewChild('avatarAlert') avatarAlert: any;
 
@@ -24,6 +26,7 @@ export class ProfileComponent implements OnInit {
       res => {
         this.userData = this.tokenAuthService.currentUserData;
         console.log(this.userData)
+        this.isLoading = false;
       },
       error => console.log(error)
       );
@@ -37,7 +40,6 @@ export class ProfileComponent implements OnInit {
       // // Send the image as form data
       let formData = new FormData();
       formData.append('avatar', ev.target.files[0]);
-      console.log(ev.target.files[0])
 
       // Specify the headers for form data not JSON
       var headers = new HttpHeaders();
@@ -46,6 +48,7 @@ export class ProfileComponent implements OnInit {
       // Send the request and store the response in the avatar variable
       this.userService.updateAvatar(this.userData.id, formData, headers).subscribe(
         res => {
+          console.log(res)
           this.userData.avatar = res['avatar']
         },
         error => console.log(error)

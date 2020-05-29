@@ -32,7 +32,7 @@ export class PvSystemComponent implements OnInit {
 
   }
 
-  cancel(){
+  save(){
 
   }
 
