@@ -4,6 +4,8 @@ import {HomeComponent} from "./home/home.component";
 import {LoginFormComponent} from "./login-form/login-form.component"
 import { ProfileComponent } from './profile/profile.component';
 import { PvCalculationComponent } from './pv-calculation/pv-calculation.component';
+import { HomepageComponent } from './post/homepage/homepage.component';
+import { SinglePostComponent } from './post/single-post/single-post.component';
 
 const routes: Routes = [
   {
@@ -23,14 +25,24 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent
   },
-  { 
-    path: 'register', 
-    loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) 
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
   },
   {
     path: 'pv-calculation',
     component: PvCalculationComponent
   },
+  {
+    path: 'posts',
+    component: HomepageComponent
+  },
+  {
+    path: 'posts/:id',
+    component: SinglePostComponent
+  },
+  { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) },
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
