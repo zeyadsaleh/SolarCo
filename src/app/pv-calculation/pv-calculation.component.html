@@ -10,11 +10,12 @@
                     <mat-hint align="end"> {{ consumption }} </mat-hint>
                 </mat-form-field>
             </mat-card-content>
-            <mat-card-footer>
-                <a mat-button *ngIf="consumption && !client_request['lat']" class="btn btn-sm btn-warning"
-                    (click)="getLocation()">GetLocation</a>
-                <a mat-button *ngIf="consumption && client_request['lat']" class="btn btn-sm btn-primary"
-                    (click)="save()">Calculte</a>
+            <mat-card-actions *ngIf="consumption">
+                <a mat-button class="btn btn-sm btn-warning" (click)="getLocation()">GetLocation</a>
+                <a mat-button  class="btn btn-sm btn-primary" (click)="save()">Calculte</a>
+            </mat-card-actions>
+            <mat-card-footer *ngIf="consumption">
+                <p>you can Igonre GetLocation, If it's not allowed</p>
             </mat-card-footer>
         </mat-card>
         <mat-card *ngIf="client_request['lat'] && client_request['ip'] ">

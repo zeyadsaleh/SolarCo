@@ -4,8 +4,6 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { RouterModule } from '@angular/router';
 import { SinglePostComponent } from './single-post/single-post.component';
 
-
-
 @NgModule({
   declarations: [HomepageComponent,SinglePostComponent],
   imports: [
