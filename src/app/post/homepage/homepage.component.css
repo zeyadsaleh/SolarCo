@@ -99,6 +99,15 @@ body {
   color: #333;
   font-weight:300;
 }
+.post-card__info h4 {
+  display: block;
+  margin-top: 0.7rem;
+  font-weight: 200;
+}
+.post-card__info h4 span {
+  color: #333;
+  font-weight:300;
+}
 .post-card__info p {
   margin-top: 1rem;
   color: #333;

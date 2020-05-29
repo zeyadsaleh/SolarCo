@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PvCalculationComponent } from './pv-calculation/pv-calculation.component';
 import { HomepageComponent } from './post/homepage/homepage.component';
 import { SinglePostComponent } from './post/single-post/single-post.component';
+import { CreatePostFormComponent } from './post/create-post-form/create-post-form.component';
 
 const routes: Routes = [
   {
@@ -38,12 +39,16 @@ const routes: Routes = [
     component: HomepageComponent
   },
   {
+    path: 'create/post',
+    component: CreatePostFormComponent
+  },
+  {
     path: 'posts/:id',
     component: SinglePostComponent
   },
-  { 
-    path: 'register', 
-    loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) 
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
   },
   {
     path: 'pv-calculation',

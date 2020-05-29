@@ -21,4 +21,8 @@ export class HomepageComponent implements OnInit {
       }
     });
   }
+
+  deletePost(id){
+    this.postService.deletePost(id).subscribe()
+  }
 }

@@ -19,4 +19,11 @@ export class PostService {
     return this.http.get(this.postURl+'/'+id);
   }
 
+  createPost(post):Observable<any> {
+    return this.http.post(this.postURl,post);
+  }
+
+  deletePost(id):Observable<any> {
+    return this.http.delete(this.postURl+'/'+id);
+  }
 }

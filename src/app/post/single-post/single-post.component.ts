@@ -23,4 +23,8 @@ export class SinglePostComponent implements OnInit {
     });
   }
 
+  deletePost(id){
+    this.postService.deletePost(id).subscribe()
+  }
+
 }

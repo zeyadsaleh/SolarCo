@@ -18,7 +18,11 @@
     </div>
     <div class="post-card__content">
       <div class="post-card__info">
+        <button class="btn btn-sm" (click)="deletePost(post.id)">Delete</button>
+        <button class="btn btn-sm"><a [routerLink]="['/update/posts',post.id]">Update</a></button>
         <h1>{{post.title}}</h1>
+        <button class="btn btn-info btn-sm"><a [routerLink]="['/posts/',post.id]">Apply</a></button>
+        <h4><span>Location:</span>&nbsp;{{post.system.city}}, {{post.system.country}}</h4>
         <h5><span>Posted at</span>&nbsp;{{post.created_at}}</h5>
         <p>{{post.description}}</p>
         <a [routerLink]="['/posts/',post.id]">Read more</a>
