@@ -1,5 +1,5 @@
 <div class="container p-4" *ngIf="type else noTypeTemplate">
-  <div *ngIf="errorMessage.length > 0" class="text-danger m-2">
+  <div *ngIf="errorMessage.length > 0" class="alert alert-danger mb-2">
     <span>{{ errorMessage }}</span>
   </div>
   <form (ngSubmit)="onSignUpSubmit()" #f="ngForm">
@@ -51,11 +51,9 @@
       <input id="password_confirmation" type="password" required name='password_confirmation'
         [(ngModel)]="signUpUser.passwordConfirmation" class="validate form-control"
         placeholder="Enter Password confirmation" #passowrd_confirmation="ngModel">
-
-        <span *ngIf="signUpUser.password != signUpUser.passwordConfirmation" style="color:red">
+      <div *ngIf="signUpUser.password != signUpUser.passwordConfirmation" class="alert alert-danger">
           Passwords must match
-        </span>
-        
+      </div>
       </div>
       <div class="form-check pb-2" *ngIf="type == 'Contractor'">
         <input id="has_office" type="checkbox" name='has_office'
@@ -63,7 +61,15 @@
         <label class="form-check-label" for="has_office">Has Office</label>
       </div>
       <div class="form-group" *ngIf="contractor.has_office">
-            <textarea name='address' required class="form-control" placeholder="Address" [(ngModel)]="contractor.address"></textarea>
+            <textarea name='address' required class="form-control" placeholder="Address" [(ngModel)]="contractor.address" #address="ngModel"></textarea>
+
+            <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger">
+
+              <div *ngIf="address.errors.required">
+                address is required.
+              </div>
+            </div>
+            
       </div>
 
     <div>
