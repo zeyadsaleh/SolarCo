@@ -16,7 +16,7 @@ export class PvCalculationService {
   }
 
   setSystem(client_data, callback){
-    this.http.post(`${this.apiUrl}/calculations`, client_data).subscribe(response =>{
+    this.http.post(`${this.apiUrl}/pv-calculation`, client_data).subscribe(response =>{
       console.log(response);
       callback(response);
     });

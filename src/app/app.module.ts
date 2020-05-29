@@ -15,12 +15,13 @@ import { AngularTokenService, AngularTokenModule, AngularTokenOptions } from 'an
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { PostModule } from './post/post.module';
 // ########### END ##########
 
 // Services ##START##
 import { PvCalculationService } from './shared/services/pv-calculation.service';
 import { GeoLoactionService } from './shared/services/geo-loaction.service';
+import { PostService } from './shared/services/post.service';
 // ########### END ##########
 
 // Material Modules
@@ -31,8 +32,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 // ########### END ##########
 
-import { PostModule } from './post/post.module';
-import { PostService } from './shared/services/post.service';
 @NgModule({
   declarations: [
     AppComponent,

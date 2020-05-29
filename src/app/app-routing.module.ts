@@ -41,8 +41,14 @@ const routes: Routes = [
     path: 'posts/:id',
     component: SinglePostComponent
   },
-  { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) },
-
+  { 
+    path: 'register', 
+    loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) 
+  },
+  {
+    path: 'pv-calculation',
+    component: PvCalculationComponent
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
