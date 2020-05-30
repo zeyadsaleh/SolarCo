@@ -24,6 +24,7 @@ export class CreatePostFormComponent implements OnInit {
     this.__service.Data.subscribe((data) => {
       if(data){
         this.system_data = data;
+        this.post.system_id = data.calculation.id;
       }else{
         this.router.navigate(['system-info']);
       }
@@ -31,16 +32,16 @@ export class CreatePostFormComponent implements OnInit {
   }
 
   onSubmit(){
-  //   this.postService.createPost(this.post).subscribe(
-  //     res => {
-  //       // console.log(res);
-  //       // this.router.navigate(['home']);
-  //       } ,
-  //     error => {
-  //       // console.log(error);
-  //       // this.errorMessage =error.error.errors[0];
-  //     }
-  //   );
+    this.postService.createPost(this.post).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['home']);
+        } ,
+      error => {
+        console.log(error);
+        // this.errorMessage =error.error.errors[0];
+      }
+    );
   }
 
 }

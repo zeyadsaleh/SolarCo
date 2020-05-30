@@ -19,28 +19,32 @@ export class PvSystemComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.getInfo(+params['id']);
+      this.getSystemDetails(+params['id']);
     });
   }
 
-  getInfo(id){
+  getSystemDetails(id){
     this.data.getSystem(id, response =>{
       if(response){
         this.system_data = response;
       }else{
-        this.router.navigate(['system-info']);
+        this.router.navigate(['user-input']);
       }
     });
   }
 
   publish(){
-    this.__service.setData(this.system_data);
-    this.router.navigate(['create/post']);
+    if (!this.system_data['published']){
+      this.__service.setData(this.system_data);
+      this.router.navigate(['create/post']);
+    } else {
+      console.log("this Post is published");
+    }
   }
 
-  save(){
+  profile(){
     this.__service.setData(this.system_data);
-    this.router.navigate(['create/post']);
+    this.router.navigate(['profile']);
   }
 
   cancel(){

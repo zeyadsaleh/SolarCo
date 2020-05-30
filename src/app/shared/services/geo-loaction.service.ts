@@ -6,8 +6,6 @@ export class GeoLoactionService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl:String = 'http://localhost:3000';
-
   requestLocation(callback){
     //W3C Geolaction API
     if (navigator.geolocation) {
@@ -20,7 +18,7 @@ export class GeoLoactionService {
         }
       );
     } else {
-      // "Geolocation is not supported by this browser.";
+      callback("Geolocation is not supported by this browser.");
     }
   }
 
@@ -28,15 +26,15 @@ export class GeoLoactionService {
     let query = "";
     if(location.latitude){
       query = `${location.latitude},${location.longitude}`;
+      return `https://maps.google.com/?q=${query}`;
     }else{
-      query = `${location.address},${location.city}`;
+      return "No Location Set!"
     }
-    return `https://maps.google.com/?q=${query}`;
   }
 
   // get
   getLocation(client_data, callback){
-    this.http.post(`${this.apiUrl}/geocoder`, client_data).subscribe(response =>{
+    this.http.post('http://localhost:3000/geocoder', client_data).subscribe(response =>{
       console.log(response);
       callback(response);
     });

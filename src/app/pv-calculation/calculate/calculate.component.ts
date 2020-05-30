@@ -22,21 +22,21 @@ export class CalculateComponent implements OnInit {
       if(data){
         this.api_response = data;
       }else{
-        this.router.navigate(['system-info']);
+        this.router.navigate(['user-input']);
       }
     });
   }
 
   back(){
     this.api_response = new Object(); 
-    this.router.navigate(['system-info']);
+    this.router.navigate(['user-input']);
   }
 
   calculate(){ 
       this.data.setSystem(this.api_response, response =>{
         if(response){ 
           this.__service.setData(response);
-          this.router.navigate(['pv-calculation/', response['id']]);
+          this.router.navigate(['pv-system/', response['id']]);
         }
       });
   }

@@ -62,7 +62,7 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
   },
   {
-    path: 'system-info',
+    path: 'user-input',
     component: UserInputComponent,
     canActivate: [AuthGuard]
   },
@@ -72,7 +72,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'pv-calculation/:id',
+    path: 'pv-system/:id',
     component: PvSystemComponent,
     canActivate: [AuthGuard]
   },
