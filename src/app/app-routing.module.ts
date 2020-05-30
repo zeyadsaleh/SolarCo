@@ -7,10 +7,12 @@ import { HomepageComponent } from './post/homepage/homepage.component';
 import { SinglePostComponent } from './post/single-post/single-post.component';
 import { CreatePostFormComponent } from './post/create-post-form/create-post-form.component';
 import { UserInputComponent } from './pv-calculation/user-input/user-input.component';
+import { CalculateComponent } from './pv-calculation/calculate/calculate.component';
 import { PvSystemComponent } from './pv-calculation/pv-system/pv-system.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ContractorGuard } from './shared/guards/contractor.guard';
 import { ClientGuard } from './shared/guards/client.guard';
+import { UpdatePostFormComponent } from './post/update-post-form/update-post-form.component';
 
 const routes: Routes = [
   {
@@ -38,25 +40,37 @@ const routes: Routes = [
   {
     path: 'posts',
     component: HomepageComponent,
-    canActivate: [AuthGuard, ContractorGuard]
+    // canActivate: [AuthGuard, ContractorGuard]
   },
   {
     path: 'create/post',
-    component: CreatePostFormComponent
+    component: CreatePostFormComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'update/posts/:id',
+    component: UpdatePostFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'posts/:id',
     component: SinglePostComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: 'pv-calculation/:id',
-    component: PvSystemComponent,
-    canActivate: [AuthGuard]
-  },
+
   {
     path: 'system-info',
     component: UserInputComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'calculate',
+    component: CalculateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'pv-calculation/:id',
+    component: PvSystemComponent,
     canActivate: [AuthGuard]
   },
   {

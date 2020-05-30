@@ -1,0 +1,20 @@
+<div class="container" *ngIf="api_response">
+    <div class="row justify-content-center text-center">
+        <mat-card>
+            <mat-card-title>Client Data</mat-card-title>
+            <mat-card-content>
+                <p>{{ api_response['consump'] }}</p>
+                <p>{{ api_response['api']['city'] }}</p>
+                <p>{{ api_response['api']['country'] }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <a mat-button class="btn btn-sm btn-primary" (click)="calculate()">Calculate</a>
+                <a mat-button class="btn btn-sm btn-warning" (click)="back()">Back</a>
+            </mat-card-actions>
+            <mat-card-footer>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>
+
+

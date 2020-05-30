@@ -6,7 +6,7 @@ export class PvCalculationService {
 
   constructor(private http: HttpClient) { }
 
-  public apiUrl:String = 'http://localhost:3000';
+  private apiUrl:String = 'http://localhost:3000';
 
   // CALC API
 
@@ -23,9 +23,16 @@ export class PvCalculationService {
     });
   }
 
-  // get
+  // get/:id
   getSystem(calc_id, callback){
     this.http.get(`${this.apiUrl}/pv-calculation/${calc_id}`).subscribe(response =>{
+      console.log(response);
+      callback(response);
+    });
+  }
+  // get
+  getSystems(callback){
+    this.http.get(`${this.apiUrl}/pv-calculations`).subscribe(response =>{
       console.log(response);
       callback(response);
     });
@@ -33,7 +40,7 @@ export class PvCalculationService {
 
 
   // SYSTEM API
-
+  
   //post
   setSystemInfo(client_data, callback){
     this.http.post(`${this.apiUrl}/system-info`, client_data).subscribe(response =>{

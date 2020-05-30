@@ -6,6 +6,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserInputComponent } from './pv-calculation/user-input/user-input.component';
 import { PvSystemComponent } from './pv-calculation/pv-system/pv-system.component';
+import { CalculateComponent } from './pv-calculation/calculate/calculate.component';
 // ########### END ##########
 
 // Modules ##START##
@@ -25,6 +26,7 @@ import { Ability, PureAbility } from '@casl/ability';
 import { PvCalculationService } from './shared/services/pv-calculation.service';
 import { GeoLoactionService } from './shared/services/geo-loaction.service';
 import { PostService } from './shared/services/post.service';
+import { ShareService } from './shared/services/share.service';
 // ########### END ##########
 
 // Material Modules
@@ -44,6 +46,7 @@ import {MatCardModule} from '@angular/material/card';
     ProfileComponent,
     UserInputComponent,
     PvSystemComponent,
+    CalculateComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,7 @@ import {MatCardModule} from '@angular/material/card';
     PostModule,
     AbilityModule
   ],
-  providers: [AngularTokenModule, GeoLoactionService, PvCalculationService,PostService,
+  providers: [AngularTokenModule, GeoLoactionService, PvCalculationService,PostService, ShareService,
     { provide: Ability, useValue: new Ability() },
     { provide: PureAbility, useExisting: Ability }
   ],

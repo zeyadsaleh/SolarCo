@@ -9,7 +9,6 @@ const routes: Routes = [
     path: '',
     component: RegisterComponent,
     children: [
-      // { path: 'new', component: RegisterFormComponent },
       { path: ':type', component: RegisterFormComponent },
     ],
   }

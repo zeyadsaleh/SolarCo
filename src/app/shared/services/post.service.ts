@@ -23,6 +23,10 @@ export class PostService {
     return this.http.post(this.postURl,post);
   }
 
+  updatePost(id,post):Observable<any> {
+    return this.http.put(this.postURl+'/'+id,post);
+  }
+
   deletePost(id):Observable<any> {
     return this.http.delete(this.postURl+'/'+id);
   }
