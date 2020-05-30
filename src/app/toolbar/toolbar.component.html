@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<!-- <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span><a class="nav-link text-white material-icons" [routerLink]="['']">home</a></span>
     <span *ngIf="tokenAuthService.userSignedIn() && ('create' | able: 'Calculation')"><a class="nav-link text-white material-icons" [routerLink]="['/user-input']">SOLAR</a></span>
@@ -9,4 +9,34 @@
     <span  *ngIf="!tokenAuthService.userSignedIn()"> <a class="nav-link text-white material-icons" [routerLink]="['/register']">REGISTER</a></span>
     <span *ngIf="tokenAuthService.userSignedIn()"><a class="nav-link text-white material-icons" [routerLink]="['/']" (click)="signOut()">LOGOUT</a></span>
   </mat-toolbar-row>
-</mat-toolbar>
+</mat-toolbar> -->
+<!--================Header Menu Area =================-->
+<header class="header_area">
+  <div class="main_menu" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container box_1620">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <a class="navbar-brand logo_h" [routerLink]="['/']"><span class="text-white font-weight-bold">Solarco</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+          <ul class="nav navbar-nav menu_nav ml-auto">
+            <li class="nav-item active"><a class="nav-link" [routerLink]="['/home']">Home</a></li>
+            <li *ngIf="'create' | able: 'Calculation'" class="nav-item"><a class="nav-link" [routerLink]="['/user-input']">Calculate</a>
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/profile']">Profile</a></li>
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/posts']">Posts</a>
+            <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/login']">Login</a>
+            <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/register']">Register</a>
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/']" (click)="signOut()">Logout</a>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+<!--================Header Menu Area =================-->

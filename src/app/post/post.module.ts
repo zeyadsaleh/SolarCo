@@ -6,13 +6,14 @@ import { SinglePostComponent } from './single-post/single-post.component';
 import { CreatePostFormComponent } from './create-post-form/create-post-form.component';
 import { FormsModule } from '@angular/forms';
 import { UpdatePostFormComponent } from './update-post-form/update-post-form.component';
+import { PageBannerComponent } from '../page-banner/page-banner.component';
 
 @NgModule({
   declarations: [HomepageComponent,SinglePostComponent, CreatePostFormComponent, UpdatePostFormComponent],
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class PostModule { }

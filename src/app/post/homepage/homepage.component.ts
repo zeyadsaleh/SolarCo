@@ -8,6 +8,7 @@ import { PostService } from 'src/app/shared/services/post.service';
 })
 export class HomepageComponent implements OnInit {
   posts=[];
+  // title:string = 'Posts';
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {

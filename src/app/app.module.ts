@@ -35,6 +35,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import { FooterComponent } from './footer/footer.component';
+import { PageBannerComponent } from './page-banner/page-banner.component';
 // ########### END ##########
 
 @NgModule({
@@ -47,6 +49,8 @@ import {MatCardModule} from '@angular/material/card';
     UserInputComponent,
     PvSystemComponent,
     CalculateComponent,
+    FooterComponent,
+    PageBannerComponent,
   ],
   imports: [
     BrowserModule,

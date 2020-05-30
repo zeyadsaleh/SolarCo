@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   type: string = "";
+  // title: string = 'Register';
 
   constructor(private _router: Router) { }
 

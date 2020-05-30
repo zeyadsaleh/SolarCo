@@ -14,6 +14,7 @@ export class AppComponent {
   
   constructor(private ability: Ability, private tokenService: AngularTokenService){
     if(this.tokenService.userSignedIn()) {
+      // this.isLoading = false;
       this.tokenService.validateToken().subscribe(
         res => {
           this.ability.update(res.data.rules);

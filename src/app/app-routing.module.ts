@@ -40,7 +40,7 @@ const routes: Routes = [
   {
     path: 'posts',
     component: HomepageComponent,
-    // canActivate: [AuthGuard, ContractorGuard]
+    canActivate: [AuthGuard, ContractorGuard]
   },
   {
     path: 'create/post',

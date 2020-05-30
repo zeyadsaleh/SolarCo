@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   userData;
+  title:string = 'Profile';
 
   isLoading:boolean = true;
 
