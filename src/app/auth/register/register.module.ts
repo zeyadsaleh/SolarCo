@@ -14,7 +14,6 @@ import { MainComponentModule } from 'src/app/main-component/main-component.modul
     CommonModule,
     RegisterRoutingModule,
     FormsModule,
-    MainComponentModule
   ]
 })
 export class RegisterModule { }
