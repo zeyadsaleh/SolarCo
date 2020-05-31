@@ -8,10 +8,14 @@ const routes: Routes = [
   {
     path: '',
     component: OfferComponent,
-    children: [
-      { path: 'new', component: OfferFormComponent },
-      { path: 'show', component: OfferFormComponent },
-    ],
+    // children: [
+    //   { path: 'new', component: OfferFormComponent },
+    // ],
+  },
+  {
+    path: 'new',
+    component: OfferFormComponent,
+
   }
 ];
 @NgModule({

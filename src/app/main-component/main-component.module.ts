@@ -29,7 +29,7 @@ import { AbilityModule } from '@casl/angular';
     HomeComponent,
     ToolbarComponent,
     FooterComponent,
-    PageBannerComponent,  
+    PageBannerComponent
   ],
 })
 export class MainComponentModule { }

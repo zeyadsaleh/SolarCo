@@ -10,7 +10,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class SinglePostComponent implements OnInit {
   post;
   // title:string = 'Post';
-  constructor(private postService: PostService, private route: ActivatedRoute) { }
+  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -26,6 +26,10 @@ export class SinglePostComponent implements OnInit {
 
   deletePost(id){
     this.postService.deletePost(id).subscribe()
+  }
+
+  sendId(id) {
+    this.router.navigate(['/offers/new'], { queryParams: { id: id }, queryParamsHandling: 'merge' });
   }
 
 }

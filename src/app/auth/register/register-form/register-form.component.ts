@@ -17,6 +17,7 @@ export class RegisterFormComponent implements OnInit {
   @Input() type: string = "";
 
   errorMessage = '';
+  // title: string = 'Register';
 
   signUpUser: User = {
     email: '',
