@@ -39,30 +39,43 @@ export class RegisterFormComponent implements OnInit {
 
   onSignUpSubmit() {
     this.signUpUser.type = this.type
-    this.tokenAuthSerivce.registerAccount({
-      login: this.signUpUser.email,
-      password: this.signUpUser.password,
-      passwordConfirmation: this.signUpUser.passwordConfirmation,
-      name: this.signUpUser.name,
-      type: this.signUpUser.type,
-    }).subscribe(
-      res => {
-        console.log(res);
-        if (this.contractor.has_office) {
-          this.userService.updateContractor(res.data.id, this.contractor).subscribe(
-            res => {
-              console.log(res);
-            },
-            error => console.log(error)
-          );
+    if (this.signUpUser.type == 'USER') { //register client
+      this.tokenAuthSerivce.registerAccount({
+        login: this.signUpUser.email,
+        password: this.signUpUser.password,
+        passwordConfirmation: this.signUpUser.passwordConfirmation,
+        name: this.signUpUser.name,
+        userType: this.signUpUser.type,
+      }).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['home']);
+        },
+        error => {
+          console.log(error);
+          this.errorMessage = error.error.errors.full_messages;
         }
-        this.router.navigate(['home']);
-      },
-      error => {
-        console.log(error);
-        this.errorMessage = error.error.errors.full_messages;
-      }
-    );
-
+      );
+    }
+    else {  // register contractor
+      this.tokenAuthSerivce.registerAccount({
+        login: this.signUpUser.email,
+        password: this.signUpUser.password,
+        passwordConfirmation: this.signUpUser.passwordConfirmation,
+        name: this.signUpUser.name,
+        has_office: this.contractor.has_office,
+        address: this.contractor.address,
+        userType: this.signUpUser.type,
+      }).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['home']);
+        },
+        error => {
+          console.log(error);
+          this.errorMessage = error.error.errors.full_messages;
+        }
+      );
+    }
   }
 }

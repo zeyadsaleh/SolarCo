@@ -1,13 +1,12 @@
-<div class="container main mt-3 ">
-  <h1 class="text-center">Login</h1>
-  <hr>
-  <div class="row">
-    <div class="col">
-      <div *ngIf="errorMessage.length > 0" class="text-danger m-2">
+<div class="container p-4" *ngIf="type else noTypeTemplate">
+  
+  <div *ngIf="errorMessage.length > 0" class="alert alert-danger m-2">
         <span>{{ errorMessage }}</span>
       </div>
-    
       <form (ngSubmit)="onSignInSubmit()" #f="ngForm" class="m-4">
+        <h3 *ngIf="type == 'USER'">Client Login</h3>
+        <h3 *ngIf="type == 'CONTRACTOR'">Contractor Login</h3>
+        <hr>
         <div class="form-group">
           <input placeholder="Enter email" id="email" type="email" required email name='email'
             [(ngModel)]="signInUser.email" class="form-control validate" #email="ngModel">
@@ -40,10 +39,11 @@
         <div>
           <button type="submit" [disabled]="!(f.valid)" class="btn btn-primary"> Login </button>
         </div>
-    
-    
       </form>
     </div>
-  </div>
 
-</div>
+    <ng-template #noTypeTemplate>
+      <h3 class=" p-4 text-danger ">
+        Please Select a registration type
+      </h3>
+    </ng-template>

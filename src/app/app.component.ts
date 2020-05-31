@@ -13,6 +13,18 @@ export class AppComponent {
   isLoading:boolean = true;
   
   constructor(private ability: Ability, private tokenService: AngularTokenService){
+
+   
+  //   this.tokenService.registerAccount({
+  //     login:                'zeyad@zeyad.com',
+  //     password:             'secretPassword',
+  //     passwordConfirmation: 'secretPassword',
+  //     userType: 'USER'
+  // }).subscribe(
+  //     res =>      console.log(res),
+  //     error =>    console.log(error)
+  // );
+    
     if(this.tokenService.userSignedIn()) {
       this.tokenService.validateToken().subscribe(
         res => {

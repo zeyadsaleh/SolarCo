@@ -21,7 +21,7 @@
 
     <div class="form-group">
       <input id="name" type="text" required name='name' [(ngModel)]="signUpUser.name" class="validate form-control"
-     [placeholder]="(type == 'Client') ? 'Enter your full name' : 'Enter Company name'" #name="ngModel">
+     [placeholder]="(type == 'USER') ? 'Enter your full name' : 'Enter Company name'" #name="ngModel">
 
       <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
 
@@ -55,7 +55,7 @@
           Passwords must match
       </div>
       </div>
-      <div class="form-check pb-2" *ngIf="type == 'Contractor'">
+      <div class="form-check pb-2" *ngIf="type == 'CONTRACTOR'">
         <input id="has_office" type="checkbox" name='has_office'
           class="form-check-input" [(ngModel)]="contractor.has_office">
         <label class="form-check-label" for="has_office">Has Office</label>

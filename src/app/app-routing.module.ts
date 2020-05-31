@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./home/home.component";
-import {LoginFormComponent} from "./login-form/login-form.component"
 import { ProfileComponent } from './profile/profile.component';
 import { HomepageComponent } from './post/homepage/homepage.component';
 import { SinglePostComponent } from './post/single-post/single-post.component';
@@ -25,10 +24,6 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'login',
-    component: LoginFormComponent
-  },
-  {
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard]
@@ -36,6 +31,14 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: 'offer',
+    loadChildren: () => import('./offer/offer.module').then(m => m.OfferModule)
   },
   {
     path: 'posts',

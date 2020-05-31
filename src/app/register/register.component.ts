@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +8,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   type: string = "";
 
-  constructor(private _router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

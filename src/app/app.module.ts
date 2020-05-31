@@ -2,7 +2,7 @@
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserInputComponent } from './pv-calculation/user-input/user-input.component';
 import { PvSystemComponent } from './pv-calculation/pv-system/pv-system.component';
@@ -15,7 +15,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularTokenService, AngularTokenModule, AngularTokenOptions } from 'angular-token';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostModule } from './post/post.module';
 import { AbilityModule } from '@casl/angular';
@@ -35,6 +35,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
 // ########### END ##########
 
 @NgModule({
@@ -42,7 +45,6 @@ import {MatCardModule} from '@angular/material/card';
     AppComponent,
     HomeComponent,
     ToolbarComponent,
-    LoginFormComponent,
     ProfileComponent,
     UserInputComponent,
     PvSystemComponent,
@@ -60,11 +62,19 @@ import {MatCardModule} from '@angular/material/card';
     MatCardModule,
     BrowserAnimationsModule,
     AngularTokenModule.forRoot({
-      apiBase: 'http://localhost:3000'
+      apiBase: 'http://localhost:3000',
+      userTypes: [
+        { name: 'CONTRACTOR', path: 'contractor' },
+        { name: 'USER', path: 'user' }
+      ]
     }),
     BrowserAnimationsModule,
     PostModule,
-    AbilityModule
+    AbilityModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    ReactiveFormsModule
   ],
   providers: [AngularTokenModule, GeoLoactionService, PvCalculationService,PostService, ShareService,
     { provide: Ability, useValue: new Ability() },
