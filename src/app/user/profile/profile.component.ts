@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AngularTokenService, UserData } from 'angular-token';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../shared/interfaces/user';
+import { AngularTokenService, UserData } from 'angular-token';
 import { UserService } from '../../shared/services/user.service';
 import { PvCalculationService } from '../../shared/services/pv-calculation.service';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   userData;
   type;
   title:string = 'Profile';
-
+  systems:object;
   isLoading:boolean = true;
 
   @ViewChild('avatarUploader') avatarUploader: any;
@@ -27,7 +27,6 @@ export class ProfileComponent implements OnInit {
               private router: Router,
               private userService: UserService) {}
 
-  systems:object;
 
   ngOnInit(): void {
     // Get the data of the logged in user after validating token

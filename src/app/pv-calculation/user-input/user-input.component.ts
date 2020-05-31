@@ -13,7 +13,8 @@ export class UserInputComponent implements OnInit {
 
   client_request: object;
   api_response: object;
-  title:string = 'Calculate';
+  permission: boolean = true;
+  title:string = 'Pv-System Calculate';
   
   constructor(private geolocation: GeoLoactionService, 
               private http: HttpClient,
@@ -44,10 +45,12 @@ export class UserInputComponent implements OnInit {
 
   confirm(){
     this.geolocation.getLocation(this.client_request, response =>{
-      if(response['permission']){
-        this.client_request['api'] = response; 
-        this.__service.setData(this.client_request)
-        this.router.navigate(['pv-system/calculate']);
+      if(response && response['permission']){
+          this.client_request['api'] = response; 
+          this.__service.setData(this.client_request)
+          this.router.navigate(['pv-system/calculate']);
+      } else {
+          this.permission = false;
       }
     });
   }

@@ -11,6 +11,8 @@ import { ShareService } from 'src/app/shared/services/share.service';
 export class PvSystemComponent implements OnInit {
 
   system_data: object;
+  title:string = 'Pv-System Calculate';
+
 
   constructor(private data: PvCalculationService, 
               private route: ActivatedRoute,
@@ -27,6 +29,8 @@ export class PvSystemComponent implements OnInit {
     this.data.getSystem(id, response =>{
       if(response){
         this.system_data = response;
+        console.log(response['cables_protections']['section1']['cable_current1']);
+        
       }else{
         this.router.navigate(['user-input']);
       }

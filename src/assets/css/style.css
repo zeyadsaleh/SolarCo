@@ -324,13 +324,13 @@ button:focus {
 .banner_area {
   position: relative;
   z-index: 1;
-  min-height: 400px;
+  min-height: 300px;
   background: #000; }
   .banner_area .banner_inner {
     position: relative;
     overflow: hidden;
     width: 100%;
-    min-height: 400px;
+    min-height: 300px;
     z-index: 1; }
     .banner_area .banner_inner .overlay {
       background: url(/assets/img/banner/banner.jpg) no-repeat scroll center center;
@@ -347,7 +347,7 @@ button:focus {
       margin-top: 85px; }
       .banner_area .banner_inner .banner_content h2 {
         color: #fff;
-        font-size: 48px;
+        font-size: 45px;
         font-family: "Heebo", sans-serif;
         margin-bottom: 0px;
         text-transform: uppercase;
@@ -2571,11 +2571,7 @@ h6 {
   vertical-align: middle;
   align-self: center; }
 .design_inner .design_left_text {
-  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.08);
-  border-color: #fff;
-  padding: 2rem;
-  min-height: 15.5rem;
-}
+  max-width: 380px; }
   .design_inner .design_left_text h6 {
     font-size: 21px;
     font-family: "Roboto", sans-serif;

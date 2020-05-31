@@ -7,7 +7,7 @@
       <input id="email" type="email" required email name='email' [(ngModel)]="signUpUser.email"
         class="validate form-control" placeholder="Enter email" #email="ngModel">
 
-      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+      <div class="mt-2" *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
 
         <div *ngIf="email.errors.required">
           email is required.
@@ -23,7 +23,7 @@
       <input id="name" type="text" required name='name' [(ngModel)]="signUpUser.name" class="validate form-control"
      [placeholder]="(type == 'USER') ? 'Enter your full name' : 'Enter Company name'" #name="ngModel">
 
-      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+      <div class="mt-2" *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
 
         <div *ngIf="name.errors.required">
           name is required.
@@ -37,7 +37,7 @@
       <input id="password" type="password" required minlength="6" name='password' [(ngModel)]="signUpUser.password"
         class="validate form-control" placeholder="Enter Password" #password="ngModel">
 
-      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+      <div class="mt-2" *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
 
         <div *ngIf="password.errors.required">
           password is required.
@@ -51,7 +51,7 @@
       <input id="password_confirmation" type="password" required name='password_confirmation'
         [(ngModel)]="signUpUser.passwordConfirmation" class="validate form-control"
         placeholder="Enter Password confirmation" #passowrd_confirmation="ngModel">
-      <div *ngIf="signUpUser.password != signUpUser.passwordConfirmation" class="alert alert-danger">
+      <div class="mt-2" *ngIf="signUpUser.password != signUpUser.passwordConfirmation" class="alert alert-danger">
           Passwords must match
       </div>
       </div>
@@ -63,7 +63,7 @@
       <div class="form-group" *ngIf="contractor.has_office">
             <textarea name='address' required class="form-control" placeholder="Address" [(ngModel)]="contractor.address" #address="ngModel"></textarea>
 
-            <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger">
+            <div class="mt-2" *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger">
 
               <div *ngIf="address.errors.required">
                 address is required.
