@@ -28,7 +28,7 @@
           <ul class="nav navbar-nav menu_nav ml-auto">
             <li class="nav-item active"><a class="nav-link" [routerLink]="['/home']">Home</a></li>
             <li *ngIf="('create' | able: 'Calculation')" class="nav-item"><a class="nav-link" [routerLink]="['/user-input']">Calculate</a>
-            <li *ngIf="('read' | able: 'Post')" class="nav-item"><a class="nav-link" [routerLink]="['/posts']">Posts</a>
+            <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR'" class="nav-item"><a class="nav-link" [routerLink]="['/posts']">Posts</a>
             <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/profile']">Profile</a></li>
             <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/login']">Login</a>
             <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/register']">Register</a>
