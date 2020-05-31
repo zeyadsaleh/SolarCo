@@ -49,7 +49,7 @@ export class PvSystemComponent implements OnInit {
 
   cancel(){
     this.data.delSystem(this.system_data['calculation']['id']);
-    this.router.navigate(['system-info']);
+    this.router.navigate(['pv-system/user-info']);
   }
 
 }
