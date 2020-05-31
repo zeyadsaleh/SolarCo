@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/shared/interfaces/user';
 import { UserService } from 'src/app/shared/services/user.service';
+import { Ability } from '@casl/ability';
 
 @Component({
   selector: 'app-register-form',
@@ -32,7 +33,8 @@ export class RegisterFormComponent implements OnInit {
     address: ''
   };
 
-  constructor(private tokenAuthSerivce: AngularTokenService, private router: Router, private http: HttpClient, private userService: UserService) { }
+  constructor(private tokenAuthSerivce: AngularTokenService,
+     private router: Router, private ability: Ability) { }
 
   ngOnInit() {
   }
@@ -50,6 +52,7 @@ export class RegisterFormComponent implements OnInit {
       }).subscribe(
         res => {
           console.log(res);
+          this.ability.update(res.data.rules); // Casl Abilities
           this.router.navigate(['home']);
         },
         error => {

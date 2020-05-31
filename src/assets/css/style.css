@@ -115,6 +115,9 @@ button:focus {
 .main_title {
   text-align: center;
   margin-bottom: 75px; }
+  .main_title h3 {
+    color: #222;
+  }
   .main_title h2 {
     font-family: "Heebo", sans-serif;
     font-size: 36px;
