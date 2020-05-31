@@ -8,9 +8,6 @@ const routes: Routes = [
   {
     path: '',
     component: RegisterComponent,
-    children: [
-      { path: ':type', component: RegisterFormComponent },
-    ],
   }
 ];
 

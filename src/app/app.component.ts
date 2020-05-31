@@ -12,25 +12,13 @@ export class AppComponent {
 
   isLoading:boolean = true;
   
-  constructor(private ability: Ability, private tokenService: AngularTokenService){
-
-   
-  //   this.tokenService.registerAccount({
-  //     login:                'zeyad@zeyad.com',
-  //     password:             'secretPassword',
-  //     passwordConfirmation: 'secretPassword',
-  //     userType: 'USER'
-  // }).subscribe(
-  //     res =>      console.log(res),
-  //     error =>    console.log(error)
-  // );
-    
+  constructor(private ability: Ability, private tokenService: AngularTokenService){ 
     if(this.tokenService.userSignedIn()) {
       // this.isLoading = false;
       this.tokenService.validateToken().subscribe(
         res => {
           console.log('validating');
-          this.ability.update(res.data.rules);
+          // this.ability.update(res.data.rules);
           this.isLoading = false;
         },
         error => console.log(error)

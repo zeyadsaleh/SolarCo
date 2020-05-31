@@ -23,14 +23,14 @@ export class CreatePostFormComponent implements OnInit {
               private __service: ShareService) { }
 
   ngOnInit(): void {
-    this.__service.Data.subscribe((data) => {
-      if(data){
-        this.system_data = data;
-        this.post.system_id = data.calculation.id;
-      }else{
-        this.router.navigate(['system-info']);
-      }
-    });
+    // this.__service.Data.subscribe((data) => {
+    //   if(data){
+    //     this.system_data = data;
+    //     this.post.system_id = data.calculation.id;
+    //   }else{
+    //     this.router.navigate(['system-info']);
+    //   }
+    // });
   }
 
   onSubmit(){

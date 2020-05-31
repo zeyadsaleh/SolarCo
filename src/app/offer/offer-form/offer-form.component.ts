@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OfferService } from 'src/app/shared/services/offer.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subscriber, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-offer-form',
@@ -14,24 +15,38 @@ export class OfferFormComponent implements OnInit {
   offer = {
     proposal: '',
     price: 0,
-    // post_id: 2
+    post_id: ''
   }
+  
+  private _routeSubscription: Subscription;
 
   constructor(private offerService: OfferService,
-    private router: Router) { }
+    private router: Router, private _actvaedRoutes: ActivatedRoute, ) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+  
+      this._routeSubscription = this._actvaedRoutes.paramMap.subscribe((paramMap) => {
+        console.log(paramMap.has('id'));
+        if (paramMap.has('id')) {
+          this.offer.post_id = paramMap.get('id');    
+        }
+      })
+
+    
+    }
+  
+    ngOnDestroy(): void {
+      this._routeSubscription.unsubscribe();
+    }
 
   onSubmit() {
     this.offerService.createOffer(this.offer).subscribe(
       res => {
         console.log(res);
-        this.router.navigate(['post']);
+        this.router.navigate(['posts']);
       },
       error => {
         console.log(error);
-        // this.errorMessage =error.error.errors[0];
       }
     );
   }

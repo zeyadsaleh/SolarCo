@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/shared/services/post.service';
+import { Router } from '@angular/router';
+import { ShareService } from 'src/app/shared/services/share.service';
 
 @Component({
   selector: 'app-homepage',
@@ -10,7 +12,7 @@ export class HomepageComponent implements OnInit {
   posts=[];
   title:string = 'Posts';
   isLoading:boolean = true;
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private router: Router,  private __service: ShareService) {}
 
   ngOnInit(): void {
     this.getPosts();
@@ -27,5 +29,12 @@ export class HomepageComponent implements OnInit {
 
   deletePost(id){
     this.postService.deletePost(id).subscribe()
+  }
+
+
+  sendId(id) {
+    this.router.navigate(['/offers/new'], { queryParams: { id: id }, queryParamsHandling: 'merge' });
+    // this.__service.setData(id);
+    // this.router.navigate(['/offers/new', id]);
   }
 }
