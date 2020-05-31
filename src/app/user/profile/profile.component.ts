@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
 import { AngularTokenService, UserData } from 'angular-token';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../../shared/interfaces/user';
 import { UserService } from '../../shared/services/user.service';
-import { PvCalculationService } from '../../shared/services/pv-calculation.service';
 import { Router } from '@angular/router';
  
 @Component({
@@ -24,9 +22,13 @@ export class ProfileComponent implements OnInit {
   @ViewChild('avatarAlert') avatarAlert: any;
 
   constructor(private tokenAuthService: AngularTokenService,
-              private userService: UserService) {}
+              private userService: UserService,
+              private router:Router) {}
+
 
   ngOnInit(): void {
+    // Current nav active page from router
+    this.subPage = this.router.url.split('/')[2] ? this.router.url.split('/')[2] : 'overview';
     // Get the data of the logged in user after validating token
     this.tokenAuthService.validateToken().subscribe(
       res => {

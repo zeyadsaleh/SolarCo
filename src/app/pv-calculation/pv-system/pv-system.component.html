@@ -1,27 +1,27 @@
+<app-page-banner [title]="title"></app-page-banner>
+
 <div class="container" *ngIf="system_data">
     <div class="row text-center justify-content-center">
         <mat-card>
-            <mat-card-title class="mb-5">PV System Data</mat-card-title>
-            <mat-card-content>
+            <mat-card-title class="bg-dark rounded shadow text-white p-1">PV System Data</mat-card-title>
+            <hr>
+            <mat-card-content class="border rounded p-3">
                 <p><b>Total Panels:</b> {{ system_data['calculation']['panels_num'] }}</p>
-                <hr>
                 <p><b>Panel Watt:</b> {{ system_data['calculation']['panel_watt'] }}</p>
-                <hr>
                 <p><b>Total Batteries:</b> {{ system_data['calculation']['batteries_num'] }}</p>
-                <hr>
                 <p><b>Battery AH:</b> {{ system_data['calculation']['battery_Ah'] }}</p>
-                <hr>
                 <p><b>Inverter Watt:</b> {{ system_data['calculation']['inverter_watt'] }}</p>
-                <hr>
                 <p><b>Mppt Amper:</b> {{ system_data['calculation']['mppt_amp'] }}</p>
-                <hr>
                 <p><b>Total Circuits:</b> {{ system_data['calculation']['system_circuits'] }}</p>
-                <hr>
+                <p><b>Tilt Angle:</b> {{ system_data['installations']['tilt_angle'] }} | {{ system_data['installations']['description'] }}</p>
+                <p><b>Section_1 Protection:</b> Cable: {{ system_data['cables_protections']['section1']['cable_current1'] }}A | Fuse: {{ system_data['cables_protections']['section1']['fuse_current1'] }}A</p>
+                <p><b>Section_2 Protection:</b> Cable: {{ system_data['cables_protections']['section2']['cable_current2'] }}A | Fuse: {{ system_data['cables_protections']['section2']['fuse_current2'] }}A</p>
+                <p><b>Section_3 Protection:</b> Cable: {{ system_data['cables_protections']['section3']['cable_current3'] }}A | CB: {{ system_data['cables_protections']['section3']['circuitBreaker_current3'] }}A</p>
             </mat-card-content>
             <mat-card-actions>
-                <a mat-button class="btn btn-sm btn-primary" (click)="publish()" *ngIf="!system_data['published']">Publish</a>
-                <a mat-button class="btn btn-sm btn-info" (click)="profile()">Profile</a>
-                <a mat-button class="btn btn-sm btn-danger" (click)="cancel()">Cancel</a>
+                <a mat-button class="btn shadow rounded btn-outline-primary mr-4" (click)="publish()" *ngIf="!system_data['published']">Publish</a>
+                <a mat-button class="btn shadow rounded btn-outline-warning mr-4" (click)="profile()">Save</a>
+                <a mat-button class="btn shadow rounded btn-outline-danger" (click)="cancel()">Delete</a>
             </mat-card-actions>
             <mat-card-footer>
             </mat-card-footer>

@@ -3,12 +3,11 @@
   <div class="banner_inner">
     <div class="container">
       <div class="banner_content">
-        <h2>Install your System today <br />to save money tomorrow</h2>
-        <p>If you're looking to reduce your electricity bill and have a positive impact on the environment, You should
-          find out the required parts for your solar system.</p>
+        <h2>Install your System today <br/>to save money tomorrow</h2>
+        <p>If you're looking to reduce your electricity bill and have a positive impact on the environment, You should find out the required parts for your solar system.</p>
         <!-- Different buttons for getting started -->
         <span *ngIf="tokenAuth.userSignedIn()">
-          <a class="banner_btn" [routerLink]="('create' | able: 'Calculation') ? ['//pv-system/user-info'] : ['/posts']">Get
+          <a class="banner_btn" [routerLink]="('create' | able: 'Calculation') ? ['/pv-system/user-info'] : ['/posts']">Get
             Started</a>
         </span>
         <span *ngIf="!tokenAuth.userSignedIn()">
@@ -22,31 +21,33 @@
 
 <!--================Design Area =================-->
 <section class="design_area p_120">
-    <div class="container main_title">
+  <div class="container">
+    <div class="main_title">
       <h2>How it works</h2>
-      <div class="design_inner row mt-5">
-        <div class="col-lg-6">
-          <div class="design_left_text">
-            <h3 class="text-center">Client</h3>
-            <p>Enter your Electricity Bill</p>
-            <p>Calculate your system</p>
-            <p>Post your system for Contractors to bid on</p>
-            <p>Choose the perfect offer for you</p>
-            <p>Get in touch with your Contractor</p>
-          </div>
+    </div>
+    <div class="design_inner row justify-content-center">
+      <div class="col-lg-6">
+        <div class="design_left_text">
+          <h3 class="text-center">Client</h3>
+          <p>Enter your Electricity Bill</p>
+          <p>Calculate your system</p>
+          <p>Post your system for Contractors to bid on</p>
+          <p>Choose the perfect offer for you</p>
+          <p>Get in touch with your Contractor</p>
         </div>
-        <div class="col-lg-6">
-          <div class="design_left_text">
-            <h3 class="text-center">Contractor</h3>
-            <p>Browse all Posts from clients</p>
-            <p>Write your Offer</p>
-            <p>Wait to be assigned to an System</p>
-            <p>Get in touch with your Client</p>
-          </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="design_left_text">
+          <h3 class="text-center">Contractor</h3>
+          <p>Browse all Posts from clients</p>
+          <p>Write your Offer</p>
+          <p>Wait to be assigned to an System</p>
+          <p>Get in touch with your Client</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 <!--================End Design Area =================-->
 
 <!--================Feature Area =================-->

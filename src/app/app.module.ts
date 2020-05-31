@@ -1,6 +1,5 @@
 // Compoents ##START##
 import { AppComponent } from './app.component';
-import { ProfileComponent } from './user/profile/profile.component';
 // ########### Compoents END ##########
 
 // Routes ##START##
@@ -12,7 +11,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AbilityModule } from '@casl/angular';
 // ########### Modules END ##########
 
@@ -29,14 +27,12 @@ import { MainComponentModule } from './main-component/main-component.module';
 import { PvCalculationModule } from './pv-calculation/pv-calculation.module';
 import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
-import { SystemsComponent } from './user/profile/systems/systems.component';
+import { UserModule } from './user/user.module';
 // ########### App Modules END ##########
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProfileComponent,
-    SystemsComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +52,9 @@ import { SystemsComponent } from './user/profile/systems/systems.component';
     PostModule,
     LoginModule,
     RegisterModule,
+    UserModule,
     AbilityModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     AngularTokenModule, 

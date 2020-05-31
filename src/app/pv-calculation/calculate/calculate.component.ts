@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class CalculateComponent implements OnInit {
 
   api_response: object;
-  title:string = 'Calculate';
+  title:string = 'Pv-System Calculate';
 
   constructor(private data: PvCalculationService,
               private router: Router,
@@ -20,8 +20,9 @@ export class CalculateComponent implements OnInit {
 
   ngOnInit(): void {
     this.__service.Data.subscribe((data) => {
-      if(data['api']['permission']){
+      if(data && data['api']['permission']){
         this.api_response = data;
+        console.log("leh");
       }else{
         this.router.navigate(['pv-system/user-info']);
       }

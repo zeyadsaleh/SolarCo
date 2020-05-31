@@ -21,4 +21,8 @@ export class UserService {
   updateContractor(id, body) {
     return this.http.put(`${this.apiUrl}/contractors/${id}`, body);
   }
+
+  updateClient(id, body) {
+    return this.http.put(`${this.apiUrl}/clients/${id}`, body);
+  }
 }

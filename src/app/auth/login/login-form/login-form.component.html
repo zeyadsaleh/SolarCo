@@ -10,7 +10,7 @@
         <div class="form-group">
           <input placeholder="Enter email" id="email" type="email" required email name='email'
             [(ngModel)]="signInUser.email" class="form-control validate" #email="ngModel">
-          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+          <div class="mt-2" *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
     
             <div *ngIf="email.errors.required">
               email is required.
@@ -25,7 +25,7 @@
           <input id="password" type="password" required minlength="6" name='password' placeholder="Password"
             [(ngModel)]="signInUser.password" class=" form-control validate" #passowrd="ngModel">
     
-          <div *ngIf="passowrd.invalid && (passowrd.dirty || passowrd.touched)" class="alert alert-danger">
+          <div class="mt-2" *ngIf="passowrd.invalid && (passowrd.dirty || passowrd.touched)" class="alert alert-danger">
     
             <div *ngIf="passowrd.errors.required">
               passowrd is required.
