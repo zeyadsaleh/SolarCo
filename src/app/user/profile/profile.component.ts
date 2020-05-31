@@ -55,6 +55,8 @@ export class ProfileComponent implements OnInit {
     if(ev.target.files[0].type.startsWith('image/')) {
       // Hide alert
       this.avatarAlert.nativeElement.style.display = 'none';
+
+      let type = this.tokenAuthService.currentUserType;
       // // Send the image as form data
       let formData = new FormData();
       formData.append('avatar', ev.target.files[0]);
@@ -64,7 +66,7 @@ export class ProfileComponent implements OnInit {
       headers.set('Content-Type', 'multipart/form-data')
 
       // Send the request and store the response in the avatar variable
-      this.userService.updateAvatar(this.userData.id, formData, headers).subscribe(
+      this.userService.updateAvatar(this.userData.id, type, formData, headers).subscribe(
         res => {
           console.log(res)
           this.userData.avatar = res['avatar']

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class CalculateComponent implements OnInit {
 
   api_response: object;
+  title:string = 'Calculate';
 
   constructor(private data: PvCalculationService,
               private router: Router,
