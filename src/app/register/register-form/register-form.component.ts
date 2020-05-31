@@ -63,7 +63,6 @@ export class RegisterFormComponent implements OnInit {
         password: this.signUpUser.password,
         passwordConfirmation: this.signUpUser.passwordConfirmation,
         name: this.signUpUser.name,
-        has_office: this.contractor.has_office,
         address: this.contractor.address,
         userType: this.signUpUser.type,
       }).subscribe(
