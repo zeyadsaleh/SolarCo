@@ -2,9 +2,10 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,700';
 * {
   margin: 0;
-  paddin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+
 a {
   color: white;
   text-decoration: none;
@@ -87,7 +88,7 @@ body {
   display: block;
   margin: 0;
   font-size: 1.5em;
-  font-weght: 100;
+  font-weight: 100;
   color: #333;
 }
 .post-card__info h5 {

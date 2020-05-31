@@ -373,6 +373,7 @@ button:focus {
     z-index: 1; }
     .banner_area .banner_inner .overlay {
       background: url(/assets/img/banner/banner.jpg) no-repeat scroll center center;
+      background-size: cover;
       position: absolute;
       left: 0;
       right: 0;

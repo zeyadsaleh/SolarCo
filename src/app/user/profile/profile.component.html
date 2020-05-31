@@ -9,8 +9,8 @@
                 <div class="profile-sidebar">
                     <!-- SIDEBAR USERPIC -->
                     <div class="profile-userpic">
-                        <img [src]="userData.avatar ? userData.avatar : '/assets/images/tony.png'"
-                            class="img-fluid" alt="">
+                        <img [src]="userData.avatar ? userData.avatar : '/assets/images/tony.png'" class="img-fluid"
+                            alt="">
                     </div>
                     <!-- END SIDEBAR USERPIC -->
                     <!-- SIDEBAR USER TITLE -->
@@ -61,18 +61,21 @@
             </div>
             <div class="col-md-9">
                 <div class="profile-content text-center">
-                    <mat-card *ngFor="let system of systems">
-                        <mat-card-title class="mb-5" id="{{ system['id'] }}" (click) = "getCalc($event)">PV System Data</mat-card-title>
-                        <mat-card-content>
-                            <p><b>Total Panels:</b> {{ system['panels_num'] }}</p>
-                            <p><b>Panel Watt:</b> {{ system['panel_watt'] }}</p>
-                            <p><b>Total Batteries:</b> {{ system['batteries_num'] }}</p>
-                            <p><b>Battery AH:</b> {{ system['battery_Ah'] }}</p>
-                            <p><b>Inverter Watt:</b> {{ system['inverter_watt'] }}</p>
-                            <p><b>Mppt Amper:</b> {{ system['mppt_amp'] }}</p>
-                            <p><b>Total Circuits:</b> {{ system['system_circuits'] }}</p>
-                        </mat-card-content>
-                    </mat-card>
+                    <div *ngIf="type == 'USER'">
+                        <mat-card *ngFor="let system of systems">
+                            <mat-card-title class="mb-5" id="{{ system['id'] }}" (click)="getCalc($event)">PV System
+                                Data</mat-card-title>
+                            <mat-card-content>
+                                <p><b>Total Panels:</b> {{ system['panels_num'] }}</p>
+                                <p><b>Panel Watt:</b> {{ system['panel_watt'] }}</p>
+                                <p><b>Total Batteries:</b> {{ system['batteries_num'] }}</p>
+                                <p><b>Battery AH:</b> {{ system['battery_Ah'] }}</p>
+                                <p><b>Inverter Watt:</b> {{ system['inverter_watt'] }}</p>
+                                <p><b>Mppt Amper:</b> {{ system['mppt_amp'] }}</p>
+                                <p><b>Total Circuits:</b> {{ system['system_circuits'] }}</p>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
                 </div>
             </div>
         </div>

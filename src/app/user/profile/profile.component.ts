@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   userData;
+  type;
   title:string = 'Profile';
 
   isLoading:boolean = true;
@@ -33,9 +34,11 @@ export class ProfileComponent implements OnInit {
     this.tokenAuthService.validateToken().subscribe(
       res => {
         this.userData = this.tokenAuthService.currentUserData;
+        this.type = this.tokenAuthService.currentUserType;
         console.log(this.userData)
+        if(this.type == 'USER')
+          this.getSystems();
         this.isLoading = false;
-        this.getSystems();
       },
       error => console.log(error)
       );

@@ -1,4 +1,4 @@
-<!-- <app-page-banner [title]="title"></app-page-banner> -->
+<app-page-banner [title]="title"></app-page-banner>
 <div class="container main mt-3 ">
   <h1 class="text-center">Create Post for your generated system</h1>
   <hr>
@@ -40,7 +40,7 @@
         <div class="form-group">
           <label for="description">Description</label>
           <textarea class="form-control" ngModel minlength="200" [(ngModel)]="post.description" name="description" #description="ngModel" type="text"></textarea>
-          <div class="alert alert-danger" *ngIf="description.touched && !title.valid">
+          <div class="alert alert-danger" *ngIf="description.touched && !description.valid">
             <div *ngIf="description.errors.required">description is required</div>
             <div *ngIf="description.errors.minlength">description should be minimum {{description.errors.minlength.requiredLength}} characters </div>
           </div>

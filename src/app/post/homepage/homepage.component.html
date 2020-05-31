@@ -1,33 +1,43 @@
-<!-- <app-page-banner [title]="title"></app-page-banner> -->
+<app-page-banner [title]="title"></app-page-banner>
 
-<div *ngFor="let post of posts">
-<div class="container">
-  <div class="post-card">
-    <div class="post-card__nav">
-      <ul>
-        <li>
-          <a href="#" class="active"><i class="fas fa-eye"></i></a>
-        </li>
-        <li>
-          <a href="#"><i class="far fa-address-card"></i></a>
-        </li>
-        <li>
-         <a href="#"><i class="fab fa-angellist"></i></a>
-        </li>
-      </ul>
-    </div>
-    <div class="post-card__content">
-      <div class="post-card__info">
-        <button class="btn btn-info btn-sm mr-2" (click)="deletePost(post.id)">Delete</button>
-        <button class="btn btn-primary btn-sm"[routerLink]="['/update/posts',post.id]">Update</button>
-        <h1>{{post.title}}</h1>
-        <button class="btn btn-dark btn-sm" [routerLink]="['/posts/',post.id]">Apply</button>
-        <h4><span>Location:</span>&nbsp;{{post.system.city}}, {{post.system.country}}</h4>
-        <h5><span>Posted at</span>&nbsp;{{post.created_at}}</h5>
-        <p>{{post.description}}</p>
-        <a [routerLink]="['/posts/',post.id]">Read more</a>
+<div *ngIf="!isLoading else loading">
+  <div *ngFor="let post of posts">
+    <div class="container">
+      <div class="post-card">
+        <div class="post-card__nav">
+          <ul>
+            <li>
+              <a href="#" class="active"><i class="fas fa-eye"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="far fa-address-card"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-angellist"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="post-card__content">
+          <div class="post-card__info">
+            <button class="btn btn-info btn-sm mr-2" *ngIf="'destroy' | able: 'Post'" (click)="deletePost(post.id)">Delete</button>
+            <button class="btn btn-primary btn-sm" *ngIf="'update' | able: 'Post'" [routerLink]="['/update/posts',post.id]">Update</button>
+            <h1>{{post.title}}</h1>
+            <button class="btn btn-dark btn-sm" [routerLink]="['/posts/',post.id]">Apply</button>
+            <h4><span>Location:</span>&nbsp;{{post.system.city}}, {{post.system.country}}</h4>
+            <h5><span>Posted at</span>&nbsp;{{post.created_at}}</h5>
+            <p>{{post.description}}</p>
+            <a [routerLink]="['/posts/',post.id]">Read more</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
+
+<ng-template #loading>
+  <div class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>

@@ -7,6 +7,9 @@ import { CreatePostFormComponent } from './create-post-form/create-post-form.com
 import { FormsModule } from '@angular/forms';
 import { UpdatePostFormComponent } from './update-post-form/update-post-form.component';
 import { PostService } from '../shared/services/post.service';
+import { MainComponentModule } from '../main-component/main-component.module';
+import { AbilityModule } from '@casl/angular';
+import { Ability, PureAbility } from '@casl/ability';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,8 @@ import { PostService } from '../shared/services/post.service';
     CommonModule,
     RouterModule,
     FormsModule,
+    MainComponentModule,
+    AbilityModule,
   ],
   exports:[
     HomepageComponent,
@@ -28,6 +33,8 @@ import { PostService } from '../shared/services/post.service';
   ],
   providers:[
     PostService,
+    { provide: Ability, useValue: new Ability() },
+    { provide: PureAbility, useExisting: Ability }
   ]
 })
 export class PostModule { }

@@ -8,7 +8,8 @@ import { PostService } from 'src/app/shared/services/post.service';
 })
 export class HomepageComponent implements OnInit {
   posts=[];
-  // title:string = 'Posts';
+  title:string = 'Posts';
+  isLoading:boolean = true;
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {
@@ -20,6 +21,7 @@ export class HomepageComponent implements OnInit {
       for (let o of res){
         this.posts.push(o);
       }
+      this.isLoading = false;
     });
   }
 
