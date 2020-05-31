@@ -9,6 +9,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class SinglePostComponent implements OnInit {
   post;
+  // title:string = 'Post';
   constructor(private postService: PostService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {

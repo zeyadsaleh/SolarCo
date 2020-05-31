@@ -13,6 +13,7 @@ export class UserInputComponent implements OnInit {
 
   client_request: object;
   api_response: object;
+  title:string = 'Calculate';
   
   constructor(private geolocation: GeoLoactionService, 
               private http: HttpClient,

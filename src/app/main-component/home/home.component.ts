@@ -8,7 +8,7 @@ import {AngularTokenService} from "angular-token";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public tokenAuthService:AngularTokenService) { }
+  constructor(public tokenAuth:AngularTokenService) { }
 
   ngOnInit(): void {
   }

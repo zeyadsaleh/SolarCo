@@ -1,33 +1,33 @@
 // Compoents ##START##
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { LoginFormComponent } from './login/login-form/login-form.component';
 import { ProfileComponent } from './profile/profile.component';
-import { UserInputComponent } from './pv-calculation/user-input/user-input.component';
-import { PvSystemComponent } from './pv-calculation/pv-system/pv-system.component';
-import { CalculateComponent } from './pv-calculation/calculate/calculate.component';
-// ########### END ##########
+// ########### Compoents END ##########
+
+// Routes ##START##
+import { AppRoutingModule } from './app-routing.module';
+// ########### Routes END ##########
 
 // Modules ##START##
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularTokenService, AngularTokenModule, AngularTokenOptions } from 'angular-token';
-import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PostModule } from './post/post.module';
 import { AbilityModule } from '@casl/angular';
-import { Ability, PureAbility } from '@casl/ability';
-// ########### END ##########
+// ########### Modules END ##########
 
 // Services ##START##
-import { PvCalculationService } from './shared/services/pv-calculation.service';
-import { GeoLoactionService } from './shared/services/geo-loaction.service';
-import { PostService } from './shared/services/post.service';
+import { AngularTokenService, AngularTokenModule, AngularTokenOptions } from 'angular-token';
+import { Ability, PureAbility } from '@casl/ability';
 import { ShareService } from './shared/services/share.service';
-// ########### END ##########
+// ########### Services END ##########
+
+// App Modules ##START##
+import { MaterialModule } from './shared/material/material.module';
+import { PostModule } from './post/post.module';
+import { MainComponentModule } from './main-component/main-component.module';
+import { PvCalculationModule } from './pv-calculation/pv-calculation.module';
+// ########### App Modules END ##########
 
 // Material Modules
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -43,24 +43,16 @@ import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ToolbarComponent,
     ProfileComponent,
-    UserInputComponent,
-    PvSystemComponent,
-    CalculateComponent,
   ],
   imports: [
     BrowserModule,
+    MainComponentModule,
+    PvCalculationModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatInputModule,
-    MatCardModule,
-    BrowserAnimationsModule,
+    MaterialModule,
     AngularTokenModule.forRoot({
       apiBase: 'http://localhost:3000',
       userTypes: [
@@ -68,7 +60,6 @@ import { MatRadioModule } from '@angular/material/radio';
         { name: 'USER', path: 'user' }
       ]
     }),
-    BrowserAnimationsModule,
     PostModule,
     AbilityModule,
     MatButtonModule,
@@ -76,7 +67,9 @@ import { MatRadioModule } from '@angular/material/radio';
     MatRadioModule,
     ReactiveFormsModule
   ],
-  providers: [AngularTokenModule, GeoLoactionService, PvCalculationService,PostService, ShareService,
+  providers: [
+    AngularTokenModule, 
+    ShareService,
     { provide: Ability, useValue: new Ability() },
     { provide: PureAbility, useExisting: Ability }
   ],

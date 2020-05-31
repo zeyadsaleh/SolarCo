@@ -26,6 +26,7 @@ export class AppComponent {
   // );
     
     if(this.tokenService.userSignedIn()) {
+      // this.isLoading = false;
       this.tokenService.validateToken().subscribe(
         res => {
           this.ability.update(res.data.rules);

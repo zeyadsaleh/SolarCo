@@ -16,6 +16,8 @@ export class CreatePostFormComponent implements OnInit {
   }
   system_data: object;
 
+  // title:string = 'New Post';
+
   constructor(private postService: PostService,
               private router: Router,
               private __service: ShareService) { }
