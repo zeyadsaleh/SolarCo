@@ -7,7 +7,7 @@ export class PvCalculationService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl:String = 'http://localhost:3000/pv-calculation';
+  private apiUrl:String = 'http://localhost:3000/calculations';
 
   // delete
   delSystem(calc_id){

@@ -7,12 +7,12 @@ import { AuthGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'user-input',
+    path: 'pv-system/user-info',
     component: UserInputComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'calculate',
+    path: 'pv-system/calculate',
     component: CalculateComponent,
     canActivate: [AuthGuard]
   },
