@@ -48,7 +48,8 @@
         margin-bottom: 23px;
     }
 	.header_area .navbar {
-		background: #dc3545;
+		/* background: #dc3545; */
+		background: #000410;
 	}
     .navbar-toggler[aria-expanded="false"] span:nth-child(2) {
 		opacity: 1;
@@ -101,7 +102,7 @@
     }
 	.header_area .navbar-collapse{
 		max-height: 340px;
-		overflow-y: scroll;
+		/* overflow-y: scroll; */
 	}
 	.header_area .navbar .nav .nav-item.submenu ul .nav-item .nav-link {
 		padding: 0px 15px;
