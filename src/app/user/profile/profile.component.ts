@@ -16,18 +16,15 @@ export class ProfileComponent implements OnInit {
   userData;
   type;
   title:string = 'Profile';
+  subPage:string = 'overview';
 
   isLoading:boolean = true;
 
   @ViewChild('avatarUploader') avatarUploader: any;
   @ViewChild('avatarAlert') avatarAlert: any;
 
-  constructor(private data: PvCalculationService, 
-              private tokenAuthService: AngularTokenService,
-              private router: Router,
+  constructor(private tokenAuthService: AngularTokenService,
               private userService: UserService) {}
-
-  systems:object;
 
   ngOnInit(): void {
     // Get the data of the logged in user after validating token
@@ -36,21 +33,11 @@ export class ProfileComponent implements OnInit {
         this.userData = this.tokenAuthService.currentUserData;
         this.type = this.tokenAuthService.currentUserType;
         console.log(this.userData)
-        if(this.type == 'USER')
-          this.getSystems();
         this.isLoading = false;
       },
       error => console.log(error)
       );
 
-  }
-
-  getSystems(){
-    this.data.getSystems(response =>{
-        if(response){ 
-          this.systems = response;
-        }
-    });
   }
 
   uploadAvatar(ev) {
@@ -87,9 +74,8 @@ export class ProfileComponent implements OnInit {
     this.avatarUploader.nativeElement.click();
   }
 
-  getCalc(event){
-    console.log(event.target.id);
-    this.router.navigate(['pv-calculation/', event.target.id]);
+  changeSubpage(ev) {
+    this.subPage = ev.target.name;
   }
 
 }

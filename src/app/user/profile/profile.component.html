@@ -34,25 +34,33 @@
                     <!-- SIDEBAR MENU -->
                     <div class="profile-usermenu sidebar-sticky">
                         <ul class="nav flex-column">
-                            <li class="active nav-item">
-                                <a href="#" class="nav-link active">
+                            <li class="nav-item" [routerLink]="['/profile']" [class]="subPage == 'overview' ? 'active' : ''" (click)="changeSubpage($event)">
+
+                                <a name="overview" class="nav-link" [class]="subPage == 'overview' ? 'active' : ''">
                                     <i class="fa fa-home"></i>
                                     Overview </a>
+
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
+                            <li class="nav-item" [class]="subPage == 'settings' ? 'active' : ''" (click)="changeSubpage($event)">
+
+                                <a name="settings" class="nav-link" [class]="subPage == 'settings' ? 'active' : ''">
                                     <i class="fa fa-user"></i>
                                     Account Settings </a>
+
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
+                            <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/profile/systems']" [class]="subPage == 'systems' ? 'active' : ''" (click)="changeSubpage($event)">
+
+                                <a name="systems" class="nav-link" [class]="subPage == 'systems' ? 'active' : ''">
                                     <i class="fa fa-check"></i>
                                     Systems </a>
+
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
+                            <li class="nav-item" [class]="subPage == 'help' ? 'active' : ''" (click)="changeSubpage($event)">
+
+                                <a name="help" class="nav-link" [class]="subPage == 'help' ? 'active' : ''">
                                     <i class="fa fa-flag"></i>
                                     Help </a>
+
                             </li>
                         </ul>
                     </div>
@@ -61,21 +69,7 @@
             </div>
             <div class="col-md-9">
                 <div class="profile-content text-center">
-                    <div *ngIf="type == 'USER'">
-                        <mat-card *ngFor="let system of systems">
-                            <mat-card-title class="mb-5" id="{{ system['id'] }}" (click)="getCalc($event)">PV System
-                                Data</mat-card-title>
-                            <mat-card-content>
-                                <p><b>Total Panels:</b> {{ system['panels_num'] }}</p>
-                                <p><b>Panel Watt:</b> {{ system['panel_watt'] }}</p>
-                                <p><b>Total Batteries:</b> {{ system['batteries_num'] }}</p>
-                                <p><b>Battery AH:</b> {{ system['battery_Ah'] }}</p>
-                                <p><b>Inverter Watt:</b> {{ system['inverter_watt'] }}</p>
-                                <p><b>Mppt Amper:</b> {{ system['mppt_amp'] }}</p>
-                                <p><b>Total Circuits:</b> {{ system['system_circuits'] }}</p>
-                            </mat-card-content>
-                        </mat-card>
-                    </div>
+                    <router-outlet></router-outlet>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <app-page-banner [title]="title"></app-page-banner>
 
-<div *ngIf="!isLoading else loading">
+<div *ngIf="!isLoading else loading" class="spacing">
   <div *ngFor="let post of posts">
     <div class="container">
       <div class="post-card">

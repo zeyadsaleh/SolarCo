@@ -29,6 +29,10 @@ body {
     margin-top: .6rem;
 }
 
+.spacing {
+    margin: 6rem auto;
+}
+
 .main{
     display: block;
     border: 2px solid black;

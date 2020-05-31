@@ -9,6 +9,7 @@ import { PvRoutingModule } from './pv-calculation/pv-routing.module';
 import { PostRoutingModule } from './post/post-routing.module';
 import { LoginRoutingModule } from './auth/login/login-routing.module';
 import { RegisterRoutingModule } from './auth/register/register-routing.module';
+import { SystemsComponent } from './user/profile/systems/systems.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,13 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'systems',
+        component: SystemsComponent
+      }
+    ]
   },
   {
     path: 'offers',
@@ -31,7 +38,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: HomeComponent
+    redirectTo: 'home'
   }
 ];
 @NgModule({

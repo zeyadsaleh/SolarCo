@@ -29,12 +29,14 @@ import { MainComponentModule } from './main-component/main-component.module';
 import { PvCalculationModule } from './pv-calculation/pv-calculation.module';
 import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
+import { SystemsComponent } from './user/profile/systems/systems.component';
 // ########### App Modules END ##########
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
+    SystemsComponent,
   ],
   imports: [
     BrowserModule,

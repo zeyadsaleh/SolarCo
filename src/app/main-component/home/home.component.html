@@ -8,7 +8,7 @@
           find out the required parts for your solar system.</p>
         <!-- Different buttons for getting started -->
         <span *ngIf="tokenAuth.userSignedIn()">
-          <a class="banner_btn" [routerLink]="('create' | able: 'Calculation') ? ['/user-input'] : ['/posts']">Get
+          <a class="banner_btn" [routerLink]="('create' | able: 'Calculation') ? ['//pv-system/user-info'] : ['/posts']">Get
             Started</a>
         </span>
         <span *ngIf="!tokenAuth.userSignedIn()">
