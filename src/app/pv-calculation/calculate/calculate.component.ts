@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PvCalculationService } from 'src/app/shared/services/pv-calculation.service';
 import { ShareService } from 'src/app/shared/services/share.service';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-calculate',
