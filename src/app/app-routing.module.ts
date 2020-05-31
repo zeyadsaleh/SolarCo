@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from "./main-component/home/home.component";
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './user/profile/profile.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ContractorGuard } from './shared/guards/contractor.guard';
 import { ClientGuard } from './shared/guards/client.guard';
@@ -21,15 +21,15 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
-    loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
+    loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+    loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule)
   },
   {
     path: 'offer',
@@ -44,7 +44,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     PvRoutingModule,
-    PostRoutingModule
+    PostRoutingModule,
   ],
   exports: [RouterModule]
 })

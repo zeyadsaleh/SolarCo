@@ -3,7 +3,7 @@ import { AngularTokenService } from "angular-token";
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/shared/interfaces/user';
-import { UserService } from '../../shared/services/user.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-register-form',
