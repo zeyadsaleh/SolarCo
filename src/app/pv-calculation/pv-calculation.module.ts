@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PvCalculationService } from '../shared/services/pv-calculation.service';
 import { GeoLoactionService } from '../shared/services/geo-loaction.service';
+import { PageBannerComponent } from '../main-component/page-banner/page-banner.component';
+import { MainComponentModule } from '../main-component/main-component.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { GeoLoactionService } from '../shared/services/geo-loaction.service';
     AppRoutingModule,
     FormsModule,
     RouterModule,
+    MainComponentModule
   ],
   exports: [
     UserInputComponent,

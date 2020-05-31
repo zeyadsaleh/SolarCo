@@ -11,17 +11,6 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  // getClient(id) {
-  //   return this.http.get(`${this.apiUrl}/clients/${id}`).pipe(
-  //     map(data => {
-  //       // Create avatar_url used in image tags
-  //       data['avatar_url'] ? data['avatar_url'] = this.apiUrl + data['avatar_url'] : data['avatar_url'] = '';
-        
-  //       return data;
-  //     })
-  //   );
-  // }
-
   updateAvatar(id, body, headers) {
     return this.http.put(`${this.apiUrl}/clients/avatar/${id}`, body, {headers: headers});
   }
