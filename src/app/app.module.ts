@@ -1,6 +1,6 @@
 // Compoents ##START##
 import { AppComponent } from './app.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './user/profile/profile.component';
 // ########### Compoents END ##########
 
 // Routes ##START##
@@ -29,17 +29,6 @@ import { MainComponentModule } from './main-component/main-component.module';
 import { PvCalculationModule } from './pv-calculation/pv-calculation.module';
 // ########### App Modules END ##########
 
-// Material Modules
-import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule } from '@angular/material/radio';
-// ########### END ##########
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,9 +51,6 @@ import { MatRadioModule } from '@angular/material/radio';
     }),
     PostModule,
     AbilityModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
     ReactiveFormsModule
   ],
   providers: [

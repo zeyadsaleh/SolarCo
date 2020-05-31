@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularTokenService, UserData } from 'angular-token';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../shared/interfaces/user';
-import { UserService } from '../shared/services/user.service';
-import { PvCalculationService } from '../shared/services/pv-calculation.service';
+import { User } from '../../shared/interfaces/user';
+import { UserService } from '../../shared/services/user.service';
+import { PvCalculationService } from '../../shared/services/pv-calculation.service';
 import { Router } from '@angular/router';
  
 @Component({

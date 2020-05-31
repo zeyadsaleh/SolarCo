@@ -3,7 +3,7 @@ import { AngularTokenService } from "angular-token";
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/shared/interfaces/user';
-import { UserService } from '../../shared/services/user.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-register-form',
@@ -63,7 +63,6 @@ export class RegisterFormComponent implements OnInit {
         password: this.signUpUser.password,
         passwordConfirmation: this.signUpUser.passwordConfirmation,
         name: this.signUpUser.name,
-        has_office: this.contractor.has_office,
         address: this.contractor.address,
         userType: this.signUpUser.type,
       }).subscribe(

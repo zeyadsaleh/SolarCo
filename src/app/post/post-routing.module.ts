@@ -4,27 +4,29 @@ import { CreatePostFormComponent } from './create-post-form/create-post-form.com
 import { UpdatePostFormComponent } from './update-post-form/update-post-form.component';
 import { SinglePostComponent } from './single-post/single-post.component';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../shared/guards/auth.guard';
+import { ContractorGuard } from '../shared/guards/contractor.guard';
 
 const routes: Routes = [
   {
     path: 'posts',
     component: HomepageComponent,
-    // canActivate: [AuthGuard, ContractorGuard]
+    canActivate: [AuthGuard, ContractorGuard]
   },
   {
     path: 'create/post',
     component: CreatePostFormComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'update/posts/:id',
     component: UpdatePostFormComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'posts/:id',
     component: SinglePostComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
 ];
 

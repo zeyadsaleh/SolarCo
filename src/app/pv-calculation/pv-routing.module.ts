@@ -3,23 +3,23 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserInputComponent } from './user-input/user-input.component';
 import { CalculateComponent } from './calculate/calculate.component';
 import { PvSystemComponent } from './pv-system/pv-system.component';
-
+import { AuthGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'user-input',
     component: UserInputComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'calculate',
     component: CalculateComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'pv-system/:id',
     component: PvSystemComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
 ];
 
