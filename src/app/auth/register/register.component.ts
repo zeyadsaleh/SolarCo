@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
   type: string = "";
+  title: string = 'Register';
 
   constructor() { }
 

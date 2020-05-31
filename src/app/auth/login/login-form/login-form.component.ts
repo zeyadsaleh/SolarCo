@@ -15,8 +15,6 @@ export class LoginFormComponent implements OnInit {
 
   errorMessage = '';
 
-  title:string = 'Login';
-
   signInUser = {
     email: '',
     password: '',

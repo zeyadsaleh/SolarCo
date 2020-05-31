@@ -7,6 +7,8 @@ import { ContractorGuard } from './shared/guards/contractor.guard';
 import { ClientGuard } from './shared/guards/client.guard';
 import { PvRoutingModule } from './pv-calculation/pv-routing.module';
 import { PostRoutingModule } from './post/post-routing.module';
+import { LoginRoutingModule } from './auth/login/login-routing.module';
+import { RegisterRoutingModule } from './auth/register/register-routing.module';
 
 const routes: Routes = [
   {
@@ -24,14 +26,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'register',
-    loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterModule)
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule)
-  },
-  {
     path: 'offers',
     loadChildren: () => import('./offer/offer.module').then(m => m.OfferModule)
   },
@@ -45,6 +39,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     PvRoutingModule,
     PostRoutingModule,
+    LoginRoutingModule,
+    RegisterRoutingModule,
   ],
   exports: [RouterModule]
 })

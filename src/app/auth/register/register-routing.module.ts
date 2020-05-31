@@ -6,7 +6,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'register',
     component: RegisterComponent,
   }
 ];

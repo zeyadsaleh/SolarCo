@@ -27,6 +27,8 @@ import { MaterialModule } from './shared/material/material.module';
 import { PostModule } from './post/post.module';
 import { MainComponentModule } from './main-component/main-component.module';
 import { PvCalculationModule } from './pv-calculation/pv-calculation.module';
+import { LoginModule } from './auth/login/login.module';
+import { RegisterModule } from './auth/register/register.module';
 // ########### App Modules END ##########
 
 @NgModule({
@@ -50,6 +52,8 @@ import { PvCalculationModule } from './pv-calculation/pv-calculation.module';
       ]
     }),
     PostModule,
+    LoginModule,
+    RegisterModule,
     AbilityModule,
     ReactiveFormsModule
   ],
