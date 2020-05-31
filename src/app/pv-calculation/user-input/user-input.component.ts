@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { GeoLoactionService } from 'src/app/shared/services/geo-loaction.service';
 import { ShareService } from 'src/app/shared/services/share.service';
 import { Router } from '@angular/router';
-
+import { UserRequest } from 'src/app/shared/interfaces/user-request';
 @Component({
   selector: 'app-user-input',
   templateUrl: './user-input.component.html',
@@ -31,7 +31,7 @@ export class UserInputComponent implements OnInit {
         console.log(location);
         this.client_request["lat"] = location.latitude;
         this.client_request["long"] = location.longitude;
-        // this.src = this.geolocation.getMapLink(location);
+        this.client_request["src"] = this.geolocation.getMapLink(location);
       }
     });
   }
@@ -44,10 +44,10 @@ export class UserInputComponent implements OnInit {
 
   confirm(){
     this.geolocation.getLocation(this.client_request, response =>{
-      if(response){
+      if(response['permission']){
         this.client_request['api'] = response; 
         this.__service.setData(this.client_request)
-        this.router.navigate(['calculate']);
+        this.router.navigate(['pv-system/calculate']);
       }
     });
   }
