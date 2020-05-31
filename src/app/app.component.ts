@@ -29,7 +29,7 @@ export class AppComponent {
       // this.isLoading = false;
       this.tokenService.validateToken().subscribe(
         res => {
-          this.ability.update(res.data.rules);
+          // this.ability.update(res.data.rules);
           this.isLoading = false;
         },
         error => console.log(error)

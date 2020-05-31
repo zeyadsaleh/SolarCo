@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule)
   },
   {
-    path: 'offer',
+    path: 'offers',
     loadChildren: () => import('./offer/offer.module').then(m => m.OfferModule)
   },
   {
