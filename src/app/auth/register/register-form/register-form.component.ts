@@ -18,6 +18,7 @@ export class RegisterFormComponent implements OnInit {
   @Input() type: string = "";
 
   errorMessage = '';
+  submitted:boolean = false;
 
   signUpUser: User = {
     email: '',
@@ -40,6 +41,7 @@ export class RegisterFormComponent implements OnInit {
 
 
   onSignUpSubmit() {
+    this.submitted = true;
     this.signUpUser.type = this.type
     if (this.signUpUser.type == 'USER') { //register client
       this.tokenAuthSerivce.registerAccount({
@@ -52,11 +54,13 @@ export class RegisterFormComponent implements OnInit {
         res => {
           console.log(res);
           this.ability.update(res.data.rules); // Casl Abilities
+          this.submitted = false;
           this.router.navigate(['home']);
         },
         error => {
           console.log(error);
           this.errorMessage = error.error.errors.full_messages;
+          this.submitted = false;
         }
       );
     }

@@ -12,6 +12,7 @@ export class LoginFormComponent implements OnInit {
 
   @Input() type: string = "";
 
+  submitted:boolean = false;
 
   errorMessage = '';
 
@@ -27,6 +28,7 @@ export class LoginFormComponent implements OnInit {
 
   onSignInSubmit(){
 
+    this.submitted = true;
     this.signInUser.userType = this.type
     this.tokenAuthSerivce.signIn({
       login:    this.signInUser.email,
@@ -36,11 +38,13 @@ export class LoginFormComponent implements OnInit {
       res => {
         console.log(res);
         this.ability.update(res.body.data.rules); // Casl Abilities
+        this.submitted = false;
         this.router.navigate(['home']);
       },
       error => {
         console.log(error);
-        this.errorMessage = error.error.errors[0]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ;
+        this.errorMessage = error.error.errors[0];
+        this.submitted = false;
       } 
           
     );

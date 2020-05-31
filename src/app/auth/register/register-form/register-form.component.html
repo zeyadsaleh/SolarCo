@@ -1,5 +1,3 @@
-<!-- <app-page-banner [title]="title"></app-page-banner> -->
-
 <div class="container p-4" *ngIf="type else noTypeTemplate">
   <div *ngIf="errorMessage.length > 0" class="alert alert-danger mb-2">
     <span>{{ errorMessage }}</span>
@@ -81,13 +79,17 @@
         Sign up
       </button>
 
+      <div *ngIf="submitted" class="spinner-border" id="auth-loader" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+
     </div>
 
   </form>
 </div>
 
 <ng-template #noTypeTemplate>
-  <h3 class=" p-4 text-danger ">
+  <h3 class=" p-4 text-danger text-center">
     Please Select a registration type
   </h3>
 </ng-template>

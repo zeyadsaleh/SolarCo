@@ -36,14 +36,17 @@
           </div>
         </div>
     
-        <div>
+        <div class="d-flex">
           <button type="submit" [disabled]="!(f.valid)" class="btn btn-primary"> Login </button>
+          <div *ngIf="submitted" class="spinner-border" id="auth-loader" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
         </div>
       </form>
     </div>
 
     <ng-template #noTypeTemplate>
-      <h3 class=" p-4 text-danger ">
-        Please Select a registration type
+      <h3 class=" p-4 text-danger text-center">
+        Please Select a login type
       </h3>
     </ng-template>
