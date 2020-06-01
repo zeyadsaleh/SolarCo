@@ -11,12 +11,13 @@ import { MainComponentModule } from '../main-component/main-component.module';
 import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
 import { OfferModule } from '../offer/offer.module';
+import { UserRoutingModule } from '../user/user-routing.module';
 
 @NgModule({
   declarations: [
     HomepageComponent,
-    SinglePostComponent, 
-    CreatePostFormComponent, 
+    SinglePostComponent,
+    CreatePostFormComponent,
     UpdatePostFormComponent
   ],
   imports: [
@@ -25,12 +26,13 @@ import { OfferModule } from '../offer/offer.module';
     FormsModule,
     MainComponentModule,
     AbilityModule,
-    OfferModule
+    OfferModule,
+    UserRoutingModule,
   ],
   exports:[
     HomepageComponent,
-    SinglePostComponent, 
-    CreatePostFormComponent, 
+    SinglePostComponent,
+    CreatePostFormComponent,
     UpdatePostFormComponent
   ],
   providers:[
