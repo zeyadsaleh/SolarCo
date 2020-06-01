@@ -12,7 +12,9 @@ export class PvSystemComponent implements OnInit {
 
   system_data: object;
   title:string = 'Pv-System Calculate';
-
+  panelOpenState1:boolean = false;
+  panelOpenState2:boolean = false;
+  panelOpenState3:boolean = false;
 
   constructor(private data: PvCalculationService, 
               private route: ActivatedRoute,
@@ -23,6 +25,7 @@ export class PvSystemComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.getSystemDetails(+params['id']);
     });
+
   }
 
   getSystemDetails(id){

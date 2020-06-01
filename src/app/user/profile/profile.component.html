@@ -1,4 +1,5 @@
 <app-page-banner [title]="title"></app-page-banner>
+
 <div id="profile">
   <div class="container content">
     <div class="alert alert-danger" #avatarAlert role="alert" style="display: none">
@@ -6,10 +7,10 @@
     </div>
     <div class="row profile" *ngIf="!isLoading else loading">
       <div class="col-md-3">
-        <div class="profile-sidebar">
+        <div class="profile-sidebar rounded shadow border">
           <!-- SIDEBAR USERPIC -->
           <div class="profile-userpic">
-            <img [src]="userData.avatar ? userData.avatar : '/assets/images/tony.png'" class="img-fluid" alt="">
+            <img [src]="userData.avatar ? userData.avatar : '/assets/images/tony.png'" class="img-fluid rounded shadow border border-dark" alt="">
           </div>
           <!-- END SIDEBAR USERPIC -->
           <!-- SIDEBAR USER TITLE -->
@@ -91,7 +92,6 @@
       <div class="col-md-9">
         <div class="profile-content">
           <router-outlet></router-outlet>
-        </div>
       </div>
     </div>
   </div>
