@@ -16,6 +16,10 @@ export class OfferService {
     return this.http.get(this.offerUrl+'/post/'+post_id);
   }
 
+  getAllOffers():Observable<any> {
+    return this.http.get(this.offerUrl);
+  }
+
   getOffer(id):Observable<any> {
     return this.http.get(this.offerUrl+'/'+id);
   }

@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserRoutingModule } from './user-routing.module';
 import { SystemsComponent } from './profile/systems/systems.component';
-
+import { OfferModule } from '../offer/offer.module'
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { SystemsComponent } from './profile/systems/systems.component';
     FormsModule,
     MainComponentModule,
     UserRoutingModule,
-    MaterialModule
+    MaterialModule,
+    OfferModule
   ],
   exports: [
     ProfileComponent,

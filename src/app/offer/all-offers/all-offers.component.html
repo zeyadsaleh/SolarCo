@@ -1,0 +1,33 @@
+<div *ngIf="has_offers else noOffersTemplate" class="spacing">
+  <div *ngFor="let offer of offers">
+    <div class="container">
+      <div class="post-card">
+        <div class="post-card__nav">
+          <ul>
+            <li>
+              <a [routerLink]="['/posts/',offer.post.id]" class="active"><i class="fas fa-eye"></i></a>
+            </li>
+            
+          </ul>
+        </div>
+        <div class="post-card__content">
+          <div class="post-card__info">
+            <h1> Post Title: {{offer.post.title}}</h1>
+            <h5><span>Price:</span>&nbsp;{{offer.price}} EP</h5>
+            <h5><span>Offerd at</span>&nbsp;{{offer.created_at}}</h5>
+            <p>Your Proposal: {{offer.proposal}}</p>
+            <a [routerLink]="['/posts/',offer.post.id]">See Post</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noOffersTemplate>
+    <div class="text-center">
+      No Offers yet
+    </div>
+  </ng-template>
+  
+  

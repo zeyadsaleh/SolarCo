@@ -56,6 +56,14 @@
                   Systems </a>
 
               </li>
+              <li *ngIf="type=='CONTRACTOR'" class="nav-item" [routerLink]="['/profile/offers']"
+                [class]="subPage == 'offers' ? 'active' : ''" (click)="changeSubpage($event)">
+
+                <a name="offers" class="nav-link" [class]="subPage == 'offers' ? 'active' : ''">
+                  <i class="fa fa-check"></i>
+                  Offers </a>
+
+              </li>
               <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/posts']">
                   <i class="fa fa-check"></i>
