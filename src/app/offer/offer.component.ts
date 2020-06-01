@@ -9,7 +9,13 @@ import { Router } from '@angular/router';
 })
 export class OfferComponent implements OnInit {
 
+  offer = {
+    proposal: '',
+    price: 0,
+  }
+  
   offers=[];
+  editOffer: number = 0;
   has_offers: boolean = false;
   @Input() post_id:string = '';
 
@@ -35,8 +41,32 @@ export class OfferComponent implements OnInit {
   deleteOffer(id) {
     this.offerService.deleteOffer(id).subscribe();
     this.offers = this.offers.filter(function( obj ) {
+      // this.offers = new Array();
+      // this.getOffers();
       return obj.id !== id;
-  });
+    });
+  }
+
+  edit(id){
+    if (this.editOffer != id){
+      this.editOffer = id;
+    }else{
+      this.editOffer = 0;
+    }
+  }
+
+  onEdit(offer) {
+    this.offerService.updateOffer(offer.id, offer).subscribe(
+      res => {
+        console.log(res);
+        this.offers = new Array();
+        this.getOffers();
+        this.editOffer = 0;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

@@ -10,7 +10,8 @@
       </div>
       <a class="clickable">
       <div class="panel-body" *ngFor="let offer of offers">
-        <ul class="list-group">
+
+        <ul class="list-group" *ngIf="offer.id != editOffer">
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-3 col-md-2">
@@ -28,8 +29,7 @@
                   Bidding price: {{offer.price}} EP
                 </div>
                 <div class="action">
-                  <button type="button" class="btn btn-primary btn-xs m-1" title="Edit"
-                    >
+                  <button type="button" class="btn btn-primary btn-xs m-1" title="Edit" (click)="edit(offer.id)">
                     <span class="fa fa-edit"></span>
                   </button>
                   <button type="button" class="btn btn-success btn-xs m-1" title="Approved">
@@ -43,6 +43,42 @@
             </div>
           </li>
         </ul>
+        <ul class="list-group" *ngIf="offer.id == editOffer">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-xs-3 col-md-2">
+                <img [src]="offer.contractor.avatar ? offer.contractor.avatar : '/assets/images/tony.png'"
+                  class="img-circle img-fluid" alt="" /></div>
+              <div class="col-xs-10 col-md-8">
+                <div>
+                  <textarea name='proposal' required class="form-control" placeholder="Enter you proposal" [(ngModel)]="offer.proposal" #proposal="ngModel"></textarea>
+                  <div class="mic-info">
+                    By: <a href="offers">{{offer.contractor.name}}l</a> on {{offer.created_at}}
+                  </div>
+                </div>
+                <div class="comment-text">
+                  <input id="price" type="number" required min="0" name='price' placeholder="Price by EP"
+                  [(ngModel)]="offer.price" class=" form-control validate" #price="ngModel">
+                </div>
+                <div class="action">
+                  <button type="button" class="btn btn-success btn-xs m-1" title="Edit" (click)="onEdit(offer)">
+                    Edit
+                  </button>
+                  <button type="button" class="btn btn-primary btn-xs m-1" title="Edit" (click)="edit(offer.id)">
+                    Back
+                  </button>
+                  <button type="button" class="btn btn-success btn-xs m-1" title="Approved">
+                    <span class="fa fa-check"></span>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-xs m-1" title="Delete" (click)="deleteOffer(offer.id)">
+                    <span class="fa fa-trash"></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
       </div>
     </a>
       <a href="offers" class="btn btn-primary btn-sm btn-block" role="button"><span
