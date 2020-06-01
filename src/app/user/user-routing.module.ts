@@ -4,7 +4,9 @@ import { AuthGuard } from '../shared/guards/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { EditComponent } from './edit/edit.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SystemsComponent } from './profile/systems/systems.component';
+import { AllOffersComponent } from '../offer/all-offers/all-offers.component';
+import { SystemsComponent } from '../pv-calculation/all-systems/systems.component';
+import { HomepageComponent } from '../post/homepage/homepage.component';
 
 const routes: Routes = [
   {
@@ -15,13 +17,20 @@ const routes: Routes = [
       {
         path: 'systems',
         component: SystemsComponent
+      },
+      {
+        path: 'offers',
+        component: AllOffersComponent
+      },
+      {
+        path: 'edit',
+        component: EditComponent,   
+      },
+      {
+        path: 'posts',
+        component: HomepageComponent,   
       }
     ]
-  },
-  {
-    path: 'profile/edit',
-    component: EditComponent,
-    canActivate: [AuthGuard]
   },
 ];
 

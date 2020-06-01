@@ -6,6 +6,7 @@ import { PostRoutingModule } from './post/post-routing.module';
 import { LoginRoutingModule } from './auth/login/login-routing.module';
 import { RegisterRoutingModule } from './auth/register/register-routing.module';
 import { UserRoutingModule } from './user/user-routing.module';
+import { OfferRoutingModule } from './offer/offer-routing.module';
 
 const routes: Routes = [
   {
@@ -16,10 +17,6 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
-  },
-  {
-    path: 'offers',
-    loadChildren: () => import('./offer/offer.module').then(m => m.OfferModule)
   },
   {
     path: '**',
@@ -34,6 +31,7 @@ const routes: Routes = [
     LoginRoutingModule,
     RegisterRoutingModule,
     UserRoutingModule,
+    OfferRoutingModule
   ],
   exports: [RouterModule]
 })

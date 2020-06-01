@@ -2,18 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OfferFormComponent } from './offer-form/offer-form.component';
 import { OfferComponent } from './offer.component';
+import { AllOffersComponent } from './all-offers/all-offers.component';
 
 
 const routes: Routes = [
   {
-    path: '',
-    component: OfferComponent,
-    // children: [
-    //   { path: 'new', component: OfferFormComponent },
-    // ],
-  },
-  {
-    path: 'new',
+    path: 'offers/new',
     component: OfferFormComponent,
 
   }

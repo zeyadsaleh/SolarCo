@@ -1,8 +1,11 @@
-<div class="container p-4" *ngIf="type else noTypeTemplate">
+<div class="container p-4 justify-content-center" *ngIf="type else noTypeTemplate">
   <div *ngIf="errorMessage.length > 0" class="alert alert-danger mb-2">
     <span>{{ errorMessage }}</span>
   </div>
   <form (ngSubmit)="onSignUpSubmit()" #f="ngForm">
+    <h3 *ngIf="type == 'USER'" class="text-white">Client Login</h3>
+    <h3 *ngIf="type == 'CONTRACTOR'" class="text-white">Contractor Login</h3>
+    <hr>
     <div class="form-group" >
       <input id="email" type="email" required email name='email' [(ngModel)]="signUpUser.email"
         class="validate form-control" placeholder="Enter email" #email="ngModel">
@@ -55,11 +58,7 @@
           Passwords must match
       </div>
       </div>
-      <div class="form-check pb-2" *ngIf="type == 'CONTRACTOR'">
-        <input id="has_office" type="checkbox" name='has_office'
-          class="form-check-input" [(ngModel)]="contractor.has_office">
-        <label class="form-check-label" for="has_office">Has Office</label>
-      </div>
+
       <div class="form-group" *ngIf="contractor.has_office">
             <textarea name='address' required class="form-control" placeholder="Address" [(ngModel)]="contractor.address" #address="ngModel"></textarea>
 
@@ -72,10 +71,10 @@
             
       </div>
 
-    <div>
+    <div class="justify-content-center text-center">
 
       <button type="submit" [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
-        class="btn btn-primary">
+        class="text-dark btn btn-lg btn-success rounded shadow">
         Sign up
       </button>
 

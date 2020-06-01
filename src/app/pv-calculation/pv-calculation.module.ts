@@ -11,12 +11,14 @@ import { PvCalculationService } from '../shared/services/pv-calculation.service'
 import { GeoLoactionService } from '../shared/services/geo-loaction.service';
 import { PageBannerComponent } from '../main-component/page-banner/page-banner.component';
 import { MainComponentModule } from '../main-component/main-component.module';
+import { SystemsComponent } from '../pv-calculation/all-systems/systems.component';
 
 @NgModule({
   declarations: [
     UserInputComponent,
     PvSystemComponent,
     CalculateComponent,
+    SystemsComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +32,7 @@ import { MainComponentModule } from '../main-component/main-component.module';
     UserInputComponent,
     PvSystemComponent,
     CalculateComponent,
+    SystemsComponent,
   ],
   providers: [
     GeoLoactionService, 

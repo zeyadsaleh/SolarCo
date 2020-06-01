@@ -10,6 +10,7 @@ import { PostService } from '../shared/services/post.service';
 import { MainComponentModule } from '../main-component/main-component.module';
 import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
+import { OfferModule } from '../offer/offer.module';
 import { UserRoutingModule } from '../user/user-routing.module';
 import { MaterialModule } from '../shared/material/material.module';
 
@@ -26,6 +27,7 @@ import { MaterialModule } from '../shared/material/material.module';
     FormsModule,
     MainComponentModule,
     AbilityModule,
+    OfferModule,
     UserRoutingModule,
     MaterialModule,
   ],

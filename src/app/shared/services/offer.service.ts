@@ -12,7 +12,11 @@ export class OfferService {
 
   constructor(private http: HttpClient) { }
 
-   getOffers():Observable<any> {
+  getOffers(post_id):Observable<any> {
+    return this.http.get(this.offerUrl+'/post/'+post_id);
+  }
+
+  getAllOffers():Observable<any> {
     return this.http.get(this.offerUrl);
   }
 

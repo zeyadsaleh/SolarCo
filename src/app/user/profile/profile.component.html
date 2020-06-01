@@ -41,13 +41,13 @@
                   Overview </a>
 
               </li>
-              <li class="nav-item" [class]="subPage == 'settings' ? 'active' : ''" (click)="changeSubpage($event)">
+              <!-- <li class="nav-item" [class]="subPage == 'settings' ? 'active' : ''" (click)="changeSubpage($event)">
 
                 <a name="settings" class="nav-link" [class]="subPage == 'settings' ? 'active' : ''">
                   <i class="fa fa-user"></i>
                   Account Settings </a>
 
-              </li>
+              </li> -->
               <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/profile/systems']"
                 [class]="subPage == 'systems' ? 'active' : ''" (click)="changeSubpage($event)">
 
@@ -56,23 +56,31 @@
                   Systems </a>
 
               </li>
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/posts']">
+              <li *ngIf="type=='CONTRACTOR'" class="nav-item" [routerLink]="['/profile/offers']"
+                [class]="subPage == 'offers' ? 'active' : ''" (click)="changeSubpage($event)">
+
+                <a name="offers" class="nav-link" [class]="subPage == 'offers' ? 'active' : ''">
                   <i class="fa fa-check"></i>
-                  Posts </a>
+                  Offers </a>
+
               </li>
+              <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/profile/posts']"
+              [class]="subPage == 'posts' ? 'active' : ''" (click)="changeSubpage($event)">
+
+              <a name="offers" class="nav-link" [class]="subPage == 'posts' ? 'active' : ''">
+                <i class="fa fa-check"></i>
+                Posts </a>
+
+            </li>
               <li class="nav-item" [class]="subPage == 'help' ? 'active' : ''" (click)="changeSubpage($event)">
 
-                <a name="help" class="nav-link" [class]="subPage == 'help' ? 'active' : ''">Help</a>
+                <a name="help" class="nav-link" [class]="subPage == 'help' ? 'active' : ''">
+                  <i class="fa fa-flag"></i>Help</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <i class="fa fa-flag"></i>
-                  Help </a>
 
               <li class="nav-item">
                 <a class="nav-link" href="profile/edit">
-                  <i class="fa fa-flag"></i>
+                  <i class="fas fa-pen"></i>
                   Edit </a>
               </li>
             </ul>

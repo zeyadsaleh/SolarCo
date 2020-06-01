@@ -11,15 +11,12 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserRoutingModule } from './user-routing.module';
-import { SystemsComponent } from './profile/systems/systems.component';
-
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
     EditComponent,
-    SystemsComponent
   ],
   imports: [
     CommonModule,
@@ -27,12 +24,13 @@ import { SystemsComponent } from './profile/systems/systems.component';
     FormsModule,
     MainComponentModule,
     UserRoutingModule,
-    MaterialModule
+    MaterialModule,
+    // OfferModule,
+    // PvCalculationModule,
   ],
   exports: [
     ProfileComponent,
     EditComponent,
-    SystemsComponent
   ],
   providers: [
     UserService, 

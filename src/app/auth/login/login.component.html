@@ -1,13 +1,14 @@
 <app-page-banner [title]="title"></app-page-banner>
-<div class="container main mt-3 spacing">
-    <h1 class="text-center">Login As</h1>
+
+<div class="container main mt-5 spacing rounded shadow justify-content-center alert alert-info bg-info">
+    <h1 class="text-center text-white bg-dark rounded shadow">Login As</h1>
     <hr>
     <div class="row">
       <div class="col-6">
-        <input id="client" type="button" name='USER' value="Client"  (click)="handleType($event)" class="text-dark btn btn-light float-right">
+        <input id="client" type="button" name='USER' value="Client"  (click)="handleType($event)" class="text-dark btn btn-lg btn-light float-right">
       </div>
       <div class="col-6">
-        <input id="contructor" type="button" name='CONTRACTOR' value="Contractor"  (click)="handleType($event)" class="text-dark btn btn-light ">
+        <input id="contructor" type="button" name='CONTRACTOR' value="Contractor"  (click)="handleType($event)" class="text-dark btn btn-lg btn-light">
       </div>
       <div class="col">
         <app-login-form [type]="type"></app-login-form>
