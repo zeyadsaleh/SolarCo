@@ -10,7 +10,7 @@ const routes: Routes = [
     component: OfferComponent,
   },
   {
-    path: 'new',
+    path: 'offers/new',
     component: OfferFormComponent,
 
   }
