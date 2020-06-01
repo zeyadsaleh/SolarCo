@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/shared/services/post.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-post-form',
@@ -15,7 +16,11 @@ export class UpdatePostFormComponent implements OnInit {
     system_id:1
   }
   // title:string = 'Update Post';
-  constructor(private postService: PostService, private route: ActivatedRoute) { }
+  constructor(
+    private postService: PostService,
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -33,14 +38,10 @@ export class UpdatePostFormComponent implements OnInit {
   onSubmit(){
     this.postService.updatePost(this.id,this.post).subscribe(
       res => {
-        // console.log(res);
-        // this.router.navigate(['home']);
+        this.router.navigate([`posts/${this.id}`]);
         } ,
       error => {
-        // console.log(error);
-        // this.errorMessage =error.error.errors[0]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
-        }
-    );
+      })
   }
 
 }

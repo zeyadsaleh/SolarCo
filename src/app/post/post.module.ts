@@ -10,12 +10,13 @@ import { PostService } from '../shared/services/post.service';
 import { MainComponentModule } from '../main-component/main-component.module';
 import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
+import { UserRoutingModule } from '../user/user-routing.module';
 
 @NgModule({
   declarations: [
     HomepageComponent,
-    SinglePostComponent, 
-    CreatePostFormComponent, 
+    SinglePostComponent,
+    CreatePostFormComponent,
     UpdatePostFormComponent
   ],
   imports: [
@@ -24,11 +25,12 @@ import { Ability, PureAbility } from '@casl/ability';
     FormsModule,
     MainComponentModule,
     AbilityModule,
+    UserRoutingModule,
   ],
   exports:[
     HomepageComponent,
-    SinglePostComponent, 
-    CreatePostFormComponent, 
+    SinglePostComponent,
+    CreatePostFormComponent,
     UpdatePostFormComponent
   ],
   providers:[
