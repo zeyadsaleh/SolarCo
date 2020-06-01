@@ -25,6 +25,19 @@
         <h4><span>Location:</span>&nbsp;{{post.system.city}}, {{post.system.country}}</h4>
         <h5><span>Posted at</span>&nbsp;{{post.created_at}}</h5>
         <p>{{post.description}}</p>
+        <mat-card>
+          <mat-card-title class="bg-dark rounded shadow text-white p-1">PV System Data</mat-card-title>
+          <hr>
+          <mat-card-content class="border rounded p-3">
+              <p><b>Total Panels:</b> {{post.system.calculation.panels_num}}</p>
+              <p><b>Panel Watt:</b> {{post.system.calculation.panel_watt}}</p>
+              <p><b>Total Batteries:</b> {{post.system.calculation.batteries_num}}</p>
+              <p><b>Battery AH:</b> {{post.system.calculation.battery_Ah}}</p>
+              <p><b>Inverter Watt:</b> {{post.system.calculation.inverter_watt}}</p>
+              <p><b>Mppt Amper:</b> {{post.system.calculation.mppt_amp}}</p>
+              <p><b>Total Circuits:</b> {{post.system.calculation.system_circuits}}</p>
+          </mat-card-content>
+      </mat-card>
       </div>
     </div>
   </div>

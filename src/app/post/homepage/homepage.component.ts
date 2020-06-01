@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/shared/services/post.service';
 import { Router } from '@angular/router';
-import { ShareService } from 'src/app/shared/services/share.service';
-import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-homepage',
@@ -13,10 +11,12 @@ export class HomepageComponent implements OnInit {
   posts=[];
   title:string = 'Posts';
   isLoading:boolean = true;
+
+  system_data: object;
+
   constructor(
     private postService: PostService,
     private router: Router,
-    private __service: ShareService,
     ) {}
 
   ngOnInit(): void {
