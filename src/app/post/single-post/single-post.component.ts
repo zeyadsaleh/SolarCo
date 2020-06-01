@@ -10,6 +10,7 @@ import { ShareService } from 'src/app/shared/services/share.service';
 export class SinglePostComponent implements OnInit {
   post;
   title:string = 'Your Post';
+  errorMessage:string = '';
   isLoading:boolean = true;
   constructor(private postService: PostService, private route: ActivatedRoute, private router: Router, private __service: ShareService) { }
 
@@ -24,6 +25,9 @@ export class SinglePostComponent implements OnInit {
         this.post = res;
         this.isLoading = false;
         console.log(this.post.id)
+    }, (err) => {
+      this.errorMessage = err.error.error;
+      this.isLoading = false;
     });
   }
 

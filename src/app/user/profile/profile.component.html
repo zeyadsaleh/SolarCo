@@ -78,8 +78,8 @@
                   <i class="fa fa-flag"></i>Help</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="profile/edit">
+              <li class="nav-item" [routerLink]="['/profile/edit']" [class]="subPage == 'edit' ? 'active' : ''" (click)="changeSubpage($event)">
+                <a name="edit" class="nav-link" [class]="subPage == 'edit' ? 'active' : ''">
                   <i class="fas fa-pen"></i>
                   Edit </a>
               </li>
@@ -89,7 +89,7 @@
         </div>
       </div>
       <div class="col-md-9">
-        <div class="profile-content text-center">
+        <div class="profile-content">
           <router-outlet></router-outlet>
         </div>
       </div>

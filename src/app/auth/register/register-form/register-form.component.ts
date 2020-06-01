@@ -75,6 +75,8 @@ export class RegisterFormComponent implements OnInit {
       }).subscribe(
         res => {
           console.log(res);
+          this.ability.update(res.data.rules); // Casl Abilities
+          this.submitted = false;
           this.router.navigate(['home']);
         },
         error => {

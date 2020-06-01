@@ -9,6 +9,7 @@ import { OfferFormComponent } from './offer-form/offer-form.component';
 import { OfferComponent } from './offer.component';
 import { MainComponentModule } from 'src/app/main-component/main-component.module';
 import { AllOffersComponent } from './all-offers/all-offers.component';
+import { AbilityModule } from '@casl/angular';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AllOffersComponent } from './all-offers/all-offers.component';
     CommonModule,
     FormsModule,
     MainComponentModule,
-    RouterModule
+    RouterModule,
+    AbilityModule
   ],
   exports: [
     OfferComponent,
