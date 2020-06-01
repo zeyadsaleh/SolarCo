@@ -25,9 +25,14 @@ export class SystemsComponent implements OnInit {
     });
   }
 
-  getCalc(event){
-    console.log(event.target.id);
-    this.router.navigate(['pv-system/', event.target.id]);
+  getCalc(id){
+    console.log(id);
+    this.router.navigate(['pv-system/', id]);
+  }
+
+  delete(id){
+    this.data.delSystem(id);
+    this.router.navigate(['profile/systems']);
   }
 
 }

@@ -31,7 +31,7 @@ export class PvCalculationService {
   }
   // get
   getSystems(callback){
-    this.http.get(`${this.apiUrl}`).subscribe(response =>{
+    this.http.get('http://localhost:3000/systems').subscribe(response =>{
       console.log(response);
       callback(response);
     });

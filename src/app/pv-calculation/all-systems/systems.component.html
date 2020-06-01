@@ -1,13 +1,39 @@
-<mat-card *ngFor="let system of systems" class="m-5">
-    <mat-card-title class="mb-5" id="{{ system['id'] }}" (click)="getCalc($event)">PV System
-        Data</mat-card-title>
-    <mat-card-content>
-        <p><b>Total Panels:</b> {{ system['panels_num'] }}</p>
-        <p><b>Panel Watt:</b> {{ system['panel_watt'] }}</p>
-        <p><b>Total Batteries:</b> {{ system['batteries_num'] }}</p>
-        <p><b>Battery AH:</b> {{ system['battery_Ah'] }}</p>
-        <p><b>Inverter Watt:</b> {{ system['inverter_watt'] }}</p>
-        <p><b>Mppt Amper:</b> {{ system['mppt_amp'] }}</p>
-        <p><b>Total Circuits:</b> {{ system['system_circuits'] }}</p>
-    </mat-card-content>
-</mat-card>
+<div class="container" *ngFor="let system of systems">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <a class="clickable">
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-10 col-md-8">
+                                    <mat-card>
+                                        <mat-card-title class="mb-2 bg-warning rounded shadow p-1" id="{{ system['calculation_id'] }}"
+                                            (click)="getCalc(system['calculation_id'])">PV System Data</mat-card-title>
+                                        <mat-card-content>
+                                            <p><b>Consumption:</b> {{ system['system']['consumption'] }}</p>
+                                            <p><b>City:</b> {{ system['system']['city'] }} | <b>Country</b>
+                                                {{ system['system']['country'] }}</p>
+                                        </mat-card-content>
+                                        <mat-card-footer>
+                                            <div class="action">
+                                                <button type="button" class="btn btn-success btn-xs m-1" title="Show"
+                                                    (click)="getCalc(system['calculation_id'])">
+                                                    <span class="fa fa-check"></span>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-xs m-1" title="Delete"
+                                                    (click)="delete(system['calculation_id'])">
+                                                    <span class="fa fa-trash"></span>
+                                                </button>
+                                            </div>
+                                        </mat-card-footer>
+                                    </mat-card>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
