@@ -13,6 +13,7 @@ export class HomepageComponent implements OnInit {
   isLoading:boolean = true;
 
   system_data: object;
+  toProfile: boolean;
 
   constructor(
     private postService: PostService,
@@ -24,6 +25,10 @@ export class HomepageComponent implements OnInit {
   }
 
   getPosts() {
+    // Don't render banner in profile posts
+    if (this.router.url.includes('profile'))
+      this.toProfile = true;
+    
     this.postService.getPosts().subscribe((res)=>{
       if(res){
         console.log("res: " ,res)

@@ -17,6 +17,8 @@ export class OfferFormComponent implements OnInit {
     price: 0,
     post_id: ''
   }
+
+  title:string = 'New Offer';
   
   private _routeSubscription: Subscription;
 
