@@ -5,6 +5,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { EditComponent } from './edit/edit.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SystemsComponent } from './profile/systems/systems.component';
+import { AllOffersComponent } from '../offer/all-offers/all-offers.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,11 @@ const routes: Routes = [
       {
         path: 'systems',
         component: SystemsComponent
-      }
+      },
+      {
+        path: 'offers',
+        component: AllOffersComponent
+      },
     ]
   },
   {

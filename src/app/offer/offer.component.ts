@@ -41,10 +41,13 @@ export class OfferComponent implements OnInit {
   deleteOffer(id) {
     this.offerService.deleteOffer(id).subscribe();
     this.offers = this.offers.filter(function( obj ) {
-      // this.offers = new Array();
-      // this.getOffers();
       return obj.id !== id;
     });
+    if (this.offers.length < 0) {
+      this.offers = new Array();
+      // this.getOffers();
+      this.has_offers = false;
+    }
   }
 
   edit(id){
@@ -68,5 +71,4 @@ export class OfferComponent implements OnInit {
       }
     );
   }
-
 }
