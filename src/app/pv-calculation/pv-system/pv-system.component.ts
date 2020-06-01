@@ -48,12 +48,12 @@ export class PvSystemComponent implements OnInit {
 
   profile(){
     this.__service.setData(this.system_data);
-    this.router.navigate(['profile']);
+    this.router.navigate(['profile/systems']);
   }
 
-  cancel(){
+  delete(){
     this.data.delSystem(this.system_data['calculation']['id']);
-    this.router.navigate(['pv-system/user-info']);
+    this.router.navigate(['profile/systems']);
   }
 
 }
