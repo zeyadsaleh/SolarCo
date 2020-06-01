@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SystemsComponent implements OnInit {
 
-  systems:object;
+  systems;
 
   constructor(private data: PvCalculationService, private router: Router) { }
 

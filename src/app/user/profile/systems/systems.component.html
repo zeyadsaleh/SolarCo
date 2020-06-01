@@ -1,5 +1,6 @@
+<div *ngIf="systems.length > 0 else nosystems">
 <mat-card *ngFor="let system of systems" class="m-5">
-    <mat-card-title class="mb-5" id="{{ system['id'] }}" (click)="getCalc($event)">PV System
+    <mat-card-title class="mb-5 system-title">PV System
         Data</mat-card-title>
     <mat-card-content>
         <p><b>Total Panels:</b> {{ system['panels_num'] }}</p>
@@ -10,4 +11,10 @@
         <p><b>Mppt Amper:</b> {{ system['mppt_amp'] }}</p>
         <p><b>Total Circuits:</b> {{ system['system_circuits'] }}</p>
     </mat-card-content>
+    <button class="btn btn-outline-info mt-2 rounded shadow" (click)="getCalc($event)" id="{{ system['id'] }}">View Details</button>
 </mat-card>
+</div>
+
+<ng-template #nosystems>
+    <p class="text-center">No Systems found</p>
+</ng-template>
