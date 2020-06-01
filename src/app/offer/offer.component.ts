@@ -34,6 +34,9 @@ export class OfferComponent implements OnInit {
 
   deleteOffer(id) {
     this.offerService.deleteOffer(id).subscribe();
+    this.offers = this.offers.filter(function( obj ) {
+      return obj.id !== id;
+  });
   }
 
 }
