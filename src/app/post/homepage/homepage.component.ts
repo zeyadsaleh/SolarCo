@@ -34,7 +34,5 @@ export class HomepageComponent implements OnInit {
 
   sendId(id) {
     this.router.navigate(['/offers/new'], { queryParams: { id: id }, queryParamsHandling: 'merge' });
-    // this.__service.setData(id);
-    // this.router.navigate(['/offers/new', id]);
   }
 }

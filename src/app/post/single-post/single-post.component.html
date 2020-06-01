@@ -1,6 +1,7 @@
-<!-- <app-page-banner [title]="title"></app-page-banner> -->
+<app-page-banner [title]="title"></app-page-banner>
 <div class="container">
-  <div class="post-card">
+  <div class="row">
+  <div class="post-card col">
     <div class="post-card__nav">
       <ul>
         <li>
@@ -25,4 +26,8 @@
       </div>
     </div>
   </div>
+  <div class="col mt-4">
+  <app-offer [post_id] = "post.id"></app-offer>
+  </div>
+</div>
 </div>

@@ -18,10 +18,6 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'offers',
-    loadChildren: () => import('./offer/offer.module').then(m => m.OfferModule)
-  },
-  {
     path: '**',
     redirectTo: 'home'
   }

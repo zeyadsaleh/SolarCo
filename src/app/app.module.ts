@@ -28,6 +28,7 @@ import { PvCalculationModule } from './pv-calculation/pv-calculation.module';
 import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
 import { UserModule } from './user/user.module';
+import { OfferModule } from './offer/offer.module';
 // ########### App Modules END ##########
 
 @NgModule({
@@ -55,6 +56,7 @@ import { UserModule } from './user/user.module';
     UserModule,
     AbilityModule,
     ReactiveFormsModule,
+    OfferModule
   ],
   providers: [
     AngularTokenModule, 

@@ -25,10 +25,10 @@ export class OfferFormComponent implements OnInit {
 
     ngOnInit(): void {
   
-      this._routeSubscription = this._actvaedRoutes.paramMap.subscribe((paramMap) => {
-        console.log(paramMap.has('id'));
-        if (paramMap.has('id')) {
-          this.offer.post_id = paramMap.get('id');    
+      this._routeSubscription = this._actvaedRoutes.queryParamMap.subscribe((queryParamMap) => {
+        console.log(queryParamMap.has('id'));
+        if (queryParamMap.has('id')) {
+          this.offer.post_id = queryParamMap.get('id');    
         }
       })
 

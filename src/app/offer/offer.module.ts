@@ -6,14 +6,18 @@ import { FormsModule } from '@angular/forms';
 import { OfferRoutingModule } from './offer-routing.module';
 import { OfferFormComponent } from './offer-form/offer-form.component';
 import { OfferComponent } from './offer.component';
+import { MainComponentModule } from 'src/app/main-component/main-component.module';
 
 
 @NgModule({
   declarations: [OfferFormComponent, OfferComponent],
   imports: [
     CommonModule,
-    OfferRoutingModule,
-    FormsModule
+    FormsModule,
+    MainComponentModule,
+  ],
+  exports: [
+    OfferComponent
   ]
 })
 export class OfferModule { }

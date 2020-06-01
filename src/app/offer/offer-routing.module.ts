@@ -6,11 +6,8 @@ import { OfferComponent } from './offer.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'offers',
     component: OfferComponent,
-    // children: [
-    //   { path: 'new', component: OfferFormComponent },
-    // ],
   },
   {
     path: 'new',

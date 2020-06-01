@@ -12,8 +12,8 @@ export class OfferService {
 
   constructor(private http: HttpClient) { }
 
-   getOffers():Observable<any> {
-    return this.http.get(this.offerUrl);
+   getOffers(post_id):Observable<any> {
+    return this.http.get(this.offerUrl+'/post/'+post_id);
   }
 
   getOffer(id):Observable<any> {
