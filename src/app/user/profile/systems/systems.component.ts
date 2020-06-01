@@ -27,7 +27,7 @@ export class SystemsComponent implements OnInit {
 
   getCalc(event){
     console.log(event.target.id);
-    this.router.navigate(['pv-calculation/', event.target.id]);
+    this.router.navigate(['pv-system/', event.target.id]);
   }
 
 }
