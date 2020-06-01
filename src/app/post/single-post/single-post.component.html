@@ -1,5 +1,5 @@
 <app-page-banner [title]="title"></app-page-banner>
-<div class="container">
+<div class="container" *ngIf="!isLoading else loading">
   <div class="row">
   <div class="post-card col">
     <div class="post-card__nav">
@@ -17,7 +17,7 @@
     </div>
     <div class="post-card__content">
       <div class="post-card__info">
-        <button class="btn btn-info btn-sm mr-2" (click)="deletePost(post.id)">Delete</button>
+        <button class="btn btn-info btn-sm mr-2" *ngIf="'manage' | able: 'Post'" (click)="deletePost(post.id)">Delete</button>
         <button class="btn btn-primary btn-sm"[routerLink]="['/update/posts',post.id]">Update</button>
         <h1>{{post.title}}</h1>
         <button class="btn btn-dark btn-sm" (click)="sendId(post.id)">Apply</button>
@@ -33,3 +33,11 @@
   </div>
 </div>
 </div>
+
+<ng-template #loading>
+  <div class="text-center">
+      <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+  </div>
+</ng-template>

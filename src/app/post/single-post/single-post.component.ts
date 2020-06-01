@@ -10,6 +10,7 @@ import { ShareService } from 'src/app/shared/services/share.service';
 export class SinglePostComponent implements OnInit {
   post;
   title:string = 'Your Post';
+  isLoading:boolean = true;
   constructor(private postService: PostService, private route: ActivatedRoute, private router: Router, private __service: ShareService) { }
 
   ngOnInit(): void {
@@ -21,6 +22,8 @@ export class SinglePostComponent implements OnInit {
   getPost(id) {
     this.postService.getPost(id).subscribe((res)=>{
         this.post = res;
+        this.isLoading = false;
+        console.log(this.post.id)
     });
   }
 

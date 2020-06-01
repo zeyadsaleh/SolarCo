@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!isLoading else loading">
   <app-toolbar></app-toolbar>
 
   <router-outlet></router-outlet>
