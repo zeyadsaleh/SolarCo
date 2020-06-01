@@ -20,6 +20,7 @@ export class SystemsComponent implements OnInit {
   getSystems(){
     this.data.getSystems(response =>{
         if(response){ 
+          this.systems = new Object();
           this.systems = response;
         }
     });
@@ -32,7 +33,7 @@ export class SystemsComponent implements OnInit {
 
   delete(id){
     this.data.delSystem(id);
-    this.router.navigate(['profile/systems']);
+    this.router.navigate(['profile']);
   }
 
 }
