@@ -28,7 +28,7 @@ export class CreatePostFormComponent implements OnInit {
         this.system_data = data;
         this.post.system_id = data.calculation.id;
       }else{
-        this.router.navigate(['system-info']);
+        this.router.navigate(['profile/systems']);
       }
     });
   }
@@ -37,7 +37,7 @@ export class CreatePostFormComponent implements OnInit {
     this.postService.createPost(this.post).subscribe(
       res => {
         console.log(res);
-        this.router.navigate(['home']);
+        this.router.navigate([`posts/${res.id}`]);
         } ,
       error => {
         console.log(error);
