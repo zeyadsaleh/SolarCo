@@ -27,6 +27,9 @@
         </tr>
       </tbody>
     </table>
+      <div *ngIf="errorMessage.length > 0" class="text-danger m-2">
+        <span>{{ errorMessage }}</span>
+      </div>
       <form (ngSubmit)="onSubmit()" class="mx-auto">
         <div class="form-group">
           <label for="title">Title</label>

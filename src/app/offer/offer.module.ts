@@ -10,6 +10,7 @@ import { OfferComponent } from './offer.component';
 import { MainComponentModule } from 'src/app/main-component/main-component.module';
 import { AllOffersComponent } from './all-offers/all-offers.component';
 import { AbilityModule } from '@casl/angular';
+import { AngularTokenModule } from 'angular-token';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AbilityModule } from '@casl/angular';
     FormsModule,
     MainComponentModule,
     RouterModule,
-    AbilityModule
+    AbilityModule,
+    AngularTokenModule
   ],
   exports: [
     OfferComponent,

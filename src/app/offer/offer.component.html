@@ -29,13 +29,13 @@
                   Bidding price: {{offer.price}} EP
                 </div>
                 <div class="action">
-                  <button type="button" class="btn btn-primary btn-xs m-1" title="Edit" (click)="edit(offer.id)">
+                  <button type="button" class="btn btn-primary btn-xs m-1" title="Edit" *ngIf="offer.canManage" (click)="edit(offer.id)">
                     <span class="fa fa-edit"></span>
                   </button>
-                  <button type="button" class="btn btn-success btn-xs m-1" *ngIf="'approve' | able: 'Offer'" title="Approve">
+                  <button type="button" class="btn btn-success btn-xs m-1" *ngIf="currentUserID == postOwner_id" title="Approve">
                     <span class="fa fa-check"></span>
                   </button>
-                  <button type="button" class="btn btn-danger btn-xs m-1" title="Delete" (click)="deleteOffer(offer.id)">
+                  <button type="button" class="btn btn-danger btn-xs m-1" *ngIf="offer.canManage" title="Delete" (click)="deleteOffer(offer.id)">
                     <span class="fa fa-trash"></span>
                   </button>
                 </div>

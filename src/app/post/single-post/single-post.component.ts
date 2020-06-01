@@ -24,7 +24,7 @@ export class SinglePostComponent implements OnInit {
     this.postService.getPost(id).subscribe((res)=>{
         this.post = res;
         this.isLoading = false;
-        console.log(this.post.id)
+        console.log(this.post)
     }, (err) => {
       this.errorMessage = err.error.error;
       this.isLoading = false;
