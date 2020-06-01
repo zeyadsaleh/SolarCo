@@ -11,6 +11,7 @@ import { MainComponentModule } from '../main-component/main-component.module';
 import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
 import { UserRoutingModule } from '../user/user-routing.module';
+import { MaterialModule } from '../shared/material/material.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UserRoutingModule } from '../user/user-routing.module';
     MainComponentModule,
     AbilityModule,
     UserRoutingModule,
+    MaterialModule,
   ],
   exports:[
     HomepageComponent,
