@@ -38,6 +38,8 @@ export class LoginFormComponent implements OnInit {
       res => {
         console.log(res);
         this.ability.update(res.body.data.rules); // Casl Abilities
+        console.log(this.ability.rules);
+        console.log(this.ability)
         this.submitted = false;
         this.router.navigate(['home']);
       },

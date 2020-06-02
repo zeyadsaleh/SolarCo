@@ -17,6 +17,7 @@ export class CreatePostFormComponent implements OnInit {
   system_data: object;
 
   title:string = 'New Post';
+  errorMessage = '';
 
   constructor(private postService: PostService,
               private router: Router,
@@ -41,7 +42,7 @@ export class CreatePostFormComponent implements OnInit {
         } ,
       error => {
         console.log(error);
-        // this.errorMessage =error.error.errors[0];
+        this.errorMessage =error.error.error;
       }
     );
   }

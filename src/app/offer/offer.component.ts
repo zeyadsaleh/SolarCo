@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OfferService } from 'src/app/shared/services/offer.service';
 import { Router } from '@angular/router';
+import { Offer } from '../shared/interfaces/offer';
+import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-offer',
@@ -18,18 +20,27 @@ export class OfferComponent implements OnInit {
   editOffer: number = 0;
   has_offers: boolean = false;
   @Input() post_id:string = '';
+  @Input() postOwner_id:string = '';
+  currentUserID: string;
 
   
-  constructor(private offerService: OfferService,private router: Router) { }
+  constructor(private offerService: OfferService,private router: Router, private tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
     this.getOffers();
   }
 
   getOffers() {
+    this.currentUserID = this.tokenAuth.currentUserData.id.toString();
     this.offerService.getOffers(this.post_id).subscribe((res)=>{
       for (let o of res){
         this.offers.push(o);
+        // For permissions
+        if(this.tokenAuth.currentUserType == 'CONTRACTOR' &&
+           this.currentUserID == o.contractor_id)
+          o.canManage = true;
+        else
+          o.canManage = false;
       }
       if (this.offers.length > 0) {
         this.has_offers = true;
