@@ -22,6 +22,7 @@ export class OfferComponent implements OnInit {
   @Input() post_id:string = '';
   @Input() postOwner_id:string = '';
   currentUserID: string;
+  type:string = '';
 
   
   constructor(private offerService: OfferService,private router: Router, private tokenAuth: AngularTokenService) { }
@@ -32,11 +33,12 @@ export class OfferComponent implements OnInit {
 
   getOffers() {
     this.currentUserID = this.tokenAuth.currentUserData.id.toString();
+    this.type = this.tokenAuth.currentUserType;
     this.offerService.getOffers(this.post_id).subscribe((res)=>{
       for (let o of res){
         this.offers.push(o);
         // For permissions
-        if(this.tokenAuth.currentUserType == 'CONTRACTOR' &&
+        if(this.type == 'CONTRACTOR' &&
            this.currentUserID == o.contractor_id)
           o.canManage = true;
         else
