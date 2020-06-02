@@ -1,1 +1,6 @@
-<p *ngFor="let comment of comments">{{ comment }}</p>
+<div *ngFor="let comment of comments">
+    <blockquote class="speech-bubble shadow">
+        <p>{{ comment }}</p>
+        <cite class="p-1 text-success"><b>{{ comment }}</b></cite>
+    </blockquote>
+</div>

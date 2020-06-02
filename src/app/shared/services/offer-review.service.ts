@@ -18,8 +18,8 @@ export class OfferReviewService {
   //   return this.http.get(`${this.apiRev}`);
   // }
   // GET ONE
-  getReviews(offer_id):Observable<any> {
-    return this.http.get(`${this.apiRev}/${offer_id}`);
+  getReviews(contractor_id):Observable<any> {
+    return this.http.get(`${this.apiRev}/${contractor_id}`);
   }
   // POST
   setReview(review):Observable<any> {
@@ -37,8 +37,8 @@ export class OfferReviewService {
   //   return this.http.get(`${this.apiRat}`);
   // }
   // GET ONE
-  getRates(offer_id):Observable<any> {
-    return this.http.get(`${this.apiRat}/${offer_id}`);
+  getRates(contractor_id):Observable<any> {
+    return this.http.get(`${this.apiRat}/${contractor_id}`);
   }
   // POST
   setRate(rate):Observable<any> {

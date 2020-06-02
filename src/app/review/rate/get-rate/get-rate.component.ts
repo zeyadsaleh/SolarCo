@@ -8,16 +8,18 @@ import { OfferReviewService } from 'src/app/shared/services/offer-review.service
 })
 export class GetRateComponent implements OnInit {
 
-  @Input() offer_id:number;
-  rates: number;
+  @Input() contractor_id:number;
+  rate: number;
+  rate_obj: object;
+  users: number;
 
   constructor(private __service: OfferReviewService) { }
 
   ngOnInit(): void {
-    this.__service.getRates(this.offer_id).subscribe(
+    this.__service.getRates(this.contractor_id).subscribe(
       (response) => {
         if(response){
-          this.rates = response.length;
+          this.rate = response.length;
         }
       })
   }
