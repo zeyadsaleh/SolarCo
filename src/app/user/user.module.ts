@@ -25,8 +25,6 @@ import { UserRoutingModule } from './user-routing.module';
     MainComponentModule,
     UserRoutingModule,
     MaterialModule,
-    // OfferModule,
-    // PvCalculationModule,
   ],
   exports: [
     ProfileComponent,

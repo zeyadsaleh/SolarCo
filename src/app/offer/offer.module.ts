@@ -11,6 +11,7 @@ import { MainComponentModule } from 'src/app/main-component/main-component.modul
 import { AllOffersComponent } from './all-offers/all-offers.component';
 import { AbilityModule } from '@casl/angular';
 import { AngularTokenModule } from 'angular-token';
+import { ReviewModule } from '../review/review.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AngularTokenModule } from 'angular-token';
     MainComponentModule,
     RouterModule,
     AbilityModule,
-    AngularTokenModule
+    AngularTokenModule,
+    ReviewModule,
   ],
   exports: [
     OfferComponent,

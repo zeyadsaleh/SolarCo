@@ -14,12 +14,12 @@ export class OfferReviewService {
        
   // REVIEW API
   // GET ALL
-  getReviews():Observable<any> {
-    return this.http.get(`${this.apiRev}`);
-  }
+  // getReviews():Observable<any> {
+  //   return this.http.get(`${this.apiRev}`);
+  // }
   // GET ONE
-  getReview(id):Observable<any> {
-    return this.http.get(`${this.apiRev}/${id}`);
+  getReviews(offer_id):Observable<any> {
+    return this.http.get(`${this.apiRev}/${offer_id}`);
   }
   // POST
   setReview(review):Observable<any> {
@@ -33,12 +33,12 @@ export class OfferReviewService {
   // RATE API
   private apiRat:String = `${this.api.host}/rates`;
   // GET ALL
-  getRates():Observable<any> {
-    return this.http.get(`${this.apiRat}`);
-  }
+  // getRates():Observable<any> {
+  //   return this.http.get(`${this.apiRat}`);
+  // }
   // GET ONE
-  getRate(id):Observable<any> {
-    return this.http.get(`${this.apiRat}/${id}`);
+  getRates(offer_id):Observable<any> {
+    return this.http.get(`${this.apiRat}/${offer_id}`);
   }
   // POST
   setRate(rate):Observable<any> {
