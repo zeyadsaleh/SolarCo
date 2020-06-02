@@ -14,7 +14,7 @@ export class OfferFormComponent implements OnInit {
 
   offer = {
     proposal: '',
-    price: 0,
+    price: "",
     post_id: ''
   }
 

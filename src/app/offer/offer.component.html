@@ -70,7 +70,7 @@
                   <button type="button" class="btn btn-primary btn-xs m-1" title="Back" (click)="edit(offer.id)">
                     Back
                   </button>
-                  <button type="button" class="btn btn-success btn-xs m-1" *ngIf=" == 'UtypeSER' && currentUserID == postOwner_id" title="Approve">
+                  <button type="button" class="btn btn-success btn-xs m-1" *ngIf=" type == 'USER' && currentUserID == postOwner_id" title="Approve">
                     <span class="fa fa-check"></span>
                   </button>
                   <button type="button" *ngIf="offer.canManage" class="btn btn-danger btn-xs m-1" title="Delete" (click)="deleteOffer(offer.id)">
