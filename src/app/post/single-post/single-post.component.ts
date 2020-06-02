@@ -27,7 +27,14 @@ export class SinglePostComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.getPost(+params['id']);
     });
-   
+    this.tokenAuth.validateToken().subscribe(
+      res => {
+        this.userData = this.tokenAuth.currentUserData;
+        console.log(this.userData)
+        this.isLoading = false;
+      },
+      error => console.log(error)
+      );
   }
 
   getPost(id) {
