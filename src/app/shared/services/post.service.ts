@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  private postURl = 'http://localhost:3000/posts';
+  private postURl = `${this.api.host}/posts`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private api: GlobalService) { }
+    
 
   getPosts():Observable<any> {
     return this.http.get(this.postURl);

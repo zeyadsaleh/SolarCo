@@ -15,7 +15,7 @@ export class UpdatePostFormComponent implements OnInit {
     description:'',
     system_id:1
   }
-  // title:string = 'Update Post';
+  pageTitle:string = 'Update Post';
   constructor(
     private postService: PostService,
     private route: ActivatedRoute,

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SystemsComponent implements OnInit {
 
-  systems;
+  systems:object;
 
   constructor(private data: PvCalculationService, private router: Router) { }
 
@@ -20,14 +20,20 @@ export class SystemsComponent implements OnInit {
   getSystems(){
     this.data.getSystems(response =>{
         if(response){ 
+          this.systems = new Object();
           this.systems = response;
         }
     });
   }
 
-  getCalc(event){
-    console.log(event.target.id);
-    this.router.navigate(['pv-system/', event.target.id]);
+  getCalc(id){
+    console.log(id);
+    this.router.navigate(['pv-system/', id]);
+  }
+
+  delete(id){
+    this.data.delCalculation(id);
+    this.router.navigate(['profile']);
   }
 
 }

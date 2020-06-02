@@ -1,4 +1,5 @@
 <app-page-banner [title]="title"></app-page-banner>
+
 <div id="profile">
   <div class="container content">
     <div class="alert alert-danger" #avatarAlert role="alert" style="display: none">
@@ -6,10 +7,10 @@
     </div>
     <div class="row profile" *ngIf="!isLoading else loading">
       <div class="col-md-3">
-        <div class="profile-sidebar">
+        <div class="profile-sidebar rounded shadow border">
           <!-- SIDEBAR USERPIC -->
           <div class="profile-userpic">
-            <img [src]="userData.avatar ? userData.avatar : '/assets/images/tony.png'" class="img-fluid" alt="">
+            <img [src]="userData.avatar ? userData.avatar : '/assets/images/avatar.webp'" class="img-fluid shadow" alt="">
           </div>
           <!-- END SIDEBAR USERPIC -->
           <!-- SIDEBAR USER TITLE -->
@@ -64,14 +65,22 @@
                   Offers </a>
 
               </li>
+              <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/profile/posts']"
+              [class]="subPage == 'posts' ? 'active' : ''" (click)="changeSubpage($event)">
+
+              <a name="offers" class="nav-link" [class]="subPage == 'posts' ? 'active' : ''">
+                <i class="fa fa-check"></i>
+                Posts </a>
+
+            </li>
               <li class="nav-item" [class]="subPage == 'help' ? 'active' : ''" (click)="changeSubpage($event)">
 
                 <a name="help" class="nav-link" [class]="subPage == 'help' ? 'active' : ''">
                   <i class="fa fa-flag"></i>Help</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="profile/edit">
+              <li class="nav-item" [routerLink]="['/profile/edit']" [class]="subPage == 'edit' ? 'active' : ''" (click)="changeSubpage($event)">
+                <a name="edit" class="nav-link" [class]="subPage == 'edit' ? 'active' : ''">
                   <i class="fas fa-pen"></i>
                   Edit </a>
               </li>
@@ -81,9 +90,8 @@
         </div>
       </div>
       <div class="col-md-9">
-        <div class="profile-content text-center">
+        <div class="profile-content">
           <router-outlet></router-outlet>
-        </div>
       </div>
     </div>
   </div>

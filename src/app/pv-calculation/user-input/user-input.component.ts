@@ -46,8 +46,7 @@ export class UserInputComponent implements OnInit {
   confirm(){
     this.geolocation.getLocation(this.client_request, response =>{
       if(response && response['permission']){
-          this.client_request['api'] = response; 
-          this.__service.setData(this.client_request)
+          this.__service.setData(response)
           this.router.navigate(['pv-system/calculate']);
       } else {
           this.permission = false;

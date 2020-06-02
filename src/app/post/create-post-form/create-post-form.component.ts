@@ -17,6 +17,7 @@ export class CreatePostFormComponent implements OnInit {
   system_data: object;
 
   title:string = 'New Post';
+  errorMessage = '';
 
   constructor(private postService: PostService,
               private router: Router,
@@ -28,7 +29,7 @@ export class CreatePostFormComponent implements OnInit {
         this.system_data = data;
         this.post.system_id = data.calculation.id;
       }else{
-        this.router.navigate(['system-info']);
+        this.router.navigate(['profile/systems']);
       }
     });
   }
@@ -37,11 +38,11 @@ export class CreatePostFormComponent implements OnInit {
     this.postService.createPost(this.post).subscribe(
       res => {
         console.log(res);
-        this.router.navigate(['home']);
+        this.router.navigate([`posts/${res.id}`]);
         } ,
       error => {
         console.log(error);
-        // this.errorMessage =error.error.errors[0];
+        this.errorMessage =error.error.error;
       }
     );
   }

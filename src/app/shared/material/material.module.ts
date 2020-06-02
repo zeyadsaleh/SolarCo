@@ -6,6 +6,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 // ########### END ##########
 
 
@@ -18,6 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatCardModule,
     BrowserAnimationsModule,
+    MatTabsModule,
+    MatExpansionModule,
   ]
 })
 export class MaterialModule { }

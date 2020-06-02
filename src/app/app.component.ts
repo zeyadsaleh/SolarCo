@@ -19,6 +19,7 @@ export class AppComponent {
         res => {
           // console.log('validating');
           this.ability.update(res.data.rules);
+          console.log(this.ability.rules);
           this.isLoading = false;
         },
         error => console.log(error)

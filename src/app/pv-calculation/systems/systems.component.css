@@ -1,0 +1,6 @@
+mat-card{
+    justify-content: center;
+    padding: 15px;
+    width: 300px;
+    border: 1px black solid;
+}

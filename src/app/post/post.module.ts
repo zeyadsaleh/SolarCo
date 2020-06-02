@@ -12,6 +12,8 @@ import { AbilityModule } from '@casl/angular';
 import { Ability, PureAbility } from '@casl/ability';
 import { OfferModule } from '../offer/offer.module';
 import { UserRoutingModule } from '../user/user-routing.module';
+import { MaterialModule } from '../shared/material/material.module';
+import { AngularTokenModule } from 'angular-token';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { UserRoutingModule } from '../user/user-routing.module';
     AbilityModule,
     OfferModule,
     UserRoutingModule,
+    MaterialModule,
+    AngularTokenModule
   ],
   exports:[
     HomepageComponent,

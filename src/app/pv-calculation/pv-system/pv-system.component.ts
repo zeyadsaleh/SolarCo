@@ -12,6 +12,9 @@ export class PvSystemComponent implements OnInit {
 
   system_data: object;
   title:string = 'Pv-System Calculate';
+  panelOpenState1:boolean = false;
+  panelOpenState2:boolean = false;
+  panelOpenState3:boolean = false;
 
 
   constructor(private data: PvCalculationService, 
@@ -23,16 +26,15 @@ export class PvSystemComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.getSystemDetails(+params['id']);
     });
+
   }
 
   getSystemDetails(id){
-    this.data.getSystem(id, response =>{
+    this.data.getCalculation(id, response =>{
       if(response){
         this.system_data = response;
-        console.log(response['cables_protections']['section1']['cable_current1']);
-        
       }else{
-        this.router.navigate(['user-input']);
+        this.router.navigate(['pv-system/user-info']);
       }
     });
   }
@@ -48,12 +50,12 @@ export class PvSystemComponent implements OnInit {
 
   profile(){
     this.__service.setData(this.system_data);
-    this.router.navigate(['profile']);
+    this.router.navigate(['profile/systems']);
   }
 
-  cancel(){
-    this.data.delSystem(this.system_data['calculation']['id']);
-    this.router.navigate(['pv-system/user-info']);
+  delete(){
+    this.data.delCalculation(this.system_data['calculation']['id']);
+    this.router.navigate(['profile/systems']);
   }
 
 }

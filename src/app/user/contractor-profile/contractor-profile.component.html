@@ -1,0 +1,37 @@
+<app-page-banner [title]="title"></app-page-banner>
+
+<div class="container" *ngIf="!isLoading else loading">
+    <div class="card contractor-profile">
+        <!-- <h5 class="card-header">Contractor Info</h5> -->
+        <div class="card-body mx-5">
+            <div class="text-center mb-5">
+                <img [src]="contractor.avatar ? contractor.avatar : '/assets/images/avatar.webp'" width=100 height=100>
+                <h2 class="mt-2">{{ contractor.name }}</h2>
+                <h4 class="card-text" *ngIf="contractor.address">{{ contractor.address }}</h4>
+                <h4 class="card-text">{{ contractor.email }}</h4>
+            </div>
+            <div class="my-4">
+                <div>
+                    <h3 class="font-weight-bold">Rating</h3>
+                    <p class="card-text my-4" *ngIf="contractor.rate">{{ contractor.rate }}</p>
+                    <p class="card-text my-4 text-center" *ngIf="!contractor.rate">No rates available</p>
+                </div>
+            </div>
+            <div class="my-4">
+                <div>
+                    <h3 class="font-weight-bold">Reviews</h3>
+                    <p class="card-text my-4" *ngIf="contractor.reviews">{{ contractor.reviews }}</p>
+                    <p class="card-text my-4 text-center" *ngIf="!contractor.reviews">No reviews available</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+  <div class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>

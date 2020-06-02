@@ -17,6 +17,8 @@ export class OfferFormComponent implements OnInit {
     price: 0,
     post_id: ''
   }
+
+  title:string = 'New Offer';
   
   private _routeSubscription: Subscription;
 
@@ -47,6 +49,7 @@ export class OfferFormComponent implements OnInit {
       },
       error => {
         console.log(error);
+        this.errorMessage = error.error.error;
       }
     );
   }

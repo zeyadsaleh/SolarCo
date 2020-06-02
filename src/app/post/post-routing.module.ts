@@ -6,22 +6,23 @@ import { SinglePostComponent } from './single-post/single-post.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { ContractorGuard } from '../shared/guards/contractor.guard';
+import { ClientGuard } from '../shared/guards/client.guard';
 
 const routes: Routes = [
   {
     path: 'posts',
     component: HomepageComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, ContractorGuard]
   },
   {
     path: 'create/post',
     component: CreatePostFormComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, ClientGuard]
   },
   {
     path: 'update/posts/:id',
     component: UpdatePostFormComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, ClientGuard]
   },
   {
     path: 'posts/:id',
