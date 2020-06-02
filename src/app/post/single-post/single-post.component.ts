@@ -9,6 +9,8 @@ import { AngularTokenService } from 'angular-token';
   styleUrls: ['./single-post.component.css']
 })
 export class SinglePostComponent implements OnInit {
+  offers = [];
+  userData;
   post;
   title:string = 'Your Post';
   errorMessage:string = '';
@@ -25,6 +27,7 @@ export class SinglePostComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.getPost(+params['id']);
     });
+   
   }
 
   getPost(id) {

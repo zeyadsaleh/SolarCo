@@ -45,7 +45,7 @@ export class OfferFormComponent implements OnInit {
     this.offerService.createOffer(this.offer).subscribe(
       res => {
         console.log(res);
-        this.router.navigate([`posts/${this.offer.post_id}`]);
+        this.router.navigate(['posts/'+this.offer.post_id]);
       },
       error => {
         console.log(error);
