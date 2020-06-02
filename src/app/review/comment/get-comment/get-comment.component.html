@@ -1,6 +1,13 @@
-<div *ngFor="let comment of comments">
-    <blockquote class="speech-bubble shadow">
-        <p>{{ comment }}</p>
-        <cite class="p-1 text-success"><b>{{ comment }}</b></cite>
-    </blockquote>
+<h2 class="text-center">Reviews</h2>
+<hr>
+<div *ngIf="users">
+    <div *ngFor="let comment of comments" class="mb-5">
+        <blockquote class="speech-bubble shadow text-center shadow rounded border border-dark">
+            <p>{{ comment.comment }}</p>
+            <cite class="text-center text-dark">Date: <b>{{ comment.date }}</b></cite>
+        </blockquote>
+    </div>
+</div>
+<div *ngIf="!users">
+    <h4 class="text-center">No Reviews yet!</h4>
 </div>

@@ -10,15 +10,15 @@ export class OfferReviewService {
   constructor(private http: HttpClient,
               private api: GlobalService) { }
 
-  private apiRev:String = `${this.api.host}/reviews`;
+  private apiRev:String = `${this.api.host}/offer_reviews`;
        
   // REVIEW API
   // GET ALL
-  // getReviews():Observable<any> {
-  //   return this.http.get(`${this.apiRev}`);
-  // }
-  // GET ONE
   getReviews(contractor_id):Observable<any> {
+    return this.http.get(`${this.apiRev}/per_contractor/${contractor_id}`);
+  }
+  // GET ONE
+  getReview(contractor_id):Observable<any> {
     return this.http.get(`${this.apiRev}/${contractor_id}`);
   }
   // POST
@@ -31,13 +31,13 @@ export class OfferReviewService {
   }
 
   // RATE API
-  private apiRat:String = `${this.api.host}/rates`;
+  private apiRat:String = `${this.api.host}/offer_rates`;
   // GET ALL
-  // getRates():Observable<any> {
-  //   return this.http.get(`${this.apiRat}`);
-  // }
-  // GET ONE
   getRates(contractor_id):Observable<any> {
+    return this.http.get(`${this.apiRat}/per_contractor/${contractor_id}`);
+  }
+  // GET ONE
+  getRate(contractor_id):Observable<any> {
     return this.http.get(`${this.apiRat}/${contractor_id}`);
   }
   // POST

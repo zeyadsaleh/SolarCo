@@ -8,18 +8,30 @@ import { OfferReviewService } from 'src/app/shared/services/offer-review.service
 })
 export class GetCommentComponent implements OnInit {
   
-  @Input() offer_id:number; 
-  comments: string;
+  @Input() contractor_id:number;
+  comments = new Array;
+  users: number = 0;
   
   constructor(private __service: OfferReviewService) { }
 
   ngOnInit(): void {
-    this.__service.getReviews(this.offer_id).subscribe(
+    console.log(this.contractor_id);
+    this.__service.getReviews(this.contractor_id).subscribe(
       (response) => {
         if(response){
-          this.comments = response;
+          this.setCommentDetails(response);
         }
       })
+  }
+
+  setCommentDetails(reviews){
+    for (let review of reviews){
+      this.comments.push({"comment":review['review'], "date":review['updated_at']});
+    }
+    this.comments.reverse();
+    this.users = reviews['length']
+    console.log(this.comments);
+    console.log(this.users);
   }
 
 }

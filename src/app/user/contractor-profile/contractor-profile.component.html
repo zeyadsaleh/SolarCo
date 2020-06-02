@@ -12,16 +12,18 @@
             </div>
             <div class="my-4">
                 <div>
-                    <h3 class="font-weight-bold">Rating</h3>
+                    <app-get-rate [contractor_id]="contractor.id"></app-get-rate>
+                    <!-- <h3 class="font-weight-bold">Rating</h3>
                     <p class="card-text my-4" *ngIf="contractor.rate">{{ contractor.rate }}</p>
-                    <p class="card-text my-4 text-center" *ngIf="!contractor.rate">No rates available</p>
+                    <p class="card-text my-4 text-center" *ngIf="!contractor.rate">No rates available</p> -->
                 </div>
             </div>
             <div class="my-4">
                 <div>
-                    <h3 class="font-weight-bold">Reviews</h3>
+                    <app-get-comment [contractor_id]="contractor.id"></app-get-comment>
+                    <!-- <h3 class="font-weight-bold">Reviews</h3>
                     <p class="card-text my-4" *ngIf="contractor.reviews">{{ contractor.reviews }}</p>
-                    <p class="card-text my-4 text-center" *ngIf="!contractor.reviews">No reviews available</p>
+                    <p class="card-text my-4 text-center" *ngIf="!contractor.reviews">No reviews available</p> -->
                 </div>
             </div>
         </div>

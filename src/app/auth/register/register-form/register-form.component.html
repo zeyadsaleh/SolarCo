@@ -3,8 +3,8 @@
     <span>{{ errorMessage }}</span>
   </div>
   <form (ngSubmit)="onSignUpSubmit()" #f="ngForm">
-    <h3 *ngIf="type == 'USER'" class="text-white">Client Login</h3>
-    <h3 *ngIf="type == 'CONTRACTOR'" class="text-white">Contractor Login</h3>
+    <h3 *ngIf="type == 'USER'" class="text-white">Client SignUp</h3>
+    <h3 *ngIf="type == 'CONTRACTOR'" class="text-white">Contractor SignUp</h3>
     <hr>
     <div class="form-group" >
       <input id="email" type="email" required email name='email' [(ngModel)]="signUpUser.email"
@@ -74,7 +74,7 @@
     <div class="justify-content-center text-center">
 
       <button type="submit" [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
-        class="text-dark btn btn-lg btn-success rounded shadow">
+        class="text-dark btn btn-primary rounded shadow">
         Sign up
       </button>
 
@@ -88,7 +88,7 @@
 </div>
 
 <ng-template #noTypeTemplate>
-  <h3 class=" p-4 text-danger text-center">
+  <h4 class="mt-5 text-danger text-center">
     Please Select a registration type
-  </h3>
+  </h4>
 </ng-template>

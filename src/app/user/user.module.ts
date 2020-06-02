@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserRoutingModule } from './user-routing.module';
 import { ContractorProfileComponent } from './contractor-profile/contractor-profile.component';
+import { ReviewModule } from '../review/review.module';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ContractorProfileComponent } from './contractor-profile/contractor-prof
     MainComponentModule,
     UserRoutingModule,
     MaterialModule,
+    ReviewModule,
   ],
   exports: [
     ProfileComponent,

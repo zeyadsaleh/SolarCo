@@ -1,11 +1,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
 <span class="heading">User Rating</span>
-<span class="fa fa-star [checked]='rate > 1'"></span>
-<span class="fa fa-star [checked]='rate > 2'"></span>
-<span class="fa fa-star [checked]='rate > 3'"></span>
-<span class="fa fa-star [checked]='rate > 4'"></span>
-<span class="fa fa-star [checked]='rate >= 5'"></span>
+<span [className]="rate >= 1 ? 'fa fa-star checked':'fa fa-star'"></span>
+<span [className]="rate >= 2 ? 'fa fa-star checked':'fa fa-star'"></span>
+<span [className]="rate >= 3 ? 'fa fa-star checked':'fa fa-star'"></span>
+<span [className]="rate >= 4 ? 'fa fa-star checked':'fa fa-star'"></span>
+<span [className]="rate >= 5 ? 'fa fa-star checked':'fa fa-star'"></span>
 <p>{{ rate }} average based on {{ users }} reviews.</p>
 <hr style="border:3px solid #f1f1f1">
 
@@ -15,7 +16,7 @@
   </div>
   <div class="middle">
     <div class="bar-container">
-      <div class="bar-5"></div>
+      <div class="bar-5" [style.width.%]="(this.rate_obj['5']*100)/users"></div>
     </div>
   </div>
   <div class="side right">
@@ -26,7 +27,7 @@
   </div>
   <div class="middle">
     <div class="bar-container">
-      <div class="bar-4"></div>
+      <div class="bar-4" [style.width.%]="(this.rate_obj['4']*100)/users"></div>
     </div>
   </div>
   <div class="side right">
@@ -37,7 +38,7 @@
   </div>
   <div class="middle">
     <div class="bar-container">
-      <div class="bar-3"></div>
+      <div class="bar-3" [style.width.%]="(this.rate_obj['3']*100)/users"></div>
     </div>
   </div>
   <div class="side right">
@@ -48,7 +49,7 @@
   </div>
   <div class="middle">
     <div class="bar-container">
-      <div class="bar-2"></div>
+      <div class="bar-2" [style.width.%]="(this.rate_obj['2']*100)/users"></div>
     </div>
   </div>
   <div class="side right">
@@ -59,10 +60,11 @@
   </div>
   <div class="middle">
     <div class="bar-container">
-      <div class="bar-1"></div>
+      <div class="bar-1" [style.width.%]="(this.rate_obj['1']*100)/users"></div>
     </div>
   </div>
   <div class="side right">
     <div>{{ rate_obj[1] }}</div>
   </div>
 </div>
+<hr style="border:3px solid #f1f1f1">
