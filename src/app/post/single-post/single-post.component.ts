@@ -32,6 +32,7 @@ export class SinglePostComponent implements OnInit {
     this.postService.getPost(id).subscribe((res)=>{
         this.post = res;
         this.isLoading = false;
+        // For Apply button
         let userOffer = this.post.offers.filter(offer => offer.contractor_id == this.currentUserID);
         console.log(userOffer);
         if(userOffer.length > 0) {
