@@ -12,10 +12,10 @@
       <div class="panel-body" *ngFor="let offer of offers">
 
         <ul class="list-group" *ngIf="offer.id != editOffer">
-          <li class="list-group-item" [routerLink]="['/profile/contractors/'+offer.contractor_id]">
+          <li class="list-group-item" [routerLink]="currentUserID == offer.contractor_id ? ['/profile'] : ['/profile/contractors/'+offer.contractor_id]">
             <div class="row">
               <div class="col-xs-3 col-md-2">
-                <img [src]="offer.contractor.avatar ? offer.contractor.avatar : '/assets/images/avatar.webp'"
+                <img [src]="offer.contractor.avatar_url ? offer.contractor.avatar_url : '/assets/images/avatar.webp'"
                   class="img-circle img-fluid" alt="" /></div>
               <div class="col-xs-10 col-md-8">
                 <div>
@@ -47,7 +47,7 @@
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-3 col-md-2">
-                <img [src]="offer.contractor.avatar ? offer.contractor.avatar : '/assets/images/avatar.webp'"
+                <img [src]="offer.contractor.avatar_url ? offer.contractor.avatar_url : '/assets/images/avatar.webp'"
                   class="img-circle img-fluid" alt="" /></div>
               <div class="col-xs-10 col-md-8">
                 <div>
