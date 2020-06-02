@@ -11,5 +11,6 @@ body { padding-top:30px; }
 .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
 
 .clickable {
-    cursor: pointer;      
+    cursor: pointer;
+    outline: none;     
 }
