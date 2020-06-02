@@ -20,9 +20,8 @@ export class CalculateComponent implements OnInit {
 
   ngOnInit(): void {
     this.__service.Data.subscribe((data) => {
-      if(data && data['api']['permission']){
+      if(data && data['permission']){
         this.api_response = data;
-        console.log("leh");
       }else{
         this.router.navigate(['pv-system/user-info']);
       }

@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private apiUrl:String = 'http://localhost:3000';
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private api: GlobalService) { }
+    
+  private apiUrl:String = `${this.api.host}`;;
 
   updateAvatar(id, type, body, headers) {
     if(type == 'USER')

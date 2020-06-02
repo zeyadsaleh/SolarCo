@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/shared/interfaces/user';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Ability } from '@casl/ability';
+import { GlobalService } from 'src/app/shared/services/global.service';
 
 @Component({
   selector: 'app-register-form',
@@ -13,7 +14,7 @@ import { Ability } from '@casl/ability';
 })
 export class RegisterFormComponent implements OnInit {
 
-  apiUrl: String = 'http://localhost:3000';
+  apiUrl: String = this.api.host;
 
   @Input() type: string = "";
 
@@ -34,7 +35,7 @@ export class RegisterFormComponent implements OnInit {
   };
 
   constructor(private tokenAuthSerivce: AngularTokenService,
-     private router: Router, private ability: Ability) { }
+              private router: Router, private ability: Ability, private api: GlobalService) { }
 
   ngOnInit() {
   }

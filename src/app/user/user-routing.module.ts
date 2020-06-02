@@ -5,7 +5,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { EditComponent } from './edit/edit.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AllOffersComponent } from '../offer/all-offers/all-offers.component';
-import { SystemsComponent } from '../pv-calculation/all-systems/systems.component';
+import { SystemsComponent } from '../pv-calculation/systems/systems.component';
 import { HomepageComponent } from '../post/homepage/homepage.component';
 
 const routes: Routes = [

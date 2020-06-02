@@ -1,48 +1,52 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { GlobalService } from './global.service';
 @Injectable({
   providedIn: 'root'
 })
 export class OfferReviewService {
-  private reviewURl = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private api: GlobalService) { }
 
+  private apiRev:String = `${this.api.host}/reviews`;
+       
   // REVIEW API
   // GET ALL
   getReviews():Observable<any> {
-    return this.http.get(`${this.reviewURl}/reviews`);
+    return this.http.get(`${this.apiRev}`);
   }
   // GET ONE
   getReview(id):Observable<any> {
-    return this.http.get(`${this.reviewURl}/reviews/${id}`);
+    return this.http.get(`${this.apiRev}/${id}`);
   }
   // POST
   setReview(review):Observable<any> {
-    return this.http.post(`${this.reviewURl}/reviews`,review);
+    return this.http.post(`${this.apiRev}`,review);
   }
   // PUT
   updateReview(id,review):Observable<any> {
-    return this.http.put(`${this.reviewURl}/reviews/${id}`,review);
+    return this.http.put(`${this.apiRev}/${id}`,review);
   }
 
   // RATE API
+  private apiRat:String = `${this.api.host}/rates`;
   // GET ALL
   getRates():Observable<any> {
-    return this.http.get(`${this.reviewURl}/rates`);
+    return this.http.get(`${this.apiRat}`);
   }
   // GET ONE
   getRate(id):Observable<any> {
-    return this.http.get(`${this.reviewURl}/rates/${id}`);
+    return this.http.get(`${this.apiRat}/${id}`);
   }
   // POST
   setRate(rate):Observable<any> {
-    return this.http.post(`${this.reviewURl}/rates`,rate);
+    return this.http.post(`${this.apiRat}`,rate);
   }
   // PUT
   updateRate(id,rate):Observable<any> {
-    return this.http.put(`${this.reviewURl}/rates/${id}`,rate);
+    return this.http.put(`${this.apiRat}/${id}`,rate);
   }
 
 }

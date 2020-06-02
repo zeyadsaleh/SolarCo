@@ -16,6 +16,7 @@ export class PvSystemComponent implements OnInit {
   panelOpenState2:boolean = false;
   panelOpenState3:boolean = false;
 
+
   constructor(private data: PvCalculationService, 
               private route: ActivatedRoute,
               private router: Router,
@@ -29,13 +30,11 @@ export class PvSystemComponent implements OnInit {
   }
 
   getSystemDetails(id){
-    this.data.getSystem(id, response =>{
+    this.data.getCalculation(id, response =>{
       if(response){
         this.system_data = response;
-        console.log(response['cables_protections']['section1']['cable_current1']);
-        
       }else{
-        this.router.navigate(['user-input']);
+        this.router.navigate(['pv-system/user-info']);
       }
     });
   }
@@ -55,7 +54,7 @@ export class PvSystemComponent implements OnInit {
   }
 
   delete(){
-    this.data.delSystem(this.system_data['calculation']['id']);
+    this.data.delCalculation(this.system_data['calculation']['id']);
     this.router.navigate(['profile/systems']);
   }
 

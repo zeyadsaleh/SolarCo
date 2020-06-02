@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { GlobalService } from './global.service';
 
 @Injectable()
 export class GeoLoactionService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private api: GlobalService) { }
 
   requestLocation(callback){
     //W3C Geolaction API
@@ -34,7 +36,7 @@ export class GeoLoactionService {
 
   // get
   getLocation(client_data, callback){
-    this.http.post('http://localhost:3000/geocoder', client_data).subscribe(response =>{
+    this.http.post(`${this.api.host}/geocoder`, client_data).subscribe(response =>{
       console.log(response);
       callback(response);
     });
