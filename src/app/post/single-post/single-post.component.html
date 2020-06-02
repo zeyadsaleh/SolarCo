@@ -1,5 +1,5 @@
 <app-page-banner [title]="title"></app-page-banner>
-<div class="container">
+<div class="container" *ngFor="let offer of offers">
   <div class="row">
   <div class="post-card col">
     <div class="post-card__nav">
@@ -20,7 +20,7 @@
         <button class="btn btn-info btn-sm mr-2" (click)="deletePost(post.id)">Delete</button>
         <button class="btn btn-primary btn-sm"[routerLink]="['/update/posts',post.id]">Update</button>
         <h1>{{post.title}}</h1>
-        <button class="btn btn-dark btn-sm" (click)="sendId(post.id)">Apply</button>
+          <button class="btn btn-dark btn-sm" (click)="sendId(post.id)" *ngIf="type == 'CONTRACTOR' && offer.contractor_id != userData.id">Apply</button>
         <h5><span>Posted By</span>&nbsp;{{post.user.name}}</h5>
         <h4><span>Location:</span>&nbsp;{{post.system.city}}, {{post.system.country}}</h4>
         <h5><span>Posted at</span>&nbsp;{{post.created_at}}</h5>

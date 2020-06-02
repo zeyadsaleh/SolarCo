@@ -8,12 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./offer.component.css']
 })
 export class OfferComponent implements OnInit {
-
-  offer = {
-    proposal: '',
-    price: 0,
-  }
-  
+ 
   offers=[];
   editOffer: number = 0;
   has_offers: boolean = false;
@@ -70,5 +65,15 @@ export class OfferComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  handleApprove(offer) {
+    if (offer.status == 'accepted') {
+      offer.status = 'rejected';
+    }
+    else {
+      offer.status = 'accepted';
+    }
+    this.onEdit(offer);
   }
 }

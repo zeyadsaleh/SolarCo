@@ -32,8 +32,11 @@
                   <button type="button" class="btn btn-primary btn-xs m-1" title="Edit" (click)="edit(offer.id)">
                     <span class="fa fa-edit"></span>
                   </button>
-                  <button type="button" class="btn btn-success btn-xs m-1" title="Approved">
+                  <button type="button" class="btn btn-success btn-xs m-1" title="Approve" (click)="handleApprove(offer)" *ngIf="offer.status == 'rejected'">
                     <span class="fa fa-check"></span>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-xs m-1" title="Unapprove" (click)="handleApprove(offer)" *ngIf="offer.status == 'accepted'">
+                    <span class="fa fa-square"></span>
                   </button>
                   <button type="button" class="btn btn-danger btn-xs m-1" title="Delete" (click)="deleteOffer(offer.id)">
                     <span class="fa fa-trash"></span>
