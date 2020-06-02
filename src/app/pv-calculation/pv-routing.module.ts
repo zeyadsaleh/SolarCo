@@ -4,6 +4,7 @@ import { UserInputComponent } from './user-input/user-input.component';
 import { CalculateComponent } from './calculate/calculate.component';
 import { PvSystemComponent } from './pv-system/pv-system.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { SystemsDetailsComponent } from './systems-details/systems-details.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,11 @@ const routes: Routes = [
   {
     path: 'pv-system/calculate',
     component: CalculateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'pv-system/details',
+    component: SystemsDetailsComponent,
     canActivate: [AuthGuard]
   },
   {

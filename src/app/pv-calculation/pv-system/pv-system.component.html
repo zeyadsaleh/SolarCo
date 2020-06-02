@@ -3,39 +3,39 @@
 <div class="container" *ngIf="system_data">
     <div class="row text-center justify-content-center">
         <mat-card>
-            <mat-card-title class="bg-dark rounded shadow text-white p-2 mb-4 h1">PV System Data</mat-card-title>
-            <mat-tab-group class="rounded shadow border border-dark p-1 mb-4">
+            <mat-card-title class="bg-dark rounded shadow text-white p-2 mb-3">PV System Data</mat-card-title>
+            <mat-tab-group class="rounded shadow p-2 mb-3 border border-warning">
                 <mat-tab label="Panel">
-                    <mat-card-content class="mt-4">
+                    <mat-card-content class="mt-5">
                         <p><b>Total Panels:</b> {{ system_data['calculation']['panels_num'] }}</p>
                         <p><b>Panel Watt:</b> {{ system_data['calculation']['panel_watt'] }}</p>
                     </mat-card-content>
                 </mat-tab>
                 <mat-tab label="Battery">
-                    <mat-card-content class="mt-4">
+                    <mat-card-content class="mt-5">
                         <p><b>Total Batteries:</b> {{ system_data['calculation']['batteries_num'] }}</p>
                         <p><b>Battery AH:</b> {{ system_data['calculation']['battery_Ah'] }}</p>
                     </mat-card-content>
                 </mat-tab>
                 <mat-tab label="Mppt">
-                    <mat-card-content class="mt-4">
+                    <mat-card-content class="mt-5">
                         <p><b>Mppt Amper:</b> {{ system_data['calculation']['mppt_amp'] }}</p>
                         <p><b>Mppt Num:</b> {{ system_data['calculation']['system_circuits'] }}</p>
                     </mat-card-content>
                 </mat-tab>
                 <mat-tab label="Inverter">
-                    <mat-card-content class="mt-4">
+                    <mat-card-content class="mt-5">
                         <p><b>Inverter Watt:</b> {{ system_data['calculation']['inverter_watt'] }}</p>
                         <p><b>Inverter Num:</b> {{ system_data['calculation']['system_circuits'] }}</p>
                     </mat-card-content>
                 </mat-tab>
                 <mat-tab label="Installations">
-                    <mat-card-content class="mt-4">
+                    <mat-card-content class="mt-5">
                         <p><b>Tilt Angle:</b> {{ system_data['installations']['tilt_angle'] }} | {{ system_data['installations']['description'] }}
                     </mat-card-content>
                 </mat-tab>
                 <mat-tab label="Protection">
-                    <mat-card-content class="mt-4">
+                    <mat-card-content class="mt-5">
                         <mat-expansion-panel class="mb-2" (opened)="panelOpenState1 = true" (closed)="panelOpenState1 = false">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
@@ -70,7 +70,7 @@
                     <a mat-button class="btn shadow rounded btn-outline-primary mr-4" (click)="publish()"
                         *ngIf="!system_data['published']">Publish</a>
                     <a mat-button class="btn shadow rounded btn-outline-warning mr-4" (click)="profile()">Profile</a>
-                    <a mat-button class="btn shadow rounded btn-outline-danger" (click)="delete()">Delete</a>
+                    <a mat-button class="btn shadow rounded btn-outline-danger" (click)="delete()" >Delete</a>
                 </mat-card-actions>
             </mat-card-footer>
         </mat-card>

@@ -7,7 +7,7 @@
             <mat-card-content class="border rounded p-3">
                 <mat-form-field class="example-form-field">
                     <mat-label>Electricity Consumption</mat-label>
-                    <input matInput type="number" [(ngModel)]="client_request['consump']" />
+                    <input matInput type="number" [(ngModel)]="client_request['consump']" min="0" max="1000"/>
                     <mat-hint align="start"><strong>Consumption per month (kwh)</strong> </mat-hint>
                     <mat-hint align="end"> {{ client_request['consump'] }} </mat-hint>
                 </mat-form-field>

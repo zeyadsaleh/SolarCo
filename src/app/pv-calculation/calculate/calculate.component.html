@@ -6,16 +6,16 @@
             <mat-card-title class="bg-dark rounded shadow text-white p-1">Client Data</mat-card-title>
             <hr>
             <mat-card-content class="border rounded p-3">
-                <p><b>Consumption:</b> {{ api_response['consump'] }}</p>
+                <p><b>Consumption:</b> {{ api_response['consumption'] }}</p>
                 <p *ngIf="api_response['src']"><b>Google Map:</b> <a [href]="api_response['src']" target="_blank"> Map</a></p>
-                <p><b>City:</b> {{ api_response['api']['city'] }}</p>
-                <p><b>Country:</b> {{ api_response['api']['country'] }}</p>
+                <p><b>City:</b> {{ api_response['city'] }}</p>
+                <p><b>Country:</b> {{ api_response['country'] }}</p>
             </mat-card-content>
-            <mat-card-actions>
-                <a mat-button class="btn rounded shadow btn-outline-primary mr-4" (click)="calculate()">Calculate</a>
-                <a mat-button class="btn rounded shadow btn-outline-dark" (click)="back()">Back</a>
-            </mat-card-actions>
             <mat-card-footer>
+                <mat-card-actions>
+                    <a mat-button class="btn rounded shadow btn-outline-primary mr-4" (click)="calculate()">Calculate</a>
+                    <a mat-button class="btn rounded shadow btn-outline-dark" (click)="back()">Back</a>
+                </mat-card-actions>
             </mat-card-footer>
         </mat-card>
     </div>

@@ -32,7 +32,7 @@ export class SystemsComponent implements OnInit {
   }
 
   delete(id){
-    this.data.delSystem(id);
+    this.data.delCalculation(id);
     this.router.navigate(['profile']);
   }
 
