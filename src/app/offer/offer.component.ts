@@ -52,7 +52,7 @@ export class OfferComponent implements OnInit {
       return obj.id !== id;
     });
     if (this.offers.length < 0) {
-      this.offers = new Array();
+      // this.offers = new Array();
       // this.getOffers();
       this.has_offers = false;
     }
