@@ -11,6 +11,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  getContractor(id) {
+    return this.http.get(`${this.apiUrl}/contractors/${id}`);
+  }
+
   updateAvatar(id, type, body, headers) {
     if(type == 'USER')
       return this.http.put(`${this.apiUrl}/clients/avatar/${id}`, body, {headers: headers});
