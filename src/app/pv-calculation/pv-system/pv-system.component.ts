@@ -40,7 +40,7 @@ export class PvSystemComponent implements OnInit {
   }
 
   publish(){
-    if (!this.system_data['published']){
+    if (!this.system_data['published']){      
       this.__service.setData(this.system_data);
       this.router.navigate(['create/post']);
     } else {

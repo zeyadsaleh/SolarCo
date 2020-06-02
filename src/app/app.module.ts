@@ -33,7 +33,7 @@ import { OfferModule } from './offer/offer.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

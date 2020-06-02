@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<span class="heading">User Rating</span>
+<span class="fa fa-star [checked]='rate > 1'"></span>
+<span class="fa fa-star [checked]='rate > 2'"></span>
+<span class="fa fa-star [checked]='rate > 3'"></span>
+<span class="fa fa-star [checked]='rate > 4'"></span>
+<span class="fa fa-star [checked]='rate >= 5'"></span>
+<p>{{ rate }} average based on {{ users }} reviews.</p>
+<hr style="border:3px solid #f1f1f1">
+
+<div class="row">
+  <div class="side">
+    <div>5 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-5"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>{{ rate_obj[5] }}</div>
+  </div>
+  <div class="side">
+    <div>4 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-4"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>{{ rate_obj[4] }}</div>
+  </div>
+  <div class="side">
+    <div>3 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-3"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>{{ rate_obj[3] }}</div>
+  </div>
+  <div class="side">
+    <div>2 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-2"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>{{ rate_obj[2] }}</div>
+  </div>
+  <div class="side">
+    <div>1 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-1"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>{{ rate_obj[1] }}</div>
+  </div>
+</div>

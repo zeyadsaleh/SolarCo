@@ -27,8 +27,6 @@ import { ContractorProfileComponent } from './contractor-profile/contractor-prof
     MainComponentModule,
     UserRoutingModule,
     MaterialModule,
-    // OfferModule,
-    // PvCalculationModule,
   ],
   exports: [
     ProfileComponent,

@@ -42,13 +42,6 @@
                   Overview </a>
 
               </li>
-              <!-- <li class="nav-item" [class]="subPage == 'settings' ? 'active' : ''" (click)="changeSubpage($event)">
-
-                <a name="settings" class="nav-link" [class]="subPage == 'settings' ? 'active' : ''">
-                  <i class="fa fa-user"></i>
-                  Account Settings </a>
-
-              </li> -->
               <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/profile/systems']"
                 [class]="subPage == 'systems' ? 'active' : ''" (click)="changeSubpage($event)">
 
