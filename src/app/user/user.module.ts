@@ -11,12 +11,14 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserRoutingModule } from './user-routing.module';
+import { ContractorProfileComponent } from './contractor-profile/contractor-profile.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
     EditComponent,
+    ContractorProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +31,7 @@ import { UserRoutingModule } from './user-routing.module';
   exports: [
     ProfileComponent,
     EditComponent,
+    ContractorProfileComponent
   ],
   providers: [
     UserService, 

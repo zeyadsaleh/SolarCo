@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllOffersComponent } from '../offer/all-offers/all-offers.component';
 import { SystemsComponent } from '../pv-calculation/systems/systems.component';
 import { HomepageComponent } from '../post/homepage/homepage.component';
+import { ContractorProfileComponent } from './contractor-profile/contractor-profile.component';
 
 const routes: Routes = [
   {
@@ -29,9 +30,13 @@ const routes: Routes = [
       {
         path: 'posts',
         component: HomepageComponent,   
-      }
+      },
     ]
   },
+  {
+    path: 'profile/contractors/:id',
+    component: ContractorProfileComponent
+  }
 ];
 
 @NgModule({

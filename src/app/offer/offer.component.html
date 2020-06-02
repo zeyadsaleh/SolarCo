@@ -12,10 +12,10 @@
       <div class="panel-body" *ngFor="let offer of offers">
 
         <ul class="list-group" *ngIf="offer.id != editOffer">
-          <li class="list-group-item">
+          <li class="list-group-item" [routerLink]="currentUserID == offer.contractor_id ? ['/profile'] : ['/profile/contractors/'+offer.contractor_id]">
             <div class="row">
               <div class="col-xs-3 col-md-2">
-                <img [src]="offer.contractor.avatar ? offer.contractor.avatar : '/assets/images/tony.png'"
+                <img [src]="offer.contractor.avatar_url ? offer.contractor.avatar_url : '/assets/images/avatar.webp'"
                   class="img-circle img-fluid" alt="" /></div>
               <div class="col-xs-10 col-md-8">
                 <div>
@@ -47,7 +47,7 @@
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-3 col-md-2">
-                <img [src]="offer.contractor.avatar ? offer.contractor.avatar : '/assets/images/tony.png'"
+                <img [src]="offer.contractor.avatar_url ? offer.contractor.avatar_url : '/assets/images/avatar.webp'"
                   class="img-circle img-fluid" alt="" /></div>
               <div class="col-xs-10 col-md-8">
                 <div>
@@ -61,16 +61,16 @@
                   [(ngModel)]="offer.price" class=" form-control validate" #price="ngModel">
                 </div>
                 <div class="action">
-                  <button type="button" class="btn btn-success btn-xs m-1" title="Edit" (click)="onEdit(offer)">
+                  <button type="button" *ngIf="offer.canManage" class="btn btn-success btn-xs m-1" title="Edit" (click)="onEdit(offer)">
                     Edit
                   </button>
-                  <button type="button" class="btn btn-primary btn-xs m-1" title="Edit" (click)="edit(offer.id)">
+                  <button type="button" class="btn btn-primary btn-xs m-1" title="Back" (click)="edit(offer.id)">
                     Back
                   </button>
-                  <button type="button" class="btn btn-success btn-xs m-1" title="Approved">
+                  <button type="button" class="btn btn-success btn-xs m-1" *ngIf="currentUserID == postOwner_id" title="Approve">
                     <span class="fa fa-check"></span>
                   </button>
-                  <button type="button" class="btn btn-danger btn-xs m-1" title="Delete" (click)="deleteOffer(offer.id)">
+                  <button type="button" *ngIf="offer.canManage" class="btn btn-danger btn-xs m-1" title="Delete" (click)="deleteOffer(offer.id)">
                     <span class="fa fa-trash"></span>
                   </button>
                 </div>
