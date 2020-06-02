@@ -28,11 +28,6 @@ export class CalculateComponent implements OnInit {
     });
   }
 
-  back(){
-    this.api_response = new Object(); 
-    this.router.navigate(['pv-system/user-info']);
-  }
-
   calculate(){ 
       this.data.setSystem(this.api_response, response =>{
         if(response){ 

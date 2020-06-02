@@ -27,7 +27,7 @@
           <div class="profile-userbuttons">
             <input type="file" name="avatar" #avatarUploader accept="image/*" (change)="uploadAvatar($event)"
               style="display: none">
-            <button type="button" class="btn btn-success btn-sm" (click)="openUploader()">Change
+            <button type="button" class="btn btn-success btn-sm shadow" (click)="openUploader()">Change
               Avatar</button>
           </div>
           <!-- END SIDEBAR BUTTONS -->
@@ -83,7 +83,7 @@
         </div>
       </div>
       <div class="col-md-9">
-        <div class="profile-content">
+        <div class="profile-content  shadow rounded">
           <router-outlet></router-outlet>
       </div>
     </div>

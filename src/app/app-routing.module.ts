@@ -7,6 +7,7 @@ import { LoginRoutingModule } from './auth/login/login-routing.module';
 import { RegisterRoutingModule } from './auth/register/register-routing.module';
 import { UserRoutingModule } from './user/user-routing.module';
 import { OfferRoutingModule } from './offer/offer-routing.module';
+import { NotFoundComponent } from './main-component/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    component: NotFoundComponent,
+    // redirectTo: 'home'
   }
 ];
 @NgModule({

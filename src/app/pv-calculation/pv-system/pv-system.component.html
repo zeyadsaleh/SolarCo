@@ -69,7 +69,7 @@
                 <mat-card-actions>
                     <a mat-button class="btn shadow rounded btn-outline-primary mr-4" (click)="publish()"
                         *ngIf="!system_data['published']">Publish</a>
-                    <a mat-button class="btn shadow rounded btn-outline-warning mr-4" (click)="profile()">Profile</a>
+                    <a mat-button class="btn shadow rounded btn-outline-warning mr-4" [routerLink]="['/profile/systems']">Profile</a>
                     <a mat-button class="btn shadow rounded btn-outline-danger" (click)="delete()" >Delete</a>
                 </mat-card-actions>
             </mat-card-footer>

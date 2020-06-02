@@ -7,6 +7,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { Ability, PureAbility } from '@casl/ability';
 import { AbilityModule } from '@casl/angular';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { AbilityModule } from '@casl/angular';
     ToolbarComponent,
     FooterComponent,
     PageBannerComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,

@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class SystemsComponent implements OnInit {
 
-  systems:object;
+  systems: object;
+  show: boolean = false;
 
   constructor(private data: PvCalculationService, private router: Router) { }
 
@@ -19,16 +20,12 @@ export class SystemsComponent implements OnInit {
 
   getSystems(){
     this.data.getSystems(response =>{
-        if(response){ 
+        if(response['length'] > 0){ 
           this.systems = new Object();
           this.systems = response;
+          this.show = true;
         }
     });
-  }
-
-  getCalc(id){
-    console.log(id);
-    this.router.navigate(['pv-system/', id]);
   }
 
   delete(id){
