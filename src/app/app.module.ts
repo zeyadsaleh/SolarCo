@@ -6,13 +6,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 // ########### Routes END ##########
 
-// Modules ##START##
+// Angular Modules ##START##
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AbilityModule } from '@casl/angular';
-// ########### Modules END ##########
+// ########### Angular Modules END ##########
 
 // Services ##START##
 import { AngularTokenService, AngularTokenModule, AngularTokenOptions } from 'angular-token';
@@ -29,17 +29,12 @@ import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
 import { UserModule } from './user/user.module';
 import { OfferModule } from './offer/offer.module';
-import { ChatComponent } from './chat/chat.component';
-import { MessagesViewComponent } from './chat/messages-view/messages-view.component';
-import { ContactsListComponent } from './chat/contacts-list/contacts-list.component';
+import { ChatModule } from './chat/chat.module';
 // ########### App Modules END ##########
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent,
-    MessagesViewComponent,
-    ContactsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +57,8 @@ import { ContactsListComponent } from './chat/contacts-list/contacts-list.compon
     UserModule,
     AbilityModule,
     ReactiveFormsModule,
-    OfferModule
+    OfferModule,
+    ChatModule,
   ],
   providers: [
     AngularTokenModule, 
