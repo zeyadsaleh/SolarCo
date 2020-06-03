@@ -6,6 +6,7 @@ import { User } from 'src/app/shared/interfaces/user';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Ability } from '@casl/ability';
 import { GlobalService } from 'src/app/shared/services/global.service';
+import { ChatAuthService } from 'src/app/shared/services/chat-auth.service';
 
 @Component({
   selector: 'app-register-form',
@@ -35,7 +36,8 @@ export class RegisterFormComponent implements OnInit {
   };
 
   constructor(private tokenAuthSerivce: AngularTokenService,
-              private router: Router, private ability: Ability, private api: GlobalService) { }
+              private router: Router, private ability: Ability, private api: GlobalService,
+              readonly chatAuthService:ChatAuthService) { }
 
   ngOnInit() {
   }
@@ -44,17 +46,34 @@ export class RegisterFormComponent implements OnInit {
   onSignUpSubmit() {
     this.submitted = true;
     this.signUpUser.type = this.type
+    let username = this.signUpUser.name.trim().toLowerCase() + Math.round((Math.random() * 100));
     if (this.signUpUser.type == 'USER') { //register client
       this.tokenAuthSerivce.registerAccount({
         login: this.signUpUser.email,
         password: this.signUpUser.password,
         passwordConfirmation: this.signUpUser.passwordConfirmation,
         name: this.signUpUser.name,
+        username: username,
         userType: this.signUpUser.type,
       }).subscribe(
         res => {
           console.log(res);
           this.ability.update(res.data.rules); // Casl Abilities
+
+          this.chatAuthService
+          .signUp(res.data.username, res.data.name)
+          .then(
+            (response) => {
+              this.chatAuthService.login(res.data.username)
+              .then(
+                (res) => {
+                  console.log(res);   
+                },
+                err => (console.log(err))
+              );   
+            },
+            err => (console.log(err))
+          ); 
           this.submitted = false;
           this.router.navigate(['home']);
         },

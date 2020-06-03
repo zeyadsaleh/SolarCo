@@ -8,6 +8,7 @@ import { RegisterRoutingModule } from './auth/register/register-routing.module';
 import { UserRoutingModule } from './user/user-routing.module';
 import { OfferRoutingModule } from './offer/offer-routing.module';
 import { NotFoundComponent } from './main-component/not-found/not-found.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   {
@@ -20,9 +21,12 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'chat',
+    component: ChatComponent
+  },
+  {
     path: '**',
     component: NotFoundComponent,
-    // redirectTo: 'home'
   }
 ];
 @NgModule({
