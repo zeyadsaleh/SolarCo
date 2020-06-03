@@ -2704,8 +2704,8 @@ h6 {
       height: 1px; }
   .testimonials_area .owl-next {
     top: 50%;
-    padding-top: 10px;
-    padding-bottom: 15px; }
+    padding-top: 8px;
+    padding-bottom: 10px; }
   .testimonials_area .owl-dots {
     text-align: center; }
     .testimonials_area .owl-dots .owl-dot {
@@ -2829,10 +2829,11 @@ h6 {
 /* Footer Area css
 ============================================================================================ */
 .footer_area {
-  background: #000410; }
+  background: #000410;
+  margin-top: 20px; }
 
 .f_title {
-  margin-bottom: 35px; }
+  margin-bottom: 22px; }
   .f_title h3 {
     color: #fff;
     font-size: 18px;
@@ -2845,10 +2846,10 @@ h6 {
   max-width: 390px; }
   .ab_widget p {
     font-size: 16px;
-    line-height: 26px;
+    line-height: 22px;
     font-family: "Roboto", sans-serif;
     color: #777777;
-    margin-bottom: 30px; }
+    margin-bottom: 20px; }
     .ab_widget p a {
       color: #dc3545; }
     .ab_widget p + p {
@@ -2858,10 +2859,10 @@ h6 {
   padding-left: 15px; }
   .news_widget p {
     font-size: 16px;
-    line-height: 26px;
+    line-height: 22px;
     font-family: "Roboto", sans-serif;
     color: #777777;
-    margin-bottom: 15px; }
+    margin-bottom: 10px; }
   .news_widget .input-group input {
     height: 40px;
     background: transparent;
@@ -2906,7 +2907,7 @@ h6 {
   line-height: 26px;
   font-family: "Roboto", sans-serif;
   color: #777777;
-  margin-bottom: 10px; }
+  margin-bottom: 8px; }
 .social_widget .list li {
   margin-right: 17px;
   display: inline-block; }
@@ -2921,7 +2922,7 @@ h6 {
 
 .copy_right_text {
   text-align: center;
-  margin-top: 60px; }
+  margin-top: 20px; }
   .copy_right_text p a {
     color: #dc3545; }
 

@@ -286,7 +286,7 @@ a:not(.button) {
   background: #f3f4f7; }
 
 .container {
-  margin: 96px auto 60px;
+  margin: 50px auto 30px;
   max-width: 40em; }
 
 .box {
@@ -363,10 +363,10 @@ label {
 .footer {
   text-align: center; }
   .footer p {
-    margin-bottom: 90px; }
+    margin-bottom: 20px; }
 
 .credit {
   color: #90a1b5;
   clear: both;
   font-size: 12px;
-  margin-top: 90px; }
+  margin-top: 20px; }

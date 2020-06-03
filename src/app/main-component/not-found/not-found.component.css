@@ -32,25 +32,24 @@ h1 small {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	-ms-flex-align: center;
-  align-items: center;
+  	align-items: center;
 	flex-direction: column;
 	margin: 0 auto;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	-ms-flex-pack: center;
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 80px;
 }
 
 
 .sketch {
 	position: relative;
-	height: 400px;
-	min-width: 400px;
+	height: 600px;
+	min-width: 600px;
 	margin: 0;
 	overflow: visible;
-	order: 2;
-	
+	order: 2;	
 }
 
 .bee-sketch {
@@ -64,13 +63,13 @@ h1 small {
 .red {
 	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/198554/red-1.png) no-repeat center center;
 	opacity: 1;
-	animation: red 3s linear infinite, opacityRed 5s linear alternate infinite;
+	animation: red 2.5s linear infinite, opacityRed 5s linear alternate infinite;
 }
 
 .blue {
 	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/198554/blue-1.png) no-repeat center center;
 	opacity: 0;
-	animation: blue 3s linear infinite, opacityBlue 5s linear alternate infinite;
+	animation: blue 2.5s linear infinite, opacityBlue 5s linear alternate infinite;
 }
 
 
@@ -188,4 +187,11 @@ h1 small {
 	to {
 		opacity: .3
 	}
+}
+
+.bar {
+	background: #000410;
+	width: 100%;
+	height: 90px;
+	display: flex;
 }
