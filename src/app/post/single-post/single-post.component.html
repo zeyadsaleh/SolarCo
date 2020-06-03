@@ -5,13 +5,7 @@
     <div class="post-card__nav">
       <ul>
         <li>
-          <a href="#" class="active"><i class="ion ion-ios-eye"></i></a>
-        </li>
-        <li>
-          <a href="#"><i class="ion ion-ios-location"></i></a>
-        </li>
-        <li>
-         <a href="#"><i class="ion ion-android-star"></i></a>
+          <a [routerLink]="['/posts/',post.id]" class="active"><i class="ion ion-ios-eye"></i></a>
         </li>
       </ul>
     </div>
@@ -42,7 +36,7 @@
     </div>
   </div>
   <div class="col mt-4">
-    <app-offer [post_id] = "post.id" [postOwner_id]="post.user_id"></app-offer>
+    <app-offer [post_id] = "post.id" [postOwner_id]="post.user_id" (onDeleteOffer)="onDeleteOffer()"></app-offer>
   </div>
 </div>
 </div>

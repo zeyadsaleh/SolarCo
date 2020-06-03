@@ -29,11 +29,17 @@ import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
 import { UserModule } from './user/user.module';
 import { OfferModule } from './offer/offer.module';
+import { ChatComponent } from './chat/chat.component';
+import { MessagesViewComponent } from './chat/messages-view/messages-view.component';
+import { ContactsListComponent } from './chat/contacts-list/contacts-list.component';
 // ########### App Modules END ##########
 
 @NgModule({
   declarations: [
     AppComponent,
+    ChatComponent,
+    MessagesViewComponent,
+    ContactsListComponent,
   ],
   imports: [
     BrowserModule,

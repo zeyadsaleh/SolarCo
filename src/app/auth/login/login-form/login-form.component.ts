@@ -1,7 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {AngularTokenService} from "angular-token";
+import { Component, OnInit, Input } from '@angular/core';
+import { AngularTokenService } from "angular-token";
 import { Router } from '@angular/router';
 import { Ability } from '@casl/ability';
+import { ChatAuthService } from 'src/app/shared/services/chat-auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -12,7 +13,7 @@ export class LoginFormComponent implements OnInit {
 
   @Input() type: string = "";
 
-  submitted:boolean = false;
+  submitted: boolean = false;
 
   errorMessage = '';
 
@@ -22,22 +23,35 @@ export class LoginFormComponent implements OnInit {
     userType: ''
   };
 
-  constructor(private tokenAuthSerivce:AngularTokenService,  private router: Router, private ability: Ability) { }
+  constructor(private tokenAuthSerivce: AngularTokenService,
+    private router: Router,
+    private ability: Ability,
+    readonly chatAuthService: ChatAuthService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  onSignInSubmit(){
+  onSignInSubmit() {
 
     this.submitted = true;
     this.signInUser.userType = this.type
     this.tokenAuthSerivce.signIn({
-      login:    this.signInUser.email,
+      login: this.signInUser.email,
       password: this.signInUser.password,
       userType: this.signInUser.userType
     }).subscribe(
       res => {
         console.log(res);
         this.ability.update(res.body.data.rules); // Casl Abilities
+        // let username = res.body.data.name.trim().toLowerCase() + Math.round((Math.random() * 100))
+        // console.log(username);
+        this.chatAuthService
+          .login(res.body.data.username)
+          .then(
+            (res) => {
+              console.log(res);   
+            },
+            err => (console.log(err))
+          );
         console.log(this.ability.rules);
         console.log(this.ability)
         this.submitted = false;
@@ -47,8 +61,8 @@ export class LoginFormComponent implements OnInit {
         console.log(error);
         this.errorMessage = error.error.errors[0];
         this.submitted = false;
-      } 
-          
+      }
+
     );
 
   }

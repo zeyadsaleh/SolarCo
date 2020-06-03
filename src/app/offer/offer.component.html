@@ -53,20 +53,37 @@
                 <img [src]="offer.contractor.avatar_url ? offer.contractor.avatar_url : '/assets/images/avatar.webp'"
                   class="img-circle img-fluid" alt="" /></div>
               <div class="col-xs-10 col-md-8">
-                <div>
+              <form #f="ngForm">
+                <div class="comment-text">
                   <textarea name='proposal' required class="form-control" placeholder="Enter you proposal" [(ngModel)]="offer.proposal" #proposal="ngModel"></textarea>
-                  <div class="mic-info">
-                    By: <a href="offers">{{offer.contractor.name}}l</a> on {{offer.created_at}}
+                  <div *ngIf="proposal.invalid && (proposal.dirty || proposal.touched)" class="alert alert-danger">
+    
+                    <div *ngIf="proposal.errors.required">
+                      proposal is required.
+                    </div>
                   </div>
-                </div>
+                  <div class="mic-info">
+                    By: <a href="offers">{{offer.contractor.name}}</a> on {{offer.created_at}}
+                  </div>
+                </div>               
                 <div class="comment-text">
                   <input id="price" type="number" required min="0" name='price' placeholder="Price by EP"
                   [(ngModel)]="offer.price" class=" form-control validate" #price="ngModel">
-                </div>
+                  <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
+      
+                    <div *ngIf="price.errors.required">
+                      price is required.
+                    </div>
+                    <div *ngIf="price.errors.min">
+                      proposal cannot be negative.
+                    </div>
+                  </div>
+                </div>           
                 <div class="action">
-                  <button type="button" *ngIf="offer.canManage" class="btn btn-success btn-xs m-1" title="Edit" (click)="onEdit(offer)">
+                  <button type="button" [disabled]="!(f.valid)" *ngIf="offer.canManage" class="btn btn-success btn-xs m-1" title="Edit" (click)="onEdit(offer)">
                     Edit
                   </button>
+                
                   <button type="button" class="btn btn-primary btn-xs m-1" title="Back" (click)="edit(offer.id)">
                     Back
                   </button>
@@ -77,6 +94,7 @@
                     <span class="fa fa-trash"></span>
                   </button>
                 </div>
+              </form>
               </div>
             </div>
           </li>

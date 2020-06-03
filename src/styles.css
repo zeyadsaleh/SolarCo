@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'assets/css/comet-chat-theme.scss';
+
+/* @import 'assets/css/full-bk.scss';
+@import 'assets/css/variables.scss'; */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import 'assets/css/style.css';
@@ -28,3 +32,32 @@ body {
     margin-left: 1rem;
     margin-top: .6rem;
 }
+
+/* @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto&display=swap'); */
+
+/* * {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-family: AbrilFatface-Regular;
+  font-size: 26px;
+  color: $font-color;
+  letter-spacing: 0;
+} */
+
+
+
