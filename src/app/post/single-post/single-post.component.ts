@@ -64,4 +64,8 @@ export class SinglePostComponent implements OnInit {
     this.router.navigate(['/offers/new'], { queryParams: { id: id }, queryParamsHandling: 'merge' });
   }
 
+  onDeleteOffer() {
+      this.applied = false;
+  }
+
 }

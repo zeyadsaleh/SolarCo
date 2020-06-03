@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OfferService } from 'src/app/shared/services/offer.service';
 import { Router } from '@angular/router';
 import { Offer } from '../shared/interfaces/offer';
@@ -17,8 +17,8 @@ export class OfferComponent implements OnInit {
   @Input() post_id:string = '';
   @Input() postOwner_id:string = '';
   currentUserID: string;
-  type:string = '';
-
+  type: string = '';
+  @Output() onDeleteOffer = new EventEmitter()
   
   constructor(private offerService: OfferService,private router: Router, private tokenAuth: AngularTokenService) { }
 
@@ -51,9 +51,8 @@ export class OfferComponent implements OnInit {
     this.offers = this.offers.filter(function( obj ) {
       return obj.id !== id;
     });
-    if (this.offers.length < 0) {
-      // this.offers = new Array();
-      // this.getOffers();
+    this.onDeleteOffer.emit(); //for showing Apply button after delete the offer
+    if (this.offers.length == 0) {
       this.has_offers = false;
     }
   }
