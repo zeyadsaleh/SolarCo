@@ -24,17 +24,18 @@ export class SinglePostComponent implements OnInit {
     private tokenAuth:AngularTokenService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.getPost(+params['id']);
-    });
     this.tokenAuth.validateToken().subscribe(
       res => {
         this.userData = this.tokenAuth.currentUserData;
         console.log(this.userData)
-        this.isLoading = false;
+        this.route.params.subscribe(params => {
+          this.getPost(+params['id']);
+        });
       },
       error => console.log(error)
       );
+
+    
   }
 
   getPost(id) {
