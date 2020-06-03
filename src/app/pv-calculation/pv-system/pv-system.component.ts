@@ -11,16 +11,17 @@ import { ShareService } from 'src/app/shared/services/share.service';
 export class PvSystemComponent implements OnInit {
 
   system_data: object;
-  title:string = 'Pv-System Calculate';
-  panelOpenState1:boolean = false;
-  panelOpenState2:boolean = false;
-  panelOpenState3:boolean = false;
+  title: string = 'Pv-System Calculate';
+  panelOpenState1: boolean = false;
+  panelOpenState2: boolean = false;
+  panelOpenState3: boolean = false;
+  error: string;
 
 
-  constructor(private data: PvCalculationService, 
-              private route: ActivatedRoute,
-              private router: Router,
-              private __service: ShareService) { }
+  constructor(private data: PvCalculationService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private __service: ShareService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -29,18 +30,18 @@ export class PvSystemComponent implements OnInit {
 
   }
 
-  getSystemDetails(id){
-    this.data.getCalculation(id, response =>{
-      if(response){
+  getSystemDetails(id) {
+    this.data.getCalculation(id, response => {
+      if (response) {
         this.system_data = response;
-      }else{
+      } else {
         this.router.navigate(['pv-system/user-info']);
       }
     });
   }
 
-  publish(){
-    if (!this.system_data['published']){      
+  publish() {
+    if (!this.system_data['published']) {
       this.__service.setData(this.system_data);
       this.router.navigate(['create/post']);
     } else {
@@ -48,9 +49,14 @@ export class PvSystemComponent implements OnInit {
     }
   }
 
-  delete(){
-    this.data.delCalculation(this.system_data['calculation']['id']);
-    this.router.navigate(['profile/systems']);
+  delete() {
+    this.data.delCalculation(this.system_data['system']['id'], response => {
+      if (response['error']) {
+        if (response['error']) this.error = response['error'];
+      } else {
+        this.router.navigate(['profile/systems']);
+      }
+    });
   }
 
 }

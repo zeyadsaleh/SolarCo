@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
 })
 export class SystemsComponent implements OnInit {
 
-  systems: object;
+  systems: any;
   show: boolean = false;
+  error: string;
+  success: string;
 
   constructor(private data: PvCalculationService, private router: Router) { }
 
@@ -18,19 +20,26 @@ export class SystemsComponent implements OnInit {
     this.getSystems();
   }
 
-  getSystems(){
-    this.data.getSystems(response =>{
-        if(response['length'] > 0){ 
-          this.systems = new Object();
-          this.systems = response;
-          this.show = true;
-        }
+  getSystems() {
+    this.data.getSystems(response => {
+      if (response['length'] > 0) {
+        this.systems = response;
+        this.show = true;
+      }
     });
   }
 
-  delete(id){
-    this.data.delCalculation(id);
-    this.router.navigate(['profile']);
+  delete(id) {
+    this.data.delCalculation(id, response => {
+      if (response && response['error']) {
+        if (response['error']) this.error = response['error'];
+      } else {
+        this.success = "Deleted Successfully!";
+        this.systems = this.systems.filter((value) => {
+          if (value['system']['id'] != id) return value;
+        });
+      }
+    });
   }
 
 }

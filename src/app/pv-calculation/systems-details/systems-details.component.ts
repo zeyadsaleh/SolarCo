@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class SystemsDetailsComponent implements OnInit {
 
   systems_details: object;
+  title: string = 'Pv-Systems Details';
 
   constructor(private data: PvCalculationService, 
               private router: Router) { }
@@ -21,7 +22,6 @@ export class SystemsDetailsComponent implements OnInit {
   getDetails(){
     this.data.getCalculations(response =>{
         if(response){ 
-          this.systems_details = new Object();
           this.systems_details = response;
           console.log(response);
         }

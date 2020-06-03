@@ -10,11 +10,6 @@ export class PvCalculationService {
 
   private apiCal:String = `${this.api.host}/calculations`;
 
-  // delete
-  delCalculation(calc_id){
-    this.http.delete(`${this.apiCal}/${calc_id}`).subscribe();
-  }
-
   // get/:id
   getCalculation(calc_id, callback){
     this.http.get(`${this.apiCal}/${calc_id}`).subscribe(response =>{
@@ -31,6 +26,14 @@ export class PvCalculationService {
   }
 
   private apiSys:String = `${this.api.host}/systems`;
+
+  // delete
+  delCalculation(sys_id, callback){
+    this.http.delete(`${this.apiSys}/${sys_id}`).subscribe(response =>{
+      console.log(response);
+      callback(response);
+    });
+  }
 
   // post
   setSystem(system_data, callback){
