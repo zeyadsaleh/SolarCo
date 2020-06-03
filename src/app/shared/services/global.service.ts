@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class GlobalService {
 
-  public host:String = 'https://solarco-api.herokuapp.com/';
+  public host:String = 'https://solarco-api.herokuapp.com';
   constructor() { }
 }
