@@ -21,7 +21,6 @@ export class GetRateComponent implements OnInit {
         if(response){
           this.setRateDetails(response);
           console.log(response);
-          // this.rate = response.length;
         }
       })
   }
@@ -36,7 +35,6 @@ export class GetRateComponent implements OnInit {
       if (rate['rate'] == 5) this.rate_obj['5'] += 1;
       tot_rates += Number(rate['rate']);
     }
-    // console.log(tot_rates);
     this.users = rates['length']
     this.rate = +(tot_rates/this.users).toFixed(2);
     console.log(this.rate_obj);

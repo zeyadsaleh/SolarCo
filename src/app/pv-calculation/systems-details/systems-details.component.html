@@ -1,1 +1,29 @@
-<p>systems-details works!</p>
+<app-page-banner [title]="title"></app-page-banner>
+
+<div class="container">
+    <div class="row justify-content-center mb-2">
+        <div class="col-lg-5 m-3" *ngFor="let system of systems_details; let i = index">
+            <div class="flip-card">
+                <div class="flip-card-inner text-center" [routerLink]="['/pv-system',system['calculation']['id']]">
+                    <div class="flip-card-front bg-primary p-3 border border-2 border-warning">
+                        <h3 class="bg-warning rounded shadow p-1 mb-2">PV-System Num: #{{ (systems_details['length']) - i }}</h3>
+                        <img src="assets/icon/solar.png" alt="Solar" style="width:100px; height:100px;">
+                        <div class="border border-warning rounded p-1 mt-2">
+                            <p>Consumption: {{system['system']['consumption']}}</p>
+                            <p>{{system['system']['city']}} | {{system['system']['country']}}</p>
+                        </div>
+                    </div>
+                    <div class="flip-card-back bg-warning p-3 border border-2 border-primary">
+                        <h3 class="bg-primary rounded shadow p-1 mb-3">PV-System Num: #{{ (systems_details['length']) - i }}</h3>
+                        <div class="border border-primary rounded p-1">
+                            <p>Panel_nums: {{ system['calculation']['panels_num'] }} || Panel_watt: {{ system['calculation']['panel_watt'] }}</p>
+                            <p>battery_nums: {{ system['calculation']['batteries_num'] }} || battery_Ah: {{ system['calculation']['battery_Ah'] }}</p>
+                            <p>inverter_nums: {{ system['calculation']['system_circuits'] }} || inverter_watt: {{ system['calculation']['inverter_watt'] }}</p>
+                            <p>mppt_nums: {{ system['calculation']['system_circuits'] }} || mppt_amp: {{ system['calculation']['mppt_amp'] }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

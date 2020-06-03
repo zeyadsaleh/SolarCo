@@ -4,6 +4,12 @@
     <div class="row text-center justify-content-center">
         <mat-card>
             <mat-card-title class="bg-dark rounded shadow text-white p-2 mb-3">PV System Data</mat-card-title>
+            <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <mat-tab-group class="rounded shadow p-2 mb-3 border border-warning">
                 <mat-tab label="Panel">
                     <mat-card-content class="mt-5">
@@ -31,12 +37,14 @@
                 </mat-tab>
                 <mat-tab label="Installations">
                     <mat-card-content class="mt-5">
-                        <p><b>Tilt Angle:</b> {{ system_data['installations']['tilt_angle'] }} | {{ system_data['installations']['description'] }}
+                        <p><b>Tilt Angle:</b> {{ system_data['installations']['tilt_angle'] }} |
+                            {{ system_data['installations']['description'] }}
                     </mat-card-content>
                 </mat-tab>
                 <mat-tab label="Protection">
                     <mat-card-content class="mt-5">
-                        <mat-expansion-panel class="mb-2" (opened)="panelOpenState1 = true" (closed)="panelOpenState1 = false">
+                        <mat-expansion-panel class="mb-2" (opened)="panelOpenState1 = true"
+                            (closed)="panelOpenState1 = false">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <b>Section_1 Protection:</b>
@@ -45,7 +53,8 @@
                             <p>Cable: {{ system_data['cables_protections']['section1']['cable_current1'] }}A | Fuse:
                                 {{ system_data['cables_protections']['section1']['fuse_current1'] }}A</p>
                         </mat-expansion-panel>
-                        <mat-expansion-panel class="mb-2" (opened)="panelOpenState2 = true" (closed)="panelOpenState2 = false">
+                        <mat-expansion-panel class="mb-2" (opened)="panelOpenState2 = true"
+                            (closed)="panelOpenState2 = false">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <b>Section_2 Protection:</b>
@@ -54,7 +63,8 @@
                             <p> Cable: {{ system_data['cables_protections']['section2']['cable_current2'] }}A | Fuse:
                                 {{ system_data['cables_protections']['section2']['fuse_current2'] }}A</p>
                         </mat-expansion-panel>
-                        <mat-expansion-panel class="mb-2" (opened)="panelOpenState3 = true" (closed)="panelOpenState3 = false">
+                        <mat-expansion-panel class="mb-2" (opened)="panelOpenState3 = true"
+                            (closed)="panelOpenState3 = false">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     <b>Section_3 Protection:</b> </mat-panel-title>
@@ -69,8 +79,9 @@
                 <mat-card-actions>
                     <a mat-button class="btn shadow rounded btn-outline-primary mr-4" (click)="publish()"
                         *ngIf="!system_data['published']">Publish</a>
-                    <a mat-button class="btn shadow rounded btn-outline-warning mr-4" [routerLink]="['/profile/systems']">Profile</a>
-                    <a mat-button class="btn shadow rounded btn-outline-danger" (click)="delete()" >Delete</a>
+                    <a mat-button class="btn shadow rounded btn-outline-warning mr-4"
+                        [routerLink]="['/profile/systems']">Profile</a>
+                    <a mat-button class="btn shadow rounded btn-outline-danger" (click)="delete()">Delete</a>
                 </mat-card-actions>
             </mat-card-footer>
         </mat-card>

@@ -1,5 +1,6 @@
 mat-card{
-    margin: 100px;
+    margin: 80px;
+    padding: 20;
     width: 500px;
     border: 2px black solid;
 }
