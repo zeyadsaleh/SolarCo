@@ -1,5 +1,5 @@
 <div *ngIf="!isLoading else loading">
-  <mat-drawer-container class="example-container" autosize hasBackdrop="true">
+  <!-- <mat-drawer-container class="example-container" autosize hasBackdrop="true">
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <img class="uk-display-block" src="assets/icon/solar.png" alt="Solar" style="width:35px; height:35px;">
       <h2>SolarCo</h2>
@@ -8,16 +8,16 @@
         <mat-list-option class="text-white">Option_2</mat-list-option>
         <mat-list-option class="text-white">Option_3</mat-list-option>
       </mat-selection-list>
-    </mat-drawer>
+    </mat-drawer> -->
 
     <div class="example-sidenav-content">
       <app-toolbar></app-toolbar>
       <router-outlet></router-outlet>
       <app-footer></app-footer>
-      <span class="infoi" type="button" mat-button (mouseover)="drawer.toggle()"></span>
+      <!-- <span class="infoi" type="button" mat-button (mouseover)="drawer.toggle()"></span> -->
     </div>
 
-  </mat-drawer-container>
+  <!-- </mat-drawer-container> -->
 </div>
 
 <ng-template #loading>
