@@ -29,7 +29,16 @@ export class AppComponent {
           );
           this.isLoading = false;
         },
-        error => console.log(error)
+        error => {
+          console.log(error);
+          this.tokenService.signOut().subscribe(
+            res =>      {
+              console.log(res);
+              this.ability.update([]);
+            },
+            error =>    console.log(error)
+          );
+        }
         ); 
     } else {
       this.isLoading = false;

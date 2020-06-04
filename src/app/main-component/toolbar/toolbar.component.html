@@ -14,16 +14,18 @@
         </button>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-          <ul class="nav navbar-nav menu_nav">
+          <!-- <ul class="nav navbar-nav menu_nav">
             <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link ml-4"
                 [routerLink]="['/chat']" style="font-size: 16px;">Chat</a></li>
             <li *ngIf="tokenAuthService.currentUserType == 'USER'" class="nav-item"><a class="nav-link "
                 [routerLink]="['/pv-system/user-info']" style="font-size: 16px;">Calculate</a>
             <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR'" class="nav-item"><a class="nav-link "
                 [routerLink]="['/posts']" style="font-size: 16px;">Posts</a>
-          </ul>
+          </ul> -->
           <ul class="nav navbar-nav menu_nav ml-auto">
             <li class="nav-item active"><a class="nav-link" [routerLink]="['']">Home</a></li>
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link"
+              [routerLink]="['/chat']">Chat</a></li>
             <li *ngIf="tokenAuthService.currentUserType == 'USER' && tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/pv-system/user-info']">Calculate</a>
             <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/posts']">Posts</a>
             <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/profile']">Profile</a></li>
