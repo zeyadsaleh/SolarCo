@@ -13,9 +13,10 @@
         <div class="post-card__content">
           <div class="post-card__info">
             <h1> Post Title: {{offer.post.title}}</h1>
-            <h5><span>Price:</span>&nbsp;{{offer.price}} EP</h5>
+            <h4><span>Price:</span>&nbsp;{{offer.price}} EP</h4>
             <h5><span>Offerd at</span>&nbsp;{{offer.created_at}}</h5>
-            <p>Your Proposal: {{offer.proposal}}</p>
+            <h4><strong> Your Proposal: </strong> {{offer.proposal}}</h4>
+            <h3 class="text-dark" *ngIf = "offer.post.closed">Status:  <span [ngClass]="{'text-success': offer.status == 'accepted', 'text-danger': offer.status == 'rejected'}"> {{offer.status}} </span></h3>
             <a [routerLink]="['/posts/',offer.post.id]">See Post</a>
           </div>
         </div>

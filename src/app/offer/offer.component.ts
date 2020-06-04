@@ -3,6 +3,7 @@ import { OfferService } from 'src/app/shared/services/offer.service';
 import { Router } from '@angular/router';
 import { Offer } from '../shared/interfaces/offer';
 import { AngularTokenService } from 'angular-token';
+import { PostService } from 'src/app/shared/services/post.service';
 
 @Component({
   selector: 'app-offer',
@@ -20,8 +21,9 @@ export class OfferComponent implements OnInit {
   type: string = '';
   isApproved: boolean = false;
   @Output() onDeleteOffer = new EventEmitter()
-  
-  constructor(private offerService: OfferService,private router: Router, private tokenAuth: AngularTokenService) { }
+  submitted:boolean = false;
+
+  constructor(private offerService: OfferService,private router: Router, private tokenAuth: AngularTokenService, private postService: PostService) { }
 
   ngOnInit(): void {
     this.getOffers();
@@ -71,27 +73,33 @@ export class OfferComponent implements OnInit {
   }
 
   onEdit(offer) {
+    this.submitted = true;
     this.offerService.updateOffer(offer.id, offer).subscribe(
       res => {
         console.log(res);
         this.offers = new Array();
         this.getOffers();
         this.editOffer = 0;
+        this.submitted = false;
       },
       error => {
         console.log(error);
+        this.submitted = false;
       }
     );
   }
 
   handleApprove(offer) {
-    if (offer.status == 'accepted') {
-      offer.status = 'rejected';
-    }
-    else {
-      offer.status = 'accepted';
-    }
+    offer.status = 'accepted';
     this.onEdit(offer);
     this.isApproved = true;
+    this.postService.updatePost(offer.post.id, {closed: true}).subscribe(
+      res => {
+        console.log(res);
+      },
+      error => {
+        console.log(error);
+        
+      });
   }
 }

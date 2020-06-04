@@ -97,6 +97,9 @@
                       class="btn btn-success btn-xs m-1" title="Edit" (click)="onEdit(offer)">
                       Edit
                     </button>
+                    <div *ngIf="submitted" class="spinner-border" id="auth-loader" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
 
                     <button type="button" class="btn btn-primary btn-xs m-1" title="Back" (click)="edit(offer.id)">
                       Back

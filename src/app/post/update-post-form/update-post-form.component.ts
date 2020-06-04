@@ -36,12 +36,12 @@ export class UpdatePostFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.postService.updatePost(this.id,this.post).subscribe(
+    this.postService.updatePost(this.id, this.post).subscribe(
       res => {
         this.router.navigate([`posts/${this.id}`]);
-        } ,
+      },
       error => {
-      })
+      });
   }
 
 }

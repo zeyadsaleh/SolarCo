@@ -61,7 +61,7 @@ export class RegisterFormComponent implements OnInit {
         username: username,
         userType: this.signUpUser.type,
       }).subscribe(
-        res => {
+        res => { 
           console.log(res);
           this.ability.update(res.data.rules); // Casl Abilities
 
