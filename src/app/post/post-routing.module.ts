@@ -27,7 +27,7 @@ const routes: Routes = [
   {
     path: 'posts/:id',
     component: SinglePostComponent,
-    canActivate: [AuthGuard, ClientGuard]
+    canActivate: [AuthGuard]
   },
 ];
 

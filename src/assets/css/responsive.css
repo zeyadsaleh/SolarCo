@@ -49,7 +49,7 @@
     }
 	.header_area .navbar {
 		/* background: #dc3545; */
-		background: #000410;
+		background: rgb(0, 24, 48);
 	}
     .navbar-toggler[aria-expanded="false"] span:nth-child(2) {
 		opacity: 1;
