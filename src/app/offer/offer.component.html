@@ -9,11 +9,10 @@
           78</span>
           <!-- <app-create-rate></app-create-rate> -->
       </div>
-      <!-- <a class="clickable"> -->
       <div class="panel-body" *ngFor="let offer of offers">
 
         <ul class="list-group" *ngIf="offer.id != editOffer">
-          <li class="list-group-item">
+          <li class="list-group-item" [ngClass]="{'disableDiv': isApproved && offer.status == 'rejected'}">
             <div class="row">
               <div class="col-xs-3 col-md-2 clickable" [routerLink]="type=='CONTRACTOR' && currentUserID == offer.contractor_id ? ['/profile'] : ['/profile/contractors/'+offer.contractor_id]">
                 <img [src]="offer.contractor.avatar_url ? offer.contractor.avatar_url : '/assets/images/avatar.webp'"
@@ -33,11 +32,14 @@
                   <button type="button" class="btn btn-primary btn-xs m-1" title="Edit" *ngIf="offer.canManage" (click)="edit(offer.id)">
                     <span class="fa fa-edit"></span>
                   </button>
-                  <button type="button" class="btn btn-success btn-xs m-1" title="Approve" (click)="handleApprove(offer)" *ngIf="offer.status == 'rejected' && currentUserID == postOwner_id && type == 'USER'" >
+                  <button type="button" class="btn btn-success btn-xs m-1" title="Approve" (click)="handleApprove(offer)" *ngIf="!isApproved && offer.status == 'rejected' && currentUserID == postOwner_id && type == 'USER'" >
                     <span class="fa fa-check"></span>
                   </button>
-                  <button type="button" class="btn btn-danger btn-xs m-1" title="Unapprove" (click)="handleApprove(offer)" *ngIf="offer.status == 'accepted' && type == 'USER'">
-                    <span class="fa fa-square"></span>
+                  <button type="button" class="btn btn-success btn-xs m-1" title="Approved"  *ngIf="isApproved && offer.status == 'accepted' && type == 'USER'" [disabled]="true">
+                    <span class="fa fa-check">Approved!</span>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-xs m-1" title="Rejected"  *ngIf="isApproved && offer.status == 'rejected' && type == 'USER'" [disabled]="true">
+                    <span class="fa fa-square">Rejected!</span>
                   </button>
                   <button type="button" class="btn btn-danger btn-xs m-1" *ngIf="offer.canManage" title="Delete" (click)="deleteOffer(offer.id)">
                     <span class="fa fa-trash"></span>
@@ -102,7 +104,6 @@
         </ul>
 
       </div>
-    <!-- </a> -->
       <a href="offers" class="btn btn-primary btn-sm btn-block" role="button"><span
           class="glyphicon glyphicon-refresh"></span> More</a>
     </div>

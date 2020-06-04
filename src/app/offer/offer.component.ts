@@ -18,6 +18,7 @@ export class OfferComponent implements OnInit {
   @Input() postOwner_id:string = '';
   currentUserID: string;
   type: string = '';
+  isApproved: boolean = false;
   @Output() onDeleteOffer = new EventEmitter()
   
   constructor(private offerService: OfferService,private router: Router, private tokenAuth: AngularTokenService) { }
@@ -32,6 +33,10 @@ export class OfferComponent implements OnInit {
     this.offerService.getOffers(this.post_id).subscribe((res)=>{
       for (let o of res){
         this.offers.push(o);
+        //for approval dim
+        if (o.status == 'accepted') {
+          this.isApproved = true
+        }
         // For permissions
         if(this.type == 'CONTRACTOR' &&
            this.currentUserID == o.contractor_id)
@@ -87,5 +92,6 @@ export class OfferComponent implements OnInit {
       offer.status = 'accepted';
     }
     this.onEdit(offer);
+    this.isApproved = true;
   }
 }
