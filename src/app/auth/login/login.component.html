@@ -1,20 +1,20 @@
 <app-page-banner [title]="title"></app-page-banner>
 
-<div class="container main mt-5 spacing rounded shadow justify-content-center bg-dark">
-    <h1 class="text-center text-dark bg-light rounded shadow m-1">Log In As</h1>
+<div class="container main mt-4 mb-5 rounded shadow">
+  <h1 class="text-center text-dark bg-light rounded shadow m-1">Log In As</h1>
     <hr>
-    <div class="row">
-      <div class="col-6">
-        <input id="client" type="button" name='USER' value="Client"  (click)="handleType($event)" class="text-dark btn btn-lg btn-light float-right">
+    <div class="row justify-content-center">
+      <div class="col-3 text-center">
+        <input id="client" type="button" name='USER' value="Client"  (click)="handleType($event)" class="text-dark btn btn-lg btn-light rounded shadow">
       </div>
-      <div class="col-6">
-        <input id="contructor" type="button" name='CONTRACTOR' value="Contractor"  (click)="handleType($event)" class="text-dark btn btn-lg btn-light">
+      <div class="col-3 text-center">
+        <input id="contructor" type="button" name='CONTRACTOR' value="Contractor"  (click)="handleType($event)" class="text-dark btn btn-lg btn-light rounded shadow">
       </div>
-      <div class="col">
+      <div class="col-11">
         <app-login-form [type]="type"></app-login-form>
       </div>
     </div>
     <hr>
-    <div class="text-white text-center" >Don't have an account? <a class="shadow rounded" href="/register">Sign Up Here!</a></div>
+    <div class="text-white text-center" >Don't have an account? <a href="/register">Sign Up Here!</a></div>
 </div>
 

@@ -14,19 +14,23 @@
         </button>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-         <ul class="nav navbar-nav menu_nav">
+          <ul class="nav navbar-nav menu_nav">
             <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link ml-4"
                 [routerLink]="['/chat']" style="font-size: 16px;">Chat</a></li>
             <li *ngIf="tokenAuthService.currentUserType == 'USER'" class="nav-item"><a class="nav-link "
                 [routerLink]="['/pv-system/user-info']" style="font-size: 16px;">Calculate</a>
-            <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR'" class="nav-item"><a class="nav-link "
-                [routerLink]="['/posts']" style="font-size: 16px;">Posts</a>
+            <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()"
+              class="nav-item"><a class="nav-link " [routerLink]="['/posts']" style="font-size: 16px;">Posts</a>
           </ul>
           <ul class="nav navbar-nav menu_nav ml-auto">
-            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/profile']" style="font-size: 16px;">Profile</a></li>
-            <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/login']" style="font-size: 16px;">Log In</a>
-            <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/register']" style="font-size: 16px;">Sign Up</a>
-            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/']" (click)="signOut()" style="font-size: 16px;">Log Out</a>
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/profile']"
+                style="font-size: 16px;">Profile</a></li>
+            <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/login']"
+                style="font-size: 16px;">Log In</a>
+            <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link"
+                [routerLink]="['/register']" style="font-size: 16px;">Sign Up</a>
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/']"
+                (click)="signOut()" style="font-size: 16px;">Log Out</a>
           </ul>
         </div>
       </div>

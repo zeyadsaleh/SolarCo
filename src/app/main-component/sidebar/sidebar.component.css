@@ -9,6 +9,7 @@
     font-size: 22px; /* Increase font size */
     color: white; /* White text color */
     border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+    z-index: 10;
   }
   
   #mySidenav a:hover {
