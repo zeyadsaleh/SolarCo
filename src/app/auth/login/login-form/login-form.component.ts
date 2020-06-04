@@ -55,7 +55,7 @@ export class LoginFormComponent implements OnInit {
         console.log(this.ability.rules);
         console.log(this.ability)
         this.submitted = false;
-        this.router.navigate(['home']);
+        this.router.navigate(['']);
       },
       error => {
         console.log(error);

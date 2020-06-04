@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CometChat } from '@cometchat-pro/chat';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { COMETCHAT_CONSTANTS } from 'src/app/CONSTS';
+import { COMETCHAT_CONSTANTS } from '../api/CHAT_CONSTS';
 
 @Injectable({
   providedIn: 'root'

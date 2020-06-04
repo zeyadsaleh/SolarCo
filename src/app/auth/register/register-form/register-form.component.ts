@@ -80,7 +80,7 @@ export class RegisterFormComponent implements OnInit {
             err => (console.log(err))
           ); 
           this.submitted = false;
-          this.router.navigate(['home']);
+          this.router.navigate(['']);
         },
         error => {
           console.log(error);
@@ -105,7 +105,7 @@ export class RegisterFormComponent implements OnInit {
           console.log(res);
           this.ability.update(res.data.rules); // Casl Abilities
           this.submitted = false;
-          this.router.navigate(['home']);
+          this.router.navigate(['']);
         },
         error => {
           console.log(error);

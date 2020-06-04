@@ -1,1 +1,16 @@
-<p>create-rate works!</p>
+<form (ngSubmit)="onRateSubmit($event)">
+    <div class="rating p-2 border rounded">
+
+        <input type="radio" id="star5" name="rate" value="5" onclick="form.submit()" />
+        <label for="star5" title="excellent">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" onclick="form.submit()" />
+        <label for="star4" title="very good">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" onclick="form.submit()" />
+        <label for="star3" title="good">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" onclick="form.submit()" />
+        <label for="star2" title="poor">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" onclick="form.submit()" />
+        <label for="star1" title="bad">1 star</label>
+
+    </div>
+</form>
