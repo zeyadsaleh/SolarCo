@@ -1,28 +1,8 @@
 .bg-img {
-    /* The image used */
     background-image: url("../assets/images/wallpaper2you_77288.jpg");
-  
     min-height: 380px;
-  
-    /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-  }
-  .example-sidenav {
-    padding: 30px;
-    width: 220px;
-    background: rgb(0, 24, 48);
-    /* background: rgb(0, 24, 48); */
-    color: whitesmoke;
-  }
-
-  .infoi {
-    width: 40px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
   }
