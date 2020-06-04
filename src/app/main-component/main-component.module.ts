@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { Ability, PureAbility } from '@casl/ability';
 import { AbilityModule } from '@casl/angular';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MaterialModule } from '../shared/material/material.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     CommonModule,
     AppRoutingModule,
     AbilityModule,
+    MaterialModule,
   ],
   providers:[
     { provide: Ability, useValue: new Ability() },
@@ -31,7 +33,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HomeComponent,
     ToolbarComponent,
     FooterComponent,
-    PageBannerComponent
+    PageBannerComponent,
+    NotFoundComponent,
   ],
 })
 export class MainComponentModule { }

@@ -1,15 +1,29 @@
-<div>
-  <app-toolbar></app-toolbar>
+<div *ngIf="!isLoading else loading">
+  <mat-drawer-container class="example-container" autosize hasBackdrop="true">
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <img class="uk-display-block" src="assets/icon/solar.png" alt="Solar" style="width:35px; height:35px;">
+      <h2>SolarCo</h2>
+      <mat-selection-list multiple="false">
+        <mat-list-option class="text-white">Option_1</mat-list-option>
+        <mat-list-option class="text-white">Option_2</mat-list-option>
+        <mat-list-option class="text-white">Option_3</mat-list-option>
+      </mat-selection-list>
+    </mat-drawer>
 
-  <router-outlet></router-outlet>
+    <div class="example-sidenav-content">
+      <app-toolbar></app-toolbar>
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+      <span class="infoi" type="button" mat-button (mouseover)="drawer.toggle()"></span>
+    </div>
 
-  <app-footer></app-footer>
+  </mat-drawer-container>
 </div>
 
 <ng-template #loading>
   <div class="text-center">
-      <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
-      </div>
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
 </ng-template>

@@ -9,8 +9,8 @@ import { ChatAuthService } from './shared/services/chat-auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'solarco';
-
+  title = 'SolarCo';
+  showFiller:boolean = false;
   isLoading:boolean = true;
   
   constructor(private ability: Ability, private tokenService: AngularTokenService, readonly chatAuthService: ChatAuthService){ 
