@@ -3,10 +3,12 @@ import { AngularTokenService } from "angular-token";
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/shared/interfaces/user';
+import { Contractor } from 'src/app/shared/interfaces/contractor';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Ability } from '@casl/ability';
 import { GlobalService } from 'src/app/shared/services/global.service';
 import { ChatAuthService } from 'src/app/shared/services/chat-auth.service';
+import { MapsAPILoader } from '@agm/core';
 
 @Component({
   selector: 'app-register-form',
@@ -30,9 +32,12 @@ export class RegisterFormComponent implements OnInit {
     type: ''
   };
 
-  contractor = {
+  contractor: Contractor = {
     has_office: false,
-    address: ''
+    address: '',
+    mobileNumber: '',
+    website: '',
+    fax: ''
   };
 
   constructor(private tokenAuthSerivce: AngularTokenService,
@@ -92,6 +97,9 @@ export class RegisterFormComponent implements OnInit {
         name: this.signUpUser.name,
         address: this.contractor.address,
         userType: this.signUpUser.type,
+        mobileNumber: this.contractor.mobileNumber,
+        website: this.contractor.website,
+        fax: this.contractor.fax
       }).subscribe(
         res => {
           console.log(res);
@@ -106,4 +114,5 @@ export class RegisterFormComponent implements OnInit {
       );
     }
   }
+	
 }

@@ -33,7 +33,6 @@ import { ChatComponent } from './chat/chat.component';
 import { MessagesViewComponent } from './chat/messages-view/messages-view.component';
 import { ContactsListComponent } from './chat/contacts-list/contacts-list.component';
 // ########### App Modules END ##########
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +61,7 @@ import { ContactsListComponent } from './chat/contacts-list/contacts-list.compon
     UserModule,
     AbilityModule,
     ReactiveFormsModule,
-    OfferModule
+    OfferModule,
   ],
   providers: [
     AngularTokenModule, 
