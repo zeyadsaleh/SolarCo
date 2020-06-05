@@ -13,7 +13,6 @@ export class GeoLoactionService {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         success => {
-          console.log(success);
           callback(success.coords);
         },
         error => {
@@ -28,11 +27,7 @@ export class GeoLoactionService {
   getMapLink(location) {
     let query = "";
     if (location.latitude) {
-      // let lat = +location.latitude.toFixed(6) - 31.228103;
-      // let long = +location.longitude.toFixed(6) - 29.958603;
-      // console.log(lat);
-      // console.log(long);
-      query = `${+(location.latitude).toFixed(6)},${(location.longitude).toFixed(6)
+      query = `${(location.latitude - 0.004553999999998837 * (location.accuracy / 8741)).toFixed(6)},${+(location.longitude + 0.015978000000000492 * (location.accuracy / 8741)).toFixed(6)
         }`;
       return `https://maps.google.com/?q=${query}`;
     } else {
