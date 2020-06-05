@@ -30,6 +30,7 @@ import { RegisterModule } from './auth/register/register.module';
 import { UserModule } from './user/user.module';
 import { OfferModule } from './offer/offer.module';
 import { ChatModule } from './chat/chat.module';
+// import { GoogleMapsModule } from '@angular/google-maps'
 // ########### App Modules END ##########
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ChatModule } from './chat/chat.module';
     ReactiveFormsModule,
     OfferModule,
     ChatModule,
+    // GoogleMapsModule,
   ],
   providers: [
     AngularTokenModule, 
