@@ -17,7 +17,7 @@ body { padding-top:30px; }
 
 .disableDiv{
     pointer-events:none;
-    background-color:#666666;
+    background-color:#8f8e8e;
     filter: alpha(opacity=75); /* internet explorer */
     -khtml-opacity: 0.75;      /* khtml, old safari */
       -moz-opacity: 0.75;      /* mozilla, netscape */
@@ -25,7 +25,7 @@ body { padding-top:30px; }
 }
 
 	.modal-confirm {		
-		color: #636363;
+		color: hsl(0, 0%, 39%);
 		width: 550px;
 	}
 	.modal-confirm .modal-content {
@@ -87,7 +87,7 @@ body { padding-top:30px; }
 
 
    #approved .modal-confirm {		
-		color: #636363;
+		color: #9c8383;
 		width: 325px;
 	}
 	#approved .modal-confirm .modal-content {
