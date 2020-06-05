@@ -11,24 +11,23 @@ export class UserService {
   constructor(private http: HttpClient,
     private api: GlobalService) { }
     
-  private apiUrl:String = `${this.api.host}`;;
+  private apiClient:String = `${this.api.host}/clients`;;
+  private apiContractor:String = `${this.api.host}/contractors`;;
 
   getContractor(id) {
-    return this.http.get(`${this.apiUrl}/contractors/${id}`);
+    return this.http.get(`${this.apiContractor}/${id}`);
   }
 
   updateAvatar(id, type, body, headers) {
     if(type == 'USER')
-      return this.http.put(`${this.apiUrl}/clients/avatar/${id}`, body, {headers: headers});
+      return this.http.put(`${this.apiClient}/avatar/${id}`, body, {headers: headers});
     else if (type == 'CONTRACTOR')
-      return this.http.put(`${this.apiUrl}/contractors/avatar/${id}`, body, {headers: headers});
+      return this.http.put(`${this.apiContractor}/avatar/${id}`, body, {headers: headers});
   }
 
-  updateContractor(id, body) {
-    return this.http.put(`${this.apiUrl}/contractors/${id}`, body);
+  updateUser(id, type, body) {
+    if(type == 'USER') return this.http.put(`${this.apiClient}/${id}`, body);
+    else if (type == 'CONTRACTOR') return this.http.put(`${this.apiContractor}/${id}`, body);
   }
 
-  updateClient(id, body) {
-    return this.http.put(`${this.apiUrl}/clients/${id}`, body);
-  }
 }

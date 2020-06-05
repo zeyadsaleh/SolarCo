@@ -8,47 +8,56 @@ export class PvCalculationService {
   constructor(private http: HttpClient,
               private api: GlobalService) { }
 
-  private apiCal:String = `${this.api.host}/calculations`;
+  private apiCal: String = `${this.api.host}/calculations`;
 
   // get/:id
-  getCalculation(calc_id, callback){
-    this.http.get(`${this.apiCal}/${calc_id}`).subscribe(response =>{
-      console.log(response);
-      callback(response);
-    });
+  getCalculation(calc_id, successback) {
+    this.http.get(`${this.apiCal}/${calc_id}`).subscribe(
+      success => {
+        console.log(success);
+        successback(success);
+      });
   }
   // get
-  getCalculations(callback){
-    this.http.get(`${this.apiCal}`).subscribe(response =>{
-      console.log(response);
-      callback(response);
-    });
+  getCalculations(successback) {
+    this.http.get(`${this.apiCal}`).subscribe(
+      success => {
+        console.log(success);
+        successback(success);
+      });
   }
 
-  private apiSys:String = `${this.api.host}/systems`;
+  private apiSys: String = `${this.api.host}/systems`;
 
   // delete
-  delCalculation(sys_id, callback){
-    this.http.delete(`${this.apiSys}/${sys_id}`).subscribe(response =>{
-      console.log(response);
-      callback(response);
-    });
+  delCalculation(sys_id, errorback) {
+    this.http.delete(`${this.apiSys}/${sys_id}`).subscribe(
+      error => {
+        console.log(error);
+        errorback(error);
+      });
   }
 
   // post
-  setSystem(system_data, callback){
-    this.http.post(`${this.apiSys}`, system_data).subscribe(response =>{
-      console.log(response);
-      callback(response);
-    });
+  setSystem(system_data, successback, errorback) {
+    this.http.post(`${this.apiSys}`, system_data).subscribe(
+      success => {
+        console.log(success);
+        successback(success);
+      },
+      error => {
+        console.log(error);
+        errorback(error);
+      });
   }
 
   // get
-  getSystems(callback){
-    this.http.get(`${this.apiSys}`).subscribe(response =>{
-      console.log(response);
-      callback(response);
-    });
+  getSystems(successback) {
+    this.http.get(`${this.apiSys}`).subscribe(
+      success => {
+        console.log(success);
+        successback(success);
+      });
   }
-  
+
 }

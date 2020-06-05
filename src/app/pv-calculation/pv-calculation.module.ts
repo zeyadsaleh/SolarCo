@@ -13,6 +13,8 @@ import { PageBannerComponent } from '../main-component/page-banner/page-banner.c
 import { MainComponentModule } from '../main-component/main-component.module';
 import { SystemsComponent } from './systems/systems.component';
 import { SystemsDetailsComponent } from './systems-details/systems-details.component';
+// import { MapComponent } from './map/map.component';
+// import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { SystemsDetailsComponent } from './systems-details/systems-details.compo
     CalculateComponent,
     SystemsComponent,
     SystemsDetailsComponent,
+    // MapComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,8 @@ import { SystemsDetailsComponent } from './systems-details/systems-details.compo
     AppRoutingModule,
     FormsModule,
     RouterModule,
-    MainComponentModule
+    MainComponentModule,
+    // GoogleMapsModule
   ],
   exports: [
     UserInputComponent,

@@ -4,7 +4,8 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container box_1620">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <a class="navbar-brand logo_h" [routerLink]="['/']"><span class="text-white">SolarCo</span></a>
+        <a class="navbar-brand logo_h" [routerLink]="['']"><span class="text-white white mr-4"><img class="icon"
+              src="assets/icon/solar.png" alt="Solar"> SolarCo</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="icon-bar"></span>
@@ -13,14 +14,23 @@
         </button>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+          <ul class="nav navbar-nav menu_nav">
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link"
+                [routerLink]="['/chat']" style="font-size: 16px;">Chat</a></li>
+            <li *ngIf="tokenAuthService.currentUserType == 'USER'" class="nav-item"><a class="nav-link "
+                [routerLink]="['/pv-system/user-info']" style="font-size: 16px;">Calculate</a>
+            <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()"
+              class="nav-item"><a class="nav-link " [routerLink]="['/posts']" style="font-size: 16px;">Posts</a>
+          </ul>
           <ul class="nav navbar-nav menu_nav ml-auto">
-            <li class="nav-item active"><a class="nav-link" [routerLink]="['/home']">Home</a></li>
-            <li *ngIf="tokenAuthService.currentUserType == 'USER'" class="nav-item"><a class="nav-link" [routerLink]="['/pv-system/user-info']">Calculate</a>
-            <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR'" class="nav-item"><a class="nav-link" [routerLink]="['/posts']">Posts</a>
-            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/profile']">Profile</a></li>
-            <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/login']">Login</a>
-            <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/register']">Register</a>
-            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/']" (click)="signOut()">Logout</a>
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/profile']"
+                style="font-size: 16px;">Profile</a></li>
+            <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/login']"
+                style="font-size: 16px;">Log In</a>
+            <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link"
+                [routerLink]="['/register']" style="font-size: 16px;">Sign Up</a>
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/']"
+                (click)="signOut()" style="font-size: 16px;">Log Out</a>
           </ul>
         </div>
       </div>

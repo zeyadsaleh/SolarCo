@@ -6,13 +6,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 // ########### Routes END ##########
 
-// Modules ##START##
+// Angular Modules ##START##
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AbilityModule } from '@casl/angular';
-// ########### Modules END ##########
+// ########### Angular Modules END ##########
 
 // Services ##START##
 import { AngularTokenService, AngularTokenModule, AngularTokenOptions } from 'angular-token';
@@ -29,8 +29,9 @@ import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
 import { UserModule } from './user/user.module';
 import { OfferModule } from './offer/offer.module';
+import { ChatModule } from './chat/chat.module';
+// import { GoogleMapsModule } from '@angular/google-maps'
 // ########### App Modules END ##########
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,9 @@ import { OfferModule } from './offer/offer.module';
     UserModule,
     AbilityModule,
     ReactiveFormsModule,
-    OfferModule
+    OfferModule,
+    ChatModule,
+    // GoogleMapsModule,
   ],
   providers: [
     AngularTokenModule, 

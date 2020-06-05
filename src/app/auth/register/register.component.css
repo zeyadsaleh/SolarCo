@@ -11,9 +11,11 @@
 
 .main{
     display: block;
-    border: 1px solid black;
+    color: whitesmoke;
+    /* border: 1px solid whitesmoke; */
     border-radius: 5px;
     padding: 5px;
     min-height: 50%;
-    background-color: rgba(128, 128, 128, 0.151);
+    background-color: rgb(0, 24, 48);
   }
+

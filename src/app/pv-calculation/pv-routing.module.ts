@@ -5,7 +5,7 @@ import { CalculateComponent } from './calculate/calculate.component';
 import { PvSystemComponent } from './pv-system/pv-system.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { SystemsDetailsComponent } from './systems-details/systems-details.component';
-
+// import { MapComponent } from './map/map.component';
 const routes: Routes = [
   {
     path: 'pv-system/user-info',
@@ -27,6 +27,10 @@ const routes: Routes = [
     component: PvSystemComponent,
     canActivate: [AuthGuard]
   },
+  // {
+  //   path: 'map',
+  //   component: MapComponent,
+  // },
 ];
 
 @NgModule({

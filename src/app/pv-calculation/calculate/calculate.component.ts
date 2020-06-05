@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PvCalculationService } from 'src/app/shared/services/pv-calculation.service';
 import { ShareService } from 'src/app/shared/services/share.service';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calculate',
@@ -11,29 +11,38 @@ import { Router } from '@angular/router';
 
 export class CalculateComponent implements OnInit {
 
+  address: string;
   api_response: object;
-  title:string = 'Pv-System Calculate';
+  title: string = 'Pv-System Calculate';
+  error: string;
 
   constructor(private data: PvCalculationService,
-              private router: Router,
-              private __service: ShareService) { }
+    private router: Router,
+    private __service: ShareService) { }
 
   ngOnInit(): void {
     this.__service.Data.subscribe((data) => {
-      if(data && data['permission']){
+      if (data && data['permission']) {
         this.api_response = data;
-      }else{
+      } else {
         this.router.navigate(['pv-system/user-info']);
       }
     });
   }
 
-  calculate(){ 
-      this.data.setSystem(this.api_response, response =>{
-        if(response){ 
-          this.__service.setData(response);
-          this.router.navigate(['pv-system/', response['id']]);
+  calculate() {
+    if ( this.api_response['consumption'] > 0 ) {
+      this.api_response['address'] = this.address;
+      this.data.setSystem(this.api_response, succes => {
+        if (succes) {
+          this.__service.setData(succes);
+          this.router.navigate(['pv-system/', succes['id']]);
         }
+      }, error => {
+        this.error = "Consumption: " + error['error']['consumption'];
       });
+    } else {
+      this.error = "Consumption: must be greater than 0!";
+    }
   }
 }

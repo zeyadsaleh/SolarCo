@@ -19,7 +19,8 @@ export class OfferFormComponent implements OnInit {
   }
 
   title:string = 'New Offer';
-  
+  submitted:boolean = false;
+
   private _routeSubscription: Subscription;
 
   constructor(private offerService: OfferService,
@@ -42,14 +43,17 @@ export class OfferFormComponent implements OnInit {
     }
 
   onSubmit() {
+    this.submitted = true;
     this.offerService.createOffer(this.offer).subscribe(
       res => {
         console.log(res);
-        this.router.navigate(['posts/'+this.offer.post_id]);
+        this.router.navigate(['posts/' + this.offer.post_id]);
+        this.submitted = false;
       },
       error => {
         console.log(error);
         this.errorMessage = error.error.error;
+        this.submitted = false;
       }
     );
   }

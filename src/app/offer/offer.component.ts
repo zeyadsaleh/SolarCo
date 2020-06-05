@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OfferService } from 'src/app/shared/services/offer.service';
 import { Router } from '@angular/router';
 import { Offer } from '../shared/interfaces/offer';
 import { AngularTokenService } from 'angular-token';
+import { PostService } from 'src/app/shared/services/post.service';
 
 @Component({
   selector: 'app-offer',
@@ -17,10 +18,12 @@ export class OfferComponent implements OnInit {
   @Input() post_id:string = '';
   @Input() postOwner_id:string = '';
   currentUserID: string;
-  type:string = '';
+  type: string = '';
+  isApproved: boolean = false;
+  @Output() onDeleteOffer = new EventEmitter()
+  submitted:boolean = false;
 
-  
-  constructor(private offerService: OfferService,private router: Router, private tokenAuth: AngularTokenService) { }
+  constructor(private offerService: OfferService,private router: Router, private tokenAuth: AngularTokenService, private postService: PostService) { }
 
   ngOnInit(): void {
     this.getOffers();
@@ -32,6 +35,10 @@ export class OfferComponent implements OnInit {
     this.offerService.getOffers(this.post_id).subscribe((res)=>{
       for (let o of res){
         this.offers.push(o);
+        //for approval dim
+        if (o.status == 'accepted') {
+          this.isApproved = true
+        }
         // For permissions
         if(this.type == 'CONTRACTOR' &&
            this.currentUserID == o.contractor_id)
@@ -51,9 +58,8 @@ export class OfferComponent implements OnInit {
     this.offers = this.offers.filter(function( obj ) {
       return obj.id !== id;
     });
-    if (this.offers.length < 0) {
-      // this.offers = new Array();
-      // this.getOffers();
+    this.onDeleteOffer.emit(); //for showing Apply button after delete the offer
+    if (this.offers.length == 0) {
       this.has_offers = false;
     }
   }
@@ -67,26 +73,33 @@ export class OfferComponent implements OnInit {
   }
 
   onEdit(offer) {
+    this.submitted = true;
     this.offerService.updateOffer(offer.id, offer).subscribe(
       res => {
         console.log(res);
         this.offers = new Array();
         this.getOffers();
         this.editOffer = 0;
+        this.submitted = false;
       },
       error => {
         console.log(error);
+        this.submitted = false;
       }
     );
   }
 
   handleApprove(offer) {
-    if (offer.status == 'accepted') {
-      offer.status = 'rejected';
-    }
-    else {
-      offer.status = 'accepted';
-    }
+    offer.status = 'accepted';
     this.onEdit(offer);
+    this.isApproved = true;
+    this.postService.updatePost(offer.post.id, {closed: true}).subscribe(
+      res => {
+        console.log(res);
+      },
+      error => {
+        console.log(error);
+        
+      });
   }
 }

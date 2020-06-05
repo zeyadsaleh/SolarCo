@@ -1,4 +1,43 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch');
+
+/*======================
+    404 page
+=======================*/
+
+
+.page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
+}
+
+.page_404  img{ width:100%;}
+
+.four_zero_four_bg{
+ 
+ background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+	height: 600px;
+	width: 100%;
+	background-position: center;
+ }
+ body{
+	background-color: palegoldenrod;
+ }
+ 
+ 
+ .four_zero_four_bg h1{
+ font-size:80px;
+ }
+ 
+  .four_zero_four_bg h3{
+			 font-size:80px;
+			 }
+			 
+			 .link_404{			 
+	color: #fff!important;
+    padding: 5px 10px;
+    background: #39ac31;
+    margin: 10px 0;
+    display: inline-block;}
+	.contant_box_404{ margin-top:-20px;}
+
+/* @import url('https://fonts.googleapis.com/css?family=Cabin+Sketch');
 
 html {
 	height: 100%;
@@ -32,25 +71,24 @@ h1 small {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	-ms-flex-align: center;
-  align-items: center;
+  	align-items: center;
 	flex-direction: column;
 	margin: 0 auto;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	-ms-flex-pack: center;
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 15px;
 }
 
 
 .sketch {
 	position: relative;
-	height: 400px;
-	min-width: 400px;
+	height: 650px;
+	min-width: 600px;
 	margin: 0;
 	overflow: visible;
-	order: 2;
-	
+	order: 2;	
 }
 
 .bee-sketch {
@@ -64,13 +102,13 @@ h1 small {
 .red {
 	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/198554/red-1.png) no-repeat center center;
 	opacity: 1;
-	animation: red 3s linear infinite, opacityRed 5s linear alternate infinite;
+	animation: red 2.5s linear infinite, opacityRed 5s linear alternate infinite;
 }
 
 .blue {
 	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/198554/blue-1.png) no-repeat center center;
 	opacity: 0;
-	animation: blue 3s linear infinite, opacityBlue 5s linear alternate infinite;
+	animation: blue 2.5s linear infinite, opacityBlue 5s linear alternate infinite;
 }
 
 
@@ -189,3 +227,10 @@ h1 small {
 		opacity: .3
 	}
 }
+*/
+.bar {
+	background: rgb(0, 24, 48);
+	width: 100%;
+	height: 88px;
+	display: flex;
+} 
