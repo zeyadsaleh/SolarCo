@@ -11,37 +11,50 @@ import { Ability } from '@casl/ability';
 })
 export class EditComponent implements OnInit {
 
+  type: string;
   userData: object;
-  title:string = 'Profile';
+  title: string = 'Profile';
+  error: string;
 
   constructor(private tokenAuthService: AngularTokenService,
-              private router: Router,
-              private userService: UserService,
-              private ability: Ability) {}
+    private router: Router,
+    private userService: UserService,
+    private ability: Ability) { }
+
   ngOnInit(): void {
     this.tokenAuthService.validateToken().subscribe(
       res => {
+        this.type = this.tokenAuthService.currentUserType;
         this.userData = this.tokenAuthService.currentUserData;
         console.log(this.userData)
       },
-      error => console.log(error)
-      );
+      error => this.error = error['error']);
   }
 
-  updateUser(){
-    this.tokenAuthService.signOut().subscribe(
-      res => {
-        this.ability.update([]);
-        this.userService.updateClient(this.userData['id'], this.userData).subscribe(
-          res =>      {
-            this.router.navigate(['login']);
-      },
-      error => console.log(error)
-    );
-      },
-      error =>    console.log(error)
-    );
-
+  updateUser() {
+    this.userData['username'] = this.userData['name'];
+    if (this.userData['uid'] != this.userData['email']) {
+      this.userData['uid'] = this.userData['email'];
+      this.tokenAuthService.signOut().subscribe(
+        res => {
+          this.ability.update([]);
+          this.userService.updateUser(this.userData['id'], this.type, this.userData).subscribe(
+            res => {
+              this.router.navigate(['login']);
+            },
+            error => this.error = error['error']);
+        },
+        error => this.error = error);
+    } else {
+      this.userData['uid'] = this.userData['email'];
+      this.userService.updateUser(this.userData['id'], this.type, this.userData).subscribe(
+        res => {
+          location.reload();
+        },
+        error => this.error = error['error']);
+    }
+    console.log(this.error);
+    
   }
 
 }

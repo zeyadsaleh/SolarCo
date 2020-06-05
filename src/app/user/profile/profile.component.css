@@ -6,17 +6,17 @@
     overflow-x:hidden;
     height: 100%;
     margin: 0;
-    min-height: 92vh;
+    min-height: 95vh;
   }
  
   .content{
-     margin-top:20px;
+     margin-top:10px;
    }
   
   
   /* Profile container */
   .profile {
-    margin: 20px 0;
+    margin: 10px 0;
   }
   
   /* Profile sidebar */
@@ -116,9 +116,9 @@
   
   /* Profile Content */
   .profile-content {
-    padding: 20px;
+    padding: 10px;
     background: #fff;
-    min-height: 460px;
+    min-height: 700px;
   }
   
   .nav>li {
@@ -126,6 +126,6 @@
       display: block;
   }  
   mat-card{
-    margin: 20px;
-    max-width: 400px;
+    margin: 10px;
+    max-width: 450px;
 }

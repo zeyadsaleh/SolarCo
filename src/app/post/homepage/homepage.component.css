@@ -24,7 +24,7 @@ body {
   background-color: white;
   width: 50vw;
   height: auto;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.5);  display: flex;
+  box-shadow: 0 1px 5px rgb(0, 24, 48);  display: flex;
   border-radius: 0.3rem;
   margin: 10px;
 }
@@ -37,13 +37,13 @@ body {
   margin: 0;
   padding: 0;
   width: 70px;
-  background-color: #22313F;
+  background-color: rgb(0, 24, 48);
   border-bottom-left-radius: 0.3rem;
   border-top-left-radius: 0.3rem;
 }
 .container .post-card .post-card__nav ul li {
   text-align: center;
-  border-bottom: 2px solid rgb(27, 38, 50);
+  border-bottom: 2px solid rgb(0, 24, 48);
 }
 
 .container .post-card .post-card__nav ul li:last-child {
@@ -64,7 +64,7 @@ body {
 }
 
 .container .post-card .post-card__nav ul li a:hover:not(.active) {
-  background-color: #2d3f53;
+  background-color: rgb(0, 24, 48);
   height: 90px;
 }
 .active {
@@ -89,7 +89,7 @@ body {
   margin: 0;
   font-size: 1.5em;
   font-weight: 100;
-  color: #333;
+  color: rgb(0, 24, 48);
 }
 .post-card__info h5 {
   display: block;
@@ -97,7 +97,7 @@ body {
   font-weight: 100;
 }
 .post-card__info h5 span {
-  color: #333;
+  color: rgb(0, 24, 48);
   font-weight:300;
 }
 .post-card__info h4 {
@@ -106,12 +106,12 @@ body {
   font-weight: 200;
 }
 .post-card__info h4 span {
-  color: #333;
+  color: rgb(0, 24, 48);
   font-weight:300;
 }
 .post-card__info p {
   margin-top: 1rem;
-  color: #333;
+  color: rgb(0, 24, 48);
   font-size: 1.25em;
   font-weight: 300;
   line-height: 1.3rem;
@@ -151,7 +151,7 @@ body {
 }
 .post-card__img .post-card__social ul li {
   display: inline-block;
-  text-shadow: 0 1px rgba(0,0,0,0.5);
+  text-shadow: 0 1px rgb(0, 24, 48);
 }
 .post-card__img .post-card__social ul li:first-child {
   margin-right: 2rem;
@@ -168,7 +168,7 @@ body {
   transform: rotate(-15deg) scale(1.5);
 }
 .post-card__img .post-card__social ul li a:hover > i.ion-chatbox {
-  color: #2d3f53;
+  color: rgb(0, 24, 48);
   transform: rotate(-15deg) scale(1.5);
 }
 .post-card__img .post-card__social ul li span {
@@ -198,7 +198,7 @@ body {
     float: left;
     display: inline-block;
     border-bottom: none;
-    border-right: 2px solid rgb(27, 38, 50);
+    border-right: 2px solid rgb(0, 24, 48);
   }
   .container .post-card .post-card__nav ul li a {
     height: 70px;
