@@ -24,12 +24,16 @@
             <mat-card-actions *ngIf="client_request['consump'] > 0">
                 <a mat-button class="btn rounded shadow btn-outline-success mr-3" *ngIf="!client_request['lat']"
                     (click)="getLocation()">GetLocation</a>
-                <a mat-button class="btn rounded shadow btn-outline-primary" (click)="confirm()">Confirm</a>
+                <button mat-button class="btn rounded shadow btn-outline-primary" [disabled]="!ignore"
+                    (click)="confirm()">Confirm</button>
             </mat-card-actions>
             <mat-card-footer class="text-center" *ngIf="client_request['consump'] > 0">
-                <p class="bg-warning rounded text-center ml-3 mr-3" *ngIf="!client_request['lat']">you can Igonre
-                    GetLocation, If it's not allowed</p>
-                <p class="bg-success rounded text-center ml-3 mr-3" *ngIf="client_request['lat']">We Got Your Location
+
+                <p class="bg-warning text-dark m-3 text-dark m-2 rounded text-center" *ngIf="!client_request['lat']">
+                    <input type="checkbox" class="mr-2" [checked]="ignore" (change)="ignore = !ignore" /> Igonre
+                    GetLocation</p>
+                <p class="bg-success text-dark m-3 rounded text-center" *ngIf="client_request['lat']">We Got Your
+                    Location
                     succefully!</p>
             </mat-card-footer>
         </mat-card>
