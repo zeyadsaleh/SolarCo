@@ -5,6 +5,14 @@ mat-card{
     border: 1px black solid;
 }
 
+.none{
+	display: none;
+}
+
+.block{
+	display: block;
+}
+
 body { padding-top:30px; }
 .widget .panel-body { padding:0px; }
 .widget .list-group { margin-bottom: 0; }

@@ -6,9 +6,9 @@ import { GlobalService } from './global.service';
 export class GeoLoactionService {
 
   constructor(private http: HttpClient,
-              private api: GlobalService) { }
+    private api: GlobalService) { }
 
-  requestLocation(callback){
+  requestLocation(callback) {
     //W3C Geolaction API
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -24,19 +24,20 @@ export class GeoLoactionService {
     }
   }
 
-  getMapLink(location){
+  getMapLink(location) {
     let query = "";
-    if(location.latitude){
-      query = `${location.latitude},${location.longitude}`;
+    if (location.latitude) {
+      query = `${(location.latitude - 0.004553999999998837 * (location.accuracy / 8741)).toFixed(6)},${+(location.longitude + 0.015978000000000492 * (location.accuracy / 8741)).toFixed(6)
+        }`;
       return `https://maps.google.com/?q=${query}`;
-    }else{
+    } else {
       return "No Location Set!"
     }
   }
 
   // get
-  getLocation(client_data, callback){
-    this.http.post(`${this.api.host}/geocoder`, client_data).subscribe(response =>{
+  getLocation(client_data, callback) {
+    this.http.post(`${this.api.host}/geocoder`, client_data).subscribe(response => {
       console.log(response);
       callback(response);
     });

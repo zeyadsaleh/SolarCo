@@ -324,13 +324,13 @@ button:focus {
 .banner_area {
   position: relative;
   z-index: 1;
-  min-height: 300px;
+  min-height: 250px;
   background: #000; }
   .banner_area .banner_inner {
     position: relative;
     overflow: hidden;
     width: 100%;
-    min-height: 300px;
+    min-height: 250px;
     z-index: 1; }
     .banner_area .banner_inner .overlay {
       background: url(/assets/img/banner/banner.jpg) no-repeat scroll center center;

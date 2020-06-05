@@ -22,7 +22,7 @@ export class OfferComponent implements OnInit {
   isApproved: boolean = false;
   @Output() onDeleteOffer = new EventEmitter()
   submitted:boolean = false;
-
+  currentOffer: any = {};
   constructor(private offerService: OfferService,private router: Router, private tokenAuth: AngularTokenService, private postService: PostService) { }
 
   ngOnInit(): void {
@@ -101,5 +101,10 @@ export class OfferComponent implements OnInit {
         console.log(error);
         
       });
+  }
+
+  //for modal 
+  setCurrrentOffer(offer){
+    this.currentOffer = offer;
   }
 }

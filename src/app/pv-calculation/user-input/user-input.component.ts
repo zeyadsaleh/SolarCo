@@ -16,6 +16,7 @@ export class UserInputComponent implements OnInit {
   permission: boolean = true;
   title: string = 'Pv-System Calculate';
   error: string;
+  ignore: boolean;
 
   constructor(private geolocation: GeoLoactionService,
     private http: HttpClient,
@@ -30,10 +31,12 @@ export class UserInputComponent implements OnInit {
   getLocation() {
     this.geolocation.requestLocation(location => {
       if (location) {
-        console.log(location);
-        this.client_request["lat"] = location.latitude;
-        this.client_request["long"] = location.longitude;
+        console.log(location);        
+        this.client_request["lat"] = +(location.latitude - 0.004553999999998837*(location.accuracy/8741)).toFixed(6);
+        this.client_request["long"] = +(location.longitude + 0.015978000000000492*(location.accuracy/8741)).toFixed(6);
         this.client_request["src"] = this.geolocation.getMapLink(location);
+        console.log(this.geolocation.getMapLink(location));
+        this.ignore = true;
       }
     });
   }
@@ -45,9 +48,11 @@ export class UserInputComponent implements OnInit {
   }
 
   confirm() {
+    this.getIpAddress();
     if (this.client_request['consump'] && this.client_request['consump'] > 0) {
       this.geolocation.getLocation(this.client_request, response => {
         if (response && response['permission']) {
+          if (this.client_request['src']) response['src'] = this.client_request['src'];
           this.__service.setData(response)
           this.router.navigate(['pv-system/calculate']);
         } else {
