@@ -6,8 +6,8 @@
             <mat-card-title class="bg-dark rounded shadow text-white p-2 mb-3">PV System Data</mat-card-title>
             <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ error }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error=''">
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <mat-tab-group class="rounded shadow p-2 mb-3 border border-warning">

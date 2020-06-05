@@ -14,21 +14,22 @@ export class UserInputComponent implements OnInit {
   client_request: object;
   api_response: object;
   permission: boolean = true;
-  title:string = 'Pv-System Calculate';
-  
-  constructor(private geolocation: GeoLoactionService, 
-              private http: HttpClient,
-              private router: Router,
-              private __service: ShareService) { }
-              
+  title: string = 'Pv-System Calculate';
+  error: string;
+
+  constructor(private geolocation: GeoLoactionService,
+    private http: HttpClient,
+    private router: Router,
+    private __service: ShareService) { }
+
   ngOnInit(): void {
     this.client_request = new Object();
     this.getIpAddress();
   }
 
-  getLocation(){
+  getLocation() {
     this.geolocation.requestLocation(location => {
-      if(location){
+      if (location) {
         console.log(location);
         this.client_request["lat"] = location.latitude;
         this.client_request["long"] = location.longitude;
@@ -37,21 +38,25 @@ export class UserInputComponent implements OnInit {
     });
   }
 
-  getIpAddress(){  
-    this.http.get("http://api.ipify.org/?format=json").subscribe((response:any)=>{
-      this.client_request["ip"] =  response.ip;
-    }); 
+  getIpAddress() {
+    this.http.get("http://api.ipify.org/?format=json").subscribe((response: any) => {
+      this.client_request["ip"] = response.ip;
+    });
   }
 
-  confirm(){
-    this.geolocation.getLocation(this.client_request, response =>{
-      if(response && response['permission']){
+  confirm() {
+    if (this.client_request['consump'] && this.client_request['consump'] > 0) {
+      this.geolocation.getLocation(this.client_request, response => {
+        if (response && response['permission']) {
           this.__service.setData(response)
           this.router.navigate(['pv-system/calculate']);
-      } else {
+        } else {
           this.permission = false;
-      }
-    });
+        }
+      });
+    }else{
+      this.error = "Please fill the form with valid input!"
+    }
   }
 
 }

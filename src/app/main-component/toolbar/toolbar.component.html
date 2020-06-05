@@ -4,7 +4,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container box_1620">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <a class="navbar-brand logo_h" [routerLink]="['']"><span class="text-white white"><img class="icon"
+        <a class="navbar-brand logo_h" [routerLink]="['']"><span class="text-white white mr-4"><img class="icon"
               src="assets/icon/solar.png" alt="Solar"> SolarCo</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
           <ul class="nav navbar-nav menu_nav">
-            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link ml-4"
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link"
                 [routerLink]="['/chat']" style="font-size: 16px;">Chat</a></li>
             <li *ngIf="tokenAuthService.currentUserType == 'USER'" class="nav-item"><a class="nav-link "
                 [routerLink]="['/pv-system/user-info']" style="font-size: 16px;">Calculate</a>
