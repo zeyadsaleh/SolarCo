@@ -25,7 +25,7 @@ export class UserInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.client_request = new Object();
-    this.getIpAddress();
+    // this.getIpAddress();
   }
 
   getLocation() {
@@ -41,14 +41,13 @@ export class UserInputComponent implements OnInit {
     });
   }
 
-  getIpAddress() {
-    this.http.get("http://api.ipify.org/?format=json").subscribe((response: any) => {
-      this.client_request["ip"] = response.ip;
-    });
-  }
+  // getIpAddress() {
+  //   this.http.get("http://api.ipify.org/?format=json").subscribe((response: any) => {
+  //     this.client_request["ip"] = response.ip;
+  //   });
+  // }
 
   confirm() {
-    this.getIpAddress();
     if (this.client_request['consump'] && this.client_request['consump'] > 0) {
       this.geolocation.getLocation(this.client_request, response => {
         if (response && response['permission']) {
@@ -56,7 +55,7 @@ export class UserInputComponent implements OnInit {
           this.__service.setData(response)
           this.router.navigate(['pv-system/calculate']);
         } else {
-          this.permission = false;
+          this.error = "Some issues happens with your request, try it later!";
         }
       });
     }else{

@@ -13,12 +13,6 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div *ngIf="client_request['ip']" class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ client_request['ip'] }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error=''">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <mat-card-content class="border rounded p-3">
                 <mat-form-field class="example-form-field">
                     <mat-label>Electricity Consumption</mat-label>
