@@ -1,16 +1,17 @@
 <app-page-banner [title]="title"></app-page-banner>
 
-<div id="profile">
+<div id="profile" *ngIf="!isLoading">
   <div class="container content">
     <div class="alert alert-danger" #avatarAlert role="alert" style="display: none">
       Your uploaded file is not a valid image
     </div>
-    <div class="row profile" *ngIf="!isLoading else loading">
+    <div class="row profile">
       <div class="col-md-3">
         <div class="profile-sidebar rounded shadow border">
           <!-- SIDEBAR USERPIC -->
           <div class="profile-userpic">
-            <img [src]="userData.avatar ? userData.avatar : '/assets/images/avatar.webp'" class="img-fluid shadow" alt="">
+            <img [src]="userData.avatar ? userData.avatar : '/assets/images/avatar.webp'" class="img-fluid shadow"
+              alt="">
           </div>
           <!-- END SIDEBAR USERPIC -->
           <!-- SIDEBAR USER TITLE -->
@@ -59,20 +60,21 @@
 
               </li>
               <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/profile/posts']"
-              [class]="subPage == 'posts' ? 'active' : ''" (click)="changeSubpage($event)">
+                [class]="subPage == 'posts' ? 'active' : ''" (click)="changeSubpage($event)">
 
-              <a name="offers" class="nav-link" [class]="subPage == 'posts' ? 'active' : ''">
-                <i class="fa fa-check"></i>
-                Posts </a>
+                <a name="offers" class="nav-link" [class]="subPage == 'posts' ? 'active' : ''">
+                  <i class="fa fa-check"></i>
+                  Posts </a>
 
-            </li>
+              </li>
               <li class="nav-item" [class]="subPage == 'help' ? 'active' : ''" (click)="changeSubpage($event)">
 
                 <a name="help" class="nav-link" [class]="subPage == 'help' ? 'active' : ''">
                   <i class="fa fa-flag"></i>Help</a>
               </li>
 
-              <li class="nav-item" [routerLink]="['/profile/edit']" [class]="subPage == 'edit' ? 'active' : ''" (click)="changeSubpage($event)">
+              <li class="nav-item" [routerLink]="['/profile/edit']" [class]="subPage == 'edit' ? 'active' : ''"
+                (click)="changeSubpage($event)">
                 <a name="edit" class="nav-link" [class]="subPage == 'edit' ? 'active' : ''">
                   <i class="fas fa-pen"></i>
                   Edit </a>
@@ -85,15 +87,19 @@
       <div class="col-md-9">
         <div class="profile-content  shadow rounded">
           <router-outlet></router-outlet>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<ng-template #loading>
+
+<app-loading *ngIf="isLoading"></app-loading>
+
+<!-- <ng-template #loading>
   <div class="text-center">
     <div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-</ng-template>
+</ng-template> -->

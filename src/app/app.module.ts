@@ -45,7 +45,7 @@ import { ChatModule } from './chat/chat.module';
     FormsModule,
     MaterialModule,
     AngularTokenModule.forRoot({
-      apiBase: 'https://solarco-api.herokuapp.com',
+      apiBase: 'http://localhost:3000',
       userTypes: [
         { name: 'CONTRACTOR', path: 'contractor' },
         { name: 'USER', path: 'user' }

@@ -1,6 +1,6 @@
 <app-page-banner [title]="title"></app-page-banner>
 
-<div class="container" *ngIf="!isLoading else loading">
+<div class="container" *ngIf="!isLoading">
     <div class="card contractor-profile">
         <!-- <h5 class="card-header">Contractor Info</h5> -->
         <div class="card-body mx-5">
@@ -30,10 +30,11 @@
     </div>
 </div>
 
-<ng-template #loading>
+<app-loading *ngIf="isLoading"></app-loading>
+<!-- <ng-template #loading>
   <div class="text-center">
     <div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-</ng-template>
+</ng-template> -->

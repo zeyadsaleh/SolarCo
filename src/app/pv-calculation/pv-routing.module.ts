@@ -25,7 +25,7 @@ const routes: Routes = [
   {
     path: 'pv-system/:id',
     component: PvSystemComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   // {
   //   path: 'map',

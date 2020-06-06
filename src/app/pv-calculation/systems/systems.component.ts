@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 export class SystemsComponent implements OnInit {
 
   systems: any;
-  show: boolean = false;
   error: string;
   success: string;
+  isLoading: boolean = true;
 
   constructor(private data: PvCalculationService, private router: Router) { }
 
@@ -22,9 +22,11 @@ export class SystemsComponent implements OnInit {
 
   getSystems() {
     this.data.getSystems(response => {
-      if (response['length'] > 0) {
+      if (response && response['length'] > 0) {
         this.systems = response;
-        this.show = true;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500);
       }
     });
   }

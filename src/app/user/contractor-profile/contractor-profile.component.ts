@@ -10,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ContractorProfileComponent implements OnInit {
 
   contractor;
-  isLoading:boolean = true;
-  title:string = 'Contractor'
+  isLoading: boolean = true;
+  title: string = 'Contractor'
 
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
@@ -20,7 +20,9 @@ export class ContractorProfileComponent implements OnInit {
       this.userService.getContractor(params.get('id')).subscribe(res => {
         console.log(res);
         this.contractor = res;
-        this.isLoading = false;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500);
       })
     })
   }

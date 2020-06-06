@@ -10,6 +10,7 @@ import { AbilityModule } from '@casl/angular';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     PageBannerComponent,
     NotFoundComponent,
     SidebarComponent,
+    LoadingComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     PageBannerComponent,
     NotFoundComponent,
     SidebarComponent,
+    LoadingComponent,
   ],
 })
 export class MainComponentModule { }

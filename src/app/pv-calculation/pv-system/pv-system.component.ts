@@ -16,6 +16,7 @@ export class PvSystemComponent implements OnInit {
   panelOpenState2: boolean = false;
   panelOpenState3: boolean = false;
   error: string;
+  isLoading: boolean = true;
 
 
   constructor(private data: PvCalculationService,
@@ -34,6 +35,9 @@ export class PvSystemComponent implements OnInit {
     this.data.getCalculation(id, response => {
       if (response) {
         this.system_data = response;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500);
       } else {
         this.router.navigate(['pv-system/user-info']);
       }

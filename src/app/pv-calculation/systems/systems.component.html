@@ -15,7 +15,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div *ngIf="show">
+<div *ngIf="!isLoading">
     <div class="row justify-content-center" *ngFor="let system of systems; let i = index">
         <div class="panel panel-default widget">
             <a class="clickable">
@@ -80,3 +80,5 @@
     <a class="nav-link btn btn-sm shadow rounded btn-outline-success" [routerLink]="['/pv-system/details']">View More
         Details</a>
 </div>
+
+<app-loading *ngIf="isLoading"></app-loading>

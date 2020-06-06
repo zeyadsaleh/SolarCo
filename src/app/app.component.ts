@@ -10,38 +10,42 @@ import { ChatAuthService } from './shared/services/chat-auth.service';
 })
 export class AppComponent {
   title = 'SolarCo';
-  showFiller:boolean = false;
-  isLoading:boolean = true;
-  
-  constructor(private ability: Ability, private tokenService: AngularTokenService, readonly chatAuthService: ChatAuthService){ 
-    if(this.tokenService.userSignedIn()) {
+  showFiller: boolean = false;
+  isLoading: boolean = true;
+
+  constructor(private ability: Ability, private tokenService: AngularTokenService, readonly chatAuthService: ChatAuthService) {
+    if (this.tokenService.userSignedIn()) {
       this.tokenService.validateToken().subscribe(
         res => {
           this.ability.update(res.data.rules);
           console.log(this.ability.rules);
           this.chatAuthService
-          .login(res.data.username)
-          .then(
-            (res) => {
-              console.log(res);   
-            },
-            err => (console.log(err))
-          );
-          this.isLoading = false;
+            .login(res.data.username)
+            .then(
+              (res) => {
+                console.log(res);
+              },
+              err => (console.log(err))
+            );
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 200);
         },
         error => {
           console.log(error);
           this.tokenService.signOut().subscribe(
-            res =>      {
+            res => {
               console.log(res);
               this.ability.update([]);
             },
-            error =>    console.log(error)
+            error => console.log(error)
           );
         }
-        ); 
+      );
     } else {
-      this.isLoading = false;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 200);
     }
   }
 }
