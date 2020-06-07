@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ChatService } from './services/chat.service';
 import { MessagesService } from './services/messages.service';
-import { type } from 'os';
 
 @Component({
   selector: 'app-chat',
