@@ -90,6 +90,7 @@ export class RegisterFormComponent implements OnInit {
       );
     }
     else {  // register contractor
+      console.log(this.contractor)
       this.tokenAuthSerivce.registerAccount({
         login: this.signUpUser.email,
         password: this.signUpUser.password,

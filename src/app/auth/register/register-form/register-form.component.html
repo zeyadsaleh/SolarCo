@@ -65,7 +65,7 @@
       <label class="form-check-label" for="has_office">Has Office</label>
     </div>
     <div class="form-group" *ngIf="contractor.has_office && type == 'CONTRACTOR'">
-      <textarea name='address' required class="form-control" placeholder="Office Address"
+      <textarea name='address' required class="validate form-control" placeholder="Office Address"
         [(ngModel)]="contractor.address" #address="ngModel"></textarea>
 
       <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger">
@@ -77,17 +77,17 @@
     </div>
 
     <div class="form-group" *ngIf="type == 'CONTRACTOR'">
-      <input name="mobileNumber" type="tel" placeholder="Company number" [ngModel]="contractor.mobileNumber"
+      <input name="mobileNumber" type="tel" placeholder="Company number" [(ngModel)]="contractor.mobileNumber"
         class="validate form-control" #mobNumber="ngModel">
     </div>
 
     <div class="form-group" *ngIf="type == 'CONTRACTOR'">
-      <input name="mobileNumber" type="text" placeholder="Company website" [ngModel]="contractor.website"
+      <input name="mobileNumber" type="text" placeholder="Company website" [(ngModel)]="contractor.website"
         class="validate form-control" #mobNumber="ngModel">
     </div>
 
     <div class="form-group" *ngIf="type == 'CONTRACTOR'">
-      <input name="mobileNumber" type="text" placeholder="Company fax" [ngModel]="contractor.fax"
+      <input name="mobileNumber" type="text" placeholder="Company fax" [(ngModel)]="contractor.fax"
         class="validate form-control" #mobNumber="ngModel">
     </div>
 
