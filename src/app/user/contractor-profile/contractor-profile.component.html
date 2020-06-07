@@ -1,6 +1,9 @@
 <app-page-banner [title]="title"></app-page-banner>
 
 <div class="container" *ngIf="!isLoading else loading">
+    <div class="chat-icon" [routerLink]="['/chat/'] + contractor.id">
+        <i class="fas fa-comment-alt"></i>
+    </div>
     <div class="card contractor-profile">
         <!-- <h5 class="card-header">Contractor Info</h5> -->
         <div class="card-body mx-5">
