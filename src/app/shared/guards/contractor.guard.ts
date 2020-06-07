@@ -17,7 +17,7 @@ export class ContractorGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       
 
-      return this.tokenAuthService.currentUserType == 'CONTRACTOR' ? true : this.router.navigate(['home']);
+      return this.tokenAuthService.currentUserType == 'CONTRACTOR' ? true : this.router.navigate(['']);
   }
   
 }

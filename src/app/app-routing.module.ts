@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 // Compoents ##START##
 import {HomeComponent} from "./main-component/home/home.component";
 import { NotFoundComponent } from './main-component/not-found/not-found.component';
-import { ChatComponent } from './chat/chat.component';
+// import { ChatComponent } from './chat/chat.component';
+import {ChatComponent} from './rails-chat/chat/chat.component';
 // ########### Compoents END ##########
 
 // Routes ##START##
@@ -26,8 +27,13 @@ const routes: Routes = [
     component: HomeComponent,
     pathMatch: 'full'
   },
+  // {
+  //   path: 'chat',
+  //   component: ChatComponent,
+  //   canActivate: [AuthGuard]
+  // },
   {
-    path: 'chat',
+    path: 'chat/:id',
     component: ChatComponent,
     canActivate: [AuthGuard]
   },
