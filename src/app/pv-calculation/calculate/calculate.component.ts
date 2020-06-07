@@ -15,6 +15,7 @@ export class CalculateComponent implements OnInit {
   api_response: object;
   title: string = 'Pv-System Calculate';
   error: string;
+  isLoading: boolean = true;
 
   constructor(private data: PvCalculationService,
     private router: Router,
@@ -24,6 +25,9 @@ export class CalculateComponent implements OnInit {
     this.__service.Data.subscribe((data) => {
       if (data && data['permission']) {
         this.api_response = data;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500);
       } else {
         this.router.navigate(['pv-system/user-info']);
       }
@@ -31,7 +35,7 @@ export class CalculateComponent implements OnInit {
   }
 
   calculate() {
-    if ( this.api_response['consumption'] > 0 ) {
+    if (this.api_response['consumption'] > 0) {
       this.api_response['address'] = this.address;
       this.data.setSystem(this.api_response, succes => {
         if (succes) {

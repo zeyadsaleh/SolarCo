@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  posts=[];
-  title:string = 'Posts';
-  isLoading:boolean = true;
+  posts = [];
+  title: string = 'Posts';
+  isLoading: boolean = true;
 
   system_data: object;
   toProfile: boolean;
@@ -18,7 +18,7 @@ export class HomepageComponent implements OnInit {
   constructor(
     private postService: PostService,
     private router: Router,
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getPosts();
@@ -28,25 +28,27 @@ export class HomepageComponent implements OnInit {
     // Don't render banner in profile posts
     if (this.router.url.includes('profile'))
       this.toProfile = true;
-    
-    this.postService.getPosts().subscribe((res)=>{
-      if(res){
-        console.log("res: " ,res)
-        for (let o of res){
+
+    this.postService.getPosts().subscribe((res) => {
+      if (res) {
+        console.log("res: ", res)
+        for (let o of res) {
           this.posts.push(o);
         }
-      }else{
+      } else {
         console.log("no posts received")
       }
 
-      this.isLoading = false;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 500);
     });
   }
 
-  deletePost(id){
+  deletePost(id) {
     this.postService.deletePost(id).subscribe(
       res => {
-        } ,
+      },
       error => {
       }
     )
@@ -57,7 +59,7 @@ export class HomepageComponent implements OnInit {
     this.router.navigate(['/offers/new'], { queryParams: { id: id }, queryParamsHandling: 'merge' });
   }
 
-   isIterable(res) {
+  isIterable(res) {
     // checks for null and undefined
     if (res == null) {
       return false;

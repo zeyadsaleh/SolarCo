@@ -10,21 +10,25 @@ import { Router } from '@angular/router';
 export class SystemsDetailsComponent implements OnInit {
 
   systems_details: object;
+  isLoading: boolean = true;
   title: string = 'Pv-Systems Details';
 
-  constructor(private data: PvCalculationService, 
-              private router: Router) { }
+  constructor(private data: PvCalculationService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getDetails();
   }
 
-  getDetails(){
-    this.data.getCalculations(response =>{
-        if(response){ 
-          this.systems_details = response;
-          console.log(response);
-        }
+  getDetails() {
+    this.data.getCalculations(response => {
+      if (response && response['length'] > 0) {
+        this.systems_details = response;
+        setTimeout(() => { 
+          this.isLoading = false;
+        }, 500);
+        console.log(response);
+      }
     });
   }
 }

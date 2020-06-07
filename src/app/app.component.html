@@ -1,4 +1,4 @@
-<div *ngIf="!isLoading else loading">
+<div *ngIf="!isLoading">
 
   <app-toolbar></app-toolbar>
   <app-sidebar></app-sidebar>
@@ -7,10 +7,12 @@
 
 </div>
 
-<ng-template #loading>
+
+<app-loading *ngIf="isLoading"></app-loading>
+<!-- <ng-template #loading>
   <div class="text-center">
     <div class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-</ng-template>
+</ng-template> -->

@@ -25,7 +25,7 @@ export class UserInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.client_request = new Object();
-    // this.getIpAddress();
+    this.getIpAddress();
   }
 
   getLocation() {
@@ -41,11 +41,11 @@ export class UserInputComponent implements OnInit {
     });
   }
 
-  // getIpAddress() {
-  //   this.http.get("http://api.ipify.org/?format=json").subscribe((response: any) => {
-  //     this.client_request["ip"] = response.ip;
-  //   });
-  // }
+  getIpAddress() {
+    this.http.get("http://api.ipify.org/?format=json").subscribe((response: any) => {
+      this.client_request["ip"] = response.ip;
+    });
+  }
 
   confirm() {
     if (this.client_request['consump'] && this.client_request['consump'] > 0) {

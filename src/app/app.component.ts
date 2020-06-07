@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Ability } from '@casl/ability';
 import { AngularTokenService } from 'angular-token';
 import { ChatAuthService } from './shared/services/chat-auth.service';
-import { ActionCableService, Channel } from 'angular2-actioncable';
-import { Subscription } from 'rxjs';
 import { UserService } from './shared/services/user.service';
 
 @Component({
@@ -24,28 +22,32 @@ export class AppComponent {
           this.ability.update(res.data.rules);
           console.log(this.ability.rules);
           this.chatAuthService
-          .login(res.data.username)
-          .then(
-            (res) => {
-              console.log(res);   
-            },
-            err => (console.log(err))
-          );
-          this.isLoading = false;
+            .login(res.data.username)
+            .then(
+              (res) => {
+                console.log(res);
+              },
+              err => (console.log(err))
+            );
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 200);
         },
         error => {
           console.log(error);
           this.tokenService.signOut().subscribe(
-            res =>      {
+            res => {
               console.log(res);
               this.ability.update([]);
             },
-            error =>    console.log(error)
+            error => console.log(error)
           );
         }
-        ); 
+      );
     } else {
-      this.isLoading = false;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 200);
     }
   }
 }

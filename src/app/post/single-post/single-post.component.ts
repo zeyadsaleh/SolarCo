@@ -12,16 +12,16 @@ export class SinglePostComponent implements OnInit {
   offers = [];
   userData;
   post;
-  title:string = 'Your Post';
-  errorMessage:string = '';
-  isLoading:boolean = true;
+  title: string = 'Your Post';
+  errorMessage: string = '';
+  isLoading: boolean = true;
   currentUserID: any;
   applied: boolean = false;
   constructor(private postService: PostService,
-     private route: ActivatedRoute,
+    private route: ActivatedRoute,
     private router: Router,
     private __service: ShareService,
-    private tokenAuth:AngularTokenService) { }
+    private tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
     this.tokenAuth.validateToken().subscribe(
@@ -33,30 +33,33 @@ export class SinglePostComponent implements OnInit {
         });
       },
       error => console.log(error)
-      );
+    );
 
-    
+
   }
 
   getPost(id) {
     this.currentUserID = this.tokenAuth.currentUserData.id.toString();
-    this.postService.getPost(id).subscribe((res)=>{
-        this.post = res;
+    this.postService.getPost(id).subscribe((res) => {
+      this.post = res;
+      setTimeout(() => {
         this.isLoading = false;
-        // For Apply button
-        let userOffer = this.post.offers.filter(offer => offer.contractor_id == this.currentUserID);
-        console.log(userOffer);
-        if(userOffer.length > 0) {
-          this.applied = true;
-        }
-        console.log(this.post)
+      }, 500);        // For Apply button
+      let userOffer = this.post.offers.filter(offer => offer.contractor_id == this.currentUserID);
+      console.log(userOffer);
+      if (userOffer.length > 0) {
+        this.applied = true;
+      }
+      console.log(this.post)
     }, (err) => {
       this.errorMessage = err.error.error;
-      this.isLoading = false;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 500);
     });
   }
 
-  deletePost(id){
+  deletePost(id) {
     this.postService.deletePost(id).subscribe()
   }
 
@@ -65,7 +68,7 @@ export class SinglePostComponent implements OnInit {
   }
 
   onDeleteOffer() {
-      this.applied = false;
+    this.applied = false;
   }
 
 }

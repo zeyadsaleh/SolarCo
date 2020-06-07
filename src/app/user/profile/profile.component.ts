@@ -3,7 +3,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { AngularTokenService, UserData } from 'angular-token';
 import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
- 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -13,17 +13,16 @@ export class ProfileComponent implements OnInit {
 
   userData;
   type;
-  title:string = 'Profile';
-  subPage:string = 'overview';
-
-  isLoading:boolean = true;
+  title: string = 'Profile';
+  subPage: string = 'overview';
+  isLoading: boolean = true;
 
   @ViewChild('avatarUploader') avatarUploader: any;
   @ViewChild('avatarAlert') avatarAlert: any;
 
   constructor(private tokenAuthService: AngularTokenService,
-              private userService: UserService,
-              private router:Router) {}
+    private userService: UserService,
+    private router: Router) { }
 
 
   ngOnInit(): void {
@@ -35,16 +34,18 @@ export class ProfileComponent implements OnInit {
         this.userData = this.tokenAuthService.currentUserData;
         this.type = this.tokenAuthService.currentUserType;
         console.log(this.userData)
-        this.isLoading = false;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500);
       },
       error => console.log(error)
-      );
+    );
 
   }
 
   uploadAvatar(ev) {
 
-    if(ev.target.files[0].type.startsWith('image/')) {
+    if (ev.target.files[0].type.startsWith('image/')) {
       // Hide alert
       this.avatarAlert.nativeElement.style.display = 'none';
 
