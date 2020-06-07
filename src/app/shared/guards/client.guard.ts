@@ -15,7 +15,7 @@ export class ClientGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       
-      return this.tokenAuthService.currentUserType == 'USER' ? true : this.router.navigate(['home']);
+      return this.tokenAuthService.currentUserType == 'USER' ? true : this.router.navigate(['']);
 
   } 
 }

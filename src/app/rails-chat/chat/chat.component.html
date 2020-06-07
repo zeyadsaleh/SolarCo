@@ -1,0 +1,6 @@
+<div class="chat-page">
+    <div class="chat-box">
+      <app-messages-view [messages]="messages" [selectedUserName]="selectedUser?.name"
+        (sendMessage)="onSendMessage($event)"></app-messages-view>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 // Compoents ##START##
 import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
 // ########### Compoents END ##########
 
 // Routes ##START##
@@ -30,11 +31,16 @@ import { RegisterModule } from './auth/register/register.module';
 import { UserModule } from './user/user.module';
 import { OfferModule } from './offer/offer.module';
 import { ChatModule } from './chat/chat.module';
+import { ActionCableService } from 'angular2-actioncable';
+import { ChatComponent } from './rails-chat/chat/chat.component';
+import { MessagesViewComponent } from './rails-chat/chat/messages-view/messages-view.component';
 // import { GoogleMapsModule } from '@angular/google-maps'
 // ########### App Modules END ##########
 @NgModule({
   declarations: [
     AppComponent,
+    ChatComponent,
+    MessagesViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,7 @@ import { ChatModule } from './chat/chat.module';
     FormsModule,
     MaterialModule,
     AngularTokenModule.forRoot({
-      apiBase: 'http://localhost:3000',
+      apiBase: environment.apiUrl,
       userTypes: [
         { name: 'CONTRACTOR', path: 'contractor' },
         { name: 'USER', path: 'user' }
@@ -58,12 +64,13 @@ import { ChatModule } from './chat/chat.module';
     AbilityModule,
     ReactiveFormsModule,
     OfferModule,
-    ChatModule,
+    // ChatModule,
     // GoogleMapsModule,
   ],
   providers: [
     AngularTokenModule, 
     ShareService,
+    ActionCableService,
     { provide: Ability, useValue: new Ability() },
     { provide: PureAbility, useExisting: Ability }
   ],

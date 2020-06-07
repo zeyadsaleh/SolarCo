@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Ability } from '@casl/ability';
 import { AngularTokenService } from 'angular-token';
 import { ChatAuthService } from './shared/services/chat-auth.service';
+import { UserService } from './shared/services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,14 @@ import { ChatAuthService } from './shared/services/chat-auth.service';
 })
 export class AppComponent {
   title = 'SolarCo';
-  showFiller: boolean = false;
-  isLoading: boolean = true;
-
-  constructor(private ability: Ability, private tokenService: AngularTokenService, readonly chatAuthService: ChatAuthService) {
-    if (this.tokenService.userSignedIn()) {
+  showFiller:boolean = false;
+  isLoading:boolean = true;
+  
+  constructor(private ability: Ability, private tokenService: AngularTokenService, readonly chatAuthService: ChatAuthService, private userService: UserService){ 
+    if(this.tokenService.userSignedIn()) {
       this.tokenService.validateToken().subscribe(
         res => {
+          this.userService.setCurrentUser(res.data, this.tokenService.currentUserType);
           this.ability.update(res.data.rules);
           console.log(this.ability.rules);
           this.chatAuthService
