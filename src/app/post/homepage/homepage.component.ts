@@ -34,6 +34,7 @@ export class HomepageComponent implements OnInit {
         console.log("res: ", res)
         for (let o of res) {
           this.posts.push(o);
+          console.log(o)
         }
       } else {
         console.log("no posts received")

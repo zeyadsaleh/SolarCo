@@ -3,6 +3,7 @@ import { AngularTokenService } from "angular-token";
 import { Router } from '@angular/router';
 import { Ability } from '@casl/ability';
 import { ChatAuthService } from 'src/app/shared/services/chat-auth.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-login-form',
@@ -26,7 +27,8 @@ export class LoginFormComponent implements OnInit {
   constructor(private tokenAuthSerivce: AngularTokenService,
     private router: Router,
     private ability: Ability,
-    readonly chatAuthService: ChatAuthService) { }
+    readonly chatAuthService: ChatAuthService,
+    private userService: UserService) { }
 
   ngOnInit() { }
 
@@ -52,8 +54,10 @@ export class LoginFormComponent implements OnInit {
             },
             err => (console.log(err))
           );
-        console.log(this.ability.rules);
-        console.log(this.ability)
+        // console.log(this.ability.rules);
+        // console.log(this.ability)
+        this.userService.current_user = res.body.data;
+        this.userService.user_type = this.tokenAuthSerivce.currentUserType;
         this.submitted = false;
         this.router.navigate(['']);
       },

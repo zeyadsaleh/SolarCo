@@ -46,6 +46,7 @@ export class OfferFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    console.log(this.offer)
     this.offerService.createOffer(this.offer).subscribe(
       res => {
         console.log(res);

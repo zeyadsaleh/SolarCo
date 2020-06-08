@@ -15,8 +15,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
           <ul class="nav navbar-nav menu_nav">
-            <!-- <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/chat']"
-                style="font-size: 16px;">Chat</a></li> -->
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/inbox']"
+                style="font-size: 16px;">Inbox</a></li>
             <li *ngIf="tokenAuthService.currentUserType == 'USER' && tokenAuthService.userSignedIn()" class="nav-item">
               <a class="nav-link " [routerLink]="['/pv-system/user-info']" style="font-size: 16px;">Calculate</a>
             <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()"

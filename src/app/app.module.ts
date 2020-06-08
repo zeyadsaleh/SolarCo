@@ -34,6 +34,7 @@ import { ChatModule } from './chat/chat.module';
 import { ActionCableService } from 'angular2-actioncable';
 import { ChatComponent } from './rails-chat/chat/chat.component';
 import { MessagesViewComponent } from './rails-chat/chat/messages-view/messages-view.component';
+import { ContactsListComponent } from './rails-chat/chat/contacts-list/contacts-list.component';
 // import { GoogleMapsModule } from '@angular/google-maps'
 // ########### App Modules END ##########
 @NgModule({
@@ -41,6 +42,7 @@ import { MessagesViewComponent } from './rails-chat/chat/messages-view/messages-
     AppComponent,
     ChatComponent,
     MessagesViewComponent,
+    ContactsListComponent,
   ],
   imports: [
     BrowserModule,

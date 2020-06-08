@@ -38,6 +38,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'inbox',
+    component: ChatComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   }
