@@ -35,9 +35,9 @@
             </mat-card-content>
           </mat-card>
           <div class="text-center mt-4">
-            <button class="btn btn-danger mr-2" *ngIf="('destroy' | able: 'Post')"
+            <button class="btn btn-danger mr-2" *ngIf="('destroy' | able: 'Post')  && !post.closed"
               (click)="deletePost(post.id)">Delete</button>
-            <button class="btn btn-success" *ngIf="('update' | able: 'Post')"
+            <button class="btn btn-success" *ngIf="('update' | able: 'Post')  && !post.closed"
               [routerLink]="['/update/posts',post.id]">Update</button>
           </div>
         </div>

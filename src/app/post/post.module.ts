@@ -14,13 +14,15 @@ import { OfferModule } from '../offer/offer.module';
 import { UserRoutingModule } from '../user/user-routing.module';
 import { MaterialModule } from '../shared/material/material.module';
 import { AngularTokenModule } from 'angular-token';
+import { PerviousPostsComponent } from './pervious-posts/pervious-posts.component';
 
 @NgModule({
   declarations: [
     HomepageComponent,
     SinglePostComponent,
     CreatePostFormComponent,
-    UpdatePostFormComponent
+    UpdatePostFormComponent,
+    PerviousPostsComponent
   ],
   imports: [
     CommonModule,

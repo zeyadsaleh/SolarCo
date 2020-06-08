@@ -12,10 +12,18 @@ export class PostService {
 
   constructor(private http: HttpClient,
               private api: GlobalService) { }
-    
+
 
   getPosts():Observable<any> {
     return this.http.get(this.postURl);
+  }
+
+  getApprovedPosts():Observable<any> {
+    return this.http.get(this.postURl,{
+      params:{
+        "closed": "closed"
+      }
+    });
   }
 
   getPost(id):Observable<any> {

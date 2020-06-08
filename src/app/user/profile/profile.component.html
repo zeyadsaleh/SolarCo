@@ -67,6 +67,14 @@
                   Posts </a>
 
               </li>
+              <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/profile/perviousPosts']"
+                [class]="subPage == 'perviousPosts' ? 'active' : ''" (click)="changeSubpage($event)">
+
+                <a name="offers" class="nav-link" [class]="subPage == 'perviousPosts' ? 'active' : ''">
+                  <i class="fa fa-check"></i>
+                  Pervious Posts </a>
+
+              </li>
               <li class="nav-item" [class]="subPage == 'help' ? 'active' : ''" (click)="changeSubpage($event)">
 
                 <a name="help" class="nav-link" [class]="subPage == 'help' ? 'active' : ''">
