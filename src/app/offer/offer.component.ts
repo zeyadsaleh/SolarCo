@@ -11,19 +11,20 @@ import { PostService } from 'src/app/shared/services/post.service';
   styleUrls: ['./offer.component.css']
 })
 export class OfferComponent implements OnInit {
- 
-  offers=[];
+
+  offers = [];
   editOffer: number = 0;
   has_offers: boolean = false;
-  @Input() post_id:string = '';
-  @Input() postOwner_id:string = '';
+  @Input() post_id: string = '';
+  @Input() postOwner_id: string = '';
   currentUserID: string;
   type: string = '';
   isApproved: boolean = false;
   @Output() onDeleteOffer = new EventEmitter()
-  submitted:boolean = false;
+  submitted: boolean = false;
   currentOffer: any = {};
-  constructor(private offerService: OfferService,private router: Router, private tokenAuth: AngularTokenService, private postService: PostService) { }
+  offers_count = '';
+  constructor(private offerService: OfferService, private router: Router, private tokenAuth: AngularTokenService, private postService: PostService) { }
 
   ngOnInit(): void {
     this.getOffers();
@@ -32,16 +33,18 @@ export class OfferComponent implements OnInit {
   getOffers() {
     this.currentUserID = this.tokenAuth.currentUserData.id.toString();
     this.type = this.tokenAuth.currentUserType;
-    this.offerService.getOffers(this.post_id).subscribe((res)=>{
-      for (let o of res){
+    this.offerService.getOffers(this.post_id).subscribe((res) => {
+      for (let o of res) {
         this.offers.push(o);
+        //fir offers_count
+        this.offers_count = o.post.offers_count;
         //for approval dim
         if (o.status == 'accepted') {
           this.isApproved = true
         }
         // For permissions
-        if(this.type == 'CONTRACTOR' &&
-           this.currentUserID == o.contractor_id)
+        if (this.type == 'CONTRACTOR' &&
+          this.currentUserID == o.contractor_id)
           o.canManage = true;
         else
           o.canManage = false;
@@ -55,7 +58,7 @@ export class OfferComponent implements OnInit {
 
   deleteOffer(id) {
     this.offerService.deleteOffer(id).subscribe();
-    this.offers = this.offers.filter(function( obj ) {
+    this.offers = this.offers.filter(function (obj) {
       return obj.id !== id;
     });
     this.onDeleteOffer.emit(); //for showing Apply button after delete the offer
@@ -64,10 +67,10 @@ export class OfferComponent implements OnInit {
     }
   }
 
-  edit(id){
-    if (this.editOffer != id){
+  edit(id) {
+    if (this.editOffer != id) {
       this.editOffer = id;
-    }else{
+    } else {
       this.editOffer = 0;
     }
   }
@@ -93,18 +96,18 @@ export class OfferComponent implements OnInit {
     offer.status = 'accepted';
     this.onEdit(offer);
     this.isApproved = true;
-    this.postService.updatePost(offer.post.id, {closed: true}).subscribe(
+    this.postService.updatePost(offer.post.id, { closed: true }).subscribe(
       res => {
         console.log(res);
       },
       error => {
         console.log(error);
-        
+
       });
   }
 
   //for modal 
-  setCurrrentOffer(offer){
+  setCurrrentOffer(offer) {
     this.currentOffer = offer;
   }
 }
