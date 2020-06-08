@@ -8,6 +8,7 @@ import { AllOffersComponent } from '../offer/all-offers/all-offers.component';
 import { SystemsComponent } from '../pv-calculation/systems/systems.component';
 import { HomepageComponent } from '../post/homepage/homepage.component';
 import { ContractorProfileComponent } from './contractor-profile/contractor-profile.component';
+import { PerviousPostsComponent } from '../post/pervious-posts/pervious-posts.component';
 
 const routes: Routes = [
   {
@@ -25,11 +26,15 @@ const routes: Routes = [
       },
       {
         path: 'edit',
-        component: EditComponent,   
+        component: EditComponent,
       },
       {
         path: 'posts',
-        component: HomepageComponent,   
+        component: HomepageComponent,
+      },
+      {
+        path: 'perviousPosts',
+        component: PerviousPostsComponent,
       },
     ]
   },
