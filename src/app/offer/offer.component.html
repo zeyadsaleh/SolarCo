@@ -1,12 +1,12 @@
 <div class="container" *ngIf="has_offers else noOffersTemplate">
-  <div class="row">
+  <div class="row" >
     <div class="panel panel-default widget">
       <div class="panel-heading">
         <span class="glyphicon glyphicon-comment"></span>
         <h3 class="panel-title">
           Your Offers</h3>
         <span class="label label-info">
-          78</span>
+         {{offers_count}}</span>
         <!-- <app-create-rate></app-create-rate> -->
       </div>
       <div class="panel-body" *ngFor="let offer of offers">
@@ -82,15 +82,15 @@
                     </div>
                   </div>
                   <div class="comment-text">
-                    <input id="price" type="number" required min="0" name='price' placeholder="Price by EP"
+                    <input id="price" type="number" required min="0" name='price' pattern="[+]?([.]\d+|\d+[.]?\d*)$" placeholder="Price by EP"
                       [(ngModel)]="offer.price" class=" form-control validate" #price="ngModel">
                     <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
 
                       <div *ngIf="price.errors.required">
                         price is required.
                       </div>
-                      <div *ngIf="price.errors.min">
-                        proposal cannot be negative.
+                      <div *ngIf="price.errors.pattern">
+                        price cannot be negative.
                       </div>
                     </div>
                   </div>

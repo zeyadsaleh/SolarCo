@@ -15,6 +15,7 @@
           <button class="btn btn-dark btn-sm" *ngIf="('create' | able: 'Offer') && !applied"
             (click)="sendId(post.id)">Apply</button>
           <h5><span>Posted by:</span>&nbsp;{{post.user.name}}</h5>
+          <h5><span>Has:</span>&nbsp;{{post.offers_count}} Offers</h5>
           <h4 *ngIf="post.system.address">
             <span>Location:</span>&nbsp;{{post.system.address}}, {{post.system.city}}, {{post.system.country}}</h4>
           <h4 *ngIf="!post.system.address">

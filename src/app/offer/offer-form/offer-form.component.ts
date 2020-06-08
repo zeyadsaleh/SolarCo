@@ -18,6 +18,8 @@ export class OfferFormComponent implements OnInit {
     post_id: ''
   }
 
+  negativePattern = '[+]?([.]\d+|\d+[.]?\d*)$'
+
   title:string = 'New Offer';
   submitted:boolean = false;
 
@@ -36,7 +38,7 @@ export class OfferFormComponent implements OnInit {
       })
 
     
-    }
+    } 
   
     ngOnDestroy(): void {
       this._routeSubscription.unsubscribe();

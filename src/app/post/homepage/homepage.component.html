@@ -9,6 +9,9 @@
             <li>
               <a [routerLink]="['/posts/',post.id]" class="active"><i class="fas fa-eye"></i></a>
             </li>
+            <li>
+              <a><i class="fa fa-handshake-o">Has {{post.offers_count}} Offers</i></a>
+            </li>
           </ul>
         </div>
         <div class="post-card__content m-2" [routerLink]="['/posts/',post.id]">
