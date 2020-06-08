@@ -13,7 +13,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { ContractorProfileComponent } from './contractor-profile/contractor-profile.component';
 import { ReviewModule } from '../review/review.module';
 import { EditComponent } from './edit/edit.component';
-
+ 
 
 @NgModule({
   declarations: [

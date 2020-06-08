@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OfferService } from 'src/app/shared/services/offer.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
-
+ 
 @Component({
   selector: 'app-offer-form',
   templateUrl: './offer-form.component.html',

@@ -57,7 +57,7 @@ import { ContactsListComponent } from './rails-chat/chat/contacts-list/contacts-
       userTypes: [
         { name: 'CONTRACTOR', path: 'contractor' },
         { name: 'USER', path: 'user' }
-      ]
+      ],
     }),
     PostModule,
     LoginModule,
