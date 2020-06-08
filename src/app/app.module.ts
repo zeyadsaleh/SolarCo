@@ -55,7 +55,7 @@ import { MessagesViewComponent } from './rails-chat/chat/messages-view/messages-
       userTypes: [
         { name: 'CONTRACTOR', path: 'contractor' },
         { name: 'USER', path: 'user' }
-      ]
+      ],
     }),
     PostModule,
     LoginModule,
