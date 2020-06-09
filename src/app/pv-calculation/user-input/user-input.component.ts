@@ -16,7 +16,8 @@ export class UserInputComponent implements OnInit {
   permission: boolean = true;
   title: string = 'Pv-System Calculate';
   error: string;
-  ignore: boolean;
+  ignore: boolean = false;
+  backup: boolean = false;
 
   constructor(private geolocation: GeoLoactionService,
     private http: HttpClient,
@@ -31,9 +32,9 @@ export class UserInputComponent implements OnInit {
   getLocation() {
     this.geolocation.requestLocation(location => {
       if (location) {
-        console.log(location);        
-        this.client_request["lat"] = +(location.latitude - 0.004553999999998837*(location.accuracy/8741)).toFixed(6);
-        this.client_request["long"] = +(location.longitude + 0.015978000000000492*(location.accuracy/8741)).toFixed(6);
+        console.log(location);
+        this.client_request["lat"] = +(location.latitude - 0.004553999999998837 * (location.accuracy / 8741)).toFixed(6);
+        this.client_request["long"] = +(location.longitude + 0.015978000000000492 * (location.accuracy / 8741)).toFixed(6);
         this.client_request["src"] = this.geolocation.getMapLink(location);
         console.log(this.geolocation.getMapLink(location));
         this.ignore = true;
@@ -52,13 +53,14 @@ export class UserInputComponent implements OnInit {
       this.geolocation.getLocation(this.client_request, response => {
         if (response && response['permission']) {
           if (this.client_request['src']) response['src'] = this.client_request['src'];
+          response['backup'] = this.backup;
           this.__service.setData(response)
           this.router.navigate(['pv-system/calculate']);
         } else {
           this.error = "Some issues happens with your request, try it later!";
         }
       });
-    }else{
+    } else {
       this.error = "Please fill the form with valid input!"
     }
   }

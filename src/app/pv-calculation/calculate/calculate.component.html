@@ -20,6 +20,8 @@
                         Map</a></p>
                 <p><b>City:</b> {{ api_response['city'] }}</p>
                 <p><b>Country:</b> {{ api_response['country'] }}</p>
+                <p *ngIf="!api_response['backup']"><b>System:</b> Complete System</p>
+                <p *ngIf="api_response['backup']"><b>System:</b> Backup System</p>
             </mat-card-content>
             <mat-card-content class="border rounded p-3">
                 <h3>Enter Your Address</h3>
