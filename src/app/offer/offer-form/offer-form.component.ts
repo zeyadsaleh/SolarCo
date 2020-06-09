@@ -18,7 +18,7 @@ export class OfferFormComponent implements OnInit {
     post_id: ''
   }
 
-  negativePattern = '[+]?([.]\d+|\d+[.]?\d*)$'
+  negativePattern = '^[0-9e100000]*$'
 
   title:string = 'New Offer';
   submitted:boolean = false;

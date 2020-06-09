@@ -10,12 +10,12 @@ const routes: Routes = [
   {
     path: 'pv-system/user-info',
     component: UserInputComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'pv-system/calculate',
     component: CalculateComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'pv-system/details',
