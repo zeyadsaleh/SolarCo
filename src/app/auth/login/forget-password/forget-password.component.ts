@@ -11,7 +11,7 @@ import { ShareService } from 'src/app/shared/services/share.service';
 })
 export class ForgetPasswordComponent implements OnInit {
  
-  title: string = 'Login';
+  title: string = 'Reset Password';
   submitted: boolean = false;
   @Input() type: string = "";
 
@@ -53,7 +53,7 @@ export class ForgetPasswordComponent implements OnInit {
     this.submitted = true;
     this.tokenAuthSerivce.resetPassword({
       login: this.userData.email,
-      userType: "USER"
+      userType: this.userData.userType
     }).subscribe(
       res => {
         this.submitted = false;
@@ -68,13 +68,15 @@ export class ForgetPasswordComponent implements OnInit {
   } 
   
   updatePassword() {
+    this.submitted = true;
     this.tokenAuthSerivce.updatePassword({
       password:             this.userData.password,
       passwordConfirmation: this.userData.passwordConfirmation,
     }).subscribe(
       res => {
         this.submitted = false;
-        console.log(res)
+        console.log(res);
+        this.router.navigate(['']);
       }, 
       error => {
         this.submitted = false;
