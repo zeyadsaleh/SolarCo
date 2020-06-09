@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PvCalculationService } from '../../shared/services/pv-calculation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShareService } from 'src/app/shared/services/share.service';
-
+ 
 @Component({
   selector: 'app-pv-system',
   templateUrl: './pv-system.component.html',
