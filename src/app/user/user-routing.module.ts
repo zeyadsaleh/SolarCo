@@ -9,6 +9,7 @@ import { SystemsComponent } from '../pv-calculation/systems/systems.component';
 import { HomepageComponent } from '../post/homepage/homepage.component';
 import { ContractorProfileComponent } from './contractor-profile/contractor-profile.component';
 import { PerviousPostsComponent } from '../post/pervious-posts/pervious-posts.component';
+import { NotificationComponent } from './notification/notification.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'profile/contractors/:id',
     component: ContractorProfileComponent
+  },
+  {
+    path: 'notifications',
+    component: NotificationComponent
   }
 ];
 

@@ -23,6 +23,9 @@
               class="nav-item"><a class="nav-link " [routerLink]="['/posts']" style="font-size: 16px;">Posts</a>
           </ul>
           <ul class="nav navbar-nav menu_nav ml-auto">
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/notifications']">
+                <p><mat-icon matBadge="5454" matBadgeColor="warn">notifications</mat-icon></p></a>
+              </li>
             <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/profile']"
                 style="font-size: 16px;">Profile</a></li>
             <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/login']"
