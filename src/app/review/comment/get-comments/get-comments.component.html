@@ -1,0 +1,15 @@
+<h2 class="text-center">Reviews</h2>
+<hr>
+<div class=" text-center" *ngIf="users">
+    <div *ngFor="let comment of comments" class="mb-2">
+        <div class="animated-border-quote">
+            <blockquote>
+                <p>{{ comment.comment }}</p>
+                <cite class="text-center text-dark">Date: <b>{{ comment.date }}</b></cite>
+            </blockquote>
+        </div>
+    </div>
+</div>
+<div *ngIf="!users">
+    <h4 class="text-center">No Reviews yet!</h4>
+</div>

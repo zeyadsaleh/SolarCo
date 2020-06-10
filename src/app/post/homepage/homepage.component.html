@@ -14,13 +14,13 @@
             </li>
           </ul>
         </div>
-        <div class="post-card__content m-2" [routerLink]="['/posts/',post.id]">
+        <div class="post-card__content m-2">
           <div class="post-card__info">
             <button class="btn btn-info btn-sm mt-2 mr-2" *ngIf="('manage' | able: 'Post')"
               (click)="deletePost(post.id)">Delete</button>
             <button class="btn btn-primary btn-sm" *ngIf="('manage' | able: 'Post')"
               [routerLink]="['/update/posts',post.id]">Update</button>
-            <h1>{{post.title}}</h1>
+            <h1 [routerLink]="['/posts/',post.id]">{{post.title}}</h1>
             <button class="btn btn-dark btn-sm mt-2" *ngIf="('manage' | able: 'Offer')"
               (click)="sendId(post.id)">Apply</button>
             <h4 class="border border-primary p-1 m-2 text-center rounded"><span>Estimated
@@ -34,7 +34,7 @@
             <p>{{post.description}}</p>
             <mat-card class="text-center mt-2">
               <mat-card-content class="border border-danger p-1 text-center">
-                <table class="table table-sm table-borderless">
+                <table class="table table-sm table-borderless" [routerLink]="['/pv-system/',post.system_id]">
                   <tbody>
                     <tr>
                       <th>Panel_nums</th>

@@ -4,14 +4,15 @@ import { OfferReviewService } from 'src/app/shared/services/offer-review.service
 @Component({
   selector: 'app-create-comment',
   templateUrl: './create-comment.component.html',
-  styleUrls: ['./create-comment.component.css']
+  styleUrls: ['./create-comment.component.scss']
 })
 export class CreateCommentComponent implements OnInit {
 
   @Input() offers;
-  req_data: object = {review: ''};
+  req_data: object;
   edit: boolean = false;
-  isLoading: boolean = true;
+  show: boolean = false;
+  error: string;
 
   constructor(private __service: OfferReviewService) { }
 
@@ -23,13 +24,10 @@ export class CreateCommentComponent implements OnInit {
         (response) => {
           if (response) {
             if (response['review']) this.edit = true;
-            this.req_data['review'] = response['review'];
+            this.req_data = response;
             console.log(response);
           }
         })
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 500);
     }
   }
 
@@ -40,20 +38,26 @@ export class CreateCommentComponent implements OnInit {
   }
 
   setComment() {
-    if (!this.edit) {
-      this.__service.setReview(this.req_data).subscribe(
-        (response) => {
-          if (response) {
-            console.log(response);
-          }
-        })
-    } else {
-      this.__service.updateReview(this.req_data['offer_id'], this.req_data).subscribe(
-        (response) => {
-          if (response) {
-            console.log(response);
-          }
-        })
+    if (this.req_data['review'].length > 5) {
+      if (!this.edit) {
+        this.__service.setReview(this.req_data).subscribe(
+          (response) => {
+            if (response) {
+              console.log(response);
+              this.show = false;
+            }
+          })
+      } else {
+        this.__service.updateReview(this.req_data['offer_id'], this.req_data).subscribe(
+          (response) => {
+            if (response) {
+              console.log(response);
+              this.show = false;
+            }
+          })
+      }
+    }else{
+      this.error = "comment must be more than 5 characters";
     }
   }
 }

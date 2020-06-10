@@ -21,7 +21,7 @@ export class SinglePostComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private __service: ShareService,
-    private tokenAuth: AngularTokenService) { }
+    public tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
     this.tokenAuth.validateToken().subscribe(

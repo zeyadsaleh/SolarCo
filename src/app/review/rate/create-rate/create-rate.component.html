@@ -1,6 +1,6 @@
 <div class="text-center m-1 p-3 mb-4">
-    <h4 class="bg-dark rounded text-white">Rate</h4>
-    <div class="rating" (click)="setRate($event)" *ngIf="!isLoading">
+    <h4 class="bg-dark rounded text-white p-1">Rate</h4>
+    <div class="rating" (click)="setRate($event)">
 
         <input type="radio" name="rating" id="r1" value="5" [checked]="current_rate == 5">
         <label for="r1"></label>

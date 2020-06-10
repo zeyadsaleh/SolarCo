@@ -62,9 +62,15 @@
             <button class="btn btn-success" *ngIf="('update' | able: 'Post')  && !post.closed"
               [routerLink]="['/update/posts',post.id]">Update</button>
           </div>
-          <div class="border p-2 text-center rounded shadow" *ngIf="post.closed">
+          <div class="border p-2 text-center rounded shadow"
+            *ngIf="post.closed && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'">
             <app-create-rate [offers]="post.offers"></app-create-rate>
             <app-create-comment [offers]="post.offers"></app-create-comment>
+          </div>
+          <div class="border p-2 text-center rounded shadow"
+            *ngIf="post.closed && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'CONTRACTOR'">
+            <app-get-rate [offers]="post.offers"></app-get-rate>
+            <app-get-comment [offers]="post.offers"></app-get-comment>
           </div>
         </div>
       </div>
