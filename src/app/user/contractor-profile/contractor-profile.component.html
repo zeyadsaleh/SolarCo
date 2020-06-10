@@ -15,7 +15,7 @@
             </div>
             <div class="my-4">
                 <div>
-                    <app-get-rate [contractor_id]="contractor.id"></app-get-rate>
+                    <app-get-rates [contractor_id]="contractor.id"></app-get-rates>
                     <!-- <h3 class="font-weight-bold">Rating</h3>
                     <p class="card-text my-4" *ngIf="contractor.rate">{{ contractor.rate }}</p>
                     <p class="card-text my-4 text-center" *ngIf="!contractor.rate">No rates available</p> -->
@@ -23,7 +23,7 @@
             </div>
             <div class="my-4">
                 <div>
-                    <app-get-comment [contractor_id]="contractor.id"></app-get-comment>
+                    <app-get-comments [contractor_id]="contractor.id"></app-get-comments>
                     <!-- <h3 class="font-weight-bold">Reviews</h3>
                     <p class="card-text my-4" *ngIf="contractor.reviews">{{ contractor.reviews }}</p>
                     <p class="card-text my-4 text-center" *ngIf="!contractor.reviews">No reviews available</p> -->

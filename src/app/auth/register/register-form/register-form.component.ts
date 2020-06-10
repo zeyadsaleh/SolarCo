@@ -42,7 +42,8 @@ export class RegisterFormComponent implements OnInit {
 
   constructor(private tokenAuthSerivce: AngularTokenService,
               private router: Router, private ability: Ability, private api: GlobalService,
-              readonly chatAuthService:ChatAuthService) { }
+              readonly chatAuthService:ChatAuthService,
+              private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -78,7 +79,11 @@ export class RegisterFormComponent implements OnInit {
               );   
             },
             err => (console.log(err))
-          ); 
+          );
+
+          this.userService.current_user = res.body.data;
+          this.userService.user_type = this.tokenAuthSerivce.currentUserType;
+
           this.submitted = false;
           this.router.navigate(['']);
         },

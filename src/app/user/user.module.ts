@@ -16,6 +16,7 @@ import { EditComponent } from './edit/edit.component';
 import { NotificationComponent } from './notification/notification.component';
 
 
+
 @NgModule({
   declarations: [
     ProfileComponent,

@@ -12,57 +12,42 @@ import { MessagesService } from './services/messages.service';
 export class ChatComponent implements OnInit {
 
   selectedUser;
-  messages;
+  messages = [];
   isLoading:boolean = true;
+  connected = false;
 
   constructor(readonly route: ActivatedRoute,
               readonly userService: UserService,
               private chatService: ChatService,
-              private messagesService: MessagesService) { }
+              private messagesService: MessagesService) { 
+      
+    this.route.paramMap.subscribe(params => {
 
-  ngOnInit(): void {
-    console.log("OnInit chat")
-    if(this.userService.user_type == 'USER'){
-      this.route.paramMap.subscribe(params => {
-
+      if(params.has('id')) {
         this.userService.getContractor(params.get('id')).subscribe(res => {
           this.selectedUser = res;
           this.initChat();
-          this.isLoading = false;
         })
+      } else {
+        this.connected = true;
+      }
 
-      })
-    } else if(this.userService.user_type == 'CONTRACTOR') {
-      this.route.paramMap.subscribe(params => {
-
-        this.userService.getClient(params.get('id')).subscribe(res => {
-          this.selectedUser = res;
-          this.initChat();
-          this.isLoading = false;
-        })
-
-      })
-    }
+      this.isLoading = false;
+    })
   }
+
+  ngOnInit(): void {}
 
   async initChat() {
     if(this.userService.user_type == 'USER') {
       await this.chatService.openChannel(this.userService.current_user, this.selectedUser);
-      this.messagesService.getOldMessages(this.userService.current_user.id, this.selectedUser.id).subscribe(
-        res => {
-          this.messages = res;
-          console.log(res)
-        }
-      );
     } else if (this.userService.user_type == 'CONTRACTOR') {
       await this.chatService.openChannel(this.selectedUser, this.userService.current_user);
-      this.messagesService.getOldMessages(this.selectedUser.id, this.userService.current_user.id).subscribe(
-        res => {
-          this.messages = res;
-          console.log(res)
-        }
-      );
     }
+
+    this.chatService.channel.connected().subscribe(() => {
+      this.connected = true;
+    })
 
     this.chatService.channel.received().subscribe(res=> {
       this.messages = [...this.messages, res.message as any];
@@ -71,6 +56,28 @@ export class ChatComponent implements OnInit {
 
   onSendMessage(message: string) {
     this.chatService.sendMessage(message);
+  }
+
+  async onUserSelected(usr) {
+    this.selectedUser = usr;
+    this.initChat();
+    this.getOldMessages();
+  }
+
+  getOldMessages() {
+    if(this.userService.user_type == 'USER') {
+      this.messagesService.getOldMessages(this.userService.current_user.id, this.selectedUser.id).subscribe(
+        res => {
+          this.messages = [].slice.call(res);
+        }
+      );
+    } else if (this.userService.user_type == 'CONTRACTOR') {
+      this.messagesService.getOldMessages(this.selectedUser.id, this.userService.current_user.id).subscribe(
+        res => {
+          this.messages = [].slice.call(res);
+        }
+      );
+    }
   }
 
   ngOnDestroy() {

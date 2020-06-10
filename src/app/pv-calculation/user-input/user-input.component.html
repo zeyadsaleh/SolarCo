@@ -13,23 +13,29 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <mat-card-content class="border rounded p-3">
+            <mat-card-content class="border rounded p-2">
                 <mat-form-field class="example-form-field">
                     <mat-label>Electricity Consumption</mat-label>
                     <input matInput type="number" [(ngModel)]="client_request['consump']" min="0" max="1000" />
                     <mat-hint align="start"><strong>Consumption per month (kwh)</strong> </mat-hint>
                     <mat-hint align="end"> {{ client_request['consump'] }} </mat-hint>
                 </mat-form-field>
+                <hr>
+                <div>
+                    <p class="text-dark rounded text-center">
+                        <input type="checkbox" [checked]="backup" (change)="backup = !backup" />
+                        <label>&nbsp;&nbsp; As BackUp (unchecked: CompleteSystem)</label>
+                    </p>
+                </div>
             </mat-card-content>
-            <mat-card-actions *ngIf="client_request['consump'] > 0">
-                <a mat-button class="btn rounded shadow btn-outline-success mr-3" *ngIf="!client_request['lat']"
-                    (click)="getLocation()">GetLocation</a>
+            <mat-card-actions>
+                <button mbuttont-button class="btn rounded shadow btn-outline-success mr-3"
+                    *ngIf="!client_request['lat']" (click)="getLocation()">GetLocation</button>
                 <button mat-button class="btn rounded shadow btn-outline-primary" [disabled]="!ignore"
                     (click)="confirm()">Confirm</button>
             </mat-card-actions>
-            <mat-card-footer class="text-center" *ngIf="client_request['consump'] > 0">
-
-                <p class="bg-warning text-dark m-3 text-dark m-2 rounded text-center" *ngIf="!client_request['lat']">
+            <mat-card-footer class="text-center">
+                <p class="bg-warning text-dark m-2 rounded text-center" *ngIf="!client_request['lat']">
                     <input type="checkbox" class="mr-2" [checked]="ignore" (change)="ignore = !ignore" /> Igonre
                     GetLocation</p>
                 <p class="bg-success text-dark m-3 rounded text-center" *ngIf="client_request['lat']">We Got Your

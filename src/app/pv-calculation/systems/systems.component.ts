@@ -24,10 +24,10 @@ export class SystemsComponent implements OnInit {
     this.data.getSystems(response => {
       if (response && response['length'] > 0) {
         this.systems = response;
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 500);
       }
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 500);
     });
   }
 

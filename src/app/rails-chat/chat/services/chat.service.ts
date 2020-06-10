@@ -20,26 +20,25 @@ export class ChatService {
 
   async openChannel(user, contractor) {
     var authData = this.tokenService.currentAuthData;
-
-    console.log(authData)
+    var type = this.userService.user_type[0] + this.userService.user_type.slice(1).toLowerCase();
+    console.log(type)
 
     this.cable = await this.cableService
-    .cable(`ws://localhost:3000/cable?access-token=${authData.accessToken}&uid=${authData.uid}&client=${authData.client}`);
+    .cable(`ws://localhost:3000/cable?access-token=${authData.accessToken}&uid=${authData.uid}&client=${authData.client}&type=${type}`);
 
     this.channel= await this.cable.channel('RoomChannel', {user_id: user.id, contractor_id: contractor.id});
-
-    console.log(this.channel)
 
     return this.channel
   }
 
   sendMessage(message) {
-    console.log("message in service");
     this.channel.perform('speak', {message: message})
   }
 
   unsubscribe() {
-    this.channel.unsubscribe();
-    this.cable.disconnect();
+    if(this.cable && this.channel) {
+      this.channel.unsubscribe();
+      this.cable.disconnect();
+    }
   }
 }

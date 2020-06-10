@@ -16,9 +16,9 @@
 	width: 100%;
 	background-position: center;
  }
- body{
+ /* body{
 	background-color: palegoldenrod;
- }
+ } */
  
  
  .four_zero_four_bg h1{
@@ -231,6 +231,6 @@ h1 small {
 .bar {
 	background: rgb(0, 24, 48);
 	width: 100%;
-	height: 88px;
+	height: 80px;
 	display: flex;
 } 

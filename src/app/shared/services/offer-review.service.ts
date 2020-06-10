@@ -8,45 +8,45 @@ import { GlobalService } from './global.service';
 export class OfferReviewService {
 
   constructor(private http: HttpClient,
-              private api: GlobalService) { }
+    private api: GlobalService) { }
 
-  private apiRev:String = `${this.api.host}/offer_reviews`;
-       
+  private apiRev: String = `${this.api.host}/offer_reviews`;
+
   // REVIEW API
   // GET ALL
-  getReviews(contractor_id):Observable<any> {
+  getReviews(contractor_id): Observable<any> {
     return this.http.get(`${this.apiRev}/per_contractor/${contractor_id}`);
   }
   // GET ONE
-  getReview(contractor_id):Observable<any> {
-    return this.http.get(`${this.apiRev}/${contractor_id}`);
+  getReview(offer_id): Observable<any> {
+    return this.http.get(`${this.apiRev}/${offer_id}`);
   }
   // POST
-  setReview(review):Observable<any> {
-    return this.http.post(`${this.apiRev}`,review);
+  setReview(review): Observable<any> {
+    return this.http.post(`${this.apiRev}`, review);
   }
   // PUT
-  updateReview(id,review):Observable<any> {
-    return this.http.put(`${this.apiRev}/${id}`,review);
+  updateReview(offer_id, review): Observable<any> {
+    return this.http.put(`${this.apiRev}/${offer_id}`, review);
   }
 
   // RATE API
-  private apiRat:String = `${this.api.host}/offer_rates`;
+  private apiRat: String = `${this.api.host}/offer_rates`;
   // GET ALL
-  getRates(contractor_id):Observable<any> {
+  getRates(contractor_id): Observable<any> {
     return this.http.get(`${this.apiRat}/per_contractor/${contractor_id}`);
   }
   // GET ONE
-  getRate(contractor_id):Observable<any> {
-    return this.http.get(`${this.apiRat}/${contractor_id}`);
+  getRate(offer_id): Observable<any> {
+    return this.http.get(`${this.apiRat}/${offer_id}`);
   }
   // POST
-  setRate(rate):Observable<any> {
-    return this.http.post(`${this.apiRat}`,rate);
+  setRate(rate): Observable<any> {
+    return this.http.post(`${this.apiRat}`, rate);
   }
   // PUT
-  updateRate(id,rate):Observable<any> {
-    return this.http.put(`${this.apiRat}/${id}`,rate);
+  updateRate(offer_id, rate): Observable<any> {
+    return this.http.put(`${this.apiRat}/${offer_id}`, rate);
   }
 
 }
