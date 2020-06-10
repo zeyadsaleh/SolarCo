@@ -1,0 +1,6 @@
+<app-page-banner *ngIf="!toProfile" [title]="title"></app-page-banner>
+<div class="container" *ngFor="let notification of notifications">
+    <div>{{notification.key}}</div>
+    <div>proposal: {{notification.trackable.proposal}}</div>
+    <div>price: {{notification.trackable.price}}</div>
+</div>

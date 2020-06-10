@@ -13,6 +13,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { ContractorProfileComponent } from './contractor-profile/contractor-profile.component';
 import { ReviewModule } from '../review/review.module';
 import { EditComponent } from './edit/edit.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { EditComponent } from './edit/edit.component';
     ProfileComponent,
     EditComponent,
     ContractorProfileComponent,
+    NotificationComponent,
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,7 @@ import { EditComponent } from './edit/edit.component';
     ContractorProfileComponent
   ],
   providers: [
-    UserService, 
+    UserService,
     PvCalculationService,
   ],
 })
