@@ -37,8 +37,8 @@ export class OfferReviewService {
     return this.http.get(`${this.apiRat}/per_contractor/${contractor_id}`);
   }
   // GET ONE
-  getRate(contractor_id):Observable<any> {
-    return this.http.get(`${this.apiRat}/${contractor_id}`);
+  getRate(offer_id):Observable<any> {
+    return this.http.get(`${this.apiRat}/${offer_id}`);
   }
   // POST
   setRate(rate):Observable<any> {

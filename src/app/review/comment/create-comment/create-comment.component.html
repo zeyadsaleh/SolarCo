@@ -1,1 +1,12 @@
-<p>create-comment works!</p>
+<div class="text-center m-1 p-3" *ngIf="!isLoading">
+    <h4 class="bg-dark rounded text-white">Comment</h4>
+    <div *ngIf="edit">
+        <blockquote class="speech-bubble shadow text-center shadow rounded border border-dark p-2">
+            <p>{{ req_data['review'] }}</p>
+        </blockquote>
+    </div>
+    <div class="form-group" >
+        <input class="form-control mb-2" minlength="5" maxlength="35" name="review" type="text" [(ngModel)]="req_data['review']">
+        <button class="btn btn-success text-center" (click)="setComment()">Comment</button>
+    </div>
+</div>

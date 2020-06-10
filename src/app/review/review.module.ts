@@ -5,6 +5,7 @@ import { CreateRateComponent } from './rate/create-rate/create-rate.component';
 import { GetRateComponent } from './rate/get-rate/get-rate.component';
 import { GetCommentComponent } from './comment/get-comment/get-comment.component';
 import { OfferReviewService } from '../shared/services/offer-review.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { OfferReviewService } from '../shared/services/offer-review.service';
   ],
   imports: [
     CommonModule,
+    FormsModule,
   ],
   exports: [
     CreateCommentComponent, 

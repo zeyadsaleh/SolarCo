@@ -62,6 +62,10 @@
             <button class="btn btn-success" *ngIf="('update' | able: 'Post')  && !post.closed"
               [routerLink]="['/update/posts',post.id]">Update</button>
           </div>
+          <div class="border p-2 text-center rounded shadow" *ngIf="post.closed">
+            <app-create-rate [offers]="post.offers"></app-create-rate>
+            <app-create-comment [offers]="post.offers"></app-create-comment>
+          </div>
         </div>
       </div>
     </div>
@@ -69,6 +73,7 @@
       <app-offer [post_id]="post.id" [postOwner_id]="post.user_id" (onDeleteOffer)="onDeleteOffer()"></app-offer>
     </div>
   </div>
+
 </div>
 
 <div *ngIf="errorMessage">

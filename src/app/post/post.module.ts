@@ -15,6 +15,7 @@ import { UserRoutingModule } from '../user/user-routing.module';
 import { MaterialModule } from '../shared/material/material.module';
 import { AngularTokenModule } from 'angular-token';
 import { PerviousPostsComponent } from './pervious-posts/pervious-posts.component';
+import { ReviewModule } from '../review/review.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PerviousPostsComponent } from './pervious-posts/pervious-posts.componen
     OfferModule,
     UserRoutingModule,
     MaterialModule,
-    AngularTokenModule
+    AngularTokenModule,
+    ReviewModule
   ],
   exports:[
     HomepageComponent,
