@@ -5,7 +5,6 @@
         <i class="fas fa-comment-alt"></i>
     </div>
     <div class="card contractor-profile">
-        <!-- <h5 class="card-header">Contractor Info</h5> -->
         <div class="card-body mx-5">
             <div class="text-center mb-5">
                 <img [src]="contractor.avatar ? contractor.avatar : '/assets/images/avatar.webp'" width=100 height=100>
@@ -16,17 +15,11 @@
             <div class="my-4">
                 <div>
                     <app-get-rates [contractor_id]="contractor.id"></app-get-rates>
-                    <!-- <h3 class="font-weight-bold">Rating</h3>
-                    <p class="card-text my-4" *ngIf="contractor.rate">{{ contractor.rate }}</p>
-                    <p class="card-text my-4 text-center" *ngIf="!contractor.rate">No rates available</p> -->
                 </div>
             </div>
             <div class="my-4">
                 <div>
                     <app-get-comments [contractor_id]="contractor.id"></app-get-comments>
-                    <!-- <h3 class="font-weight-bold">Reviews</h3>
-                    <p class="card-text my-4" *ngIf="contractor.reviews">{{ contractor.reviews }}</p>
-                    <p class="card-text my-4 text-center" *ngIf="!contractor.reviews">No reviews available</p> -->
                 </div>
             </div>
         </div>

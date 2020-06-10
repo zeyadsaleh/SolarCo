@@ -16,6 +16,7 @@ import { MaterialModule } from '../shared/material/material.module';
 import { AngularTokenModule } from 'angular-token';
 import { PerviousPostsComponent } from './pervious-posts/pervious-posts.component';
 import { ReviewModule } from '../review/review.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ReviewModule } from '../review/review.module';
     UserRoutingModule,
     MaterialModule,
     AngularTokenModule,
-    ReviewModule
+    ReviewModule,
+    NgxPaginationModule,
   ],
   exports:[
     HomepageComponent,

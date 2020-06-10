@@ -11,6 +11,7 @@ export class GetCommentsComponent implements OnInit {
   @Input() contractor_id:number;
   comments = new Array;
   users: number = 0;
+  p: number = 1;
   
   constructor(private __service: OfferReviewService) { }
 

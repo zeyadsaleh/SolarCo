@@ -8,6 +8,7 @@ import { GetCommentsComponent } from './comment/get-comments/get-comments.compon
 import { GetRatesComponent } from './rate/get-rates/get-rates.component';
 import { GetRateComponent } from './rate/get-rate/get-rate.component';
 import { GetCommentComponent } from './comment/get-comment/get-comment.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { GetCommentComponent } from './comment/get-comment/get-comment.component
   imports: [
     CommonModule,
     FormsModule,
+    NgxPaginationModule,
   ],
   exports: [
     CreateCommentComponent, 

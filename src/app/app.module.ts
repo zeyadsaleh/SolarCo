@@ -32,10 +32,10 @@ import { UserModule } from './user/user.module';
 import { OfferModule } from './offer/offer.module';
 import { ChatModule } from './chat/chat.module';
 import { ActionCableService } from 'angular2-actioncable';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { ChatComponent } from './rails-chat/chat/chat.component';
 import { MessagesViewComponent } from './rails-chat/chat/messages-view/messages-view.component';
 import { ContactsListComponent } from './rails-chat/chat/contacts-list/contacts-list.component';
-// import { GoogleMapsModule } from '@angular/google-maps'
 // ########### App Modules END ##########
 @NgModule({
   declarations: [
@@ -66,8 +66,8 @@ import { ContactsListComponent } from './rails-chat/chat/contacts-list/contacts-
     AbilityModule,
     ReactiveFormsModule,
     OfferModule,
+    NgxPaginationModule,
     // ChatModule,
-    // GoogleMapsModule,
   ],
   providers: [
     AngularTokenModule, 

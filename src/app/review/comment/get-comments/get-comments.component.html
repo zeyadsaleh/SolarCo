@@ -1,13 +1,17 @@
 <h2 class="text-center">Reviews</h2>
 <hr>
 <div class=" text-center" *ngIf="users">
-    <div *ngFor="let comment of comments" class="mb-2">
+    <div *ngFor="let comment of comments | paginate: { itemsPerPage: 8, currentPage: p }" class="mb-2">
         <div class="animated-border-quote">
             <blockquote>
                 <p>{{ comment.comment }}</p>
                 <cite class="text-center text-dark">Date: <b>{{ comment.date }}</b></cite>
             </blockquote>
         </div>
+    </div>
+    <hr>
+    <div class="text-center border rounded pt-3 pr-5">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>
 <div *ngIf="!users">

@@ -2,12 +2,13 @@
 
 <div class="container" *ngIf="!isLoading">
     <div class="row justify-content-center mb-2">
-        <div class="col-lg-5 m-3" *ngFor="let system of systems_details; let i = index">
+        <div class="col-lg-5 m-2"
+            *ngFor="let system of systems_details | paginate: { itemsPerPage: 8, currentPage: p }">
             <div class="flip-card">
                 <div class="flip-card-inner text-center" [routerLink]="['/pv-system',system['calculation']['id']]">
                     <div class="flip-card-front p-3 border border-2 border-warning">
                         <h3 class="bg-warning rounded shadow p-1 mb-4 text-dark">PV-System Num:
-                            #{{ (systems_details['length']) - i }}</h3>
+                            #{{ system['id'] }}</h3>
                         <img src="assets/icon/solar.png" alt="Solar" style="width:100px; height:100px;">
                         <div class="border border-warning rounded p-1 mt-4">
                             <table class="table table-sm table-borderless text-white">
@@ -35,7 +36,7 @@
                     </div>
                     <div class="flip-card-back bg-warning p-3 border border-2 border-primary">
                         <h3 class="darkblue rounded shadow p-1 mb-4">PV-System Num:
-                            #{{ (systems_details['length']) - i }}</h3>
+                            #{{ system['id'] }}</h3>
                         <div class="border border-primary rounded p-1">
                             <table class="table table-sm table-borderless text-white">
                                 <tbody>
@@ -70,6 +71,10 @@
                 </div>
             </div>
         </div>
+    </div>
+    <hr>
+    <div class="text-center border rounded pt-3 pr-5">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>
 
