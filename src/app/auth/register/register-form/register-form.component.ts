@@ -81,7 +81,7 @@ export class RegisterFormComponent implements OnInit {
             err => (console.log(err))
           );
 
-          this.userService.current_user = res.body.data;
+          this.userService.current_user = res.data;
           this.userService.user_type = this.tokenAuthSerivce.currentUserType;
 
           this.submitted = false;

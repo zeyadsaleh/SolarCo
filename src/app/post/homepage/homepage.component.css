@@ -22,7 +22,7 @@ body {
 }
 .container .post-card {
   background-color: white;
-  width: 50vw;
+  /* width: 50vw; */
   height: auto;
   box-shadow: 0 1px 5px rgb(0, 24, 48);  display: flex;
   border-radius: 0.3rem;
@@ -81,7 +81,8 @@ body {
   position: relative;
   width: calc(100% - 70px);
   height: auto;
-  padding: 25px;
+  /* padding: 25px; */
+  padding: 15px;
 }
 
 .post-card__info h1 {
@@ -177,7 +178,67 @@ body {
   font-family: 'Roboto', 'Montserrat', sans-serif;
   font-weight: 400;
 }
-@media (max-width: 34rem) {
+@media (max-width: 767px) {
+  .container .post-card {
+    /* width: 304px; */
+    /* height: 550px; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    position: relative;
+  }
+
+  .container .post-card .post-card__nav {
+    width: 100%;
+  }
+  .container .post-card .post-card__nav ul {
+    height: 70px;
+    width: 100%;
+    border-top-right-radius: 0.3rem;
+    border-top-left-radius: 0.3rem;
+  }
+  .container .post-card .post-card__nav ul li{
+    float: left;
+    display: inline-block;
+    border-bottom: none;
+    border-right: 2px solid rgb(0, 24, 48);
+  }
+  .container .post-card .post-card__nav ul li a {
+    height: 70px;
+    max-width: 100px;
+    width: 32vw;
+    line-height: 80px;
+    text-decoration: none;
+  }
+  .container .post-card .post-card__nav ul li:last-child a {
+    border-radius: 0;
+    border-top-right-radius: 0.3rem;
+  }
+  .container .post-card .post-card__nav ul li a:hover:not(.active) {
+    width: 100px;
+    height: 70px;
+  }
+
+  .container .post-card .post-card__content {
+    /* position: absolute; */
+    /* top: calc(70px + 40%); */
+    justify-content: center;
+    /* left: 0; */
+    /* top: 70px; */
+    /* left: -9px; */
+    width: 100%;
+    align-items: center;
+  }
+  .post-card__info {
+    text-align: center;
+  }
+  .post-card__info h1, .post-card__info p {
+    text-align: center;
+  }
+}
+/* @media (max-width: 34rem) {
   .container .post-card {
     width: 304px;
     height: 550px;
@@ -230,4 +291,4 @@ body {
   .post-card__info h1, .post-card__info p {
     text-align: center;
   }
-}
+} */

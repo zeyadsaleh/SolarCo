@@ -21,7 +21,7 @@ body {
 }
 .container .post-card {
   background-color: white;
-  width: 50vw;
+  /* width: 50vw; */
   height: auto;
   box-shadow: 0 1px 5px rgb(0, 24, 48);  display: flex;
   border-radius: 0.3rem;
@@ -178,8 +178,11 @@ body {
 }
 @media (max-width: 34rem) {
   .container .post-card {
-    width: 304px;
-    height: 550px;
+    /* width: 304px; */
+    /* height: 550px; */
+    height: auto;
+    display: flex;
+    flex-direction: column;
     margin: 0px;
     position: relative;
   }
@@ -216,10 +219,12 @@ body {
   }
 
   .container .post-card .post-card__content {
-    position: absolute;
-    top: calc(70px + 40%);
+    /* position: absolute; */
+    /* top: calc(70px + 40%); */
     justify-content: center;
-    left: 0;
+    /* left: 0; */
+    /* top: 70px; */
+    /* left: -9px; */
     width: 100%;
     align-items: center;
   }

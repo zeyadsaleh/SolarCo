@@ -15,6 +15,7 @@ export class ChatComponent implements OnInit {
   messages = [];
   isLoading:boolean = true;
   connected = false;
+  title:string = 'Inbox';
 
   constructor(readonly route: ActivatedRoute,
               readonly userService: UserService,

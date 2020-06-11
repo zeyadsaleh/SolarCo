@@ -12,3 +12,7 @@
     height:42px; 
     margin-bottom: 10px;
 }
+
+mat-icon {
+    vertical-align: text-bottom;
+}
