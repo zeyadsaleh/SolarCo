@@ -62,6 +62,8 @@ export class ContactsListComponent implements OnInit {
       this.contacts.length !== 0
     ) {
       this.onUserSelected(this.contacts[0] as any);
+    } else {
+      this.onUserSelected(null);
     }
   }
 

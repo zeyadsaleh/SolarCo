@@ -19,6 +19,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class MessagesViewComponent implements OnChanges {
   @Input() messages;
   @Input() selectedUserName: string;
+  @Input() emptyInbox: boolean;
 
   @Output() sendMessage = new EventEmitter<string>();
 

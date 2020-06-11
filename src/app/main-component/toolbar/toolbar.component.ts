@@ -9,7 +9,8 @@ import { Ability } from '@casl/ability';
 })
 export class ToolbarComponent implements OnInit {
 
-
+  isCollapsed:boolean = true;
+  
   constructor(public tokenAuthService:AngularTokenService, private ability: Ability) { }
  
   ngOnInit(): void {

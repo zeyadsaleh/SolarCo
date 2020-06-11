@@ -2,7 +2,7 @@
     <div class="no-messages">
         <img src="/assets/no-messages-illustration.svg" />
         <span class="title">No new message?</span>
-        <span class="text-center">Send your first message below.</span>
+        <span class="text-center" *ngIf="!emptyInbox">Send your first message below.</span>
     </div>
 </ng-template>
 
@@ -24,7 +24,7 @@
             </li>
         </ul>
     </div>
-    <div class="input-container">
+    <div class="input-container" *ngIf="!emptyInbox">
         <input placeholder="Type something" #messageInput (keydown.enter)="
           onSendMessage(messageInput.value); messageInput.value = ''
         " />

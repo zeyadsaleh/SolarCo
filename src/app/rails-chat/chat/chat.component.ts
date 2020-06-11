@@ -16,6 +16,7 @@ export class ChatComponent implements OnInit {
   isLoading:boolean = true;
   connected = false;
   title:string = 'Inbox';
+  emptyInbox: boolean;
 
   constructor(readonly route: ActivatedRoute,
               readonly userService: UserService,
@@ -60,9 +61,14 @@ export class ChatComponent implements OnInit {
   }
 
   async onUserSelected(usr) {
-    this.selectedUser = usr;
-    this.initChat();
-    this.getOldMessages();
+    if (usr) {
+      this.selectedUser = usr;
+      this.initChat();
+      this.getOldMessages();
+    } else {
+      this.emptyInbox = true;
+    }
+    
   }
 
   getOldMessages() {
