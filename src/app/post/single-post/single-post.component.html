@@ -14,6 +14,8 @@
           <h1>{{post.title}}</h1>
           <button class="btn btn-dark btn-sm" *ngIf="('create' | able: 'Offer') && !applied"
             (click)="sendId(post.id)">Apply</button>
+          <h4 class="border border-primary p-1 m-2 text-center rounded"><span>Estimated
+              Cost:</span>&nbsp;{{post.system.cost}} EG</h4>
           <h5><span>Posted by:</span>&nbsp;{{post.user.name}}</h5>
           <h5><span>Has:</span>&nbsp;{{post.offers_count}} Offers</h5>
           <h4 *ngIf="post.system.address">
@@ -22,16 +24,36 @@
             <span>Location:</span>&nbsp;{{post.system.address}},{{post.system.city}},{{post.system.country}}</h4>
           <h5><span>Posted at</span>&nbsp;{{post.created_at}}</h5>
           <p>{{post.description}}</p>
-          <mat-card class="text-center justify-content-center">
+          <mat-card class="text-center justify-content-center mt-2">
             <mat-card-content class="border border-danger p-1 text-center">
-              <p><b>Total Panels:</b> {{post.system.calculation.panels_num}} || <b>Panel Watt:</b>
-                {{post.system.calculation.panel_watt}}</p>
-              <p><b>Total Batteries:</b> {{post.system.calculation.batteries_num}} || <b>Battery AH:</b>
-                {{post.system.calculation.battery_Ah}}</p>
-              <p><b>Inverter Watt:</b> {{post.system.calculation.inverter_watt}} || <b>Total Inverters:</b>
-                {{post.system.calculation.system_circuits}}</p>
-              <p><b>Mppt Amper:</b> {{post.system.calculation.mppt_amp}} || <b>Total mppts:</b>
-                {{post.system.calculation.system_circuits}}</p>
+              <table class="table table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <th>Panel_nums</th>
+                    <td>{{ post.system['calculation']['panels_num'] }}</td>
+                    <th>Panel_watt</th>
+                    <td>{{ post.system['calculation']['panel_watt'] }}</td>
+                  </tr>
+                  <tr>
+                    <th>battery_nums</th>
+                    <td>{{ post.system['calculation']['batteries_num'] }}</td>
+                    <th>battery_Ah</th>
+                    <td>{{ post.system['calculation']['battery_Ah'] }}</td>
+                  </tr>
+                  <tr>
+                    <th>inverter_nums</th>
+                    <td>{{ post.system['calculation']['system_circuits'] }}</td>
+                    <th>inverter_watt</th>
+                    <td>{{ post.system['calculation']['inverter_watt'] }}</td>
+                  </tr>
+                  <tr>
+                    <th>mppt_nums</th>
+                    <td>{{ post.system['calculation']['system_circuits'] }}</td>
+                    <th>mppt_amp</th>
+                    <td>{{ post.system['calculation']['mppt_amp'] }}</td>
+                  </tr>
+                </tbody>
+              </table>
             </mat-card-content>
           </mat-card>
           <div class="text-center mt-4">
@@ -40,6 +62,10 @@
             <button class="btn btn-success" *ngIf="('update' | able: 'Post')  && !post.closed"
               [routerLink]="['/update/posts',post.id]">Update</button>
           </div>
+          <div class="border p-2 text-center rounded shadow" *ngIf="post.closed">
+            <app-create-rate [offers]="post.offers"></app-create-rate>
+            <app-create-comment [offers]="post.offers"></app-create-comment>
+          </div>
         </div>
       </div>
     </div>
@@ -47,6 +73,7 @@
       <app-offer [post_id]="post.id" [postOwner_id]="post.user_id" (onDeleteOffer)="onDeleteOffer()"></app-offer>
     </div>
   </div>
+
 </div>
 
 <div *ngIf="errorMessage">

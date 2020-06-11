@@ -27,7 +27,7 @@ export class CalculateComponent implements OnInit {
         this.api_response = data;
         setTimeout(() => {
           this.isLoading = false;
-        }, 500);
+        }, 300);
       } else {
         this.router.navigate(['pv-system/user-info']);
       }

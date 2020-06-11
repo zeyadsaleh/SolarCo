@@ -1,6 +1,6 @@
 <app-page-banner *ngIf="!toProfile" [title]="title"></app-page-banner>
 
-<div *ngIf="!isLoading" class="spacing">
+<div *ngIf="!isLoading && posts.length > 0" class="spacing">
   <div *ngFor="let post of posts">
     <div class="container">
       <div class="post-card">
@@ -16,13 +16,15 @@
         </div>
         <div class="post-card__content m-2" [routerLink]="['/posts/',post.id]">
           <div class="post-card__info">
-            <button class="btn btn-info btn-sm mr-2" *ngIf="('manage' | able: 'Post')"
+            <button class="btn btn-info btn-sm mt-2 mr-2" *ngIf="('manage' | able: 'Post')"
               (click)="deletePost(post.id)">Delete</button>
             <button class="btn btn-primary btn-sm" *ngIf="('manage' | able: 'Post')"
               [routerLink]="['/update/posts',post.id]">Update</button>
             <h1>{{post.title}}</h1>
-            <button class="btn btn-dark btn-sm" *ngIf="('manage' | able: 'Offer')"
+            <button class="btn btn-dark btn-sm mt-2" *ngIf="('manage' | able: 'Offer')"
               (click)="sendId(post.id)">Apply</button>
+            <h4 class="border border-primary p-1 m-2 text-center rounded"><span>Estimated
+                Cost:</span>&nbsp;{{post.system.cost}} EG</h4>
             <h5><span>Posted by:</span>&nbsp;{{post.user.name}}</h5>
             <h4 *ngIf="post.system.address">
               <span>Location:</span>&nbsp;{{post.system.address}}, {{post.system.city}}, {{post.system.country}}</h4>
@@ -30,17 +32,36 @@
               <span>Location:</span>&nbsp;{{post.system.address}},{{post.system.city}},{{post.system.country}}</h4>
             <h5><span>Posted at</span>&nbsp;{{post.created_at}}</h5>
             <p>{{post.description}}</p>
-            <!-- <p>{{post.description}}</p> -->
-            <mat-card class="text-center">
-              <mat-card-content class="border border-danger rounded p-1 text-center">
-                <p><b>Total Panels:</b> {{post.system.calculation.panels_num}} || <b>Panel Watt:</b>
-                  {{post.system.calculation.panel_watt}}</p>
-                <p><b>Total Batteries:</b> {{post.system.calculation.batteries_num}} || <b>Battery AH:</b>
-                  {{post.system.calculation.battery_Ah}}</p>
-                <p><b>Inverter Watt:</b> {{post.system.calculation.inverter_watt}} || <b>Total Inverters:</b>
-                  {{post.system.calculation.system_circuits}}</p>
-                <p><b>Mppt Amper:</b> {{post.system.calculation.mppt_amp}} || <b>Total mppts:</b>
-                  {{post.system.calculation.system_circuits}}</p>
+            <mat-card class="text-center mt-2">
+              <mat-card-content class="border border-danger p-1 text-center">
+                <table class="table table-sm table-borderless">
+                  <tbody>
+                    <tr>
+                      <th>Panel_nums</th>
+                      <td>{{ post.system['calculation']['panels_num'] }}</td>
+                      <th>Panel_watt</th>
+                      <td>{{ post.system['calculation']['panel_watt'] }}</td>
+                    </tr>
+                    <tr>
+                      <th>battery_nums</th>
+                      <td>{{ post.system['calculation']['batteries_num'] }}</td>
+                      <th>battery_Ah</th>
+                      <td>{{ post.system['calculation']['battery_Ah'] }}</td>
+                    </tr>
+                    <tr>
+                      <th>inverter_nums</th>
+                      <td>{{ post.system['calculation']['system_circuits'] }}</td>
+                      <th>inverter_watt</th>
+                      <td>{{ post.system['calculation']['inverter_watt'] }}</td>
+                    </tr>
+                    <tr>
+                      <th>mppt_nums</th>
+                      <td>{{ post.system['calculation']['system_circuits'] }}</td>
+                      <th>mppt_amp</th>
+                      <td>{{ post.system['calculation']['mppt_amp'] }}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </mat-card-content>
             </mat-card>
           </div>
@@ -48,6 +69,10 @@
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="!isLoading && posts.length == 0" class="mt-5">
+  <p class="text-center">No Posts Found</p>
 </div>
 
 <app-loading *ngIf="isLoading"></app-loading>

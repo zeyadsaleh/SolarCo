@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-
+    <a class="small" [routerLink]="['/login/forget-password']"> Forget passowrd? </a>
     <div class="justify-content-center text-center">
       <button type="submit" [disabled]="!(f.valid)" class="text-dark btn btn-light rounded shadow"> Login </button>
       <div *ngIf="submitted" class="spinner-border" id="auth-loader" role="status">

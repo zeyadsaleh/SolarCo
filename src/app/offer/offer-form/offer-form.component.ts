@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OfferService } from 'src/app/shared/services/offer.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscriber, Subscription } from 'rxjs';
-
+ 
 @Component({
   selector: 'app-offer-form',
   templateUrl: './offer-form.component.html',
@@ -18,7 +18,7 @@ export class OfferFormComponent implements OnInit {
     post_id: ''
   }
 
-  negativePattern = '[+]?([.]\d+|\d+[.]?\d*)$'
+  negativePattern = '^[0-9e100000]*$'
 
   title:string = 'New Offer';
   submitted:boolean = false;
@@ -46,6 +46,7 @@ export class OfferFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    console.log(this.offer)
     this.offerService.createOffer(this.offer).subscribe(
       res => {
         console.log(res);

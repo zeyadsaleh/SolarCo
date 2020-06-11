@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PvCalculationService } from '../../shared/services/pv-calculation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShareService } from 'src/app/shared/services/share.service';
-
+ 
 @Component({
   selector: 'app-pv-system',
   templateUrl: './pv-system.component.html',
@@ -11,7 +11,7 @@ import { ShareService } from 'src/app/shared/services/share.service';
 export class PvSystemComponent implements OnInit {
 
   system_data: object;
-  title: string = 'Pv-System Calculate';
+  title: string = 'Pv-System';
   panelOpenState1: boolean = false;
   panelOpenState2: boolean = false;
   panelOpenState3: boolean = false;
@@ -54,8 +54,8 @@ export class PvSystemComponent implements OnInit {
   }
 
   delete() {
-    this.data.delCalculation(this.system_data['system']['id'], response => {
-      if (response['error']) {
+    this.data.delCalculation(this.system_data['system']['id'], response => {      
+      if (response && response['error']) {
         if (response['error']) this.error = response['error'];
       } else {
         this.router.navigate(['profile/systems']);

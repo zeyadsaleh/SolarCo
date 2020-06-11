@@ -11,13 +11,13 @@
     <div *ngIf="messages && messages[0]; else noMessages" class="messages-container" #scrollMe>
         <ul>
             <li *ngFor="let message of messages" [style.flex-direction]="
-            message.sender.id === userService.current_user?.id
+            message.sender.id === userService.current_user?.id && message.messagable_type == user_type
               ? 'row-reverse'
               : 'row'
           ">
                 <img [src]="message.sender.avatar ? message.sender.avatar : '/assets/images/avatar.webp'" width="36px" height="37px" />
                 <span [ngClass]="
-              message.sender.id === userService.current_user?.id
+              message.sender.id === userService.current_user?.id && message.messagable_type == user_type
                 ? 'speech-bubble-own'
                 : 'speech-bubble'
             ">{{ message.content }}</span>

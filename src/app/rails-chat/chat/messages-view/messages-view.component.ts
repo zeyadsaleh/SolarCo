@@ -25,16 +25,17 @@ export class MessagesViewComponent implements OnChanges {
   @ViewChild('scrollMe', { static: false })
   messagesContainer: ElementRef<HTMLDivElement>;
 
-  constructor(readonly userService: UserService) {}
+  user_type = '';
+
+  constructor(readonly userService: UserService) {
+    this.user_type = this.userService.user_type[0] + this.userService.user_type.slice(1).toLowerCase();
+  }
 
   onSendMessage(message: string) {
-    console.log(message);
-    console.log(this.messages)
     this.sendMessage.emit(message);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if (changes.messages) {
       timer(10).subscribe(() => this.scrollIntoView());
     }

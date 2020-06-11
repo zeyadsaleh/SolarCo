@@ -4,27 +4,27 @@
   <h1 class="text-center">Create Post for your generated system</h1>
   <hr>
   <div class="row" *ngIf="system_data">
-    <table class="table table-sm table-dark">
+    <table class="table table-sm table-borderless">
       <tbody>
         <tr>
           <th scope="row">Panel</th>
-          <td>{{ system_data['calculation']['panels_num'] }}</td>
-          <td>{{ system_data['calculation']['panel_watt'] }}</td>
+          <td>Num: {{ system_data['calculation']['panels_num'] }}</td>
+          <td>Watt: {{ system_data['calculation']['panel_watt'] }}</td>
         </tr>
         <tr>
           <th scope="row">Battery</th>
-          <td>{{ system_data['calculation']['batteries_num'] }}</td>
-          <td>{{ system_data['calculation']['battery_Ah'] }}</td>
+          <td>Num: {{ system_data['calculation']['batteries_num'] }}</td>
+          <td>AH: {{ system_data['calculation']['battery_Ah'] }}</td>
         </tr>
         <tr>
           <th scope="row">Inverter</th>
-          <td>{{ system_data['calculation']['inverter_watt'] }}</td>
-          <td>{{ system_data['calculation']['system_circuits'] }}</td>
+          <td>Watt: {{ system_data['calculation']['inverter_watt'] }}</td>
+          <td>Num: {{ system_data['calculation']['system_circuits'] }}</td>
         </tr>
         <tr>
           <th scope="row">Mppt</th>
-          <td>{{ system_data['calculation']['mppt_amp'] }}</td>
-          <td>{{ system_data['calculation']['system_circuits'] }}</td>
+          <td>Amp: {{ system_data['calculation']['mppt_amp'] }}</td>
+          <td>Num: {{ system_data['calculation']['system_circuits'] }}</td>
         </tr>
       </tbody>
     </table>

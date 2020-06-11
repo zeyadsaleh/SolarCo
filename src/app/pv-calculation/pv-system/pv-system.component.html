@@ -4,6 +4,7 @@
     <div class="row text-center justify-content-center">
         <mat-card>
             <mat-card-title class="rounded shadow text-white p-3 mb-3 display-3">PV System Data</mat-card-title>
+            <h2 class="border border-black p-2">Estimated Cost: {{ system_data['cost'] }} EG</h2>
             <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ error }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error=''">
