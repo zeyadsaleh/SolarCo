@@ -8,10 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  posts = [];
+  posts = new Array;
   title: string = 'Posts';
   isLoading: boolean = true;
-
+  p: number = 1;
   system_data: object;
   toProfile: boolean;
 

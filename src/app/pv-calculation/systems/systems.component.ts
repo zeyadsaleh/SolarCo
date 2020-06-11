@@ -9,10 +9,11 @@ import { Router } from '@angular/router';
 })
 export class SystemsComponent implements OnInit {
 
-  systems: any;
+  systems = new Array;
   error: string;
   success: string;
   isLoading: boolean = true;
+  p: number = 1;
 
   constructor(private data: PvCalculationService, private router: Router) { }
 

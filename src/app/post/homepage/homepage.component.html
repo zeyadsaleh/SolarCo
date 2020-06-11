@@ -1,7 +1,7 @@
 <app-page-banner *ngIf="!toProfile" [title]="title"></app-page-banner>
 
 <div *ngIf="!isLoading && posts.length > 0" class="spacing">
-  <div *ngFor="let post of posts">
+  <div *ngFor="let post of posts | paginate: { itemsPerPage: 7, currentPage: p }">
     <div class="container">
       <div class="post-card">
         <div class="post-card__nav">
@@ -14,13 +14,13 @@
             </li>
           </ul>
         </div>
-        <div class="post-card__content m-2" [routerLink]="['/posts/',post.id]">
+        <div class="post-card__content m-2">
           <div class="post-card__info">
             <button class="btn btn-info btn-sm mt-2 mr-2" *ngIf="('manage' | able: 'Post')"
               (click)="deletePost(post.id)">Delete</button>
             <button class="btn btn-primary btn-sm" *ngIf="('manage' | able: 'Post')"
               [routerLink]="['/update/posts',post.id]">Update</button>
-            <h1>{{post.title}}</h1>
+            <h1 [routerLink]="['/posts/',post.id]">{{post.title}}</h1>
             <button class="btn btn-dark btn-sm mt-2" *ngIf="('manage' | able: 'Offer')"
               (click)="sendId(post.id)">Apply</button>
             <h4 class="border border-primary p-1 m-2 text-center rounded"><span>Estimated
@@ -34,7 +34,7 @@
             <p>{{post.description}}</p>
             <mat-card class="text-center mt-2">
               <mat-card-content class="border border-danger p-1 text-center">
-                <table class="table table-sm table-borderless">
+                <table class="table table-sm table-borderless" [routerLink]="['/pv-system/',post.system_id]">
                   <tbody>
                     <tr>
                       <th>Panel_nums</th>
@@ -69,6 +69,10 @@
       </div>
     </div>
   </div>
+  <hr>
+  <div class="text-center border rounded pt-3 pr-5">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
 </div>
 
 <div *ngIf="!isLoading && posts.length == 0" class="mt-5">

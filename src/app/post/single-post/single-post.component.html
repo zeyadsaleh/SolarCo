@@ -1,7 +1,7 @@
 <app-page-banner [title]="title"></app-page-banner>
 <div class="container" *ngIf="!isLoading">
   <div class="row justify-content-center" *ngIf="!errorMessage">
-    <div class="post-card col-lg-7 p-2 m-2 shadow rounded">
+    <div class="post-card col-lg-8 p-2 m-2 shadow rounded">
       <div class="post-card__nav">
         <ul>
           <li>
@@ -62,14 +62,20 @@
             <button class="btn btn-success" *ngIf="('update' | able: 'Post')  && !post.closed"
               [routerLink]="['/update/posts',post.id]">Update</button>
           </div>
-          <div class="border p-2 text-center rounded shadow" *ngIf="post.closed">
+          <div class="border p-2 text-center rounded shadow"
+            *ngIf="post.closed && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'">
             <app-create-rate [offers]="post.offers"></app-create-rate>
             <app-create-comment [offers]="post.offers"></app-create-comment>
+          </div>
+          <div class="border p-2 text-center rounded shadow"
+            *ngIf="post.closed && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'CONTRACTOR'">
+            <app-get-rate [offers]="post.offers"></app-get-rate>
+            <app-get-comment [offers]="post.offers"></app-get-comment>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-4 p-2 m-2 shadow rounded">
+    <div class="col-lg-3 p-2 m-2 shadow rounded">
       <app-offer [post_id]="post.id" [postOwner_id]="post.user_id" (onDeleteOffer)="onDeleteOffer()"></app-offer>
     </div>
   </div>

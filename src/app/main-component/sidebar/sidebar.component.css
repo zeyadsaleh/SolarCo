@@ -3,7 +3,7 @@
     position: fixed; /* Position them relative to the browser window */
     left: -108px; /* Position them outside of the screen */
     transition: 0.3s; /* Add transition on hover */
-    padding: 15px; /* 15px padding */
+    padding: 12px; /* 15px padding */
     width: 125px; /* Set a specific width */
     text-decoration: none; /* Remove underline */
     font-size: 22px; /* Increase font size */
@@ -17,22 +17,22 @@
   }
   
   /* The about link: 20px from the top with a green background */
-  #about {
+  #projects {
     top: 100px;
-    background-color: #4CAF50;
+    background-color: #f44336; /* Red */
   }
   
   #blog {
     top: 165px;
-    background-color: #2196F3; /* Blue */
-  }
-  
-  #projects {
-    top: 230px;
-    background-color: #f44336; /* Red */
+    background-color: #4CAF50;
   }
   
   #contact {
+    top: 230px;
+    background-color: #2196F3; /* Blue */
+  }
+  
+  #about {
     top: 295px;
     background-color: #555 /* Light Black */
   } 

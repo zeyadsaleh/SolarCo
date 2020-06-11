@@ -9,11 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PvCalculationService } from '../shared/services/pv-calculation.service';
 import { GeoLoactionService } from '../shared/services/geo-loaction.service';
-import { PageBannerComponent } from '../main-component/page-banner/page-banner.component';
 import { MainComponentModule } from '../main-component/main-component.module';
 import { SystemsComponent } from './systems/systems.component';
 import { SystemsDetailsComponent } from './systems-details/systems-details.component';
-import { LoadingComponent } from '../main-component/loading/loading.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 // import { MapComponent } from './map/map.component';
 // import { GoogleMapsModule } from '@angular/google-maps';
 
@@ -33,6 +32,7 @@ import { LoadingComponent } from '../main-component/loading/loading.component';
     FormsModule,
     RouterModule,
     MainComponentModule,
+    NgxPaginationModule,
     // GoogleMapsModule
   ],
   exports: [
