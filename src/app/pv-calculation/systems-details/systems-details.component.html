@@ -2,7 +2,7 @@
 
 <div class="container" *ngIf="!isLoading">
     <div class="row justify-content-center mb-2">
-        <div class="col-lg-5 m-2"
+        <div class="col-md-9 col-lg-5 m-2"
             *ngFor="let system of systems_details | paginate: { itemsPerPage: 8, currentPage: p }">
             <div class="flip-card">
                 <div class="flip-card-inner text-center" [routerLink]="['/pv-system',system['calculation']['id']]">
