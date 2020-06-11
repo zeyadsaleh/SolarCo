@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../shared/material/material.module';
-import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MainComponentModule } from '../main-component/main-component.module';
@@ -21,7 +20,6 @@ import { CreateTutorialComponent } from './create-tutorial/create-tutorial.compo
   imports: [
     CommonModule,
     MaterialModule,
-    AppRoutingModule,
     FormsModule,
     RouterModule,
     MainComponentModule,

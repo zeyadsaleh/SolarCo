@@ -36,6 +36,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ChatComponent } from './rails-chat/chat/chat.component';
 import { MessagesViewComponent } from './rails-chat/chat/messages-view/messages-view.component';
 import { ContactsListComponent } from './rails-chat/chat/contacts-list/contacts-list.component';
+import { TutorialModule } from './tutorial/tutorial.module';
 // ########### App Modules END ##########
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { ContactsListComponent } from './rails-chat/chat/contacts-list/contacts-
     ReactiveFormsModule,
     OfferModule,
     NgxPaginationModule,
+    TutorialModule
     // ChatModule,
   ],
   providers: [

@@ -35,7 +35,7 @@ a {
   font-family: 'Heebo';
   --bg-filter-opacity: 0.5;
   background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
-  height: 20em;
+  height: 16em;
   width: 15em;
   font-size: 1.5em;
   color: white;
@@ -120,7 +120,7 @@ a {
 }
 
 .card:after {
-  background: white;
+  background: rgb(217, 237, 255);
   width: 200%;
   height: 200%;
 }
@@ -192,3 +192,7 @@ a {
 	height: 85px;
 	display: flex;
 } 
+
+.body{
+  min-height: 600px;
+}

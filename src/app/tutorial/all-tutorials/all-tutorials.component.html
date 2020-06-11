@@ -3,8 +3,12 @@
 <div class="bar"></div>
 
 <div class="container">
-    <div class="row justify-content-center">
-        <section class="cards-wrapper">
+    <div class="row justify-content-center mt-3">
+        <a class="nav-link btn shadow rounded btn-outline-primary" [routerLink]="['/tutorials/create']">Add More Posts!</a>
+    </div>
+    <div class="row justify-content-center body" *ngIf="tutorials.length > 0">
+        <section class="cards-wrapper"
+            *ngFor="let tutorial of tutorials | paginate: { itemsPerPage: 9, currentPage: p } ">
             <div class="card-grid-space">
                 <div class="num">01</div>
                 <a class="card" href="https://codetheweb.blog/2017/10/06/html-syntax/"
@@ -48,5 +52,12 @@
                 </a>
             </div>
         </section>
+        <hr>
+        <div class="text-center border rounded pt-3 pr-5">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+    <div class="row justify-content-center body p-3" *ngIf="tutorials.length == 0">
+        <h2 class="mt-5">No tutorials yet!</h2>
     </div>
 </div>

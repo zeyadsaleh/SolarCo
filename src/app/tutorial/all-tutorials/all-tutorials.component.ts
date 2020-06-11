@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TutorialService } from 'src/app/shared/services/tutorial.service';
+import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-all-tutorials',
@@ -8,10 +10,21 @@ import { Component, OnInit } from '@angular/core';
 export class AllTutorialsComponent implements OnInit {
 
   title: string = "Tutorial";
-  
-  constructor() { }
+  tutorials = new Array;
+  p: number = 1;
+
+  constructor(private __service: TutorialService,
+    public tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
+    this.getTutorials();
+  }
+
+  getTutorials() {
+    this.__service.getTutorials().subscribe(
+      (response) => {
+        this.tutorials = response;
+      })
   }
 
 }
