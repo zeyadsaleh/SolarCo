@@ -17,6 +17,8 @@ import { UserRoutingModule } from './user/user-routing.module';
 import { OfferRoutingModule } from './offer/offer-routing.module';
 import { TutorialRoutingModule } from './tutorial/tutorial-routing.module';
 import { ContactUsComponent } from './main-component/sidebar/contact-us/contact-us.component';
+import { AboutUsComponent } from './main-component/sidebar/about-us/about-us.component';
+
 // ########### Routes END ##########
 
 // Servies ##START##
@@ -47,6 +49,10 @@ const routes: Routes = [
   {
     path: 'contact-us',
     component: ContactUsComponent,
+  },
+  {
+    path: 'about-us',
+    component: AboutUsComponent,
   },
   {
     path: '**',
