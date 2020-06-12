@@ -54,7 +54,7 @@ export class UserInputComponent implements OnInit {
         if (response && response['permission']) {
           if (this.client_request['src']) response['src'] = this.client_request['src'];
           response['backup'] = this.backup;
-          this.__service.setData(response)
+          this.__service.setData(response);
           this.router.navigate(['pv-system/calculate']);
         } else {
           this.error = "Some issues happens with your request, try it later!";

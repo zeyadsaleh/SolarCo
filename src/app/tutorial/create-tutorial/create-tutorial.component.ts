@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TutorialService } from 'src/app/shared/services/tutorial.service';
 import { NgForm } from '@angular/forms';
 import { Tutorial } from 'src/app/shared/interfaces/tutorial';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-tutorial',
@@ -14,7 +15,7 @@ export class CreateTutorialComponent implements OnInit {
   error = new Array;
   categories = new Array;
 
-  constructor(private __service: TutorialService) { }
+  constructor(private __service: TutorialService, private router: Router) { }
 
   ngOnInit(): void {
     this.__service.getCategories().subscribe(
@@ -29,6 +30,7 @@ export class CreateTutorialComponent implements OnInit {
       this.__service.setTutorial(post.value).subscribe(
         (response) => {
           console.log(response);
+          this.router.navigate(['tutorials/',response.id]);
         },
         error => {
           console.log(error);

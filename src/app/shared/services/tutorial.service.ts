@@ -73,8 +73,12 @@ export class TutorialService {
   getComments(): Observable<any> {
     return this.http.get(`${this.apiComnt}`);
   }
+  // GET COMMENTS OF TUTORIAL
+  getTutorialComments(tutorial_id): Observable<any> {
+    return this.http.get(`${this.apiComnt}/tutorial/${tutorial_id}`);
+  }
   // GET ONE
-  getComment(comment_id): Observable<any> {
+  getUserComment(comment_id): Observable<any> {
     return this.http.get(`${this.apiComnt}/${comment_id}`);
   }
   // POST

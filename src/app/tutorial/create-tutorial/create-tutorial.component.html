@@ -17,20 +17,19 @@
                     <h3 for="title" class="bg-primary text-white rounded">Title</h3>
                     <input type="text" class="form-control" placeholder="title" required minlength="5" id="title"
                         [(ngModel)]="post['title']" name="title" #title="ngModel" />
-                    <p>{{post['title']}}</p>
                 </div>
                 <div class="form-group border p-2">
                     <h3 for="body" class="bg-primary text-white rounded">Body</h3>
                     <textarea class="form-control" id="body" placeholder="body" required minlength="50"
                         [(ngModel)]="post['body']" name="body" #body="ngModel" rows="8"></textarea>
-                    <p>{{post['body']}}</p>
                 </div>
                 <div class="form-group border p-2">
                     <h3 for="category" class="bg-primary text-white rounded">Categories</h3>
-                    <select class="form-control" [(ngModel)]="post['category']" name="category" id="category" #tag="ngModel">
-                        <option *ngFor="let category of categories" [value]="category.category">{{category.category}}</option>
+                    <select class="form-control" [(ngModel)]="post['category']" required name="category" id="category"
+                        #tag="ngModel">
+                        <option *ngFor="let category of categories" [value]="category.category">{{category.category}}
+                        </option>
                     </select>
-                    <p>{{post['category']}}</p>
                 </div>
                 <button type="submit" class="btn btn-primary rounded shadow mr-3"
                     [disabled]="!post.form.valid">Post</button>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OfferReviewService } from 'src/app/shared/services/offer-review.service';
+import { ShareService } from 'src/app/shared/services/share.service';
 
 @Component({
   selector: 'app-create-rate',
@@ -11,21 +12,15 @@ export class CreateRateComponent implements OnInit {
   @Input() offers;
   current_rate: number;
   request_data: object;
+  show: boolean = false;
 
-  constructor(private __service: OfferReviewService) { }
+  constructor(private __service: OfferReviewService, private shareService: ShareService) { }
 
   ngOnInit(): void {
     this.request_data = new Object;
     this.getOfferId();
-    if (this.request_data && this.request_data['offer_id']) {
-      this.__service.getRate(this.request_data['offer_id']).subscribe(
-        (response) => {
-          if (response) {
-            this.current_rate = response['rate'];
-            console.log(response);
-          }
-        })
-    }
+    // this.Appear();
+    this.currentRate();
   }
 
   getOfferId() {
@@ -52,6 +47,26 @@ export class CreateRateComponent implements OnInit {
             }
           })
       }
+    }
+  }
+
+  Appear() {
+    this.shareService.Data.subscribe((data) => {
+      if (data) {
+        this.show = data;
+      }
+    });
+  }
+
+  currentRate() {
+    if (this.request_data && this.request_data['offer_id']) {
+      this.__service.getRate(this.request_data['offer_id']).subscribe(
+        (response) => {
+          if (response) {
+            this.current_rate = response['rate'];
+            console.log(response);
+          }
+        })
     }
   }
 

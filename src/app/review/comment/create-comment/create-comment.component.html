@@ -1,5 +1,5 @@
 <div class="text-center m-1 p-3">
-    <h4 class="bg-dark rounded text-white p-1">Comment<a (click)="show=!show" class="btn btn-sm"
+    <h4 class="bg-dark rounded text-white p-1">Comment<a *ngIf="!tutorial_id" (click)="show=!show" class="btn btn-sm"
             style="float: right;">edit</a></h4>
     <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
         {{ error }}
@@ -18,4 +18,7 @@
             [(ngModel)]="req_data['review']">
         <button class="btn btn-success text-center" (click)="setComment()">Comment</button>
     </div>
+    <!-- <div class="border p-2 text-center rounded shadow" *ngIf="tutorial_id">
+        <app-get-comments [tutorial_id]="tutorial_id" [refresh]="fresh"></app-get-comments>
+    </div> -->
 </div>

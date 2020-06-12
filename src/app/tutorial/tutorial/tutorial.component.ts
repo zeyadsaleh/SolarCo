@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TutorialService } from 'src/app/shared/services/tutorial.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-tutorial',
@@ -16,7 +17,8 @@ export class TutorialComponent implements OnInit {
 
   constructor(private __service: TutorialService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    public tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
     setTimeout(() => { this.timeOut() }, 40000);

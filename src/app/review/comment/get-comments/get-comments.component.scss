@@ -3,36 +3,36 @@ $bg: rgb(217, 237, 255);
    .animated-border-quote {
     display:inline-block;
     margin:1em;
-    max-width:200em;
+    max-width:250em;
     overflow:hidden;
     blockquote {
       background-color:$bg;
       border: solid 2px rgb(0, 24, 48);
       display: inline-block;
       margin: 0;
-      padding: 1.2em;
+      padding: 1em;
       position: relative;
       &:before {
         animation:clockwise 30s infinite linear;
         background-color: $bg;
-        bottom:10%;
+        bottom:5%;
         content: "";
         left: 0;
         opacity:.5;
         position: absolute;
         right: 0;
-        top:10%;
+        top:5%;
       }
       &:after {
         animation:counter 30s infinite linear;
         background-color: $bg;
-        bottom:10%;
+        bottom:5%;
         content: "";
         left: 0;
         opacity:.5;
         position: absolute;
         right: 0;
-        top:10%;
+        top:5%;
       }
       cite {
         display: block;
