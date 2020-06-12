@@ -56,7 +56,7 @@ export class GetCommentsComponent implements OnInit {
 
   addComment() {
     this.shareService.Data.subscribe((data) => {
-      if (data) {
+      if (data && data['user']) {
         if (!this.comments.includes(data['id'])) {
           this.comments.unshift({ "id": data['id'], "comment": data['review'], "user": data['user']['name'], "date": data['updated_at'] });
           this.users++;
