@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OfferReviewService } from 'src/app/shared/services/offer-review.service';
 import { ShareService } from 'src/app/shared/services/share.service';
+import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-create-rate',
@@ -14,7 +15,9 @@ export class CreateRateComponent implements OnInit {
   request_data: object;
   show: boolean = false;
 
-  constructor(private __service: OfferReviewService, private shareService: ShareService) { }
+  constructor(private __service: OfferReviewService, 
+    private shareService: ShareService,
+    public tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
     this.request_data = new Object;
