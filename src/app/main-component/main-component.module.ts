@@ -14,6 +14,7 @@ import { LoadingComponent } from './loading/loading.component';
 import { ContactUsComponent } from './sidebar/contact-us/contact-us.component';
 import { FormsModule } from '@angular/forms';
 import { NoResponseComponent } from './no-response/no-response.component';
+import { AboutUsComponent } from './sidebar/about-us/about-us.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { NoResponseComponent } from './no-response/no-response.component';
     LoadingComponent,
     ContactUsComponent,
     NoResponseComponent,
+    AboutUsComponent,
   ],
   imports: [
     CommonModule,
