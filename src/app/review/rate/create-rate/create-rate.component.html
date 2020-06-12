@@ -1,4 +1,4 @@
-<div class="text-center m-1 p-3 mb-4">
+<div class="text-center m-1 p-3 mb-4" *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'">
     <h4 class="bg-dark rounded text-white p-1">Rate</h4>
     <div class="rating" (click)="setRate($event)">
 

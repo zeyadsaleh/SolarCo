@@ -113,3 +113,80 @@ button {
 .body{
   min-height: 600px;
 }
+
+.favorite {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 3em;
+  height: 1em;
+  line-height: 1em;
+  transform: translateY(-50%);
+  color: #6495ed;
+  background: #f0f0f0;
+  font-size: 1.5em;
+  padding: .6em;
+  padding-left: 2em;
+  text-decoration: none;
+  border-radius: .7em;
+  overflow: hidden;
+  transition: all .2s cubic-bezier(.41,0,.59,1.44);
+}
+.favorite:hover, .favorite:focus {
+  width: 7em;
+}
+.favorite span {
+  transition: all .2s cubic-bezier(.41,0,.59,1.44);
+}
+.text {
+  position: absolute;
+  transform: none;
+}
+.favorite:hover .text, .favorite:focus .text {
+  transform: translateY(2em);
+}
+.h-text {
+  position: absolute;
+  left: 2em;
+  transform: translateY(-2em);
+}
+.favorite:hover .h-text, a:focus .h-text {
+  transform: none;
+}
+
+.like {
+  position: absolute;
+  background: #6495ed;
+  color: #f0f0f0;
+  padding: .2em .2em .1em;
+  font-size: .5em;
+  border-radius: .4em;
+  border-top-left-radius: 0;
+  left: 10px;
+  transform: translateY(4em);
+}
+.like:after {
+  content: "";
+  width: 20%;
+  height: 30%;
+  background: #6495ed;
+  border-radius: .2em .2em 0 0;
+  position: absolute;
+  left: 0;
+  top: -30%;
+}
+.favorite:hover .like, .favorite:focus .like {
+  transform: none;
+}
+.fb {
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.5em;
+  left: 20px;
+  transform: none;
+}
+.favorite:hover .fb, .favorite:focus .fb {
+  transform: translateY(-2em);
+}

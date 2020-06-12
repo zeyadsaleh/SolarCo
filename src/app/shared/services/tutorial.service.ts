@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class TutorialService {
 
   constructor(private http: HttpClient,
-              private api: GlobalService) { }
+    private api: GlobalService) { }
 
   // Tutorial API
   private apiTut: String = `${this.api.host}/tutorials`;
@@ -102,6 +102,14 @@ export class TutorialService {
   getLikes(): Observable<any> {
     return this.http.get(`${this.apiLike}`);
   }
+  // GET Likes OF TUTORIAL
+  getTutorialLikes(tutorial_id): Observable<any> {
+    return this.http.get(`${this.apiLike}/tutorial/${tutorial_id}`);
+  }
+  // GET Like OF User
+  getUserLike(tutorial_id): Observable<any> {
+    return this.http.get(`${this.apiLike}/user/${tutorial_id}`);
+  }
   // GET ONE
   getLike(like_id): Observable<any> {
     return this.http.get(`${this.apiLike}/${like_id}`);
@@ -118,6 +126,34 @@ export class TutorialService {
   deleteLike(like_id): Observable<any> {
     return this.http.delete(`${this.apiLike}/${like_id}`);
   }
+  //////////////////////////////////////////////////////////////
+
+  // FAV API
+  private apiFav: String = `${this.api.host}/favorites`;
+  // GET ALL
+  getFavorites(): Observable<any> {
+    return this.http.get(`${this.apiFav}`);
+  }
+  // GET favorite OF User
+  getUserFavorites(user_id): Observable<any> {
+  return this.http.get(`${this.apiFav}/user/${user_id}`);
+}
+// GET ONE
+getFavorite(favorite_id): Observable < any > {
+  return this.http.get(`${this.apiFav}/${favorite_id}`);
+}
+// POST
+setFavorite(favorite): Observable < any > {
+  return this.http.post(`${this.apiFav}`, favorite);
+}
+// PUT
+updateFavorite(favorite_id, favorite): Observable < any > {
+  return this.http.put(`${this.apiFav}/${favorite_id}`, favorite);
+}
+// DELET
+deleteFavorite(favorite_id): Observable < any > {
+  return this.http.delete(`${this.apiFav}/${favorite_id}`);
+}
   //////////////////////////////////////////////////////////////
 
 }

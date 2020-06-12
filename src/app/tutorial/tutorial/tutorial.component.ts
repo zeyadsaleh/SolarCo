@@ -14,6 +14,7 @@ export class TutorialComponent implements OnInit {
   tutorial: any;
   isLoading: boolean = true;
   noResponse: boolean = false;
+  msg: string;
 
   constructor(private __service: TutorialService,
     private route: ActivatedRoute,
@@ -36,6 +37,18 @@ export class TutorialComponent implements OnInit {
           }
         })
     });
+  }
+
+  addFav() {
+    this.__service.setFavorite({ "tutorial_id": this.tutorial['id'] }).subscribe(
+      (res) => {
+        console.log(res);
+        if (res && res['exist']) {
+          this.msg = res['exist'];
+        }else{
+          this.msg = "added Successfully!";
+        }
+      });
   }
 
   timeOut() {

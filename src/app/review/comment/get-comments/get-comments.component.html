@@ -4,7 +4,8 @@
     <div *ngFor="let comment of comments | paginate: { itemsPerPage: 4, currentPage: p }">
         <div class="animated-border-quote">
             <blockquote>
-                <p><b>{{ comment.user }}:</b> {{ comment.comment }}</p>
+                <p *ngIf="comment.user"><b>{{ comment.user }}:</b> {{ comment.comment }}</p>
+                <p *ngIf="!comment.user">{{ comment.comment }}</p>
                 <cite class="text-center text-dark">Date: <b>{{ comment.date | slice:0:10 }}</b></cite>
             </blockquote>
         </div>

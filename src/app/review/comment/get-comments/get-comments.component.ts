@@ -44,7 +44,11 @@ export class GetCommentsComponent implements OnInit {
 
   setCommentDetails(reviews) {
     for (let review of reviews) {
-      this.comments.push({ "id": review['id'], "comment": review['review'], "user": review['user']['name'], "date": review['updated_at'] });
+      if (review['user']) {
+        this.comments.push({ "id": review['id'], "comment": review['review'], "user": review['user']['name'], "date": review['updated_at'] });
+      } else {
+        this.comments.push({ "id": review['id'], "comment": review['review'], "date": review['updated_at'] });
+      }
     }
     this.users = this.comments.length;
     console.log(this.comments);
@@ -56,7 +60,7 @@ export class GetCommentsComponent implements OnInit {
 
   addComment() {
     this.shareService.Data.subscribe((data) => {
-      if (data) {
+      if (data && data['user']) {
         if (!this.comments.includes(data['id'])) {
           this.comments.unshift({ "id": data['id'], "comment": data['review'], "user": data['user']['name'], "date": data['updated_at'] });
           this.users++;

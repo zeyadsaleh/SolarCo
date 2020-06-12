@@ -17,6 +17,7 @@ export class AllTutorialsComponent implements OnInit {
   noResponse: boolean = false;
   category: any;
   contractor: any;
+  user: any;
 
   constructor(private __service: TutorialService,
     public tokenAuth: AngularTokenService,
@@ -25,10 +26,11 @@ export class AllTutorialsComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => { this.timeOut() }, 40000);
+    console.log(this.tokenAuth);
     if (this.router.url.includes('categories')) {
       this.route.params.subscribe(params => {
         if (Number.isInteger(+params['id'])) {
-          this.TutorialsByCat(+params['id']);
+          this.tutorialsByCat(+params['id']);
         } else {
           this.router.navigate(['404']);
         }
@@ -36,7 +38,15 @@ export class AllTutorialsComponent implements OnInit {
     } else if (this.router.url.includes('contractors')) {
       this.route.params.subscribe(params => {
         if (Number.isInteger(+params['id'])) {
-          this.TutorialsByCon(+params['id']);
+          this.tutorialsByCon(+params['id']);
+        } else {
+          this.router.navigate(['404']);
+        }
+      })
+    } else if (this.router.url.includes('users')) {
+      this.route.params.subscribe(params => {
+        if (Number.isInteger(+params['id'])) {
+          this.tutorialsByFav(+params['id']);
         } else {
           this.router.navigate(['404']);
         }
@@ -62,7 +72,7 @@ export class AllTutorialsComponent implements OnInit {
       })
   }
 
-  TutorialsByCat(id) {
+  tutorialsByCat(id) {
     this.__service.getTutorialsByCategory(id).subscribe(
       (response) => {
         if (response) {
@@ -79,7 +89,7 @@ export class AllTutorialsComponent implements OnInit {
       })
   }
 
-  TutorialsByCon(id) {
+  tutorialsByCon(id) {
     this.__service.getTutorialsByContractor(id).subscribe(
       (response) => {
         if (response) {
@@ -94,6 +104,32 @@ export class AllTutorialsComponent implements OnInit {
       (error) => {
         console.log(error);
       })
+  }
+
+  tutorialsByFav(id) {
+    this.__service.getUserFavorites(id).subscribe(
+      (response) => {
+        if (response) {
+          for (let res of response) {
+            this.tutorials.push(res['tutorial']);
+          }
+          console.log(this.tutorials);
+          
+          if (response['length'] > 0) this.user = response[0].user;
+          console.log(this.user);
+          
+        }
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 300);
+      },
+      (error) => {
+        console.log(error);
+      })
+  }
+
+  removeFav(id) {
+
   }
 
   timeOut() {
