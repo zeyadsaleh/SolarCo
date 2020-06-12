@@ -29,7 +29,7 @@ export class NotificationComponent implements OnInit {
     this.notificationService.getNotifications().subscribe((res) => {
       if (res) {
         console.log("res: ", res)
-        for (let notiObj of res) {
+        for (let notiObj of res.data) {
           this.notifications.push(notiObj);
         }
         console.log("noti", this.notifications)

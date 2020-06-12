@@ -3,7 +3,7 @@
 <div *ngIf="!isLoading && !noResponse && posts.length > 0" class="spacing">
   <div *ngFor="let post of posts | paginate: { itemsPerPage: 7, currentPage: p }">
     <div class="container m-auto">
-      <div class="post-card">
+      <div class="post-card" [ngClass]="{'main-page': !toProfile}">
         <div class="post-card__nav">
           <ul>
             <li>

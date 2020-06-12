@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+.main-page {
+  max-width: 80%;
+}
+
 a {
   color: white;
   text-decoration: none;
