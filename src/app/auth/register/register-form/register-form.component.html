@@ -1,7 +1,7 @@
 <div class="container p-4 justify-content-center" *ngIf="type else noTypeTemplate">
   <div *ngIf="errorMessage.length > 0" class="alert alert-danger mb-2">
     <span>{{ errorMessage }}</span>
-  </div>
+  </div> 
   <form (ngSubmit)="onSignUpSubmit()" #f="ngForm" class="signup-form">
     <h3 *ngIf="type == 'USER'">Client SignUp</h3>
     <h3 *ngIf="type == 'CONTRACTOR'">Contractor SignUp</h3>

@@ -11,6 +11,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoadingComponent } from './loading/loading.component';
+import { ContactUsComponent } from './sidebar/contact-us/contact-us.component';
+import { FormsModule } from '@angular/forms';
 import { NoResponseComponent } from './no-response/no-response.component';
 
 
@@ -23,6 +25,7 @@ import { NoResponseComponent } from './no-response/no-response.component';
     NotFoundComponent,
     SidebarComponent,
     LoadingComponent,
+    ContactUsComponent,
     NoResponseComponent,
   ],
   imports: [
@@ -30,6 +33,7 @@ import { NoResponseComponent } from './no-response/no-response.component';
     AppRoutingModule,
     AbilityModule,
     MaterialModule,
+    FormsModule
   ],
   providers: [
     { provide: Ability, useValue: new Ability() },

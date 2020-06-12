@@ -1,0 +1,146 @@
+<app-page-banner [title]="title"></app-page-banner>
+<div class="container main mt-4 mb-5 rounded shadow">
+  <div class="contact-pageheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="contact-caption">
+                    <h1 class="contact-title">Don’t Be Shy, Talk to Me.</h1>
+                    <p class="text-light">Here is a few approaches to get in touch with me. It would be ideal if you send an email, fill the contact form <strong>I'm looking forward to speaking with you.</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-offset-1 col-lg-5 col-md-offset-1 col-md-5 col-sm-12 col-xs-12">
+                <div class="contact-form">
+                    <h3 class="contact-info-title">Contact Me</h3>
+                    <div class="row">
+                        <form (ngSubmit)="onSubmit()">
+                          <div *ngIf="errorMessage.length > 0" class="alert alert-danger m-2">
+                            <span>{{ errorMessage }}</span>
+                          </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label sr-only"  for="Name"></label>
+                                    <input id="name" type="text" placeholder="Name" name='name' class="form-control validate"  [(ngModel)]="contactObj.name">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label sr-only " for="email"></label>
+                                    <input id="email" type="text" name='email' placeholder="Email" class="form-control"  [(ngModel)]="contactObj.email">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label class="control-label sr-only " for="Phone"></label>
+                                    <input id="phone" type="text" name='phone' placeholder="Phone" class="form-control"  [(ngModel)]="contactObj.phone">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
+                                <div class="form-group">
+                                    <label class="control-label sr-only" for="textarea"></label>
+                                    <textarea class="form-control pdt20" id="textarea" name="textarea" rows="4" placeholder="Message" [(ngModel)]="contactObj.message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                                <a (click)="onSubmit()" class="btn btn-primary btn-lg ">Send message</a>
+                                <div *ngIf="submitted" class="spinner-border" id="auth-loader" role="status">
+                                  <span class="sr-only">Loading...</span>
+                                </div>
+                          
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="space-medium">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb60">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1757800.1305040768!2d29.507846683273662!3d30.62822530487794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1591946533308!5m2!1sen!2seg" width="450" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+            <div class="col-lg-offset-1 col-lg-5 col-md-offset-1 col-md-5 col-sm-6 col-xs-12">
+                <div class="">
+                    <h3 class="title-bold">Contact Info</h3>
+                    <p>Please help us serve you better by sharing the following information.
+                    </p>
+                </div>
+                <div class="contact-section">
+                    <div class="contact-icon"><i class="fa fa-map-marker"></i></div>
+                    <div class="contact-info">
+                        <p>951 Meadow View Drive Bristol, Hog Camp Road USA06010</p>
+                    </div>
+                </div>
+                 <div class="contact-section">
+                    <div class="contact-icon"><i class="fa fa-phone"></i></div>
+                    <div class="contact-info">
+                        <p>+180-123-4567</p>
+                    </div>
+                </div>
+                 <div class="contact-section">
+                    <div class="contact-icon"><i class="fa fa-envelope"></i></div>
+                    <div class="contact-info">
+                        <p>john@lifecoach.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ <script>
+function initMap() {
+    var uluru = {
+        lat: 23.094197,
+        lng: 72.558148
+    };
+    var map = new google.maps.Map(document.getElementById('contact-map'), {
+        zoom: 14,
+        center: uluru,
+        scrollwheel: false
+    });
+    var marker = new google.maps.Marker({
+        position: uluru,
+        map: map,
+        icon: 'https://easetemplate.com/free-website-templates/life-coach/images/map_marker.png'
+
+    });
+}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZib4Lvp0g1L8eskVBFJ0SEbnENB6cJ-g&callback=initMap">
+</script>
+</div>
+
+
+
+<a href=#approved #myAnchor data-toggle="modal" ></a>
+
+
+      <!-- Modal approved HTML -->
+        <div id="approved" class="modal fade" >
+          <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="icon-box">
+                  <i class="material-icons">&#xE876;</i>
+                </div>
+                <h4 class="modal-title">Done!</h4>
+              </div>
+              <div class="modal-body">
+                <p class="text-center">Thank you, your message has been sent</p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
