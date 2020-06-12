@@ -16,7 +16,7 @@
             (click)="sendId(post.id)">Apply</button>
           <h4 class="border border-primary p-1 m-2 text-center rounded"><span>Estimated
               Cost:</span>&nbsp;{{post.system.cost}} EG</h4>
-          <h5><span>Posted by:</span>&nbsp;{{post.user.name}}</h5>
+          <h5><span>Posted by:</span>&nbsp;<a [routerLink]="tokenAuth.currentUserType=='USER' && userData.id == post.user.id ? ['/profile'] : ['/profile/clients/'+post.user.id]" >{{post.user.name}}</a></h5>
           <h5><span>Has:</span>&nbsp;{{post.offers_count}} Offers</h5>
           <h4 *ngIf="post.system.address">
             <span>Location:</span>&nbsp;{{post.system.address}}, {{post.system.city}}, {{post.system.country}}</h4>

@@ -1,32 +1,45 @@
 <app-page-banner [title]="title"></app-page-banner>
 
 <div class="container" *ngIf="!isLoading && !noResponse">
-    <div class="chat-icon" [routerLink]="['/chat/'] + contractor.id">
+    <div class="chat-icon" *ngIf="isContractor" [routerLink]="['/chat/'] + user.id">
         <i class="fas fa-comment-alt"></i>
     </div>
-    <div class="card contractor-profile">
+    <div class="card user-profile">
         <div class="card-body mx-5">
             <div class="text-center mb-5 justify-content-center">
-                <img [src]="contractor.avatar ? contractor.avatar : '/assets/images/avatar.webp'" width=100 height=100>
-                <h2 class="mt-2">{{ contractor.name }}</h2>
-                <h4 class="card-text" *ngIf="contractor.address">{{ contractor.address }}</h4>
-                <h4 class="card-text">{{ contractor.email }}</h4>
+                <img [src]="user.avatar ? user.avatar : '/assets/images/avatar.webp'" width=100 height=100>
+                <h2 class="mt-2">{{ user.name }}</h2>
+                <h4 class="card-text" *ngIf="user.address">{{ user.address }}</h4>
+                <h4 class="card-text">{{ user.email }}</h4>
                 <hr>
-                <div class="p-2 border rounded" [routerLink]="['/tutorials/contractors/'] + contractor.id">
+                <div class="p-2 border rounded" *ngIf="!isContractor">
+                    <h3 class="card-text bg-primary m-1 rounded shadow text-white">User Posts</h3>
+                    <table class="table table-sm table-borderless">
+                        <tbody>
+                            <tr>
+                                <th>Total No. of Posts</th>
+                                <td>{{ user.posts.length }}</td>
+                                <th>Closed Posts</th>
+                                <td>{{ closedPostsCount }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-2 border rounded" *ngIf="isContractor" [routerLink]="['/tutorials/contractors/'] + user.id">
                     <h3 class="card-text bg-primary m-1 rounded shadow text-white">Contractor Blog</h3>
                     <table class="table table-sm table-borderless">
                         <tbody>
                             <tr>
                                 <th>Participations</th>
-                                <td>{{ contractor.tutCount }}</td>
+                                <td>{{ user.tutCount }}</td>
                                 <th>Likes/Dislikes</th>
-                                <td>{{ contractor.tutCount }}</td>
+                                <td>{{ user.tutCount }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <hr>
-                <div class="p-2 border rounded">
+                <div class="p-2 border rounded" *ngIf="isContractor">
                     <h3 class="card-text bg-primary m-1 rounded shadow text-white">Previous Work</h3>
                     <table class="table table-sm table-borderless">
                         <tbody>
@@ -40,14 +53,14 @@
                     </table>
                 </div>
             </div>
-            <div class="my-4">
+            <div class="my-4" *ngIf="isContractor">
                 <div>
-                    <app-get-rates [contractor_id]="contractor.id"></app-get-rates>
+                    <app-get-rates [contractor_id]="user.id"></app-get-rates>
                 </div>
             </div>
-            <div class="my-4">
+            <div class="my-4" *ngIf="isContractor">
                 <div>
-                    <app-get-comments [contractor_id]="contractor.id"></app-get-comments>
+                    <app-get-comments [contractor_id]="user.id"></app-get-comments>
                 </div>
             </div>
         </div>

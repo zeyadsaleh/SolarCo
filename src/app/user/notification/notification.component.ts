@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/services/notification.service';
+import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-notification',
@@ -15,7 +16,8 @@ export class NotificationComponent implements OnInit {
   toProfile: boolean;
   constructor(
     private notificationService: NotificationService,
-    private router: Router,) { }
+    private router: Router,
+    private tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
     setTimeout(() => { this.timeOut() }, 40000);

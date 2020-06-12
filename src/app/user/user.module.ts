@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../shared/material/material.module';
 import { FormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
-import { ContractorProfileComponent } from './contractor-profile/contractor-profile.component';
+import { PublicProfileComponent } from './public-profile/public-profile.component';
 import { ReviewModule } from '../review/review.module';
 import { EditComponent } from './edit/edit.component';
 import { NotificationComponent } from './notification/notification.component';
@@ -19,7 +19,7 @@ import { NotificationComponent } from './notification/notification.component';
   declarations: [
     ProfileComponent,
     EditComponent,
-    ContractorProfileComponent,
+    PublicProfileComponent,
     NotificationComponent,
   ],
   imports: [
@@ -34,7 +34,7 @@ import { NotificationComponent } from './notification/notification.component';
   exports: [
     ProfileComponent,
     EditComponent,
-    ContractorProfileComponent
+    PublicProfileComponent
   ],
   providers: [
     UserService,

@@ -18,8 +18,8 @@
       </mat-card>
     </div>
     <div *ngIf="notification.owner_type == 'User' && notification.trackable_type == 'Post'">
-      <mat-card><a [routerLink]="['/posts/',notification.trackable.post_id]" href="">{{notification.owner.name}}</a> has
-        {{notification.key.split('.')[1]}}d his post
+      <mat-card><a [routerLink]="['profile/clients/'+notification.owner.id]" >{{notification.owner.name}}</a> has
+        {{notification.key.split('.')[1]}}d his <a [routerLink]="['/posts/',notification.trackable.post_id]">post</a>
         <mat-card class="m-1">
           <div>
             <h5>title</h5>
@@ -34,7 +34,7 @@
     </div>
     <div *ngIf="notification.trackable_type == 'Message'">
       <mat-card>
-        <a *ngIf="notification.owner_type == 'Contractor'" [routerLink]="['/profile/contractors/'+notification.owner.id]">{{notification.owner.name}}</a><span *ngIf="notification.owner_type == 'User'">{{notification.owner.name}}</span> has
+        <a [routerLink]="notification.owner_type == 'Contractor' ? ['/profile/contractors/'+notification.owner.id] : ['/profile/clients/'+notification.owner.id]">{{notification.owner.name}}</a> has
         sent you a new <a [routerLink]="['/inbox']">message</a>
         <mat-card class="m-1">
           <div>

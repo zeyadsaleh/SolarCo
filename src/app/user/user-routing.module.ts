@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllOffersComponent } from '../offer/all-offers/all-offers.component';
 import { SystemsComponent } from '../pv-calculation/systems/systems.component';
 import { HomepageComponent } from '../post/homepage/homepage.component';
-import { ContractorProfileComponent } from './contractor-profile/contractor-profile.component';
+import { PublicProfileComponent } from './public-profile/public-profile.component';
 import { PerviousPostsComponent } from '../post/pervious-posts/pervious-posts.component';
 import { NotificationComponent } from './notification/notification.component';
 
@@ -41,7 +41,11 @@ const routes: Routes = [
   },
   {
     path: 'profile/contractors/:id',
-    component: ContractorProfileComponent
+    component: PublicProfileComponent
+  },
+  {
+    path: 'profile/clients/:id',
+    component: PublicProfileComponent
   },
   {
     path: 'notifications',
