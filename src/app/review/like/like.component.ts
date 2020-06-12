@@ -31,7 +31,7 @@ export class LikeComponent implements OnInit {
   tutorialLikes() {
     this.__tutService.getTutorialLikes(this.tutorial_id).subscribe(
       (res) => {
-        for (let rs of res) {
+        for (let rs of res) {          
           if (this.tokenAuth['userData'] && rs['user_id'] == this.tokenAuth['userData']['id']) {
             this.islike = rs['islike'];
             this.like_id = rs['id'];
@@ -58,6 +58,7 @@ export class LikeComponent implements OnInit {
       this.__tutService.setLike({ "islike": this.islike, "tutorial_id": this.tutorial_id }).subscribe(
         (res) => {
           console.log(res);
+          this.like_id = res['id'];
         });
       if (this.islike) {
         this.likes++;

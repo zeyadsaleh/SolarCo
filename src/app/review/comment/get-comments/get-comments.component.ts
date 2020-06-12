@@ -44,7 +44,11 @@ export class GetCommentsComponent implements OnInit {
 
   setCommentDetails(reviews) {
     for (let review of reviews) {
-      this.comments.push({ "id": review['id'], "comment": review['review'], "user": review['user']['name'], "date": review['updated_at'] });
+      if (review['user']) {
+        this.comments.push({ "id": review['id'], "comment": review['review'], "user": review['user']['name'], "date": review['updated_at'] });
+      } else {
+        this.comments.push({ "id": review['id'], "comment": review['review'], "date": review['updated_at'] });
+      }
     }
     this.users = this.comments.length;
     console.log(this.comments);

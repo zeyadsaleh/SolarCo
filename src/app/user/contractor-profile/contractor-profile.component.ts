@@ -25,11 +25,9 @@ export class ContractorProfileComponent implements OnInit {
         console.log(res);
         this.contractor = res;
         this.setOffers(res['offers']);
-        // this.allOffers = res.offers.length;
-        // this.acceptedOffers = res.offers.lengthl;
         setTimeout(() => {
           this.isLoading = false;
-        }, 600);
+        }, 800);
       })
     })
   }

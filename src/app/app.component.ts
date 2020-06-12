@@ -34,7 +34,7 @@ export class AppComponent {
             );
           setTimeout(() => {
             this.isLoading = false;
-          }, 200);
+          }, 80);
         },
         error => {
           console.log(error);
