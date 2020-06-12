@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'posts',
     component: HomepageComponent,
-    // canActivate: [AuthGuard, ContractorGuard]
+    canActivate: [AuthGuard, ContractorGuard]
   },
   {
     path: 'create/post',
@@ -27,7 +27,7 @@ const routes: Routes = [
   {
     path: 'posts/:id',
     component: SinglePostComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
 ];
 

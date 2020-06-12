@@ -2,62 +2,47 @@
 
 <div class="bar"></div>
 
-<div class="container">
+<div class="container" *ngIf="!isLoading">
+    <div class="row justify-content-center mt-3" *ngIf="contractor || category">
+        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center" *ngIf="contractor"
+            [routerLink]="['/profile/contractors',contractor.id]">Contractor: {{ contractor.name }}</h1>
+        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center" *ngIf="category">
+            Category: {{ category.category }}
+        </h1>
+    </div>
     <div class="row justify-content-center mt-3">
-        <a class="nav-link btn shadow rounded btn-outline-primary" [routerLink]="['/tutorials/create']">Add More Posts!</a>
+        <a class="nav-link btn shadow rounded btn-outline-primary"
+            *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn()"
+            [routerLink]="['/tutorials/create']">Add More
+            Posts!</a>
     </div>
     <div class="row justify-content-center body" *ngIf="tutorials.length > 0">
-        <section class="cards-wrapper"
-            *ngFor="let tutorial of tutorials | paginate: { itemsPerPage: 9, currentPage: p } ">
-            <div class="card-grid-space">
-                <div class="num">01</div>
-                <a class="card" href="https://codetheweb.blog/2017/10/06/html-syntax/"
+        <section class="cards-wrapper">
+            <div class="card-grid-space"
+                *ngFor="let tutorial of tutorials | paginate: { itemsPerPage: 9, currentPage: p }; let i = index">
+                <div class="num">{{ i+1 }}</div>
+                <a class="card" [routerLink]="['/tutorials',tutorial.id]"
                     style="--bg-img: url(https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&resize_w=1500&url=https://codetheweb.blog/assets/img/posts/html-syntax/cover.jpg)">
                     <div>
-                        <h1>HTML Syntax</h1>
-                        <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
-                        <div class="date">6 Oct 2017</div>
+                        <div class="date">{{ tutorial.created_at | slice:0:10 }}</div>
+                        <h1 class="mt-3">{{ tutorial.title }}</h1>
+                        <p>{{ tutorial.body | slice:0:120 }}..</p>
+                        <h5 class="mt-2 mb-3">By: {{tutorial.contractor.name }}</h5>
                         <div class="tags">
-                            <div class="tag">HTML</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card-grid-space">
-                <div class="num">02</div>
-                <a class="card" href="https://codetheweb.blog/2017/10/09/basic-types-of-html-tags/"
-                    style="--bg-img: url('https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&resize_w=1500&url=https://codetheweb.blog/assets/img/posts/basic-types-of-html-tags/cover.jpg')">
-                    <div>
-                        <h1>Basic types of HTML tags</h1>
-                        <p>Learn about some of the most common HTML tags…</p>
-                        <div class="date">9 Oct 2017</div>
-                        <div class="tags">
-                            <div class="tag">HTML</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="card-grid-space">
-                <div class="num">03</div>
-                <a class="card" href="https://codetheweb.blog/2017/10/14/links-images-about-file-paths/"
-                    style="--bg-img: url('https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&resize_w=1500&url=https://codetheweb.blog/assets/img/posts/links-images-about-file-paths/cover.jpg')">
-                    <div>
-                        <h1>Links, images and about file paths</h1>
-                        <p>Learn how to use links and images along with file paths…</p>
-                        <div class="date">14 Oct 2017</div>
-                        <div class="tags">
-                            <div class="tag">HTML</div>
+                            <div class="tag text-dark">{{tutorial.category.category }}</div>
                         </div>
                     </div>
                 </a>
             </div>
         </section>
-        <hr>
-        <div class="text-center border rounded pt-3 pr-5">
-            <pagination-controls (pageChange)="p = $event"></pagination-controls>
-        </div>
+    </div>
+    <hr>
+    <div class="text-center border rounded pt-3 pr-5" *ngIf="tutorials.length > 0">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
     <div class="row justify-content-center body p-3" *ngIf="tutorials.length == 0">
         <h2 class="mt-5">No tutorials yet!</h2>
     </div>
 </div>
+
+<app-loading *ngIf="isLoading"></app-loading>

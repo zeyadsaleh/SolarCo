@@ -9,13 +9,21 @@ import { Observable } from 'rxjs';
 export class TutorialService {
 
   constructor(private http: HttpClient,
-    private api: GlobalService) { }
+              private api: GlobalService) { }
 
   // Tutorial API
   private apiTut: String = `${this.api.host}/tutorials`;
   // GET ALL
   getTutorials(): Observable<any> {
     return this.http.get(`${this.apiTut}`);
+  }
+  // GET BY CATEGORY
+  getTutorialsByCategory(category_id): Observable<any> {
+    return this.http.get(`${this.apiTut}/categories/${category_id}`);
+  }
+  // GET BY CONTRACTOR
+  getTutorialsByContractor(contractor_id): Observable<any> {
+    return this.http.get(`${this.apiTut}/contractors/${contractor_id}`);
   }
   // GET ONE
   getTutorial(tutorial_id): Observable<any> {
@@ -36,27 +44,26 @@ export class TutorialService {
   //////////////////////////////////////////////////////////////
 
   // Tag API
-  private apiTag: String = `${this.api.host}/tags`;
-
+  private apiCategory: String = `${this.api.host}/categories`;
   // GET ALL
-  getTags(): Observable<any> {
-    return this.http.get(`${this.apiTag}`);
+  getCategories(): Observable<any> {
+    return this.http.get(`${this.apiCategory}`);
   }
   // GET ONE
-  getTag(tag_id): Observable<any> {
-    return this.http.get(`${this.apiTag}/${tag_id}`);
+  getcategory(category_id): Observable<any> {
+    return this.http.get(`${this.apiCategory}/${category_id}`);
   }
   // POST
-  setTag(tag): Observable<any> {
-    return this.http.post(`${this.apiTag}`, tag);
+  setcategory(category): Observable<any> {
+    return this.http.post(`${this.apiCategory}`, category);
   }
   // PUT
-  updateTag(tag_id, tag): Observable<any> {
-    return this.http.put(`${this.apiTag}/${tag_id}`, tag);
+  updatecategory(category_id, category): Observable<any> {
+    return this.http.put(`${this.apiCategory}/${category_id}`, category);
   }
   // DELET
-  deleteTag(tag_id): Observable<any> {
-    return this.http.delete(`${this.apiTag}/${tag_id}`);
+  deletecategory(category_id): Observable<any> {
+    return this.http.delete(`${this.apiCategory}/${category_id}`);
   }
   //////////////////////////////////////////////////////////////
 
