@@ -12,7 +12,6 @@ import { CreateTutorialComponent } from './create-tutorial/create-tutorial.compo
 import { ReviewModule } from '../review/review.module';
 
 
-
 @NgModule({
   declarations: [
     AllTutorialsComponent,

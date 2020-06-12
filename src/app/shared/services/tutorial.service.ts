@@ -128,4 +128,32 @@ export class TutorialService {
   }
   //////////////////////////////////////////////////////////////
 
+  // FAV API
+  private apiFav: String = `${this.api.host}/favorites`;
+  // GET ALL
+  getFavorites(): Observable<any> {
+    return this.http.get(`${this.apiFav}`);
+  }
+  // GET favorite OF User
+  getUserFavorites(user_id): Observable<any> {
+  return this.http.get(`${this.apiFav}/user/${user_id}`);
+}
+// GET ONE
+getFavorite(favorite_id): Observable < any > {
+  return this.http.get(`${this.apiFav}/${favorite_id}`);
+}
+// POST
+setFavorite(favorite): Observable < any > {
+  return this.http.post(`${this.apiFav}`, favorite);
+}
+// PUT
+updateFavorite(favorite_id, favorite): Observable < any > {
+  return this.http.put(`${this.apiFav}/${favorite_id}`, favorite);
+}
+// DELET
+deleteFavorite(favorite_id): Observable < any > {
+  return this.http.delete(`${this.apiFav}/${favorite_id}`);
+}
+  //////////////////////////////////////////////////////////////
+
 }

@@ -13,6 +13,11 @@ const routes: Routes = [
     component: AllTutorialsComponent,
   },
   {
+    path: 'tutorials/users/:id',
+    component: AllTutorialsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'tutorials/categories/:id',
     component: AllTutorialsComponent,
   },

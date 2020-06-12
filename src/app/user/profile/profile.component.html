@@ -62,7 +62,7 @@
               <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/profile/posts']"
                 [class]="subPage == 'posts' ? 'active' : ''" (click)="changeSubpage($event)">
 
-                <a name="offers" class="nav-link" [class]="subPage == 'posts' ? 'active' : ''">
+                <a name="posts" class="nav-link" [class]="subPage == 'posts' ? 'active' : ''">
                   <i class="fa fa-check"></i>
                   Posts </a>
 
@@ -70,22 +70,28 @@
               <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/profile/perviousPosts']"
                 [class]="subPage == 'perviousPosts' ? 'active' : ''" (click)="changeSubpage($event)">
 
-                <a name="offers" class="nav-link" [class]="subPage == 'perviousPosts' ? 'active' : ''">
+                <a name="perviousPosts" class="nav-link" [class]="subPage == 'perviousPosts' ? 'active' : ''">
                   <i class="fa fa-check"></i>
                   Pervious Posts </a>
 
               </li>
-              <li class="nav-item" [class]="subPage == 'help' ? 'active' : ''" (click)="changeSubpage($event)">
+              <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/tutorials/users',userData.id]"
+                [class]="subPage == 'favorite' ? 'active' : ''" (click)="changeSubpage($event)">
 
-                <a name="help" class="nav-link" [class]="subPage == 'help' ? 'active' : ''">
-                  <i class="fa fa-flag"></i>Help</a>
+                <a name="favorite" class="nav-link" [class]="subPage == 'favorite' ? 'active' : ''">
+                  <i class="fa fa-check"></i>
+                  Favorite Tutorial </a>
               </li>
-
               <li class="nav-item" [routerLink]="['/profile/edit']" [class]="subPage == 'edit' ? 'active' : ''"
                 (click)="changeSubpage($event)">
                 <a name="edit" class="nav-link" [class]="subPage == 'edit' ? 'active' : ''">
                   <i class="fas fa-pen"></i>
                   Edit </a>
+              </li>
+              <li class="nav-item" [class]="subPage == 'help' ? 'active' : ''" (click)="changeSubpage($event)">
+
+                <a name="help" class="nav-link" [class]="subPage == 'help' ? 'active' : ''">
+                  <i class="fa fa-flag"></i>Help</a>
               </li>
             </ul>
           </div>
