@@ -1,5 +1,5 @@
 <app-page-banner [title]="title"></app-page-banner>
-<div class="container" *ngIf="!isLoading">
+<div class="container" *ngIf="!isLoading && !noResponse">
   <div class="row justify-content-center" *ngIf="!errorMessage">
     <div class="post-card col-lg-8 p-2 m-2 shadow rounded">
       <div class="post-card__nav">
@@ -88,6 +88,7 @@
 
 
 <app-loading *ngIf="isLoading"></app-loading>
+<app-no-response *ngIf="noResponse"></app-no-response>
 
 <!-- <ng-template #loading>
   <div class="text-center">

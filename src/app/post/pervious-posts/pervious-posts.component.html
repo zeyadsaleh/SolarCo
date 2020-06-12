@@ -1,6 +1,6 @@
 <app-page-banner *ngIf="!toProfile" [title]="title"></app-page-banner>
 
-<div *ngIf="!isLoading" class="spacing">
+<div *ngIf="!isLoading && !noResponse" class="spacing">
   <div *ngFor="let post of posts | paginate: { itemsPerPage: 7, currentPage: p }">
     <div class="container">
       <div class="post-card">
@@ -74,3 +74,4 @@
 </div>
 
 <app-loading *ngIf="isLoading"></app-loading>
+<app-no-response *ngIf="noResponse"></app-no-response>

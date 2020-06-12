@@ -1,7 +1,7 @@
 <!-- <app-page-banner [title]="title"></app-page-banner> -->
 <div class="bar"></div>
 
-<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5" *ngIf="!isLoading && !noResponse && tutorial">
     <div class="row justify-content-center body">
         <div class="col-lg-12 text-center">
             <div class="card">
@@ -22,16 +22,22 @@
 
                     </div>
                     <div class="title-total">
-                        <div class="title">Ant Collector</div>
-                        <h2>Morgan Sweeney</h2>
-
-                        <div class="desc">Morgan has collected ants since they were six years old and now has many dozen
-                            ants but
-                            none in their pants.</div>
-                        <div class="actions">
-                            <button><i class="far fa-heart"></i></button>
-                            <button><i class="far fa-envelope"></i></button>
-                            <button><i class="fas fa-user-friends"></i></button>
+                        <div class="title" [routerLink]="['/tutorials/contractors',tutorial.contractor_id]">
+                            By: {{ tutorial.contractor.name }}</div>
+                        <h2 class="head bg-success m-2 rounded shadow">{{ tutorial.title }}</h2>
+                        <div class="desc">{{ tutorial.body }}</div>
+                        <hr>
+                        <div class="desc" [routerLink]="['/tutorials/categories',tutorial.category_id]">Category:
+                            {{ tutorial.category.category }}</div>
+                        <hr>
+                        <div class="border p-2 m-1 rounded">
+                            <div class="border p-2 text-center rounded shadow"
+                                *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'">
+                                <app-create-comment [tutorial_id]="tutorial.id"></app-create-comment>
+                            </div>
+                            <div class="border p-2 text-center rounded shadow">
+                                <app-get-comments [tutorial_id]="tutorial.id"></app-get-comments>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -39,3 +45,6 @@
         </div>
     </div>
 </div>
+
+<app-loading *ngIf="isLoading"></app-loading>
+<app-no-response *ngIf="noResponse"></app-no-response>

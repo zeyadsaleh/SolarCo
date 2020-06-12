@@ -1,8 +1,20 @@
 <app-page-banner *ngIf="!toProfile" [title]="title"></app-page-banner>
 <div class="container" *ngFor="let notification of notifications">
-    <div>{{notification.key}}</div>
-    <div>{{notification.owner_id}}</div>
-    <div>{{notification.owner_type}}</div>
-    <div *ngIf="notification.owner_type == 'Contractor'">proposal: {{notification.trackable.proposal}}</div>
-    <div *ngIf="notification.owner_type == 'Contractor'">price: {{notification.trackable.price}}</div>
+  <div *ngIf="notification.owner_type == 'Contractor'">
+    <mat-card ><a href="">{{notification.owner.name}}</a> has {{notification.key.split('.')[1]}}d an {{notification.key.split('.')[0]}} for your
+      <a [routerLink]="['/posts/',notification.trackable.post_id]">post</a>
+      <mat-card class="m-1">
+        <div><h5>Proposal</h5><p>{{notification.trackable.proposal}}</p></div>
+        <div><h5>Price</h5><p>{{notification.trackable.price}}</p></div>
+      </mat-card>
+    </mat-card>
+  </div>
+  <div *ngIf="notification.owner_type == 'User'">
+    <mat-card ><a [routerLink]="['/posts/',notification.trackable.post_id]" href="">{{notification.owner.name}}</a> has {{notification.key.split('.')[1]}}d his post
+      <mat-card class="m-1">
+        <div><h5>title</h5><p>{{notification.trackable.title}}</p></div>
+        <div><h5>description</h5><p>{{notification.trackable.description}}</p></div>
+      </mat-card>
+    </mat-card>
+  </div>
 </div>

@@ -11,11 +11,14 @@ import { UserService } from './shared/services/user.service';
 })
 export class AppComponent {
   title = 'SolarCo';
-  showFiller:boolean = false;
-  isLoading:boolean = true;
-  
-  constructor(private ability: Ability, private tokenService: AngularTokenService, readonly chatAuthService: ChatAuthService, private userService: UserService){ 
-    if(this.tokenService.userSignedIn()) {
+  showFiller: boolean = false;
+  isLoading: boolean = true;
+  noResponse: boolean = false;
+
+
+  constructor(private ability: Ability, private tokenService: AngularTokenService, readonly chatAuthService: ChatAuthService, private userService: UserService) {
+    setTimeout(() => {this.timeOut()}, 60000);
+    if (this.tokenService.userSignedIn()) {
       this.tokenService.validateToken().subscribe(
         res => {
           this.userService.setCurrentUser(res.data, this.tokenService.currentUserType);
@@ -48,6 +51,14 @@ export class AppComponent {
       setTimeout(() => {
         this.isLoading = false;
       }, 200);
+    }
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
     }
   }
 }

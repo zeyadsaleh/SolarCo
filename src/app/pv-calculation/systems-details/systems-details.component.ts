@@ -11,6 +11,7 @@ export class SystemsDetailsComponent implements OnInit {
 
   systems_details = new Array;
   isLoading: boolean = true;
+  noResponse: boolean = false;
   title: string = 'Pv-Systems Details';
   p: number = 1;
 
@@ -18,6 +19,7 @@ export class SystemsDetailsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    setTimeout(() => { this.timeOut() }, 40000);
     this.getDetails();
   }
 
@@ -25,11 +27,19 @@ export class SystemsDetailsComponent implements OnInit {
     this.data.getCalculations(response => {
       if (response && response['length'] > 0) {
         this.systems_details = response;
-        setTimeout(() => { 
+        setTimeout(() => {
           this.isLoading = false;
         }, 500);
         console.log(response);
       }
     });
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
   }
 }

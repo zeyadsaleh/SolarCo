@@ -1,6 +1,6 @@
 <app-page-banner [title]="title"></app-page-banner>
 
-<div class="container spacing" *ngIf="!isLoading">
+<div class="container spacing" *ngIf="!isLoading && !noResponse">
     <div class="row justify-content-center text-center">
         <mat-card>
             <mat-card-title class="rounded shadow text-white p-2">Client Data</mat-card-title>
@@ -46,3 +46,4 @@
 </div>
 
 <app-loading *ngIf="isLoading"></app-loading>
+<app-no-response *ngIf="noResponse"></app-no-response>

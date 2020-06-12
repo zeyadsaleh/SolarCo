@@ -9,13 +9,15 @@ import { TutorialService } from '../shared/services/tutorial.service';
 import { AllTutorialsComponent } from './all-tutorials/all-tutorials.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
 import { CreateTutorialComponent } from './create-tutorial/create-tutorial.component';
+import { ReviewModule } from '../review/review.module';
+
 
 
 @NgModule({
   declarations: [
     AllTutorialsComponent,
     TutorialComponent,
-    CreateTutorialComponent
+    CreateTutorialComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { CreateTutorialComponent } from './create-tutorial/create-tutorial.compo
     RouterModule,
     MainComponentModule,
     NgxPaginationModule,
+    ReviewModule
   ],
   providers: [
     TutorialService
