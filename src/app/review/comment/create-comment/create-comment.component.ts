@@ -3,6 +3,7 @@ import { OfferReviewService } from 'src/app/shared/services/offer-review.service
 import { Router } from '@angular/router';
 import { TutorialService } from 'src/app/shared/services/tutorial.service';
 import { ShareService } from 'src/app/shared/services/share.service';
+import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-create-comment',
@@ -22,7 +23,8 @@ export class CreateCommentComponent implements OnInit {
   constructor(private __service: OfferReviewService,
     private router: Router,
     private __tutService: TutorialService,
-    private shareService: ShareService) { }
+    private shareService: ShareService,
+    public tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
     this.req_data = new Object;
@@ -57,7 +59,7 @@ export class CreateCommentComponent implements OnInit {
             if (response) {
               console.log(response);
               this.shareService.setData(response);
-              this.req_data['review'] = '';         
+              this.req_data['review'] = '';
             }
           })
       } else {

@@ -31,11 +31,14 @@
                             {{ tutorial.category.category }}</div>
                         <hr>
                         <div class="border p-2 m-1 rounded">
-                            <div class="border p-2 text-center rounded shadow"
+                            <div class="border p-2 text-center rounded mb-2">
+                                <app-like [tutorial_id]="tutorial.id"></app-like>
+                            </div>
+                            <div class="border p-2 text-center rounded mb-2"
                                 *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'">
                                 <app-create-comment [tutorial_id]="tutorial.id"></app-create-comment>
                             </div>
-                            <div class="border p-2 text-center rounded shadow">
+                            <div class="border p-2 text-center rounded">
                                 <app-get-comments [tutorial_id]="tutorial.id"></app-get-comments>
                             </div>
                         </div>

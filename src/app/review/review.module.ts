@@ -9,6 +9,7 @@ import { GetRatesComponent } from './rate/get-rates/get-rates.component';
 import { GetRateComponent } from './rate/get-rate/get-rate.component';
 import { GetCommentComponent } from './comment/get-comment/get-comment.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LikeComponent } from './like/like.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     GetRateComponent, 
     GetCommentComponent, 
     GetCommentsComponent, 
-    GetRatesComponent
+    GetRatesComponent, 
+    LikeComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     GetRateComponent, 
     GetCommentComponent,
     GetCommentsComponent, 
-    GetRatesComponent
+    GetRatesComponent,
+    LikeComponent
   ],
   providers: [
     OfferReviewService,

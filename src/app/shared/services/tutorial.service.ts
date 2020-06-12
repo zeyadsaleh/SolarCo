@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class TutorialService {
 
   constructor(private http: HttpClient,
-              private api: GlobalService) { }
+    private api: GlobalService) { }
 
   // Tutorial API
   private apiTut: String = `${this.api.host}/tutorials`;
@@ -101,6 +101,14 @@ export class TutorialService {
   // GET ALL
   getLikes(): Observable<any> {
     return this.http.get(`${this.apiLike}`);
+  }
+  // GET Likes OF TUTORIAL
+  getTutorialLikes(tutorial_id): Observable<any> {
+    return this.http.get(`${this.apiLike}/tutorial/${tutorial_id}`);
+  }
+  // GET Like OF User
+  getUserLike(tutorial_id): Observable<any> {
+    return this.http.get(`${this.apiLike}/user/${tutorial_id}`);
   }
   // GET ONE
   getLike(like_id): Observable<any> {
