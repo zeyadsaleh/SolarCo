@@ -15,6 +15,7 @@ import { LoginRoutingModule } from './auth/login/login-routing.module';
 import { RegisterRoutingModule } from './auth/register/register-routing.module';
 import { UserRoutingModule } from './user/user-routing.module';
 import { OfferRoutingModule } from './offer/offer-routing.module';
+import { TutorialRoutingModule } from './tutorial/tutorial-routing.module';
 // ########### Routes END ##########
 
 // Servies ##START##
@@ -55,7 +56,8 @@ const routes: Routes = [
     LoginRoutingModule,
     RegisterRoutingModule,
     UserRoutingModule,
-    OfferRoutingModule
+    OfferRoutingModule,
+    TutorialRoutingModule,
   ],
   exports: [RouterModule]
 })

@@ -4,42 +4,34 @@ import { OfferReviewService } from 'src/app/shared/services/offer-review.service
 @Component({
   selector: 'app-get-rate',
   templateUrl: './get-rate.component.html',
-  styleUrls: ['./get-rate.component.css']
+  styleUrls: ['./get-rate.component.scss']
 })
 export class GetRateComponent implements OnInit {
 
-  @Input() contractor_id:number;
-  rate: number = 0;
-  rate_obj: object = {"1":0, "2":0, "3":0, "4":0, "5":0}
-  users: number;
+  @Input() offers;
+  current_rate: number;
+  request_data: object;
 
   constructor(private __service: OfferReviewService) { }
 
   ngOnInit(): void {
-    this.__service.getRates(this.contractor_id).subscribe(
-      (response) => {
-        if(response){
-          this.setRateDetails(response);
-          console.log(response);
-        }
-      })
+    this.request_data = new Object;
+    this.getOfferId();
+    if (this.request_data && this.request_data['offer_id']) {
+      this.__service.getRate(this.request_data['offer_id']).subscribe(
+        (response) => {
+          if (response) {
+            this.current_rate = response['rate'];
+            console.log(response);
+          }
+        })
+    }
   }
 
-  setRateDetails(rates){
-    let tot_rates:number = 0;
-    for (let rate of rates){
-      if (rate['rate'] == 1) this.rate_obj['1'] += 1;
-      if (rate['rate'] == 2) this.rate_obj['2'] += 1;
-      if (rate['rate'] == 3) this.rate_obj['3'] += 1;
-      if (rate['rate'] == 4) this.rate_obj['4'] += 1;
-      if (rate['rate'] == 5) this.rate_obj['5'] += 1;
-      tot_rates += Number(rate['rate']);
+  getOfferId() {
+    for (let offer of this.offers) {
+      if (offer['status'] == 'accepted') this.request_data['offer_id'] = offer['id'];
     }
-    this.users = rates['length']
-    this.rate = +(tot_rates/this.users).toFixed(2);
-    console.log(this.rate_obj);
-    console.log(this.rate);
-    console.log(this.users);
   }
 
 }

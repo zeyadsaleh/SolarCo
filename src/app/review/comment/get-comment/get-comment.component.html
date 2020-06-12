@@ -1,13 +1,9 @@
-<h2 class="text-center">Reviews</h2>
-<hr>
-<div *ngIf="users">
-    <div *ngFor="let comment of comments" class="mb-5">
-        <blockquote class="speech-bubble shadow text-center shadow rounded border border-dark">
-            <p>{{ comment.comment }}</p>
-            <cite class="text-center text-dark">Date: <b>{{ comment.date }}</b></cite>
+<div class="text-center m-1 p-3" *ngIf="req_data['review']">
+    <h4 class="bg-dark rounded text-white p-1">Comment</h4>
+    <div class="animated-border-quote">
+        <blockquote>
+            <p>{{ req_data['review'] }}</p>
+            <cite class="text-center text-dark">Date: <b>{{ req_data['updated_at'] }}</b></cite>
         </blockquote>
     </div>
-</div>
-<div *ngIf="!users">
-    <h4 class="text-center">No Reviews yet!</h4>
 </div>

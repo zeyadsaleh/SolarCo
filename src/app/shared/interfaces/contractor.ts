@@ -3,6 +3,5 @@ export interface Contractor {
     address: string,
     mobileNumber: string,
     website: string,
-    fax: string
-    
+    fax: string   
 }

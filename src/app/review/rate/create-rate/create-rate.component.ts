@@ -11,7 +11,6 @@ export class CreateRateComponent implements OnInit {
   @Input() offers;
   current_rate: number;
   request_data: object;
-  isLoading: boolean = true;
 
   constructor(private __service: OfferReviewService) { }
 
@@ -26,9 +25,6 @@ export class CreateRateComponent implements OnInit {
             console.log(response);
           }
         })
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 500);
     }
   }
 

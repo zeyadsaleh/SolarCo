@@ -21,7 +21,7 @@ export class SinglePostComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private __service: ShareService,
-    private tokenAuth: AngularTokenService) { }
+    public tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
     this.tokenAuth.validateToken().subscribe(
@@ -29,7 +29,11 @@ export class SinglePostComponent implements OnInit {
         this.userData = this.tokenAuth.currentUserData;
         console.log(this.userData)
         this.route.params.subscribe(params => {
-          this.getPost(+params['id']);
+          if (Number.isInteger(+params['id'])) {
+            this.getPost(+params['id']);
+          } else {
+            this.router.navigate(['404']);
+          }
         });
       },
       error => console.log(error)

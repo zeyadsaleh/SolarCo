@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
         console.log(this.userData)
         setTimeout(() => {
           this.isLoading = false;
-        }, 500);
+        }, 300);
       },
       error => console.log(error)
     );

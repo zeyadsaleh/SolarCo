@@ -4,34 +4,33 @@ import { OfferReviewService } from 'src/app/shared/services/offer-review.service
 @Component({
   selector: 'app-get-comment',
   templateUrl: './get-comment.component.html',
-  styleUrls: ['./get-comment.component.css']
+  styleUrls: ['./get-comment.component.scss']
 })
 export class GetCommentComponent implements OnInit {
   
-  @Input() contractor_id:number;
-  comments = new Array;
-  users: number = 0;
-  
+  @Input() offers;
+  req_data: object;
+
   constructor(private __service: OfferReviewService) { }
 
   ngOnInit(): void {
-    console.log(this.contractor_id);
-    this.__service.getReviews(this.contractor_id).subscribe(
-      (response) => {
-        if(response){
-          this.setCommentDetails(response);
-        }
-      })
+    this.req_data = new Object;
+    this.getOfferId();
+    if (this.req_data && this.req_data['offer_id']) {
+      this.__service.getReview(this.req_data['offer_id']).subscribe(
+        (response) => {
+          if (response) {
+            this.req_data = response;
+            console.log(response);
+          }
+        })
+    }
   }
 
-  setCommentDetails(reviews){
-    for (let review of reviews){
-      this.comments.push({"comment":review['review'], "date":review['updated_at']});
+  getOfferId() {
+    for (let offer of this.offers) {
+      if (offer['status'] == 'accepted') this.req_data['offer_id'] = offer['id'];
     }
-    this.comments.reverse();
-    this.users = reviews['length']
-    console.log(this.comments);
-    console.log(this.users);
   }
 
 }
