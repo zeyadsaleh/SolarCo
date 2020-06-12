@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   userData;
   type;
   title: string = 'Profile';
-  subPage: string = 'overview';
+  subPage: string;
   isLoading: boolean = true;
   noResponse: boolean = false;
 
@@ -22,14 +22,26 @@ export class ProfileComponent implements OnInit {
   @ViewChild('avatarAlert') avatarAlert: any;
 
   constructor(private tokenAuthService: AngularTokenService,
-    private userService: UserService,
-    private router: Router) { }
+    readonly userService: UserService,
+    private router: Router) {
+
+      // this.subPage = this.userService.user_type == 'CONTRACTOR' ? 'overview' : 'systems';
+      // console.log(this.subPage)
+
+  }
 
 
   ngOnInit(): void {
     setTimeout(() => { this.timeOut() }, 40000);
     // Current nav active page from router
-    this.subPage = this.router.url.split('/')[2] ? this.router.url.split('/')[2] : 'overview';
+    if(this.router.url.split('/')[2]) {
+      this.subPage = this.router.url.split('/')[2]
+    } else {
+      this.subPage = this.userService.user_type == 'CONTRACTOR' ? 'overview' : 'systems';
+      if(this.subPage == 'systems')
+        this.router.navigateByUrl('/profile/systems');
+    }
+    // this.subPage = this.router.url.split('/')[2] ? this.router.url.split('/')[2] : 'overview';
     // Get the data of the logged in user after validating token
     this.tokenAuthService.validateToken().subscribe(
       res => {

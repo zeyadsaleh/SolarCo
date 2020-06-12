@@ -36,7 +36,7 @@
           <div class="profile-usermenu sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item" [routerLink]="['/profile']" [class]="subPage == 'overview' ? 'active' : ''"
-                (click)="changeSubpage($event)">
+                (click)="changeSubpage($event)" *ngIf="type == 'CONTRACTOR'">
 
                 <a name="overview" class="nav-link" [class]="subPage == 'overview' ? 'active' : ''">
                   <i class="fa fa-home"></i>
