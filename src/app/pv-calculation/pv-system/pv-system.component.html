@@ -1,9 +1,10 @@
 <app-page-banner [title]="title"></app-page-banner>
 
-<div class="container" *ngIf="!isLoading">
+<div class="container" *ngIf="!isLoading && !noResponse">
     <div class="row text-center justify-content-center">
         <mat-card>
-            <mat-card-title class="rounded shadow text-white p-3 mb-3 display-3">PV System Num #{{system_data['system']['id']}}</mat-card-title>
+            <mat-card-title class="rounded shadow text-white p-3 mb-3 display-3">PV System Num
+                #{{system_data['system']['id']}}</mat-card-title>
             <h2 class="border border-black p-2">Estimated Cost: {{ system_data['cost'] }} EG</h2>
             <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ error }}
@@ -113,3 +114,4 @@
 </div>
 
 <app-loading *ngIf="isLoading"></app-loading>
+<app-no-response *ngIf="noResponse"></app-no-response>

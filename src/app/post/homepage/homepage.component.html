@@ -1,6 +1,6 @@
 <app-page-banner *ngIf="!toProfile" [title]="title"></app-page-banner>
 
-<div *ngIf="!isLoading && posts.length > 0" class="spacing">
+<div *ngIf="!isLoading && !noResponse && posts.length > 0" class="spacing">
   <div *ngFor="let post of posts | paginate: { itemsPerPage: 7, currentPage: p }">
     <div class="container m-auto">
       <div class="post-card">
@@ -75,10 +75,11 @@
 </div>
 </div>
 
-<div *ngIf="!isLoading && posts.length == 0" class="mt-5">
+<div *ngIf="!isLoading && !noResponse && posts.length == 0" class="mt-5">
   <p class="text-center">No Posts Found</p>
 </div>
 
+<app-no-response *ngIf="noResponse"></app-no-response>
 <app-loading *ngIf="isLoading"></app-loading>
 <!-- <ng-template #loading>
   <div class="text-center">

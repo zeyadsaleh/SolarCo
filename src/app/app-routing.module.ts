@@ -16,6 +16,7 @@ import { RegisterRoutingModule } from './auth/register/register-routing.module';
 import { UserRoutingModule } from './user/user-routing.module';
 import { OfferRoutingModule } from './offer/offer-routing.module';
 import { TutorialRoutingModule } from './tutorial/tutorial-routing.module';
+import { ContactUsComponent } from './main-component/sidebar/contact-us/contact-us.component';
 // ########### Routes END ##########
 
 // Servies ##START##
@@ -42,6 +43,10 @@ const routes: Routes = [
     path: 'inbox',
     component: ChatComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'contact-us',
+    component: ContactUsComponent,
   },
   {
     path: '**',

@@ -1,4 +1,4 @@
-<div *ngIf="!isLoading">
+<div *ngIf="!isLoading && !noResponse">
 
   <app-toolbar></app-toolbar>
   <app-sidebar></app-sidebar>
@@ -9,6 +9,7 @@
 
 
 <app-loading *ngIf="isLoading"></app-loading>
+<app-no-response *ngIf="noResponse"></app-no-response>
 <!-- <ng-template #loading>
   <div class="text-center">
     <div class="spinner-border" role="status">

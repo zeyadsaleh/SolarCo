@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TutorialService } from 'src/app/shared/services/tutorial.service';
 import { AngularTokenService } from 'angular-token';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-all-tutorials',
@@ -12,19 +13,95 @@ export class AllTutorialsComponent implements OnInit {
   title: string = "Tutorial";
   tutorials = new Array;
   p: number = 1;
+  isLoading: boolean = true;
+  noResponse: boolean = false;
+  category: any;
+  contractor: any;
 
   constructor(private __service: TutorialService,
-    public tokenAuth: AngularTokenService) { }
+    public tokenAuth: AngularTokenService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getTutorials();
+    setTimeout(() => { this.timeOut() }, 40000);
+    if (this.router.url.includes('categories')) {
+      this.route.params.subscribe(params => {
+        if (Number.isInteger(+params['id'])) {
+          this.TutorialsByCat(+params['id']);
+        } else {
+          this.router.navigate(['404']);
+        }
+      })
+    } else if (this.router.url.includes('contractors')) {
+      this.route.params.subscribe(params => {
+        if (Number.isInteger(+params['id'])) {
+          this.TutorialsByCon(+params['id']);
+        } else {
+          this.router.navigate(['404']);
+        }
+      })
+    } else {
+      this.allTutorials();
+    }
   }
 
-  getTutorials() {
+  allTutorials() {
     this.__service.getTutorials().subscribe(
       (response) => {
-        this.tutorials = response;
+        if (response) {
+          console.log(response);
+          this.tutorials = response;
+        }
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 300);
+      },
+      (error) => {
+        console.log(error);
       })
+  }
+
+  TutorialsByCat(id) {
+    this.__service.getTutorialsByCategory(id).subscribe(
+      (response) => {
+        if (response) {
+          console.log(response);
+          this.tutorials = response;
+          if (response['length'] > 0) this.category = response[0].category;
+        }
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 300);
+      },
+      (error) => {
+        console.log(error);
+      })
+  }
+
+  TutorialsByCon(id) {
+    this.__service.getTutorialsByContractor(id).subscribe(
+      (response) => {
+        if (response) {
+          console.log(response);
+          this.tutorials = response;
+          if (response['length'] > 0) this.contractor = response[0].contractor;
+        }
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 300);
+      },
+      (error) => {
+        console.log(error);
+      })
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
   }
 
 }

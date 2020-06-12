@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   title: string = 'Profile';
   subPage: string = 'overview';
   isLoading: boolean = true;
+  noResponse: boolean = false;
 
   @ViewChild('avatarUploader') avatarUploader: any;
   @ViewChild('avatarAlert') avatarAlert: any;
@@ -26,6 +27,7 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
+    setTimeout(() => { this.timeOut() }, 40000);
     // Current nav active page from router
     this.subPage = this.router.url.split('/')[2] ? this.router.url.split('/')[2] : 'overview';
     // Get the data of the logged in user after validating token
@@ -36,7 +38,7 @@ export class ProfileComponent implements OnInit {
         console.log(this.userData)
         setTimeout(() => {
           this.isLoading = false;
-        }, 500);
+        }, 300);
       },
       error => console.log(error)
     );
@@ -79,6 +81,14 @@ export class ProfileComponent implements OnInit {
 
   changeSubpage(ev) {
     this.subPage = ev.target.name;
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
   }
 
 }

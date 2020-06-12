@@ -13,19 +13,20 @@ export class ChatComponent implements OnInit {
 
   selectedUser;
   messages = [];
-  isLoading:boolean = true;
+  isLoading: boolean = true;
+  noResponse: boolean = false;
   connected = false;
   title:string = 'Inbox';
   emptyInbox: boolean;
 
   constructor(readonly route: ActivatedRoute,
-              readonly userService: UserService,
-              private chatService: ChatService,
-              private messagesService: MessagesService) { 
-      
-    this.route.paramMap.subscribe(params => {
+    readonly userService: UserService,
+    private chatService: ChatService,
+    private messagesService: MessagesService) {
 
-      if(params.has('id')) {
+    this.route.paramMap.subscribe(params => {
+      setTimeout(() => { this.timeOut() }, 40000);
+      if (params.has('id')) {
         this.userService.getContractor(params.get('id')).subscribe(res => {
           this.selectedUser = res;
           this.initChat();
@@ -38,10 +39,10 @@ export class ChatComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   async initChat() {
-    if(this.userService.user_type == 'USER') {
+    if (this.userService.user_type == 'USER') {
       await this.chatService.openChannel(this.userService.current_user, this.selectedUser);
     } else if (this.userService.user_type == 'CONTRACTOR') {
       await this.chatService.openChannel(this.selectedUser, this.userService.current_user);
@@ -51,7 +52,7 @@ export class ChatComponent implements OnInit {
       this.connected = true;
     })
 
-    this.chatService.channel.received().subscribe(res=> {
+    this.chatService.channel.received().subscribe(res => {
       this.messages = [...this.messages, res.message as any];
     })
   }
@@ -72,7 +73,7 @@ export class ChatComponent implements OnInit {
   }
 
   getOldMessages() {
-    if(this.userService.user_type == 'USER') {
+    if (this.userService.user_type == 'USER') {
       this.messagesService.getOldMessages(this.userService.current_user.id, this.selectedUser.id).subscribe(
         res => {
           this.messages = [].slice.call(res);
@@ -89,5 +90,13 @@ export class ChatComponent implements OnInit {
 
   ngOnDestroy() {
     this.chatService.unsubscribe();
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
   }
 }

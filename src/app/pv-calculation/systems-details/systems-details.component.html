@@ -1,6 +1,6 @@
 <app-page-banner [title]="title"></app-page-banner>
 
-<div class="container" *ngIf="!isLoading">
+<div class="container" *ngIf="!isLoading && !noResponse">
     <div class="row justify-content-center mb-2">
         <div class="col-md-9 col-lg-5 m-2"
             *ngFor="let system of systems_details | paginate: { itemsPerPage: 8, currentPage: p }">
@@ -79,3 +79,4 @@
 </div>
 
 <app-loading *ngIf="isLoading"></app-loading>
+<app-no-response *ngIf="noResponse"></app-no-response>

@@ -1,11 +1,11 @@
-<h2 class="text-center">Reviews</h2>
+<h2 class="text-center">Comments</h2>
 <hr>
 <div class=" text-center" *ngIf="users">
-    <div *ngFor="let comment of comments | paginate: { itemsPerPage: 8, currentPage: p }" class="mb-2">
+    <div *ngFor="let comment of comments | paginate: { itemsPerPage: 4, currentPage: p }">
         <div class="animated-border-quote">
             <blockquote>
-                <p>{{ comment.comment }}</p>
-                <cite class="text-center text-dark">Date: <b>{{ comment.date }}</b></cite>
+                <p><b>{{ comment.user }}:</b> {{ comment.comment }}</p>
+                <cite class="text-center text-dark">Date: <b>{{ comment.date | slice:0:10 }}</b></cite>
             </blockquote>
         </div>
     </div>

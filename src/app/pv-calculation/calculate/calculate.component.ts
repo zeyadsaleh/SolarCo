@@ -16,12 +16,14 @@ export class CalculateComponent implements OnInit {
   title: string = 'Pv-System Calculate';
   error: string;
   isLoading: boolean = true;
+  noResponse: boolean = false;
 
   constructor(private data: PvCalculationService,
     private router: Router,
     private __service: ShareService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {this.timeOut()}, 40000);
     this.__service.Data.subscribe((data) => {
       if (data && data['permission']) {
         this.api_response = data;
@@ -47,6 +49,14 @@ export class CalculateComponent implements OnInit {
       });
     } else {
       this.error = "Consumption: must be greater than 0!";
+    }
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs'; 
 import { GlobalService } from './global.service';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class OfferService {
   constructor(private http: HttpClient,
               private api: GlobalService) { }
     
-    private offerUrl = `${this.api.host}/offers`;
+  private offerUrl = `${this.api.host}/offers`;
     
   getOffers(post_id):Observable<any> {
     return this.http.get(this.offerUrl+'/post/'+post_id);

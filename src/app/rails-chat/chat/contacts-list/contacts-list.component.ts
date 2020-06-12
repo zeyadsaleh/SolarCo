@@ -21,19 +21,21 @@ export class ContactsListComponent implements OnInit {
 
   activeUser;
   contacts = [];
-  isLoading:boolean = true;
+  isLoading: boolean = true;
+  noResponse: boolean = false;
 
   constructor(readonly contactsService: ContactsService,
-              readonly userService: UserService) {}
+    readonly userService: UserService) { }
 
   ngOnInit() {
-    if(this.userService.user_type == 'USER') {
+    setTimeout(() => { this.timeOut() }, 40000);
+    if (this.userService.user_type == 'USER') {
 
       this.contactsService.getUserContacts().subscribe(
         res => {
           this.contacts = res;
           this.isLoading = false;
-          if(!this.selectedUser)
+          if (!this.selectedUser)
             this.selectFirstContact();
           else
             this.setActiveUser(this.selectedUser)
@@ -46,7 +48,7 @@ export class ContactsListComponent implements OnInit {
         res => {
           this.contacts = res;
           this.isLoading = false;
-          if(!this.selectedUser)
+          if (!this.selectedUser)
             this.selectFirstContact();
           else
             this.setActiveUser(this.selectedUser)
@@ -74,5 +76,13 @@ export class ContactsListComponent implements OnInit {
   onUserSelected(user) {
     this.activeUser = user;
     this.userSelected.emit(user);
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
   }
 }

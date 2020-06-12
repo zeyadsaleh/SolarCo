@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PvCalculationService } from '../../shared/services/pv-calculation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShareService } from 'src/app/shared/services/share.service';
- 
+
 @Component({
   selector: 'app-pv-system',
   templateUrl: './pv-system.component.html',
@@ -17,7 +17,7 @@ export class PvSystemComponent implements OnInit {
   panelOpenState3: boolean = false;
   error: string;
   isLoading: boolean = true;
-
+  noResponse: boolean = false;
 
   constructor(private data: PvCalculationService,
     private route: ActivatedRoute,
@@ -26,7 +26,11 @@ export class PvSystemComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.getSystemDetails(+params['id']);
+      if (Number.isInteger(+params['id'])) {
+        this.getSystemDetails(+params['id']);
+      } else {
+        this.router.navigate(['404']);
+      }
     });
 
   }
@@ -54,13 +58,21 @@ export class PvSystemComponent implements OnInit {
   }
 
   delete() {
-    this.data.delCalculation(this.system_data['system']['id'], response => {      
+    this.data.delCalculation(this.system_data['system']['id'], response => {
       if (response && response['error']) {
         if (response['error']) this.error = response['error'];
       } else {
         this.router.navigate(['profile/systems']);
       }
     });
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
   }
 
 }

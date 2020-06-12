@@ -3,6 +3,5 @@ export interface User {
     name:string,
     password:string,
     passwordConfirmation:string,
-    type:string,
-    
+    type:string,  
 }

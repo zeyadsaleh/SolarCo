@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Offer } from '../shared/interfaces/offer';
 import { AngularTokenService } from 'angular-token';
 import { PostService } from 'src/app/shared/services/post.service';
+import { ShareService } from '../shared/services/share.service';
 
 @Component({
   selector: 'app-offer',
@@ -24,7 +25,7 @@ export class OfferComponent implements OnInit {
   submitted: boolean = false;
   currentOffer: any = {};
   offers_count = '';
-  constructor(private offerService: OfferService, private router: Router, private tokenAuth: AngularTokenService, private postService: PostService) { }
+  constructor(private offerService: OfferService, private router: Router, private tokenAuth: AngularTokenService, private postService: PostService, private shareService: ShareService) { }
 
   ngOnInit(): void {
     this.getOffers();
@@ -98,6 +99,7 @@ export class OfferComponent implements OnInit {
     this.isApproved = true;
     this.postService.updatePost(offer.post.id, { closed: true }).subscribe(
       res => {
+        // this.shareService.setData(true);
         console.log(res);
       },
       error => {

@@ -13,11 +13,13 @@ export class SystemsComponent implements OnInit {
   error: string;
   success: string;
   isLoading: boolean = true;
+  noResponse: boolean = false;
   p: number = 1;
 
   constructor(private data: PvCalculationService, private router: Router) { }
 
   ngOnInit(): void {
+    setTimeout(() => {this.timeOut()}, 40000);
     this.getSystems();
   }
 
@@ -45,4 +47,11 @@ export class SystemsComponent implements OnInit {
     });
   }
 
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
+  }
 }

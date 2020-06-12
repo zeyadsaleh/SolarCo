@@ -1,6 +1,4 @@
-<app-page-banner [title]="title"></app-page-banner>
-
-<div class="chat-page" *ngIf="!isLoading">
+<div class="chat-page" *ngIf="!isLoading && !noResponse">
     <div class="chat-box" *ngIf="connected">
       <app-contacts-list (userSelected)="onUserSelected($event)" [selectedUser]="selectedUser"></app-contacts-list>
       <app-messages-view [messages]="messages" [selectedUserName]="selectedUser?.name"
@@ -9,3 +7,4 @@
 </div>
 
 <app-loading *ngIf="isLoading"></app-loading>
+<app-no-response *ngIf="noResponse"></app-no-response>
