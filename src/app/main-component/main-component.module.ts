@@ -11,6 +11,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoadingComponent } from './loading/loading.component';
+import { NoResponseComponent } from './no-response/no-response.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { LoadingComponent } from './loading/loading.component';
     NotFoundComponent,
     SidebarComponent,
     LoadingComponent,
+    NoResponseComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,7 @@ import { LoadingComponent } from './loading/loading.component';
     AbilityModule,
     MaterialModule,
   ],
-  providers:[
+  providers: [
     { provide: Ability, useValue: new Ability() },
     { provide: PureAbility, useExisting: Ability }
   ],
@@ -41,6 +43,7 @@ import { LoadingComponent } from './loading/loading.component';
     NotFoundComponent,
     SidebarComponent,
     LoadingComponent,
+    NoResponseComponent,
   ],
 })
 export class MainComponentModule { }

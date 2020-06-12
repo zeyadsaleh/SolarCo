@@ -11,6 +11,7 @@ export class ContractorProfileComponent implements OnInit {
 
   contractor;
   isLoading: boolean = true;
+  noResponse: boolean = false;
   title: string = 'Contractor';
   allOffers: number = 0;
   acceptedOffers: number = 0;
@@ -18,6 +19,7 @@ export class ContractorProfileComponent implements OnInit {
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    setTimeout(() => { this.timeOut() }, 40000);
     this.route.paramMap.subscribe(params => {
       this.userService.getContractor(params.get('id')).subscribe(res => {
         console.log(res);
@@ -41,4 +43,11 @@ export class ContractorProfileComponent implements OnInit {
     console.log(this.allOffers);
   }
 
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
+  }
 }

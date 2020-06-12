@@ -2,7 +2,7 @@
 
 <div class="bar"></div>
 
-<div class="container" *ngIf="!isLoading">
+<div class="container" *ngIf="!isLoading && !noResponse">
     <div class="row justify-content-center mt-3" *ngIf="contractor || category">
         <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center" *ngIf="contractor"
             [routerLink]="['/profile/contractors',contractor.id]">Contractor: {{ contractor.name }}</h1>
@@ -46,3 +46,4 @@
 </div>
 
 <app-loading *ngIf="isLoading"></app-loading>
+<app-no-response *ngIf="noResponse"></app-no-response>

@@ -12,12 +12,14 @@ export class TutorialComponent implements OnInit {
   title: string = '';
   tutorial: any;
   isLoading: boolean = true;
+  noResponse: boolean = false;
 
   constructor(private __service: TutorialService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
+    setTimeout(() => { this.timeOut() }, 40000);
     this.route.params.subscribe(params => {
       this.__service.getTutorial(+params['id']).subscribe(
         (response) => {
@@ -32,6 +34,14 @@ export class TutorialComponent implements OnInit {
           }
         })
     });
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
   }
 
 }

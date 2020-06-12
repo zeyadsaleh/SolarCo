@@ -17,7 +17,7 @@ export class PvSystemComponent implements OnInit {
   panelOpenState3: boolean = false;
   error: string;
   isLoading: boolean = true;
-
+  noResponse: boolean = false;
 
   constructor(private data: PvCalculationService,
     private route: ActivatedRoute,
@@ -65,6 +65,14 @@ export class PvSystemComponent implements OnInit {
         this.router.navigate(['profile/systems']);
       }
     });
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
   }
 
 }

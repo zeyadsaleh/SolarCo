@@ -1,6 +1,6 @@
 <div class="main">
     <div class="contacts-title">Contacts</div>
-    <ul *ngIf="!isLoading">
+    <ul *ngIf="!isLoading && !noResponse">
         <li *ngFor="let contact of contacts" (click)="onUserSelected(contact)"
             [ngClass]="{ active: contact.id === activeUser?.id }">
             <div class="image-container">
@@ -12,4 +12,5 @@
             </div>
         </li>
     </ul>
+    <app-no-response *ngIf="noResponse"></app-no-response>
 </div>

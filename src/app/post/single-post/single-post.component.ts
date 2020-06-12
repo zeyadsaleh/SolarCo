@@ -15,6 +15,7 @@ export class SinglePostComponent implements OnInit {
   title: string = 'Your Post';
   errorMessage: string = '';
   isLoading: boolean = true;
+  noResponse: boolean = false;
   currentUserID: any;
   applied: boolean = false;
   constructor(private postService: PostService,
@@ -24,6 +25,7 @@ export class SinglePostComponent implements OnInit {
     public tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {this.timeOut()}, 40000);
     this.tokenAuth.validateToken().subscribe(
       res => {
         this.userData = this.tokenAuth.currentUserData;
@@ -73,4 +75,11 @@ export class SinglePostComponent implements OnInit {
     this.applied = false;
   }
 
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
+  }
 }

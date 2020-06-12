@@ -11,6 +11,7 @@ export class HomepageComponent implements OnInit {
   posts = new Array;
   title: string = 'Posts';
   isLoading: boolean = true;
+  noResponse: boolean = false;
   p: number = 1;
   system_data: object;
   toProfile: boolean;
@@ -21,6 +22,7 @@ export class HomepageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    setTimeout(() => {this.timeOut()}, 40000);
     this.getPosts();
   }
 
@@ -66,5 +68,13 @@ export class HomepageComponent implements OnInit {
       return false;
     }
     return typeof res[Symbol.iterator] === 'function';
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
   }
 }

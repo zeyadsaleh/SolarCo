@@ -15,7 +15,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div *ngIf="!isLoading && systems">
+<div *ngIf="!isLoading && !noResponse && systems">
     <div class="row justify-content-center"
         *ngFor="let system of systems | paginate: { itemsPerPage: 8, currentPage: p }">
         <div class="panel panel-default widget">
@@ -105,8 +105,9 @@
         Details</a>
 </div>
 
-<div *ngIf="!isLoading && !systems">
+<div *ngIf="!isLoading && !noResponse && !systems">
     <p class="text-center">No Systems Found</p>
 </div>
 
 <app-loading *ngIf="isLoading"></app-loading>
+<app-no-response *ngIf="noResponse"></app-no-response>

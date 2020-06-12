@@ -14,6 +14,7 @@ export class AllTutorialsComponent implements OnInit {
   tutorials = new Array;
   p: number = 1;
   isLoading: boolean = true;
+  noResponse: boolean = false;
   category: any;
   contractor: any;
 
@@ -23,6 +24,7 @@ export class AllTutorialsComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    setTimeout(() => { this.timeOut() }, 40000);
     if (this.router.url.includes('categories')) {
       this.route.params.subscribe(params => {
         if (Number.isInteger(+params['id'])) {
@@ -53,7 +55,7 @@ export class AllTutorialsComponent implements OnInit {
         }
         setTimeout(() => {
           this.isLoading = false;
-        }, 500);
+        }, 300);
       },
       (error) => {
         console.log(error);
@@ -92,6 +94,14 @@ export class AllTutorialsComponent implements OnInit {
       (error) => {
         console.log(error);
       })
+  }
+
+  timeOut() {
+    if (this.isLoading == true) {
+      console.log("noresponse");
+      this.noResponse = true;
+      this.isLoading = false;
+    }
   }
 
 }
