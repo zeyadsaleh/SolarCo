@@ -65,6 +65,7 @@ export class SinglePostComponent implements OnInit {
 
   deletePost(id) {
     this.postService.deletePost(id).subscribe()
+    this.router.navigate(['/profile/posts'])
   }
 
   sendId(id) {
