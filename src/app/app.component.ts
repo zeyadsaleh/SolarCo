@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, Inject } from '@angular/core';
 import { Ability } from '@casl/ability';
 import { AngularTokenService } from 'angular-token';
 import { ChatAuthService } from './shared/services/chat-auth.service';
 import { UserService } from './shared/services/user.service';
+import { DOCUMENT } from '@angular/common';
+import { GlobalService } from './shared/services/global.service';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +16,24 @@ export class AppComponent {
   showFiller: boolean = false;
   isLoading: boolean = true;
   noResponse: boolean = false;
+  showTop:boolean = false;
+
+  @HostListener("window:scroll", [])onWindowScroll() {
+    if(this.document.documentElement.scrollTop >= 106) { // Navigation bar has disappeared
+      this.showTop = true;
+    } else {
+      this.showTop = false;
+    }
+  }
 
 
-  constructor(private ability: Ability, private tokenService: AngularTokenService, readonly chatAuthService: ChatAuthService, private userService: UserService) {
+  constructor(private ability: Ability,
+       private tokenService: AngularTokenService,
+       readonly chatAuthService: ChatAuthService,
+       private userService: UserService,
+       readonly globalService: GlobalService,
+       @Inject(DOCUMENT) private document: Document) {
+
     setTimeout(() => {this.timeOut()}, 60000);
     if (this.tokenService.userSignedIn()) {
       this.tokenService.validateToken().subscribe(
@@ -52,6 +69,10 @@ export class AppComponent {
         this.isLoading = false;
       }, 200);
     }
+  }
+
+  goToTop() {
+    this.document.documentElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
   }
 
   timeOut() {

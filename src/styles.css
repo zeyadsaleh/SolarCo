@@ -26,6 +26,20 @@ body {
     height: 3rem;
 }
 
+.floating-icon {
+  position: fixed;
+  right: 3rem;
+  /* bottom: 2rem; */
+  padding: 1rem 1rem 0.8rem;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  z-index: 2;
+  background: #dc3545;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
 #auth-loader {
     width: 1rem;
     height: 1rem;

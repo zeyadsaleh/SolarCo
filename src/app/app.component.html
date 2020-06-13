@@ -2,6 +2,7 @@
 
   <app-toolbar></app-toolbar>
   <app-sidebar></app-sidebar>
+  <app-go-to-top *ngIf="showTop" (click)="goToTop()"></app-go-to-top>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 

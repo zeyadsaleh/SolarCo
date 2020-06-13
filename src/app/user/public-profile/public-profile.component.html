@@ -1,7 +1,8 @@
+<app-go-to-top></app-go-to-top>
 <app-page-banner [title]="title"></app-page-banner>
 
 <div class="container" *ngIf="!isLoading && !noResponse">
-    <div class="chat-icon" *ngIf="isContractor" [routerLink]="['/chat/'] + user.id">
+    <div class="floating-icon chat" title="Chat Now" *ngIf="isContractor" [routerLink]="['/chat/'] + user.id">
         <i class="fas fa-comment-alt"></i>
     </div>
     <div class="card user-profile">
