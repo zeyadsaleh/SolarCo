@@ -49,12 +49,8 @@ export class HomepageComponent implements OnInit {
   }
 
   deletePost(id) {
-    this.postService.deletePost(id).subscribe(
-      res => {
-      },
-      error => {
-      }
-    )
+    this.postService.deletePost(id).subscribe()
+    this.router.navigate(['/profile/posts'])
   }
 
 

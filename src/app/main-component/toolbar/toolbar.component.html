@@ -19,6 +19,8 @@
               <a class="nav-link " [routerLink]="['/pv-system/user-info']" style="font-size: 16px;">CALCULATE</a>
             <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()"
               class="nav-item"><a class="nav-link " [routerLink]="['/posts']" style="font-size: 16px;">POSTS</a>
+              <li *ngIf="tokenAuthService.currentUserType == 'USER' && tokenAuthService.userSignedIn()"
+              class="nav-item"><a class="nav-link " [routerLink]="['/profile/posts']" style="font-size: 16px;">POSTS</a>
             <li class="nav-item"><a class="nav-link " [routerLink]="['/tutorials']" style="font-size: 16px;">TUTORIAL</a>
           </ul>
           <ul class="nav navbar-nav menu_nav ml-auto">
