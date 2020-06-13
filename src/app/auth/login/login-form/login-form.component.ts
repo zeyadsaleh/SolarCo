@@ -46,14 +46,14 @@ export class LoginFormComponent implements OnInit {
         this.ability.update(res.body.data.rules); // Casl Abilities
         // let username = res.body.data.name.trim().toLowerCase() + Math.round((Math.random() * 100))
         // console.log(username);
-        this.chatAuthService
-          .login(res.body.data.username)
-          .then(
-            (res) => {
-              console.log(res);   
-            },
-            err => (console.log(err))
-          );
+        // this.chatAuthService
+        //   .login(res.body.data.username)
+        //   .then(
+        //     (res) => {
+        //       console.log(res);   
+        //     },
+        //     err => (console.log(err))
+        //   );
         // console.log(this.ability.rules);
         // console.log(this.ability)
         this.userService.current_user = res.body.data;

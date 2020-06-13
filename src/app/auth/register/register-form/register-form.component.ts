@@ -66,20 +66,20 @@ export class RegisterFormComponent implements OnInit {
           console.log(res);
           this.ability.update(res.data.rules); // Casl Abilities
 
-          this.chatAuthService
-          .signUp(res.data.username, res.data.name)
-          .then(
-            (response) => {
-              this.chatAuthService.login(res.data.username)
-              .then(
-                (res) => {
-                  console.log(res);   
-                },
-                err => (console.log(err))
-              );   
-            },
-            err => (console.log(err))
-          );
+          // this.chatAuthService
+          // .signUp(res.data.username, res.data.name)
+          // .then(
+          //   (response) => {
+          //     this.chatAuthService.login(res.data.username)
+          //     .then(
+          //       (res) => {
+          //         console.log(res);   
+          //       },
+          //       err => (console.log(err))
+          //     );   
+          //   },
+          //   err => (console.log(err))
+          // );
 
           this.userService.current_user = res.data;
           this.userService.user_type = this.tokenAuthSerivce.currentUserType;
