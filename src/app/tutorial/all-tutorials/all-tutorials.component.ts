@@ -43,7 +43,7 @@ export class AllTutorialsComponent implements OnInit {
           this.router.navigate(['404']);
         }
       })
-    } else if (this.router.url.includes('users')) {
+    } else if (this.router.url.includes('profile')) {
       this.route.params.subscribe(params => {
         if (Number.isInteger(+params['id'])) {
           this.tutorialsByFav(+params['id']);

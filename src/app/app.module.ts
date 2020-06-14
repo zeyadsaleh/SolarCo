@@ -68,7 +68,7 @@ import { TutorialModule } from './tutorial/tutorial.module';
     ReactiveFormsModule,
     OfferModule,
     NgxPaginationModule,
-    TutorialModule
+    TutorialModule,
     // ChatModule,
   ],
   providers: [

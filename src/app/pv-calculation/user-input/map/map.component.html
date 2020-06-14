@@ -1,0 +1,19 @@
+<div class="container m-1 p-1">
+
+    <div class="form-group">
+        <h5>Enter Your address To get Location</h5>
+        <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+            placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+            #search>
+    </div>
+
+    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+        <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+            (dragEnd)="markerDragEnd($event)"></agm-marker>
+    </agm-map>
+
+    <h5>Address: {{address}}</h5>
+    <!-- <div>Latitude: {{latitude}}</div>
+    <div>Longitude: {{longitude}}</div> -->
+
+</div>

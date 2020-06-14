@@ -22,8 +22,7 @@
 
                     </div>
                     <div class="title-total">
-                        <div class="title" [routerLink]="['/tutorials/contractors',tutorial.contractor_id]">
-                            By: {{ tutorial.contractor.name }}</div>
+
                         <div *ngIf="msg" class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ msg }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"
@@ -34,8 +33,10 @@
                         <h2 class="head bg-success m-2 rounded shadow">{{ tutorial.title }}<a
                                 *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'"
                                 style="float: right;" class="btn btn-sm btn-danger rounded shadow"
-                                (click)="addFav()">+</a></h2>
+                                (click)="addFav()">Add To Favorite</a></h2>
                         <div class="desc">{{ tutorial.body }}</div>
+                        <div class="title" [routerLink]="['/tutorials/contractors',tutorial.contractor_id]">
+                            By: {{ tutorial.contractor.name }}</div>
                         <hr>
                         <div class="desc" [routerLink]="['/tutorials/categories',tutorial.category_id]">Category:
                             {{ tutorial.category.category }}</div>

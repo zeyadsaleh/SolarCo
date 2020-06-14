@@ -38,7 +38,7 @@ export class CalculateComponent implements OnInit {
 
   calculate() {
     if (this.api_response['consumption'] > 0) {
-      this.api_response['address'] = this.address;
+      if (!this.api_response['address']) this.api_response['address'] = this.address;
       this.data.setSystem(this.api_response, succes => {
         if (succes) {
           this.__service.setData(succes);

@@ -15,15 +15,32 @@
                 </button>
             </div>
             <mat-card-content class="border rounded p-3">
-                <p><b>Consumption:</b> {{ api_response['consumption'] }}</p>
-                <p *ngIf="api_response['src']"><b>Google Map:</b> <a [href]="api_response['src']" target="_blank">
-                        Map</a></p>
-                <p><b>City:</b> {{ api_response['city'] }}</p>
-                <p><b>Country:</b> {{ api_response['country'] }}</p>
-                <p *ngIf="!api_response['backup']"><b>System:</b> Complete System</p>
-                <p *ngIf="api_response['backup']"><b>System:</b> Backup System</p>
+                <table class="table table-sm table-borderless">
+                    <tbody>
+                        <tr>
+                            <th><b>Consumption</b></th>
+                            <td>{{ api_response['consumption'] }}</td>
+                        </tr>
+                        <tr>
+                            <th><b>City</b></th>
+                            <td>{{ api_response['city'] }}</td>
+                        </tr>
+                        <tr>
+                            <th><b>Country</b></th>
+                            <td>{{ api_response['country'] }}</td>
+                        </tr>
+                        <tr>
+                            <th><b>System</b></th>
+                            <td>{{ api_response['backup']? 'Backup System':'Complete System' }}</td>
+                        </tr>
+                        <tr *ngIf="api_response['address']">
+                            <th><b>Address</b></th>
+                            <td>{{ api_response['address'] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </mat-card-content>
-            <mat-card-content class="border rounded p-3">
+            <mat-card-content class="border rounded p-3" *ngIf="!api_response['address']">
                 <h3>Enter Your Address</h3>
                 <hr>
                 <mat-form-field class="example-form-field">

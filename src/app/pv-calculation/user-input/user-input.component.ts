@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GeoLoactionService } from 'src/app/shared/services/geo-loaction.service';
 import { ShareService } from 'src/app/shared/services/share.service';
 import { Router } from '@angular/router';
 import { UserRequest } from 'src/app/shared/interfaces/user-request';
+import { MapComponent } from './map/map.component';
 @Component({
   selector: 'app-user-input',
   templateUrl: './user-input.component.html',
@@ -11,12 +12,14 @@ import { UserRequest } from 'src/app/shared/interfaces/user-request';
 })
 export class UserInputComponent implements OnInit {
 
+  @ViewChild(MapComponent) child;
+
   client_request: object;
-  api_response: object;
-  permission: boolean = true;
+  // api_response: any;
+  // permission: boolean = true;
   title: string = 'Pv-System Calculate';
   error: string;
-  ignore: boolean = false;
+  location: boolean = false;
   backup: boolean = false;
 
   constructor(private geolocation: GeoLoactionService,
@@ -26,29 +29,31 @@ export class UserInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.client_request = new Object();
-    this.getIpAddress();
   }
 
-  getLocation() {
-    this.geolocation.requestLocation(location => {
-      if (location) {
-        console.log(location);
-        this.client_request["lat"] = +(location.latitude - 0.004553999999998837 * (location.accuracy / 8741)).toFixed(6);
-        this.client_request["long"] = +(location.longitude + 0.015978000000000492 * (location.accuracy / 8741)).toFixed(6);
-        this.client_request["src"] = this.geolocation.getMapLink(location);
-        console.log(this.geolocation.getMapLink(location));
-        this.ignore = true;
-      }
-    });
-  }
+  // getLocation() {
+  // this.geolocation.requestLocation(location => {
+  //   if (location) {
+  //     console.log(location);
+  //     this.client_request["lat"] = +(location.latitude - 0.004553999999998837 * (location.accuracy / 8741)).toFixed(6);
+  //     this.client_request["long"] = +(location.longitude + 0.015978000000000492 * (location.accuracy / 8741)).toFixed(6);
+  //     this.client_request["src"] = this.geolocation.getMapLink(location);
+  //     console.log(this.geolocation.getMapLink(location));
+  //     this.ignore = true;
+  //   }
+  // });
+  // }
 
-  getIpAddress() {
-    this.http.get("http://api.ipify.org/?format=json").subscribe((response: any) => {
-      this.client_request["ip"] = response.ip;
-    });
+  getLoc() {
+    this.location = !this.location;
   }
 
   confirm() {
+    if (this.location) {
+      this.client_request["lat"] = this.child.latitude;
+      this.client_request["long"] = this.child.longitude;
+      this.client_request["address"] = this.child.address;
+    }
     if (this.client_request['consump'] && this.client_request['consump'] > 0) {
       this.geolocation.getLocation(this.client_request, response => {
         if (response && response['permission']) {

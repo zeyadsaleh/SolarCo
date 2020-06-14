@@ -34,7 +34,6 @@ export class ChatComponent implements OnInit {
       } else {
         this.connected = true;
       }
-
       this.isLoading = false;
     })
   }
