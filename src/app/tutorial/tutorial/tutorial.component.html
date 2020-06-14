@@ -33,7 +33,10 @@
                         <h2 class="head bg-success m-2 rounded shadow">{{ tutorial.title }}<a
                                 *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'"
                                 style="float: right;" class="btn btn-sm btn-danger rounded shadow"
-                                (click)="addFav()">Add To Favorite</a></h2>
+                                (click)="addFav()">Add To Favorite</a><a
+                                *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'CONTRACTOR' && tutorial.contractor_id == contractor_id"
+                                style="float: right;" class="btn btn-sm btn-danger rounded shadow"
+                                (click)="tutRemove()">Remove Tutorial</a></h2>
                         <div class="desc">{{ tutorial.body }}</div>
                         <div class="title" [routerLink]="['/tutorials/contractors',tutorial.contractor_id]">
                             By: {{ tutorial.contractor.name }}</div>

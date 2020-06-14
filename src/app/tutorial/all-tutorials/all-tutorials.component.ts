@@ -18,6 +18,7 @@ export class AllTutorialsComponent implements OnInit {
   category: any;
   contractor: any;
   user: any;
+  msg: string;
 
   constructor(private __service: TutorialService,
     public tokenAuth: AngularTokenService,
@@ -43,7 +44,7 @@ export class AllTutorialsComponent implements OnInit {
           this.router.navigate(['404']);
         }
       })
-    } else if (this.router.url.includes('profile')) {
+    } else if (this.router.url.includes('users')) {
       this.route.params.subscribe(params => {
         if (Number.isInteger(+params['id'])) {
           this.tutorialsByFav(+params['id']);
@@ -57,6 +58,7 @@ export class AllTutorialsComponent implements OnInit {
   }
 
   allTutorials() {
+    this.tutorials = new Array;
     this.__service.getTutorials().subscribe(
       (response) => {
         if (response) {
@@ -73,6 +75,7 @@ export class AllTutorialsComponent implements OnInit {
   }
 
   tutorialsByCat(id) {
+    this.tutorials = new Array;
     this.__service.getTutorialsByCategory(id).subscribe(
       (response) => {
         if (response) {
@@ -90,6 +93,7 @@ export class AllTutorialsComponent implements OnInit {
   }
 
   tutorialsByCon(id) {
+    this.tutorials = new Array;
     this.__service.getTutorialsByContractor(id).subscribe(
       (response) => {
         if (response) {
@@ -107,17 +111,14 @@ export class AllTutorialsComponent implements OnInit {
   }
 
   tutorialsByFav(id) {
+    this.tutorials = new Array;
     this.__service.getUserFavorites(id).subscribe(
       (response) => {
         if (response) {
           for (let res of response) {
             this.tutorials.push(res['tutorial']);
           }
-          console.log(this.tutorials);
-          
           if (response['length'] > 0) this.user = response[0].user;
-          console.log(this.user);
-          
         }
         setTimeout(() => {
           this.isLoading = false;
@@ -128,10 +129,35 @@ export class AllTutorialsComponent implements OnInit {
       })
   }
 
-  removeFav(id) {
-
+  addFav(tutorial_id) {
+    this.__service.setFavorite({ "tutorial_id": tutorial_id }).subscribe(
+      (res) => {
+        console.log(res);
+        if (res && res['exist']) {
+          this.msg = res['exist'];
+        } else {
+          this.msg = "added Successfully!";
+        }
+      });
   }
 
+  favRemove(tutorial_id) {
+    if (this.user) {
+      this.__service.deleteFavorite(tutorial_id).subscribe(
+        (res) => {
+          this.tutorials = this.tutorials.filter(item => item.id !== tutorial_id);
+        });
+    }
+  }
+
+  tutRemove(tutorial_id) {
+    if (this.contractor) {
+      this.__service.deleteTutorial(tutorial_id).subscribe(
+        (res) => {
+          this.tutorials = this.tutorials.filter(item => item.id !== tutorial_id);
+        });
+    }
+  }
   timeOut() {
     if (this.isLoading == true) {
       console.log("noresponse");

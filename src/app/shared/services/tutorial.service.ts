@@ -128,14 +128,14 @@ export class TutorialService {
   }
   //////////////////////////////////////////////////////////////
 
-  // FAV API
-  private apiFav: String = `${this.api.host}/favorites`;
-  // GET ALL
-  getFavorites(): Observable<any> {
-    return this.http.get(`${this.apiFav}`);
-  }
-  // GET favorite OF User
-  getUserFavorites(user_id): Observable<any> {
+// FAV API
+private apiFav: String = `${this.api.host}/favorites`;
+// GET ALL
+getFavorites(): Observable<any> {
+  return this.http.get(`${this.apiFav}`);
+}
+// GET favorite OF User
+getUserFavorites(user_id): Observable<any> {
   return this.http.get(`${this.apiFav}/user/${user_id}`);
 }
 // GET ONE

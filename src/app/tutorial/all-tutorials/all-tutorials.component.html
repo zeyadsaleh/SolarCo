@@ -3,9 +3,11 @@
 <div class="bar"></div>
 <div class="container" *ngIf="!isLoading && !noResponse">
     <div class="row justify-content-center mt-3" *ngIf="user || contractor || category">
-        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center" *ngIf="user"
-            [routerLink]="['/profile']">User: {{ user.name }}</h1>
-        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center" *ngIf="contractor"
+        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center"
+            *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && user" [routerLink]="['/profile']">
+            User: {{ user.name }}</h1>
+        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center"
+            *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor"
             [routerLink]="['/profile/contractors',contractor.id]">Contractor: {{ contractor.name }}</h1>
         <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center" *ngIf="category">
             Category: {{ category.category }}
@@ -17,11 +19,23 @@
             [routerLink]="['/tutorials/create']">Add More
             Posts!</a>
     </div>
+    <div *ngIf="msg" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ msg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="msg=''">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <div class="row justify-content-center body" *ngIf="tutorials.length > 0">
         <section class="cards-wrapper">
             <div class="card-grid-space"
                 *ngFor="let tutorial of tutorials | paginate: { itemsPerPage: 9, currentPage: p }; let i = index">
-                <div class="num">{{ i+1 }}</div>
+                <div class="num">{{ i+1 }}
+                    <button *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor"
+                        class="btn btn-sm btn-danger" (click)="tutRemove(tutorial.id)">Remove</button>
+                    <button *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && user"
+                        class="btn btn-sm btn-danger" (click)="favRemove(tutorial.id)">Remove</button><button
+                        *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && !user"
+                        class="btn btn-sm btn-success" (click)="addFav(tutorial.id)">Add</button></div>
                 <a class="card" [routerLink]="['/tutorials',tutorial.id]"
                     style="--bg-img: url(https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&resize_w=1500&url=https://codetheweb.blog/assets/img/posts/html-syntax/cover.jpg)">
                     <div>
