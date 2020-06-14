@@ -13,8 +13,9 @@ import { MainComponentModule } from '../main-component/main-component.module';
 import { SystemsComponent } from './systems/systems.component';
 import { SystemsDetailsComponent } from './systems-details/systems-details.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-// import { MapComponent } from './map/map.component';
-// import { GoogleMapsModule } from '@angular/google-maps';
+import { MapComponent } from './user-input/map/map.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CalculateComponent,
     SystemsComponent,
     SystemsDetailsComponent,
+    MapComponent,
     // MapComponent,
   ],
   imports: [
@@ -33,6 +35,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RouterModule,
     MainComponentModule,
     NgxPaginationModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBYkIQ3_SW4MbpuZ2ICQ7EHss1sleW1OS8',
+      libraries: ['places']
+    }),
     // GoogleMapsModule
   ],
   exports: [

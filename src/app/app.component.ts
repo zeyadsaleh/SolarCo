@@ -16,10 +16,10 @@ export class AppComponent {
   showFiller: boolean = false;
   isLoading: boolean = true;
   noResponse: boolean = false;
-  showTop:boolean = false;
+  showTop: boolean = false;
 
-  @HostListener("window:scroll", [])onWindowScroll() {
-    if(this.document.documentElement.scrollTop >= 106) { // Navigation bar has disappeared
+  @HostListener("window:scroll", []) onWindowScroll() {
+    if (this.document.documentElement.scrollTop >= 106) { // Navigation bar has disappeared
       this.showTop = true;
     } else {
       this.showTop = false;
@@ -28,13 +28,15 @@ export class AppComponent {
 
 
   constructor(private ability: Ability,
-       private tokenService: AngularTokenService,
-       readonly chatAuthService: ChatAuthService,
-       private userService: UserService,
-       readonly globalService: GlobalService,
-       @Inject(DOCUMENT) private document: Document) {
+    private tokenService: AngularTokenService,
+    readonly chatAuthService: ChatAuthService,
+    private userService: UserService,
+    readonly globalService: GlobalService,
+    @Inject(DOCUMENT) private document: Document) {
 
-    setTimeout(() => {this.timeOut()}, 60000);
+    setTimeout(() => {
+      this.timeOut()
+    }, 60000);
     if (this.tokenService.userSignedIn()) {
       this.tokenService.validateToken().subscribe(
         res => {
@@ -72,7 +74,7 @@ export class AppComponent {
   }
 
   goToTop() {
-    this.document.documentElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+    this.document.documentElement.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
   }
 
   timeOut() {

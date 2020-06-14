@@ -30,6 +30,8 @@ import { NotificationComponent } from './notification/notification.component';
     UserRoutingModule,
     MaterialModule,
     ReviewModule,
+    // OfferModule,
+    // PvCalculationModule,
   ],
   exports: [
     ProfileComponent,
