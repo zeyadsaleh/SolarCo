@@ -23,6 +23,7 @@
             <h4 *ngIf="!post.system.address">
               <span>Location:</span>&nbsp;{{post.system.address}},{{post.system.city}},{{post.system.country}}</h4>
             <h5><span>Posted at</span>&nbsp;{{post.created_at}}</h5>
+            <h5><span>Had:</span>&nbsp;{{post.offers_count == 1 ? 'One Offer' : post.offers_count + ' Offers'}}</h5>
             <p [routerLink]="['/posts/',post.id]">{{post.description}}</p>
             <!-- <p>{{post.description}}</p> -->
             <mat-card class="text-center">
@@ -69,7 +70,7 @@
   </div>
   <hr>
   <div class="text-center border rounded pt-3 pr-5">
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
   </div>
 </div>
 

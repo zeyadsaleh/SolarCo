@@ -25,6 +25,8 @@ export class OfferComponent implements OnInit {
   submitted: boolean = false;
   currentOffer: any = {};
   offers_count = '';
+  p: number = 1;
+
   constructor(private offerService: OfferService, private router: Router, private tokenAuth: AngularTokenService, private postService: PostService, private shareService: ShareService) { }
 
   ngOnInit(): void {
@@ -111,5 +113,18 @@ export class OfferComponent implements OnInit {
   //for modal 
   setCurrrentOffer(offer) {
     this.currentOffer = offer;
+  }
+
+  //scroll up whenever you change the page on pagination
+  pageChanged(event) {
+    this.p = event;
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 10); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
   }
 }

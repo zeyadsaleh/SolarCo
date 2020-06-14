@@ -1,203 +1,189 @@
-<div class="container" *ngIf="has_offers else noOffersTemplate">
-  <div class="row" >
-    <div class="panel panel-default widget">
-      <div class="panel-heading">
-        <span class="glyphicon glyphicon-comment"></span>
-        <h3 class="panel-title">
-          Your Offers</h3>
-        <span class="label label-info">
-         {{offers_count}}</span>
-        <!-- <app-create-rate></app-create-rate> -->
-      </div>
-      <div class="panel-body" *ngFor="let offer of offers">
+<div *ngIf="has_offers else noOffersTemplate" class="spacing">
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-default widget">
+        <div class="panel-heading">
+          <span class="glyphicon glyphicon-comment"></span>
+          <h3 class="panel-title">
+            Your Offers</h3>
+          <span class="label label-info">
+            {{offers_count}}</span>
+          <!-- <app-create-rate></app-create-rate> -->
+        </div>
+        <div class="panel-body" *ngFor="let offer of offers | paginate: { itemsPerPage: 3, currentPage: p }">
 
-        <ul class="list-group" *ngIf="offer.id != editOffer">
-          <li class="list-group-item" [ngClass]="{'disableDiv': isApproved && offer.status == 'rejected'}">
-            <div class="row">
-              <div class="col-xs-3 col-md-2 clickable"
-                [routerLink]="type=='CONTRACTOR' && currentUserID == offer.contractor_id ? ['/profile'] : ['/profile/contractors/'+offer.contractor_id]">
-                <img [src]="offer.contractor.avatar_url ? offer.contractor.avatar_url : '/assets/images/avatar.webp'"
-                  class="img-circle img-fluid" alt="" /></div>
-              <div class="col-xs-10 col-md-8">
-                <div>
-                  <a>
-                    {{offer.proposal}}</a>
-                  <div class="mic-info">
-                    By: <a
-                      [routerLink]="type=='CONTRACTOR' && currentUserID == offer.contractor_id ? ['/profile'] : ['/profile/contractors/'+offer.contractor_id]">{{offer.contractor.name}}l</a>
-                    on {{offer.created_at}}
-                  </div>
-                </div>
-                <div class="comment-text">
-                  Bidding price: {{offer.price}} EP
-                </div>
-                <div class="action">
-                  <button type="button" class="btn btn-primary btn-xs m-1" title="Edit"
-                    *ngIf="offer.canManage && !isApproved" (click)="edit(offer.id)">
-                    <span class="fa fa-edit"></span>
-                  </button>
-                  <a href="#approveModal" type="button" class="btn btn-success btn-xs m-1" title="Approve"
-                    *ngIf="!isApproved && offer.status == 'rejected' && currentUserID == postOwner_id && type == 'USER'"
-                    data-toggle="modal" (click)="setCurrrentOffer(offer)">
-                    <span>Approve Offer</span>
-                  </a>
-
-                  <button type="button" class="btn btn-success btn-xs m-1" title="Approved"
-                    *ngIf="isApproved && offer.status == 'accepted'" [disabled]="true">
-                    <span class="fa fa-check">Approved!</span>
-                  </button>
-                  <button type="button" class="btn btn-danger btn-xs m-1" title="Rejected"
-                    *ngIf="isApproved && offer.status == 'rejected'" [disabled]="true">
-                    <span class="fa fa-square">Rejected!</span>
-                  </button>
-                  <a href="#delete" type="button" class="btn btn-danger btn-xs m-1"
-                    *ngIf="offer.canManage && !isApproved" title="Delete" data-toggle="modal" (click)="setCurrrentOffer(offer)">
-                    <span class="fa fa-trash"></span>
-                  </a>
-
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <ul class="list-group" *ngIf="offer.id == editOffer">
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-3 col-md-2">
-                <img [src]="offer.contractor.avatar_url ? offer.contractor.avatar_url : '/assets/images/avatar.webp'"
-                  class="img-circle img-fluid" alt="" /></div>
-              <div class="col-xs-10 col-md-8">
-                <form #f="ngForm">
-                  <div class="comment-text">
-                    <textarea name='proposal' required class="form-control" placeholder="Enter you proposal"
-                      [(ngModel)]="offer.proposal" #proposal="ngModel"></textarea>
-                    <div *ngIf="proposal.invalid && (proposal.dirty || proposal.touched)" class="alert alert-danger">
-
-                      <div *ngIf="proposal.errors.required">
-                        proposal is required.
-                      </div>
-                    </div>
+          <ul class="list-group" *ngIf="offer.id != editOffer">
+            <li class="list-group-item" [ngClass]="{'disableDiv': isApproved && offer.status == 'rejected'}">
+              <div class="row">
+                <div class="col-xs-3 col-md-2 clickable"
+                  [routerLink]="type=='CONTRACTOR' && currentUserID == offer.contractor_id ? ['/profile'] : ['/profile/contractors/'+offer.contractor_id]">
+                  <img [src]="offer.contractor.avatar_url ? offer.contractor.avatar_url : '/assets/images/avatar.webp'"
+                    class="img-circle img-fluid" alt="" /></div>
+                <div class="col-xs-10 col-md-8">
+                  <div>
+                    <a>
+                      {{offer.proposal}}</a>
                     <div class="mic-info">
-                      By: <a href="offers">{{offer.contractor.name}}</a> on {{offer.created_at}}
+                      By: <a
+                        [routerLink]="type=='CONTRACTOR' && currentUserID == offer.contractor_id ? ['/profile'] : ['/profile/contractors/'+offer.contractor_id]">{{offer.contractor.name}}l</a>
+                      on {{offer.created_at}}
                     </div>
                   </div>
                   <div class="comment-text">
-                    <input id="price" type="number" required min="0" name='price' pattern="[+]?([.]\d+|\d+[.]?\d*)$" placeholder="Price by EP"
-                      [(ngModel)]="offer.price" class=" form-control validate" #price="ngModel">
-                    <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
-
-                      <div *ngIf="price.errors.required">
-                        price is required.
-                      </div>
-                      <div *ngIf="price.errors.pattern">
-                        price cannot be negative.
-                      </div>
-                    </div>
+                    Bidding price: {{offer.price}} EP
                   </div>
                   <div class="action">
-                    <button type="button" [disabled]="!(f.valid)" *ngIf="offer.canManage"
-                      class="btn btn-success btn-xs m-1" title="Edit" (click)="onEdit(offer)">
-                      Edit
+                    <button type="button" class="btn btn-primary btn-xs m-1" title="Edit"
+                      *ngIf="offer.canManage && !isApproved" (click)="edit(offer.id)">
+                      <span class="fa fa-edit"></span>
                     </button>
-                    <div *ngIf="submitted" class="spinner-border" id="auth-loader" role="status">
-                      <span class="sr-only">Loading...</span>
-                    </div>
+                    <a href="#approveModal" type="button" class="btn btn-success btn-xs m-1" title="Approve"
+                      *ngIf="!isApproved && offer.status == 'rejected' && currentUserID == postOwner_id && type == 'USER'"
+                      data-toggle="modal" (click)="setCurrrentOffer(offer)">
+                      <span>Approve Offer</span>
+                    </a>
 
-                    <button type="button" class="btn btn-primary btn-xs m-1" title="Back" (click)="edit(offer.id)">
-                      Back
+                    <button type="button" class="btn btn-success btn-xs m-1" title="Approved"
+                      *ngIf="isApproved && offer.status == 'accepted'" [disabled]="true">
+                      <span class="fa fa-check">Approved!</span>
                     </button>
-                    <button type="button" class="btn btn-success btn-xs m-1"
-                      *ngIf=" type == 'USER' && currentUserID == postOwner_id" title="Approve">
-                      <span class="fa fa-check"></span>
+                    <button type="button" class="btn btn-danger btn-xs m-1" title="Rejected"
+                      *ngIf="isApproved && offer.status == 'rejected'" [disabled]="true">
+                      <span class="fa fa-square">Rejected!</span>
                     </button>
-                    <a href="#delete" type="button" *ngIf="offer.canManage"
-                      class="trigger-btn btn btn-danger btn-xs m-1" title="Delete" data-toggle="modal" (click)="setCurrrentOffer(offer)">
+                    <a href="#delete" type="button" class="btn btn-danger btn-xs m-1"
+                      *ngIf="offer.canManage && !isApproved" title="Delete" data-toggle="modal"
+                      (click)="setCurrrentOffer(offer)">
                       <span class="fa fa-trash"></span>
                     </a>
+
                   </div>
-                </form>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="list-group" *ngIf="offer.id == editOffer">
+            <li class="list-group-item">
+              <div class="row">
+                <div class="col-xs-3 col-md-2">
+                  <img [src]="offer.contractor.avatar_url ? offer.contractor.avatar_url : '/assets/images/avatar.webp'"
+                    class="img-circle img-fluid" alt="" /></div>
+                <div class="col-xs-10 col-md-8">
+                  <form #f="ngForm">
+                    <div class="comment-text">
+                      <textarea name='proposal' required class="form-control" placeholder="Enter you proposal"
+                        [(ngModel)]="offer.proposal" #proposal="ngModel"></textarea>
+                      <div *ngIf="proposal.invalid && (proposal.dirty || proposal.touched)" class="alert alert-danger">
+
+                        <div *ngIf="proposal.errors.required">
+                          proposal is required.
+                        </div>
+                      </div>
+                      <div class="mic-info">
+                        By: <a href="offers">{{offer.contractor.name}}</a> on {{offer.created_at}}
+                      </div>
+                    </div>
+                    <div class="comment-text">
+                      <input id="price" type="number" required min="0" name='price' pattern="[+]?([.]\d+|\d+[.]?\d*)$"
+                        placeholder="Price by EP" [(ngModel)]="offer.price" class=" form-control validate"
+                        #price="ngModel">
+                      <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
+
+                        <div *ngIf="price.errors.required">
+                          price is required.
+                        </div>
+                        <div *ngIf="price.errors.pattern">
+                          price cannot be negative.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="action">
+                      <button type="button" [disabled]="!(f.valid)" *ngIf="offer.canManage"
+                        class="btn btn-success btn-xs m-1" title="Edit" (click)="onEdit(offer)">
+                        Edit
+                      </button>
+                      <div *ngIf="submitted" class="spinner-border" id="auth-loader" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+
+                      <button type="button" class="btn btn-primary btn-xs m-1" title="Back" (click)="edit(offer.id)">
+                        Back
+                      </button>
+                      <button type="button" class="btn btn-success btn-xs m-1"
+                        *ngIf=" type == 'USER' && currentUserID == postOwner_id" title="Approve">
+                        <span class="fa fa-check"></span>
+                      </button>
+                      <a href="#delete" type="button" *ngIf="offer.canManage"
+                        class="trigger-btn btn btn-danger btn-xs m-1" title="Delete" data-toggle="modal"
+                        (click)="setCurrrentOffer(offer)">
+                        <span class="fa fa-trash"></span>
+                      </a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+
+          <!-- Modal approval confirmation HTML -->
+          <div id="approveModal" class="modal">
+            <div class="modal-dialog modal-confirm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Confirmation</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>After negotiating with the contractor, Are you sure you want to approve this offer? <br>
+                    Please
+                    notice that once you confirm this offer other offers will be rejected permanently.</p>
+                </div>
+                <div class="modal-footer">
+                  <a class="btn btn-info" data-dismiss="modal">Cancel</a>
+                  <a class="btn btn-success" data-dismiss="modal" (click)="handleApprove(currentOffer)">Yes,
+                    Approve this offer!</a>
+                </div>
               </div>
             </div>
-          </li>
-        </ul>
+          </div>
 
 
-        <!-- Modal approval confirmation HTML -->
-        <div id="approveModal" class="modal">
-          <div class="modal-dialog modal-confirm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Confirmation</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              </div>
-              <div class="modal-body">
-                <p>After negotiating with the contractor, Are you sure you want to approve this offer? <br>
-                  Please
-                  notice that once you confirm this offer other offers will be rejected permanently.</p>
-              </div>
-              <div class="modal-footer">
-                <a class="btn btn-info" data-dismiss="modal">Cancel</a>
-                <a class="btn btn-success" data-dismiss="modal" (click)="handleApprove(currentOffer)">Yes,
-                  Approve this offer!</a>
+
+          <!-- Modal delete HTML -->
+          <div id="delete" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                  </div>
+                  <h4 class="modal-title">Are you sure?</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>Do you really want to delete your offer? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    (click)="deleteOffer(currentOffer.id)">Delete</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-
-
-        <!-- Modal delete HTML -->
-        <div id="delete" class="modal fade">
-          <div class="modal-dialog modal-confirm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <div class="icon-box">
-                  <i class="material-icons">&#xE5CD;</i>
-                </div>
-                <h4 class="modal-title">Are you sure?</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              </div>
-              <div class="modal-body">
-                <p>Do you really want to delete your offer? This process cannot be undone.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal"
-                  (click)="deleteOffer(currentOffer.id)">Delete</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Modal approved HTML
-        <div id="approved" class="modal fade" *ngIf="isApproved && type == 'USER'">
-          <div class="modal-dialog modal-confirm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <div class="icon-box">
-                  <i class="material-icons">&#xE876;</i>
-                </div>
-                <h4 class="modal-title">Awesome!</h4>
-              </div>
-              <div class="modal-body">
-                <p class="text-center">Your have approved your offer, Good luck!</p>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
       </div>
-      <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span
-          class="glyphicon glyphicon-refresh"></span> More</a>
+    </div>
+    <hr>
+    <div class="text-center border rounded pt-3 pr-5">
+      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
   </div>
 </div>
 
 <ng-template #noOffersTemplate>
-  <div class="text-center p-5">
+  <div class="text-center">
     No Offers yet
   </div>
 </ng-template>

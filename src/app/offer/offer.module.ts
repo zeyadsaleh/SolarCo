@@ -12,6 +12,7 @@ import { AllOffersComponent } from './all-offers/all-offers.component';
 import { AbilityModule } from '@casl/angular';
 import { AngularTokenModule } from 'angular-token';
 import { ReviewModule } from '../review/review.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ReviewModule } from '../review/review.module';
     AbilityModule,
     AngularTokenModule,
     ReviewModule,
+    NgxPaginationModule
   ],
   exports: [
     OfferComponent,
