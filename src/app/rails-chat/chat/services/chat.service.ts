@@ -3,6 +3,7 @@ import { ActionCableService, Channel } from 'angular2-actioncable';
 import { Subscription, Observable, of } from 'rxjs';
 import { AngularTokenService } from 'angular-token';
 import { UserService } from 'src/app/shared/services/user.service';
+import { environment } from '../../../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class ChatService {
     console.log(type)
 
     this.cable = await this.cableService
-    .cable(`ws://localhost:3000/cable?access-token=${authData.accessToken}&uid=${authData.uid}&client=${authData.client}&type=${type}`);
+    .cable(`${environment.apiUrl}/cable?access-token=${authData.accessToken}&uid=${authData.uid}&client=${authData.client}&type=${type}`);
 
     this.channel= await this.cable.channel('RoomChannel', {user_id: user.id, contractor_id: contractor.id});
 

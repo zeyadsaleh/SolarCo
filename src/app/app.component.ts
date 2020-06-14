@@ -24,14 +24,14 @@ export class AppComponent {
           this.userService.setCurrentUser(res.data, this.tokenService.currentUserType);
           this.ability.update(res.data.rules);
           console.log(this.ability.rules);
-          this.chatAuthService
-            .login(res.data.username)
-            .then(
-              (res) => {
-                console.log(res);
-              },
-              err => (console.log(err))
-            );
+          // this.chatAuthService
+          //   .login(res.data.username)
+          //   .then(
+          //     (res) => {
+          //       console.log(res);
+          //     },
+          //     err => (console.log(err))
+          //   );
           setTimeout(() => {
             this.isLoading = false;
           }, 80);

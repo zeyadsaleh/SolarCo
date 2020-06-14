@@ -15,6 +15,7 @@ import { ContactUsComponent } from './sidebar/contact-us/contact-us.component';
 import { FormsModule } from '@angular/forms';
 import { NoResponseComponent } from './no-response/no-response.component';
 import { AboutUsComponent } from './sidebar/about-us/about-us.component';
+import { GoToTopComponent } from './go-to-top/go-to-top.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { AboutUsComponent } from './sidebar/about-us/about-us.component';
     ContactUsComponent,
     NoResponseComponent,
     AboutUsComponent,
+    GoToTopComponent,
   ],
   imports: [
     CommonModule,
