@@ -1,7 +1,7 @@
 <app-page-banner *ngIf="!toProfile" [title]="title"></app-page-banner>
 
 <div *ngIf="!isLoading && !noResponse && posts.length > 0" class="spacing">
-  <div *ngFor="let post of posts | paginate: { itemsPerPage: 7, currentPage: p }">
+  <div *ngFor="let post of posts | paginate: { itemsPerPage: 5, currentPage: p }">
     <div class="container m-auto">
       <div class="post-card" [ngClass]="{'main-page': !toProfile}">
         <div class="post-card__nav">
@@ -31,7 +31,7 @@
             <h4 *ngIf="!post.system.address">
               <span>Location:</span>&nbsp;{{post.system.address}},{{post.system.city}},{{post.system.country}}</h4>
             <h5><span>Posted at</span>&nbsp;{{post.created_at}}</h5>
-            <p>{{post.description}}</p>
+            <p>{{post.description | slice:0:150 }}..</p>
             <mat-card class="text-center mt-2">
               <mat-card-content class="border border-danger p-1 text-center">
                 <table class="table table-sm table-borderless" [routerLink]="['/pv-system/',post.system_id]">

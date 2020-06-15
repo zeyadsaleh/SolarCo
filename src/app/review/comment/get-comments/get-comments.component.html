@@ -1,20 +1,23 @@
 <h2 class="text-center">Comments</h2>
 <hr>
-<div class=" text-center" *ngIf="users">
-    <div *ngFor="let comment of comments | paginate: { itemsPerPage: 4, currentPage: p }">
-        <div class="animated-border-quote">
-            <blockquote>
-                <p *ngIf="comment.user"><b>{{ comment.user }}:</b> {{ comment.comment }}</p>
-                <p *ngIf="!comment.user">{{ comment.comment }}</p>
-                <cite class="text-center text-dark">Date: <b>{{ comment.date | slice:0:10 }}</b></cite>
-            </blockquote>
+<div class="col-lg-12">
+    <div class=" text-center" *ngIf="users">
+        <div *ngFor="let comment of comments | paginate: { itemsPerPage: 5, currentPage: p }">
+            <div class="animated-border-quote">
+                <blockquote>
+                    <p *ngIf="comment.user"><b>{{ comment.user }}:</b> {{ comment.comment }}</p>
+                    <p *ngIf="!comment.user">{{ comment.comment }}</p>
+                    <cite class="text-center text-dark">Date: <b>{{ comment.date | slice:0:10 }}</b></cite>
+                </blockquote>
+            </div>
+        </div>
+        <hr>
+        <div class="text-center border rounded pt-3 pr-5">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
     </div>
-    <hr>
-    <div class="text-center border rounded pt-3 pr-5">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div>
 </div>
+
 <div *ngIf="!users">
     <h4 class="text-center">No Reviews yet!</h4>
 </div>

@@ -1,5 +1,5 @@
 <div class="text-center m-1 p-3" *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'">
-    <h4 class="bg-dark rounded text-white p-1">Comment<a *ngIf="!tutorial_id" (click)="show=!show" class="btn btn-sm"
+    <h4 class="bg-dark rounded text-white p-1">Comment<a *ngIf="!tutorial_id && !show" (click)="show=!show" class="btn btn-sm"
             style="float: right;">edit</a></h4>
     <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
         {{ error }}

@@ -30,7 +30,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <h2 class="head bg-success m-2 rounded shadow">{{ tutorial.title }}<a
+                        <h2 class="head bg-success m-2 rounded shadow text-left">{{ tutorial.title }}<a
                                 *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'"
                                 style="float: right;" class="btn btn-sm btn-danger rounded shadow"
                                 (click)="addFav()">Add To Favorite</a><a

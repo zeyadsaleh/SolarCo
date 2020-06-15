@@ -3,7 +3,7 @@
 <div class="container" *ngIf="!isLoading && !noResponse">
     <div class="row justify-content-center mb-2">
         <div class="col-md-9 col-lg-5 m-2"
-            *ngFor="let system of systems_details | paginate: { itemsPerPage: 8, currentPage: p }">
+            *ngFor="let system of systems_details | paginate: { itemsPerPage: 4, currentPage: p }">
             <div class="flip-card">
                 <div class="flip-card-inner text-center" [routerLink]="['/pv-system',system['calculation']['id']]">
                     <div class="flip-card-front p-3 border border-2 border-warning">
@@ -14,19 +14,23 @@
                             <table class="table table-sm table-borderless text-white">
                                 <tbody>
                                     <tr>
-                                        <th colspan="2"><b>Estimated Cost</b></th>
-                                        <td colspan="2">{{ system['cost'] }} EG</td>
+                                        <th><b>Estimated Cost</b></th>
+                                        <td>{{ system['cost'] }} EG</td>
                                     </tr>
                                     <tr>
                                         <th><b>System</b></th>
                                         <td>{{ system['backup']? 'BackUp System':'Complete System' }}
                                         </td>
+                                    </tr>
+                                    <tr>
                                         <th><b>Consumption</b></th>
-                                        <td>{{ system['consumption'] }}</td>
+                                        <td>{{ system['consumption'] }} kwh/month</td>
                                     </tr>
                                     <tr>
                                         <th><b>City</b></th>
                                         <td>{{ system['city'] }}</td>
+                                    </tr>
+                                    <tr>
                                         <th><b>Country</b></th>
                                         <td>{{ system['country'] }}</td>
                                     </tr>
@@ -38,31 +42,39 @@
                         <h3 class="darkblue rounded shadow p-1 mb-4">PV-System Num:
                             #{{ system['id'] }}</h3>
                         <div class="border border-primary rounded p-1">
-                            <table class="table table-sm table-borderless text-white">
+                            <table class="table table-sm table-borderless text-dark">
                                 <tbody>
                                     <tr>
                                         <th>Panel_nums</th>
                                         <td>{{ system['calculation']['panels_num'] }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Panel_watt</th>
-                                        <td>{{ system['calculation']['panel_watt'] }}</td>
+                                        <td>{{ system['calculation']['panel_watt'] }} watt</td>
                                     </tr>
                                     <tr>
                                         <th>battery_nums</th>
                                         <td>{{ system['calculation']['batteries_num'] }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>battery_Ah</th>
-                                        <td>{{ system['calculation']['battery_Ah'] }}</td>
+                                        <td>{{ system['calculation']['battery_Ah'] }} ah</td>
                                     </tr>
                                     <tr>
                                         <th>inverter_nums</th>
                                         <td>{{ system['calculation']['system_circuits'] }}</td>
-                                        <th>inverter_watt</th>
-                                        <td>{{ system['calculation']['inverter_watt'] }}</td>
                                     </tr>
                                     <tr>
-                                        <th>>mppt_nums</th>
+                                        <th>inverter_watt</th>
+                                        <td>{{ system['calculation']['inverter_watt'] }} watt</td>
+                                    </tr>
+                                    <tr>
+                                        <th>mppt_nums</th>
                                         <td>{{ system['calculation']['system_circuits'] }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>mppt_amp</th>
-                                        <td>{{ system['calculation']['mppt_amp'] }}</td>
+                                        <td>{{ system['calculation']['mppt_amp'] }} a</td>
                                     </tr>
                                 </tbody>
                             </table>
