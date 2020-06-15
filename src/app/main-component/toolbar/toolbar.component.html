@@ -29,14 +29,14 @@
                 </p>
               </a>
             </li>
-            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link mt-1" [routerLink]="['/inbox']"
-                style="font-size: 16px;">
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link mt-1"
+                [routerLink]="['/inbox']" style="font-size: 16px;">
                 <span class="material-icons">
                   chat_bubble
                 </span></a>
             </li>
-            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link mt-1" [routerLink]="['/profile']"
-                style="font-size: 16px;">
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link mt-1"
+                [routerLink]="['/profile']" style="font-size: 16px;">
                 <span class="material-icons">
                   account_box
                 </span></a>

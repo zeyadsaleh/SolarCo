@@ -1,13 +1,14 @@
 mat-card{
-    margin: 80px;
+    margin: 20px;
     padding: 15px;
-    width: 700px;
+    /* width: 700px; */
     border: 5px rgb(0, 24, 48) solid;
     background-color: rgb(217, 237, 255);
 }
 
 mat-card-content{
-    height: 300px;
+	min-height: 220px;
+	justify-content: center;
 }
 
 .mat-card-title{

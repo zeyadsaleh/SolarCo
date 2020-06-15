@@ -3,6 +3,7 @@
     background-color: transparent;
     /* width: 500px; */
     height: 450px;
+    justify-content: center;
     /* min-width: 00px; */
     /* min-height: 200px; */
     /* perspective: 1000px; Remove this if you don't want the 3D effect */

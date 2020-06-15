@@ -1,22 +1,22 @@
 <!-- <app-page-banner [title]="title"></app-page-banner> -->
 
 <div class="bar"></div>
+
 <div class="container" *ngIf="!isLoading && !noResponse">
     <div class="row justify-content-center mt-3" *ngIf="user || contractor || category">
-        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center"
+        <h2 class="m-2 bg-dark text-white p-2 rounded shadow text-center"
             *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && user" [routerLink]="['/profile']">
-            User: {{ user.name }}</h1>
-        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center"
-            *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor"
-            [routerLink]="['/profile/contractors',contractor.id]">Contractor: {{ contractor.name }}</h1>
-        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center" *ngIf="category">
+            User: {{ user.name }}</h2>
+        <h2 class="m-2 bg-dark text-white p-2 rounded shadow text-center" *ngIf="contractor"
+            [routerLink]="['/profile/contractors',contractor.id]">Contractor: {{ contractor.name }}</h2>
+        <h2 class="m-2 bg-dark text-white p-2 rounded shadow text-center" *ngIf="category">
             Category: {{ category.category }}
-        </h1>
+        </h2>
     </div>
-    <div class="row justify-content-center mt-3">
+    <div class="row justify-content-center mt-2">
         <a class="nav-link btn btn-lg shadow rounded btn-outline-primary"
             *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn()"
-            [routerLink]="['/tutorials/create']">Add More
+            [routerLink]="['/blog/create']">Add More
             Posts!</a>
     </div>
     <div *ngIf="msg" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -27,27 +27,29 @@
     </div>
     <div class="row justify-content-center body" *ngIf="tutorials.length > 0">
         <section class="cards-wrapper">
-            <div class="card-grid-space"
-                *ngFor="let tutorial of tutorials | paginate: { itemsPerPage: 9, currentPage: p }; let i = index">
+            <div class="card-grid-space col-lg-12 mb-4"
+                *ngFor="let tutorial of tutorials | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
                 <div class="num">{{ i+1 }}
                     <button *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor"
                         class="btn btn-sm btn-danger" (click)="tutRemove(tutorial.id)">Remove</button>
                     <button *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && user"
                         class="btn btn-sm btn-danger" (click)="favRemove(tutorial.id)">Remove</button><button
                         *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && !user"
-                        class="btn btn-sm btn-success" (click)="addFav(tutorial.id)">Add</button></div>
-                <a class="card" [routerLink]="['/tutorials',tutorial.id]"
+                        class="btn btn-sm btn-success" (click)="addFav(tutorial.id)">Add</button>
+                </div>
+                <a class="card" [routerLink]="['/blog',tutorial.id]"
                     style="--bg-img: url(https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&resize_w=1500&url=https://codetheweb.blog/assets/img/posts/html-syntax/cover.jpg)">
                     <div>
                         <div class="date">{{ tutorial.created_at | slice:0:10 }}</div>
                         <h1 class="mt-3">{{ tutorial.title }}</h1>
-                        <p>{{ tutorial.body | slice:0:120 }}..</p>
+                        <p>{{ tutorial.body | slice:0:100 }}..</p>
                         <h5 class="mt-2 mb-3">By: {{tutorial.contractor.name }}</h5>
                         <div class="tags">
                             <div class="tag text-dark">{{tutorial.category.category }}</div>
                         </div>
                     </div>
                 </a>
+                <hr>
             </div>
         </section>
     </div>

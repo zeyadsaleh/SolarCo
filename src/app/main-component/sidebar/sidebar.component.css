@@ -19,20 +19,20 @@
   /* The about link: 20px from the top with a green background */
   #posts {
     top: 100px;
-    background-color: #f44336; /* Red */
-  }
+    background-color: #f44336;
+  } */
   
   #blog {
-    top: 165px;
+    top: 100px;
     background-color: #4CAF50;
   }
   
   #contact {
-    top: 230px;
+    top: 165px;
     background-color: #2196F3; /* Blue */
   }
   
   #about {
-    top: 295px;
-    background-color: #555 /* Light Black */
+    top: 230px;
+    background-color: #f44336;
   } 

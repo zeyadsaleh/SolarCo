@@ -21,12 +21,12 @@ a {
 }
 
 .cards-wrapper {
-  display: grid;
+  /* display: grid; */
   justify-content: center;
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 4rem;
-  padding: 4rem;
+  grid-gap: 1rem;
+  padding: 1rem;
   margin: 0 auto;
   width: max-content;
 }
@@ -35,13 +35,13 @@ a {
   font-family: 'Heebo';
   --bg-filter-opacity: 0.5;
   background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
-  height: 16em;
-  width: 15em;
-  font-size: 1.5em;
+  min-height: 8em;
+  max-width: 40em;
+  font-size: 1.4em;
   color: white;
   border-radius: 1em;
   padding: 1em;
-  /*margin: 2em;*/
+  /* margin: 2em; */
   display: flex;
   align-items: flex-end;
   background-size: cover;

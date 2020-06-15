@@ -26,7 +26,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="p-2 border rounded" *ngIf="isContractor" [routerLink]="['/tutorials/contractors/'] + user.id">
+                <div class="p-2 border rounded" *ngIf="isContractor" [routerLink]="['/blog/contractors/'] + user.id">
                     <h3 class="card-text bg-primary m-1 rounded shadow text-white">Contractor Blog</h3>
                     <table class="table table-sm table-borderless">
                         <tbody>
@@ -39,7 +39,7 @@
                         </tbody>
                     </table>
                 </div>
-                <hr>
+                <!-- <hr>
                 <div class="p-2 border rounded" *ngIf="isContractor">
                     <h3 class="card-text bg-primary m-1 rounded shadow text-white">Previous Work</h3>
                     <table class="table table-sm table-borderless">
@@ -52,7 +52,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> -->
             </div>
             <div class="my-4" *ngIf="isContractor">
                 <div>
