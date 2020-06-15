@@ -68,4 +68,17 @@ export class GetCommentsComponent implements OnInit {
       }
     });
   }
+
+  //scroll up whenever you change the page on pagination
+  pageChanged(event) {
+    this.p = event;
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 10); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
+  }
 }

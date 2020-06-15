@@ -53,7 +53,7 @@
     </div>
     <hr>
     <div class="text-center border rounded pt-3 pr-5" *ngIf="tutorials.length > 0">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
     <div class="row justify-content-center body p-3" *ngIf="tutorials.length == 0">
         <h2 class="mt-5">No tutorials yet!</h2>
