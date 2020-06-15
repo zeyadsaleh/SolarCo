@@ -24,7 +24,7 @@
               <span>Location:</span>&nbsp;{{post.system.address}},{{post.system.city}},{{post.system.country}}</h4>
             <h5><span>Posted at</span>&nbsp;{{post.created_at}}</h5>
             <p [routerLink]="['/posts/',post.id]">{{post.description | slice:0:150 }}..</p>
-            <!-- <p>{{post.description}}</p> -->
+            <p>{{post.description | slice:0:150}}</p>
             <mat-card class="text-center">
               <mat-card-content class="border border-danger rounded p-1 text-center">
                 <table class="table table-sm table-borderless" [routerLink]="['/pv-system/',post.system_id]">
