@@ -12,7 +12,7 @@ export class SinglePostComponent implements OnInit {
   offers = [];
   userData;
   post;
-  title: string = 'Your Post';
+  title: string = `Post`;
   errorMessage: string = '';
   isLoading: boolean = true;
   noResponse: boolean = false;
