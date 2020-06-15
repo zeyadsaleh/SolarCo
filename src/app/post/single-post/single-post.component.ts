@@ -12,12 +12,13 @@ export class SinglePostComponent implements OnInit {
   offers = [];
   userData;
   post;
-  title: string = 'Your Post';
+  title: string = `Post`;
   errorMessage: string = '';
   isLoading: boolean = true;
   noResponse: boolean = false;
   currentUserID: any;
   applied: boolean = false;
+  approved: boolean = false;
   constructor(private postService: PostService,
     private route: ActivatedRoute,
     private router: Router,
@@ -48,7 +49,8 @@ export class SinglePostComponent implements OnInit {
       this.post = res;
       setTimeout(() => {
         this.isLoading = false;
-      }, 500);        // For Apply button
+      }, 500);
+       // For Apply button
       let userOffer = this.post.offers.filter(offer => offer.contractor_id == this.currentUserID);
       console.log(userOffer);
       if (userOffer.length > 0) {
@@ -74,6 +76,10 @@ export class SinglePostComponent implements OnInit {
 
   onDeleteOffer() {
     this.applied = false;
+  }
+
+  onApproveOffer() {
+    this.approved = true;
   }
 
   timeOut() {

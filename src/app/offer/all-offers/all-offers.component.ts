@@ -12,6 +12,7 @@ export class AllOffersComponent implements OnInit {
 
   offers=[];
   has_offers: boolean = false;
+  p: number = 1;
   
   ngOnInit(): void {
     this.getOffers();
@@ -27,6 +28,19 @@ export class AllOffersComponent implements OnInit {
       }
       console.log(this.offers);
     });
+  }
+
+  //scroll up whenever you change the page on pagination
+  pageChanged(event) {
+    this.p = event;
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 30); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
   }
 
 }

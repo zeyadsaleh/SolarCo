@@ -17,7 +17,7 @@
           <h4 class="border border-primary p-1 m-2 text-center rounded"><span>Estimated
               Cost:</span>&nbsp;{{post.system.cost}} EG</h4>
           <h5><span>Posted by:</span>&nbsp;<a [routerLink]="tokenAuth.currentUserType=='USER' && userData.id == post.user.id ? ['/profile'] : ['/profile/clients/'+post.user.id]" >{{post.user.name}}</a></h5>
-          <h5><span>Has:</span>&nbsp;{{post.offers_count}} Offers</h5>
+          <h5><span>Has:</span>&nbsp;{{post.offers_count == 1 ? 'One Offer' : post.offers_count + ' Offers'}}</h5>
           <h4 *ngIf="post.system.address">
             <span>Location:</span>&nbsp;{{post.system.address}}, {{post.system.city}}, {{post.system.country}}</h4>
           <h4 *ngIf="!post.system.address">
@@ -57,18 +57,18 @@
             </mat-card-content>
           </mat-card>
           <div class="text-center mt-4">
-            <button class="btn btn-danger mr-2" *ngIf="('destroy' | able: 'Post')  && !post.closed"
+            <button class="btn btn-danger mr-2" *ngIf="('destroy' | able: 'Post') && !post.closed && !approved"
               (click)="deletePost(post.id)">Delete</button>
-            <button class="btn btn-success" *ngIf="('update' | able: 'Post')  && !post.closed"
+            <button class="btn btn-success" *ngIf="('update' | able: 'Post') && !post.closed && !approved"
               [routerLink]="['/update/posts',post.id]">Update</button>
           </div>
           <div class="border p-2 text-center rounded shadow"
-            *ngIf="post.closed && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'">
+            *ngIf="(post.closed || approved) && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'">
             <app-create-rate [offers]="post.offers"></app-create-rate>
             <app-create-comment [offers]="post.offers"></app-create-comment>
           </div>
           <div class="border p-2 text-center rounded shadow"
-            *ngIf="post.closed && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'CONTRACTOR'">
+            *ngIf="(post.closed || approved) && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'CONTRACTOR'">
             <app-get-rate [offers]="post.offers"></app-get-rate>
             <app-get-comment [offers]="post.offers"></app-get-comment>
           </div>
@@ -76,7 +76,7 @@
       </div>
     </div>
     <div class="col-lg-4 p-2 m-2 shadow rounded">
-      <app-offer [post_id]="post.id" [postOwner_id]="post.user_id" (onDeleteOffer)="onDeleteOffer()"></app-offer>
+      <app-offer [post_id]="post.id" [postOwner_id]="post.user_id" (onDeleteOffer)="onDeleteOffer()" (onApproveOffer)="onApproveOffer()"></app-offer>
     </div>
   </div>
 
