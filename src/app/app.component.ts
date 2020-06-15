@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, Inject } from '@angular/core';
 import { Ability } from '@casl/ability';
 import { AngularTokenService } from 'angular-token';
 import { ChatAuthService } from './shared/services/chat-auth.service';
 import { UserService } from './shared/services/user.service';
+import { DOCUMENT } from '@angular/common';
+import { GlobalService } from './shared/services/global.service';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +16,27 @@ export class AppComponent {
   showFiller: boolean = false;
   isLoading: boolean = true;
   noResponse: boolean = false;
+  showTop: boolean = false;
+
+  @HostListener("window:scroll", []) onWindowScroll() {
+    if (this.document.documentElement.scrollTop >= 106) { // Navigation bar has disappeared
+      this.showTop = true;
+    } else {
+      this.showTop = false;
+    }
+  }
 
 
-  constructor(private ability: Ability, private tokenService: AngularTokenService, readonly chatAuthService: ChatAuthService, private userService: UserService) {
-    setTimeout(() => {this.timeOut()}, 60000);
+  constructor(private ability: Ability,
+    private tokenService: AngularTokenService,
+    readonly chatAuthService: ChatAuthService,
+    private userService: UserService,
+    readonly globalService: GlobalService,
+    @Inject(DOCUMENT) private document: Document) {
+
+    setTimeout(() => {
+      this.timeOut()
+    }, 60000);
     if (this.tokenService.userSignedIn()) {
       this.tokenService.validateToken().subscribe(
         res => {
@@ -54,6 +73,10 @@ export class AppComponent {
     }
   }
 
+  goToTop() {
+    this.document.documentElement.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+  }
+
   timeOut() {
     if (this.isLoading == true) {
       console.log("noresponse");
@@ -66,7 +89,7 @@ export class AppComponent {
         let scrollToTop = window.setInterval(() => {
             let pos = window.pageYOffset;
             if (pos > 0) {
-                window.scrollTo(0, pos - 10); // how far to scroll on each step
+                window.scrollTo(0, pos - 15); // how far to scroll on each step
             } else {
                 window.clearInterval(scrollToTop);
             }

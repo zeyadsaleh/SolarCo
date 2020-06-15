@@ -75,6 +75,14 @@
                   Pervious Posts </a>
 
               </li>
+              <li *ngIf="type=='CONTRACTOR'" class="nav-item" [routerLink]="['/tutorials/contractors', userData.id]"
+                [class]="subPage == 'tutorial' ? 'active' : ''" (click)="changeSubpage($event)">
+
+                <a name="tutorial" class="nav-link" [class]="subPage == 'tutorial' ? 'active' : ''">
+                  <i class="fa fa-check"></i>
+                  Tutorial </a>
+
+              </li>
               <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/tutorials/users',userData.id]"
                 [class]="subPage == 'favorite' ? 'active' : ''" (click)="changeSubpage($event)">
 

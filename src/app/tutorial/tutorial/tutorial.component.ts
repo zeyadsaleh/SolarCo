@@ -15,6 +15,7 @@ export class TutorialComponent implements OnInit {
   isLoading: boolean = true;
   noResponse: boolean = false;
   msg: string;
+  contractor_id: number;
 
   constructor(private __service: TutorialService,
     private route: ActivatedRoute,
@@ -23,6 +24,9 @@ export class TutorialComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => { this.timeOut() }, 40000);
+    if (this.tokenAuth && this.tokenAuth['userData']) {
+      this.contractor_id = this.tokenAuth['userData']['id'];
+    }
     this.route.params.subscribe(params => {
       this.__service.getTutorial(+params['id']).subscribe(
         (response) => {
@@ -45,10 +49,21 @@ export class TutorialComponent implements OnInit {
         console.log(res);
         if (res && res['exist']) {
           this.msg = res['exist'];
-        }else{
+        } else {
           this.msg = "added Successfully!";
         }
       });
+  }
+
+  tutRemove() {
+    if (this.tutorial.contractor_id == this.contractor_id) {
+      this.__service.deleteTutorial(this.tutorial['id']).subscribe(
+        (res) => {
+          this.router.navigate(['tutorials/contractors', this.contractor_id]);
+        });
+    } else {
+      this.msg = "Forbidden!";
+    }
   }
 
   timeOut() {

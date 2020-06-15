@@ -15,13 +15,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
           <ul class="nav navbar-nav menu_nav">
-            <li *ngIf="tokenAuthService.currentUserType == 'USER' && tokenAuthService.userSignedIn()" class="nav-item">
-              <a class="nav-link " [routerLink]="['/pv-system/user-info']" style="font-size: 16px;">CALCULATE</a>
-            <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()"
-              class="nav-item"><a class="nav-link " [routerLink]="['/posts']" style="font-size: 16px;">POSTS</a>
-            <li class="nav-item"><a class="nav-link " [routerLink]="['/tutorials']" style="font-size: 16px;">TUTORIAL</a>
+
           </ul>
           <ul class="nav navbar-nav menu_nav ml-auto">
+            <!-- <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()"
+              class="nav-item"><a class="nav-link " [routerLink]="['/posts']" style="font-size: 16px;">POSTS</a>
+            <li *ngIf="tokenAuthService.currentUserType == 'USER' && tokenAuthService.userSignedIn()" class="nav-item">
+              <a class="nav-link " [routerLink]="['/profile/posts']" style="font-size: 16px;">POSTS</a> -->
             <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item mt-1"><a class="nav-link"
                 [routerLink]="['/notifications']">
                 <p class="m-0">
@@ -29,24 +29,24 @@
                 </p>
               </a>
             </li>
-            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/inbox']"
-                style="font-size: 16px;">INBOX</a>
-              <!-- <span class="material-icons">
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link mt-1" [routerLink]="['/inbox']"
+                style="font-size: 16px;">
+                <span class="material-icons">
                   chat_bubble
-                </span>-->
+                </span></a>
             </li>
-            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/profile']"
-                style="font-size: 16px;">PROFILE</a>
-              <!-- <span class="material-icons">
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link mt-1" [routerLink]="['/profile']"
+                style="font-size: 16px;">
+                <span class="material-icons">
                   account_box
-                </span> -->
+                </span></a>
             </li>
             <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/login']"
                 style="font-size: 16px;">Log In</a>
             <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link"
                 [routerLink]="['/register']" style="font-size: 16px;">Sign Up</a>
             <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/']"
-                (click)="signOut()" style="font-size: 16px;">Log Out</a>
+                (click)="signOut()" style="font-size: 16px;"> LOGOUT</a>
           </ul>
         </div>
       </div>

@@ -52,6 +52,7 @@ import { GoToTopComponent } from './go-to-top/go-to-top.component';
     SidebarComponent,
     LoadingComponent,
     NoResponseComponent,
+    GoToTopComponent
   ],
 })
 export class MainComponentModule { }

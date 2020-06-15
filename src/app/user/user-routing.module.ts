@@ -10,6 +10,7 @@ import { HomepageComponent } from '../post/homepage/homepage.component';
 import { PublicProfileComponent } from './public-profile/public-profile.component';
 import { PerviousPostsComponent } from '../post/pervious-posts/pervious-posts.component';
 import { NotificationComponent } from './notification/notification.component';
+import { AllTutorialsComponent } from '../tutorial/all-tutorials/all-tutorials.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
         path: 'perviousPosts',
         component: PerviousPostsComponent,
       },
+      // {
+      //   path: 'favorite/:id',
+      //   component: AllTutorialsComponent,
+      // },
     ]
   },
   {

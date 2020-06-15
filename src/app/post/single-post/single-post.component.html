@@ -57,18 +57,18 @@
             </mat-card-content>
           </mat-card>
           <div class="text-center mt-4">
-            <button class="btn btn-danger mr-2" *ngIf="('destroy' | able: 'Post')  && !post.closed"
+            <button class="btn btn-danger mr-2" *ngIf="('destroy' | able: 'Post') && !post.closed && !approved"
               (click)="deletePost(post.id)">Delete</button>
-            <button class="btn btn-success" *ngIf="('update' | able: 'Post')  && !post.closed"
+            <button class="btn btn-success" *ngIf="('update' | able: 'Post') && !post.closed && !approved"
               [routerLink]="['/update/posts',post.id]">Update</button>
           </div>
           <div class="border p-2 text-center rounded shadow"
-            *ngIf="post.closed && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'">
+            *ngIf="(post.closed || approved) && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'">
             <app-create-rate [offers]="post.offers"></app-create-rate>
             <app-create-comment [offers]="post.offers"></app-create-comment>
           </div>
           <div class="border p-2 text-center rounded shadow"
-            *ngIf="post.closed && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'CONTRACTOR'">
+            *ngIf="(post.closed || approved) && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'CONTRACTOR'">
             <app-get-rate [offers]="post.offers"></app-get-rate>
             <app-get-comment [offers]="post.offers"></app-get-comment>
           </div>
@@ -76,7 +76,7 @@
       </div>
     </div>
     <div class="col-lg-4 p-2 m-2 shadow rounded">
-      <app-offer [post_id]="post.id" [postOwner_id]="post.user_id" (onDeleteOffer)="onDeleteOffer()"></app-offer>
+      <app-offer [post_id]="post.id" [postOwner_id]="post.user_id" (onDeleteOffer)="onDeleteOffer()" (onApproveOffer)="onApproveOffer()"></app-offer>
     </div>
   </div>
 

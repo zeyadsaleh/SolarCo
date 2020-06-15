@@ -48,12 +48,12 @@
           </div>
           <div class="form-group">
             <label for="description">Description</label>
-            <textarea class="form-control" ngModel minlength="50" [(ngModel)]="post.description" name="description"
+            <textarea class="form-control" ngModel  maxlength="1000" [(ngModel)]="post.description" name="description"
               #description="ngModel" type="text"></textarea>
             <div class="alert alert-danger" *ngIf="description.touched && !description.valid">
               <div *ngIf="description.errors.required">description is required</div>
-              <div *ngIf="description.errors.minlength">description should be minimum
-                {{description.errors.minlength.requiredLength}} characters </div>
+              <div *ngIf="description.errors.maxlength">description should be maximum
+                {{description.errors.maxlength.requiredLength}} characters </div>
             </div>
           </div>
           <div>

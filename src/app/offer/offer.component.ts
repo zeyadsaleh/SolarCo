@@ -22,6 +22,7 @@ export class OfferComponent implements OnInit {
   type: string = '';
   isApproved: boolean = false;
   @Output() onDeleteOffer = new EventEmitter()
+  @Output() onApproveOffer = new EventEmitter()
   submitted: boolean = false;
   currentOffer: any = {};
   offers_count = '';
@@ -99,6 +100,7 @@ export class OfferComponent implements OnInit {
     offer.status = 'accepted';
     this.onEdit(offer);
     this.isApproved = true;
+    this.onApproveOffer.emit(); //remove the update and delete post after approval of the post
     this.postService.updatePost(offer.post.id, { closed: true }).subscribe(
       res => {
         // this.shareService.setData(true);
@@ -121,7 +123,7 @@ export class OfferComponent implements OnInit {
     let scrollToTop = window.setInterval(() => {
       let pos = window.pageYOffset;
       if (pos > 0) {
-        window.scrollTo(0, pos - 10); // how far to scroll on each step
+        window.scrollTo(0, pos - 30); // how far to scroll on each step
       } else {
         window.clearInterval(scrollToTop);
       }
