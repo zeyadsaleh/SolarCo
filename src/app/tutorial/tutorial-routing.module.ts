@@ -9,7 +9,7 @@ import { ContractorGuard } from '../shared/guards/contractor.guard';
 
 const routes: Routes = [
   {
-    path: 'tutorials',
+    path: 'blog',
     component: AllTutorialsComponent,
   },
   {
@@ -18,20 +18,20 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'tutorials/categories/:id',
+    path: 'blog/categories/:id',
     component: AllTutorialsComponent,
   },
   {
-    path: 'tutorials/contractors/:id',
+    path: 'blog/contractors/:id',
     component: AllTutorialsComponent,
   },
   {
-    path: 'tutorials/create',
+    path: 'blog/create',
     component: CreateTutorialComponent,
     canActivate: [AuthGuard, ContractorGuard]
   },
   {
-    path: 'tutorials/:id',
+    path: 'blog/:id',
     component: TutorialComponent,
   }
 ]

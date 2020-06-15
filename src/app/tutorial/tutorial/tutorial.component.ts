@@ -59,7 +59,7 @@ export class TutorialComponent implements OnInit {
     if (this.tutorial.contractor_id == this.contractor_id) {
       this.__service.deleteTutorial(this.tutorial['id']).subscribe(
         (res) => {
-          this.router.navigate(['tutorials/contractors', this.contractor_id]);
+          this.router.navigate(['blog/contractors', this.contractor_id]);
         });
     } else {
       this.msg = "Forbidden!";
