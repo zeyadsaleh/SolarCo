@@ -12,8 +12,8 @@ import { AngularTokenService } from 'angular-token';
 })
 export class CreateCommentComponent implements OnInit {
 
-  @Input() offer_id: number;
   @Input() tutorial_id: number;
+  @Input() offer_id: number;
   req_data: object;
   edit: boolean = false;
   show: boolean = false;
@@ -31,23 +31,24 @@ export class CreateCommentComponent implements OnInit {
     if (this.router.url.includes('blog')) {
       this.req_data['tutorial_id'] = this.tutorial_id;
     } else {
-      if (this.offer_id) {
-        this.__service.getReview(this.offer_id).subscribe(
-          (response) => {
-            if (response) {
-              if (response['review']) this.edit = true;
-              this.req_data = response;
-            }
-          })
-      }
+      this.currentReview();      
     }
   }
 
-  // getOfferId() {
-  //   for (let offer of this.offers) {
-  //     if (offer['status'] == 'accepted') this.req_data['offer_id'] = offer['id'];
-  //   }
-  // }
+  currentReview() {
+    if (this.offer_id) {
+      this.__service.getReview(this.offer_id).subscribe(
+        (response) => {
+          if (response) {
+            if (response['review']) this.edit = true;
+            this.req_data = response;
+          }
+        },
+        (error) => {
+          this.error = error.error.error;
+        })
+    }
+  }
 
   setComment() {
     if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
@@ -64,7 +65,7 @@ export class CreateCommentComponent implements OnInit {
               }
             },
             (error) => {
-
+              this.error = error.error.error;
             })
         } else {
           this.req_data['offer_id'] = this.offer_id;
@@ -72,27 +73,26 @@ export class CreateCommentComponent implements OnInit {
             this.__service.setReview(this.req_data).subscribe(
               (response) => {
                 if (response) {
-                  this.req_data['review'] = '';
                   setTimeout(() => {
                     this.show = false;
+                    this.edit = true;
                   }, 300);
                 }
               },
               (error) => {
-
+                this.error = error.error.error;
               })
           } else {
             this.__service.updateReview(this.req_data['offer_id'], this.req_data).subscribe(
               (response) => {
                 if (response) {
-                  this.req_data['review'] = '';
                   setTimeout(() => {
                     this.show = false;
                   }, 300);
                 }
               },
               (error) => {
-
+                this.error = error.error.error;
               })
           }
         }

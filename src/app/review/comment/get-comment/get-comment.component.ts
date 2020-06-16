@@ -8,14 +8,15 @@ import { OfferReviewService } from 'src/app/shared/services/offer-review.service
 })
 export class GetCommentComponent implements OnInit {
   
-  @Input() offers;
+  @Input() offer_id;
   req_data: object;
+  error: string;
 
   constructor(private __service: OfferReviewService) { }
 
   ngOnInit(): void {
     this.req_data = new Object;
-    this.getOfferId();
+    this.req_data['offer_id'] = this.offer_id;
     if (this.req_data && this.req_data['offer_id']) {
       this.__service.getReview(this.req_data['offer_id']).subscribe(
         (response) => {
@@ -24,14 +25,8 @@ export class GetCommentComponent implements OnInit {
           }
         },
         (error) => {
-          
+          this.error = error.error.error;
         })
-    }
-  }
-
-  getOfferId() {
-    for (let offer of this.offers) {
-      if (offer['status'] == 'accepted') this.req_data['offer_id'] = offer['id'];
     }
   }
 

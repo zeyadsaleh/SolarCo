@@ -16,6 +16,7 @@ export class GetCommentsComponent implements OnInit {
   comments = new Array;
   users: number = 0;
   p: number = 1;
+  error: string;
 
   constructor(private __service: OfferReviewService,
     private router: Router,
@@ -32,7 +33,7 @@ export class GetCommentsComponent implements OnInit {
           }
         },
         (error) => {
-          
+          this.error = error.error.error;
         })
     } else {
       this.__service.getReviews(this.contractor_id).subscribe(
@@ -42,7 +43,7 @@ export class GetCommentsComponent implements OnInit {
           }
         },
         (error) => {
-          
+          this.error = error.error.error;
         })
     }
   }
