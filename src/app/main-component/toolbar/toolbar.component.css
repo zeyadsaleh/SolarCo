@@ -13,6 +13,23 @@
     margin-bottom: 10px;
 }
 
+p.icon {position: relative;}
+
 mat-icon {
     vertical-align: text-bottom;
+    /* position: relative; */
+}
+
+.circle {
+    width: 9px;
+    height: 9px;
+    background-color: red;
+    position: absolute;
+    top: 86%;
+    right: 46%;
+    z-index: 2;
+    /* content: '\25CF'; */
+    /* color: red; */
+    /* left: 54%; */
+    /* top: -39%; */
 }
