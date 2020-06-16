@@ -22,7 +22,6 @@ export class CreateTutorialComponent implements OnInit {
     if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'CONTRACTOR') {
       this.__service.getCategories().subscribe(
         (response) => {
-          console.log(response);
           this.categories = response;
         })
     } else {
@@ -34,11 +33,9 @@ export class CreateTutorialComponent implements OnInit {
     if (post.valid) {
       this.__service.setTutorial(post.value).subscribe(
         (response) => {
-          console.log(response);
           this.router.navigate(['blog/', response.id]);
         },
         error => {
-          console.log(error);
           this.error = error.error.error;
         })
     }
