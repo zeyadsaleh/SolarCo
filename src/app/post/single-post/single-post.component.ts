@@ -19,6 +19,7 @@ export class SinglePostComponent implements OnInit {
   currentUserID: any;
   applied: boolean = false;
   approved: boolean = false;
+  
   constructor(private postService: PostService,
     private route: ActivatedRoute,
     private router: Router,
@@ -55,7 +56,6 @@ export class SinglePostComponent implements OnInit {
         this.applied = true;
       }
       this.title = `${this.post.user.name}\'s Post`;
-      console.log(this.post)
     }, (err) => {
       this.errorMessage = err.error.error;
       setTimeout(() => {

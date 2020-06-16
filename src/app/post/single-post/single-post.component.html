@@ -69,8 +69,8 @@
           </div>
           <div class="border p-2 text-center rounded shadow"
             *ngIf="(post.closed || approved) && tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'CONTRACTOR'">
-            <app-get-rate [offers]="post.offers"></app-get-rate>
-            <app-get-comment [offers]="post.offers"></app-get-comment>
+            <app-get-rate [offer_id]="2"></app-get-rate>
+            <app-get-comment [offer_id]="2"></app-get-comment>
           </div>
         </div>
       </div>

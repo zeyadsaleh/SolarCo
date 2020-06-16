@@ -3,9 +3,9 @@
   <div *ngIf="errorMessage.length > 0" class="alert alert-danger m-2">
     <span>{{ errorMessage }}</span>
   </div>
-  <form (ngSubmit)="onSignInSubmit()" #f="ngForm" class="m-4">
-    <h3 *ngIf="type == 'USER'">Client Login</h3>
-    <h3 *ngIf="type == 'CONTRACTOR'">Contractor Login</h3>
+  <form (ngSubmit)="onSignInSubmit()" #f="ngForm" class="m-4 text-white">
+    <h3 *ngIf="type == 'USER'" class="text-white">Client Login</h3>
+    <h3 *ngIf="type == 'CONTRACTOR'" class="text-white">Contractor Login</h3>
     <hr>
     <div class="form-group">
       <input placeholder="Enter email" id="email" type="email" required email name='email'
@@ -46,7 +46,7 @@
 </div>
 
 <ng-template #noTypeTemplate>
-  <h4 class="mt-4 text-center">
+  <h4 class="mt-4 text-center text-white">
     Please Select a login type
   </h4>
 </ng-template>

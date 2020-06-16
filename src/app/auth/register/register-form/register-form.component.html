@@ -2,9 +2,9 @@
   <div *ngIf="errorMessage.length > 0" class="alert alert-danger mb-2">
     <span>{{ errorMessage }}</span>
   </div> 
-  <form (ngSubmit)="onSignUpSubmit()" #f="ngForm" class="signup-form">
-    <h3 *ngIf="type == 'USER'">Client SignUp</h3>
-    <h3 *ngIf="type == 'CONTRACTOR'">Contractor SignUp</h3>
+  <form (ngSubmit)="onSignUpSubmit()" #f="ngForm" class="signup-form text-white">
+    <h3 *ngIf="type == 'USER'" class="text-white">Client SignUp</h3>
+    <h3 *ngIf="type == 'CONTRACTOR'" class="text-white">Contractor SignUp</h3>
     <hr>
     <div class="form-group">
       <input id="email" type="email" required email name='email' [(ngModel)]="signUpUser.email"
@@ -110,7 +110,7 @@
 </div>
 
 <ng-template #noTypeTemplate>
-  <h4 class="mt-5 text-center">
+  <h4 class="mt-5 text-center text-white">
     Please Select a registration type
   </h4>
 </ng-template>

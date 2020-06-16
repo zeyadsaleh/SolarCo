@@ -10,7 +10,7 @@ import { AngularTokenService } from 'angular-token';
 })
 export class CreateRateComponent implements OnInit {
 
-  @Input() offers;
+  @Input() offer_id: number;
   current_rate: number;
   request_data: object;
   show: boolean = false;
@@ -21,20 +21,20 @@ export class CreateRateComponent implements OnInit {
 
   ngOnInit(): void {
     this.request_data = new Object;
-    this.getOfferId();
     this.currentRate();
   }
 
-  getOfferId() {
-    for (let offer of this.offers) {
-      if (offer['status'] == 'accepted') this.request_data['offer_id'] = offer['id'];
-    }
-  }
+  // getOfferId() {
+  //   for (let offer of this.offers) {
+  //     if (offer['status'] == 'accepted') this.request_data['offer_id'] = offer['id'];
+  //   }
+  // }
 
   setRate(event) {
     if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
       if (event.target.value > 0 && event.target.value <= 5) {
         this.request_data['rate'] = event.target.value;
+        this.request_data['offer_id'] = this.offer_id;
         if (!this.current_rate) {
           this.__service.setRate(this.request_data).subscribe(
             (response) => {
