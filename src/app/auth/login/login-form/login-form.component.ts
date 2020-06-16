@@ -42,7 +42,6 @@ export class LoginFormComponent implements OnInit {
       userType: this.signInUser.userType
     }).subscribe(
       res => {
-        console.log(res);
         this.ability.update(res.body.data.rules); // Casl Abilities
         // let username = res.body.data.name.trim().toLowerCase() + Math.round((Math.random() * 100))
         // console.log(username);
@@ -62,7 +61,6 @@ export class LoginFormComponent implements OnInit {
         this.router.navigate(['']);
       },
       error => {
-        console.log(error);
         this.errorMessage = error.error.errors[0];
         this.submitted = false;
       }

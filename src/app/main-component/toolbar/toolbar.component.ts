@@ -19,10 +19,10 @@ export class ToolbarComponent implements OnInit {
   signOut() {
     this.tokenAuthService.signOut().subscribe(
       res =>      {
-        console.log(res);
+        // console.log(res);
         this.ability.update([]);
       },
-      error =>    console.log(error)
+      error => {}
     );
 }
 

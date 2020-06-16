@@ -46,12 +46,11 @@ export class ProfileComponent implements OnInit {
       res => {
         this.userData = this.tokenAuthService.currentUserData;
         this.type = this.tokenAuthService.currentUserType;
-        console.log(this.userData)
         setTimeout(() => {
           this.isLoading = false;
         }, 300);
       },
-      error => console.log(error)
+      error => {}
     );
 
   }
@@ -74,10 +73,9 @@ export class ProfileComponent implements OnInit {
       // Send the request and store the response in the avatar variable
       this.userService.updateAvatar(this.userData.id, type, formData, headers).subscribe(
         res => {
-          console.log(res)
           this.userData.avatar = res['avatar']
         },
-        error => console.log(error)
+        error => {}
       );
     } else {
       // alert('This is not a valid image');
@@ -96,7 +94,6 @@ export class ProfileComponent implements OnInit {
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }

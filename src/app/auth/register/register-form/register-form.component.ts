@@ -63,7 +63,6 @@ export class RegisterFormComponent implements OnInit {
         userType: this.signUpUser.type,
       }).subscribe(
         res => { 
-          console.log(res);
           this.ability.update(res.data.rules); // Casl Abilities
 
           // this.chatAuthService
@@ -88,14 +87,12 @@ export class RegisterFormComponent implements OnInit {
           this.router.navigate(['']);
         },
         error => {
-          console.log(error);
           this.errorMessage = error.error.errors.full_messages;
           this.submitted = false;
         }
       );
     }
     else {  // register contractor
-      console.log(this.contractor)
       this.tokenAuthSerivce.registerAccount({
         login: this.signUpUser.email,
         password: this.signUpUser.password,
@@ -108,7 +105,6 @@ export class RegisterFormComponent implements OnInit {
         fax: this.contractor.fax
       }).subscribe(
         res => {
-          console.log(res);
           this.ability.update(res.data.rules); // Casl Abilities
           this.userService.current_user = res.data;
           this.userService.user_type = this.tokenAuthSerivce.currentUserType;
@@ -116,7 +112,6 @@ export class RegisterFormComponent implements OnInit {
           this.router.navigate(['']);
         },
         error => {
-          console.log(error);
           this.errorMessage = error.error.errors.full_messages;
           this.submitted = false;
         }

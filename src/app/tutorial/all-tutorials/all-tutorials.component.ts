@@ -28,7 +28,7 @@ export class AllTutorialsComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => { this.timeOut() }, 40000);
-    console.log(this.tokenAuth);
+    // console.log(this.tokenAuth);
     if (this.router.url.includes('categories')) {
       this.route.params.subscribe(params => {
         if (Number.isInteger(+params['id'])) {

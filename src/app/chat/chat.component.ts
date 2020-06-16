@@ -23,9 +23,9 @@ export class ChatComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    console.log(this.chatAuthService.currentUser);
+    // console.log(this.chatAuthService.currentUser);
     this.chatService.listenForMessages(listenerId, msg => {
-      console.log('New message: ', msg);
+      // console.log('New message: ', msg);
       this.messages = [...this.messages, msg];
     });
   }
@@ -36,22 +36,22 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   async onUserSelected(usr: CometChat.UserObj) {
     this.selectedUser = usr;
-    console.log(this.selectedUser);
+    // console.log(this.selectedUser);
     const messages = await this.chatService.getPreviousMessages(usr.uid);
-    console.log('Previous messages', messages);
+    // console.log('Previous messages', messages);
 
     this.messages = (messages as any[]).filter(msg => msg.type === 'text');
   }
 
   async onSendMessage(message: string) {
-    console.log('sending message: ', message);
-    console.log(this.selectedUser)
+    // console.log('sending message: ', message);
+    // console.log(this.selectedUser)
     const sentMessage = await this.chatService.sendMessage(
       this.selectedUser.uid,
       message
     );
 
-    console.log({ sentMessage });
+    // console.log({ sentMessage });
 
     if (sentMessage) {
       this.messages = [...this.messages, sentMessage as any];
@@ -61,11 +61,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   logout() {
     CometChat.logout().then(res => {
       //Logout completed successfully
-      console.log("Logout completed successfully");
+      // console.log("Logout completed successfully");
       this.router.navigateByUrl('/login');
     }, error => {
       //Logout failed with exception
-      console.log("Logout failed with exception:", { error });
+      // console.log("Logout failed with exception:", { error });
     })
   }
 }

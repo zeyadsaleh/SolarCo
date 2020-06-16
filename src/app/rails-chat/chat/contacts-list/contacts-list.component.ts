@@ -80,7 +80,6 @@ export class ContactsListComponent implements OnInit {
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }

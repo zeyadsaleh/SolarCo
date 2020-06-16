@@ -38,7 +38,7 @@ export class SinglePostComponent implements OnInit {
           }
         });
       },
-      error => console.log(error)
+      error => {}
     );
   }
 

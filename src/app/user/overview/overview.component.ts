@@ -13,7 +13,6 @@ export class OverviewComponent implements OnInit {
   constructor(readonly userService: UserService) { }
 
   ngOnInit(): void {
-    console.log(this.userService.current_user)
     this.userData = this.userService.current_user;
   }
 

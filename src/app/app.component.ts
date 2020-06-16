@@ -42,7 +42,6 @@ export class AppComponent {
         res => {
           this.userService.setCurrentUser(res.data, this.tokenService.currentUserType);
           this.ability.update(res.data.rules);
-          console.log(this.ability.rules);
           // this.chatAuthService
           //   .login(res.data.username)
           //   .then(
@@ -53,16 +52,14 @@ export class AppComponent {
           //   );
           setTimeout(() => {
             this.isLoading = false;
-          }, 80);
+          }, 100);
         },
         error => {
-          console.log(error);
           this.tokenService.signOut().subscribe(
             res => {
-              console.log(res);
               this.ability.update([]);
             },
-            error => console.log(error)
+            error => {}
           );
         }
       );
@@ -79,7 +76,6 @@ export class AppComponent {
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }
@@ -93,6 +89,6 @@ export class AppComponent {
             } else {
                 window.clearInterval(scrollToTop);
             }
-        }, 16);
+        }, 8);
     }
 }

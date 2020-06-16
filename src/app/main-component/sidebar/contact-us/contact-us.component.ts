@@ -35,7 +35,7 @@ export class ContactUsComponent implements OnInit {
      this.http.post(this.offerUrl,this.contactObj).subscribe(
       res => {
          this.myAnchor.nativeElement.click();
-         console.log(res);
+        //  console.log(res);
          this.contactObj.name = '';
          this.contactObj.email = '';
          this.contactObj.phone = '';
@@ -43,7 +43,7 @@ export class ContactUsComponent implements OnInit {
          this.submitted = false;
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.submitted = false;
         this.errorMessage = error.error.error;
       }

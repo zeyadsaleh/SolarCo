@@ -26,7 +26,7 @@ export class TutorialComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => { this.timeOut() }, 40000);
-    console.log(this.tokenAuth.userSignedIn());
+    // console.log(this.tokenAuth.userSignedIn());
     if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'CONTRACTOR' && this.tokenAuth['userData']['id']) {
       this.contractor_id = this.tokenAuth['userData']['id'];
     }
@@ -43,7 +43,7 @@ export class TutorialComponent implements OnInit {
     this.__service.getTutorial(id).subscribe(
       (response) => {
         if (response) {
-          console.log(response);
+          // console.log(response);
           this.tutorial = response;
           setTimeout(() => {
             this.isLoading = false;

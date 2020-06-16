@@ -26,7 +26,6 @@ export class EditComponent implements OnInit {
       res => {
         this.type = this.tokenAuthService.currentUserType;
         this.userData = this.tokenAuthService.currentUserData;
-        console.log(this.userData)
       },
       error => this.error = error['error']);
   }
@@ -52,9 +51,7 @@ export class EditComponent implements OnInit {
           location.reload();
         },
         error => this.error = error['error']);
-    }
-    console.log(this.error);
-    
+    }    
   }
 
 }

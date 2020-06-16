@@ -30,20 +30,15 @@ export class NotificationComponent implements OnInit {
 
     this.notificationService.getNotifications().subscribe((res) => {
       if (res) {
-        console.log("res: ", res)
         for (let notiObj of res.data) {
           this.notifications.push(notiObj);
         }
-        console.log("noti", this.notifications)
-      } else {
-        console.log("no notifications received")
       }
     });
   }
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }
