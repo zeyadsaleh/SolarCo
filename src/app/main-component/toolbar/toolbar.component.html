@@ -16,12 +16,9 @@
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
           <ul class="nav navbar-nav menu_nav">
             <li *ngIf="tokenAuthService.userSignedIn() && tokenAuthService.currentUserType == 'USER'" class="nav-item"><a class="nav-link"
-              [routerLink]="['/pv-system/user-info']" style="font-size: 16px;"> Calculate
-              <!-- <span class="material-icons">
-                account_box
-              </span> -->
-            </a>
-          </li>
+              [routerLink]="['/pv-system/user-info']" style="font-size: 16px;"> Calculate</a></li>
+              <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()"
+              class="nav-item"><a class="nav-link " [routerLink]="['/posts']" style="font-size: 16px;">POSTS</a></li>
           </ul>
           <ul class="nav navbar-nav menu_nav ml-auto">
             <!-- <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()"

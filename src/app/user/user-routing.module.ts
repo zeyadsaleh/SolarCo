@@ -11,6 +11,7 @@ import { PublicProfileComponent } from './public-profile/public-profile.componen
 import { PerviousPostsComponent } from '../post/pervious-posts/pervious-posts.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AllTutorialsComponent } from '../tutorial/all-tutorials/all-tutorials.component';
+import { OverviewComponent } from './overview/overview.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'systems',
         component: SystemsComponent
+      },
+      {
+        path: 'overview',
+        component: OverviewComponent
       },
       {
         path: 'offers',

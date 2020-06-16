@@ -38,8 +38,7 @@ export class ProfileComponent implements OnInit {
       this.subPage = this.router.url.split('/')[2]
     } else {
       this.subPage = this.userService.user_type == 'CONTRACTOR' ? 'overview' : 'systems';
-      if(this.subPage == 'systems')
-        this.router.navigateByUrl('/profile/systems');
+      this.router.navigateByUrl(`/profile/${this.subPage}`);
     }
     // this.subPage = this.router.url.split('/')[2] ? this.router.url.split('/')[2] : 'overview';
     // Get the data of the logged in user after validating token

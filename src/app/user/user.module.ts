@@ -12,6 +12,7 @@ import { PublicProfileComponent } from './public-profile/public-profile.componen
 import { ReviewModule } from '../review/review.module';
 import { EditComponent } from './edit/edit.component';
 import { NotificationComponent } from './notification/notification.component';
+import { OverviewComponent } from './overview/overview.component';
 
 
 
@@ -21,6 +22,7 @@ import { NotificationComponent } from './notification/notification.component';
     EditComponent,
     PublicProfileComponent,
     NotificationComponent,
+    OverviewComponent,
   ],
   imports: [
     CommonModule,
