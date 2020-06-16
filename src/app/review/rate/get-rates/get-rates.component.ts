@@ -9,6 +9,7 @@ import { OfferReviewService } from 'src/app/shared/services/offer-review.service
 export class GetRatesComponent implements OnInit {
 
   @Input() contractor_id: number;
+  error: string;
   rate: number = 0;
   rate_obj: object = { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 }
   users: number;
@@ -23,7 +24,7 @@ export class GetRatesComponent implements OnInit {
         }
       },
       (error) => {
-
+        this.error = error.error.error;
       })
   }
 

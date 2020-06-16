@@ -14,6 +14,7 @@ export class CreateRateComponent implements OnInit {
   current_rate: number;
   request_data: object;
   show: boolean = false;
+  error: string;
 
   constructor(private __service: OfferReviewService,
     private shareService: ShareService,
@@ -23,12 +24,6 @@ export class CreateRateComponent implements OnInit {
     this.request_data = new Object;
     this.currentRate();
   }
-
-  // getOfferId() {
-  //   for (let offer of this.offers) {
-  //     if (offer['status'] == 'accepted') this.request_data['offer_id'] = offer['id'];
-  //   }
-  // }
 
   setRate(event) {
     if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
@@ -41,7 +36,7 @@ export class CreateRateComponent implements OnInit {
 
             },
             (error) => {
-
+              this.error = error.error.error;
             })
         } else {
           this.__service.updateRate(this.request_data['offer_id'], this.request_data).subscribe(
@@ -49,7 +44,7 @@ export class CreateRateComponent implements OnInit {
 
             },
             (error) => {
-
+              this.error = error.error.error;
             })
         }
       }

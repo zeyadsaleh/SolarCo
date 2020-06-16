@@ -1,4 +1,10 @@
 <div class="text-center m-1 p-3 mb-4" *ngIf="current_rate">
+  <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ error }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error=''">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <h4 class="bg-dark rounded text-white p-1">Rate</h4>
   <div class="rating">
 

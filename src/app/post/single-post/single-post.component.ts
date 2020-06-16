@@ -76,7 +76,6 @@ export class SinglePostComponent implements OnInit {
 
   onDeleteOffer() {
     this.applied = false;
-
   }
 
   onApproveOffer($event) {
