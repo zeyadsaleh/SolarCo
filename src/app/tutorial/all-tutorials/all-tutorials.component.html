@@ -50,7 +50,7 @@
                         class="btn btn-sm btn-success" (click)="addFav(tutorial.id)">Add to Favorites</button>
                 </div>
                 <a class="card" [routerLink]="['/blog',tutorial.id]" style="--bg-img: url(assets/images/solars.jpg)">
-                    <div>
+                    <div class="w-100">
                         <div class="date">{{ tutorial.created_at | slice:0:10 }}</div>
                         <h1 class="mt-3">{{ tutorial.title }}</h1>
                         <p>{{ tutorial.body | slice:0:100 }}..</p>
