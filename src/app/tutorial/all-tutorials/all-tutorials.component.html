@@ -14,7 +14,7 @@
         </h2>
     </div>
     <div class="row justify-content-center mt-2">
-        <a class="nav-link btn btn-lg shadow rounded btn-outline-primary"
+        <a class="nav-link btn btn-lg shadow rounded btn-outline-success"
             *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn()"
             [routerLink]="['/blog/create']">Add More
             Posts!</a>
@@ -52,11 +52,11 @@
                 <a class="card" [routerLink]="['/blog',tutorial.id]" style="--bg-img: url(assets/images/solars.jpg)">
                     <div>
                         <div class="date">{{ tutorial.created_at | slice:0:10 }}</div>
-                        <h1 class="mt-3">{{ tutorial.title }}</h1>
-                        <p>{{ tutorial.body | slice:0:100 }}..</p>
-                        <h5 class="mt-2 mb-3">By: {{tutorial.contractor.name }}</h5>
+                        <h1 class="mt-3 text-left">{{ tutorial.title }}</h1>
+                        <p class="text-left">{{ tutorial.body | slice:0:100 }}..</p>
+                        <h5 class="mt-2 mb-3 text-left">By: {{tutorial.contractor.name }}</h5>
                         <div class="tags">
-                            <div class="tag text-dark">{{tutorial.category.category }}</div>
+                            <div class="tag text-dark text-left">{{tutorial.category.category }}</div>
                         </div>
                     </div>
                 </a>

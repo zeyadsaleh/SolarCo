@@ -1,0 +1,6 @@
+.bar {
+    background: rgb(0, 24, 48);
+    width: 100%;
+    height: 80px;
+    display: flex;
+} 

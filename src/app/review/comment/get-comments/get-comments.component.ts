@@ -50,7 +50,7 @@ export class GetCommentsComponent implements OnInit {
         this.comments.push({ "id": review['id'], "comment": review['review'], "date": review['updated_at'] });
       }
     }
-    this.users = this.comments.length;
+    if (this.comments && this.comments.length) this.users = this.comments.length;
     console.log(this.comments);
   }
 
