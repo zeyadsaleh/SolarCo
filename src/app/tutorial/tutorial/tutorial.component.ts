@@ -14,7 +14,7 @@ export class TutorialComponent implements OnInit {
   tutorial: any;
   isLoading: boolean = true;
   noResponse: boolean = false;
-  added: boolean = true;
+  added: boolean = false;
   successMsg: string;
   warningMsg: string;
   contractor_id: number;
@@ -32,7 +32,6 @@ export class TutorialComponent implements OnInit {
     }
     this.route.params.subscribe(params => {
       if (Number.isInteger(+params['id'])) {
-        if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') this.checkIfAdded(+params['id']);
         this.getTut(+params['id']);
       } else {
         this.router.navigate(['404']);
@@ -49,6 +48,7 @@ export class TutorialComponent implements OnInit {
           setTimeout(() => {
             this.isLoading = false;
           }, 300);
+          if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') this.checkIfAdded(this.tutorial.id);
         } else {
           this.router.navigate(['404']);
         }

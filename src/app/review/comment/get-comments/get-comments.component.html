@@ -12,8 +12,8 @@
             </div>
         </div>
     </div>
-    <hr>
-    <div class="text-center border rounded pt-3 pr-5">
+    <hr *ngIf="users">
+    <div class="text-center border rounded pt-3 pr-5" *ngIf="users">
         <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 </div>

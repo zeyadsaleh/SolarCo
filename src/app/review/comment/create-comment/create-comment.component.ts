@@ -53,7 +53,7 @@ export class CreateCommentComponent implements OnInit {
 
   setComment() {
     if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
-      if (this.req_data['review'].length > 5) {
+      if (this.req_data['review'] && this.req_data['review'].length >= 5) {
         if (this.router.url.includes('blog')) {
           this.__tutService.setComment(this.req_data).subscribe(
             (response) => {

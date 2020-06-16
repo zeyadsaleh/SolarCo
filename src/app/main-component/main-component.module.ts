@@ -7,15 +7,17 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { Ability, PureAbility } from '@casl/ability';
 import { AbilityModule } from '@casl/angular';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoadingComponent } from './loading/loading.component';
 import { ContactUsComponent } from './sidebar/contact-us/contact-us.component';
 import { FormsModule } from '@angular/forms';
-import { NoResponseComponent } from './no-response/no-response.component';
 import { AboutUsComponent } from './sidebar/about-us/about-us.component';
 import { GoToTopComponent } from './go-to-top/go-to-top.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { NoResponseComponent } from './errors/no-response/no-response.component';
+import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
+import { UnautherizedComponent } from './errors/unautherized/unautherized.component';
 
 
 @NgModule({
@@ -24,13 +26,15 @@ import { GoToTopComponent } from './go-to-top/go-to-top.component';
     ToolbarComponent,
     FooterComponent,
     PageBannerComponent,
-    NotFoundComponent,
     SidebarComponent,
     LoadingComponent,
     ContactUsComponent,
-    NoResponseComponent,
     AboutUsComponent,
     GoToTopComponent,
+    NotFoundComponent,
+    NoResponseComponent,
+    ForbiddenComponent,
+    UnautherizedComponent,
   ],
   imports: [
     CommonModule,
@@ -48,10 +52,12 @@ import { GoToTopComponent } from './go-to-top/go-to-top.component';
     ToolbarComponent,
     FooterComponent,
     PageBannerComponent,
-    NotFoundComponent,
     SidebarComponent,
     LoadingComponent,
+    NotFoundComponent,
     NoResponseComponent,
+    ForbiddenComponent,
+    UnautherizedComponent,
     GoToTopComponent
   ],
 })
