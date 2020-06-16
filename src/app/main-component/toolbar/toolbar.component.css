@@ -13,7 +13,10 @@
     margin-bottom: 10px;
 }
 
-p.icon {position: relative;}
+p.icon {
+    position: relative;
+    min-width: 3rem;
+}
 
 mat-icon {
     vertical-align: text-bottom;
