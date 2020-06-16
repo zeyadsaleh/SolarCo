@@ -17,26 +17,3 @@ mat-icon {
     vertical-align: text-bottom;
 }
 
-span.num {
-    position: absolute;
-    font-size: 0.3em;
-    top: 1px;
-    color: #fff;
-    right: 2px;
-}
-
-span.fa-bell {
-    position: absolute;
-    font-size: 0.6em;
-    top: -4px;
-    color: red;
-    right: -4px;
-    font-size: 25px;
-  }
-
-  a.fa-globe {
-    position: relative;
-    font-size: 2em;
-    color: grey;
-    cursor: pointer;
-  }
