@@ -1,6 +1,6 @@
 # QR-Code To Deployment web
 
-![alt text](https://github.com/zeyadsaleh/SolarCo/solar-qr.png?raw=true)
+![alt text](https://github.com/zeyadsaleh/SolarCo/blob/develop/solar-qr.png)
 
 # SolarCo (Front End)
 
