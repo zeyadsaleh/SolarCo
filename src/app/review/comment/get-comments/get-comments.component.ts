@@ -23,7 +23,7 @@ export class GetCommentsComponent implements OnInit {
     private shareService: ShareService) { }
 
   ngOnInit(): void {
-    if (this.router.url.includes('tutorials')) {
+    if (this.router.url.includes('blog')) {
       this.__tutService.getTutorialComments(this.tutorial_id).subscribe(
         (response) => {
           if (response) {

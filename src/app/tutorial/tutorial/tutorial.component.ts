@@ -32,7 +32,7 @@ export class TutorialComponent implements OnInit {
     this.route.params.subscribe(params => {
       if (Number.isInteger(+params['id'])) {
         this.getTut(+params['id']);
-        this.checkIfAdded(+params['id']);
+        if (this.tokenAuth && this.tokenAuth['userData']) this.checkIfAdded(+params['id']);
       } else {
         this.router.navigate(['404']);
       }

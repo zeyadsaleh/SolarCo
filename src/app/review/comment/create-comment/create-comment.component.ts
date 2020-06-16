@@ -28,7 +28,7 @@ export class CreateCommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.req_data = new Object;
-    if (this.router.url.includes('tutorials')) {
+    if (this.router.url.includes('blog')) {
       this.req_data['tutorial_id'] = this.tutorial_id;
     } else {
       this.getOfferId();
@@ -53,7 +53,7 @@ export class CreateCommentComponent implements OnInit {
 
   setComment() {
     if (this.req_data['review'].length > 5) {
-      if (this.router.url.includes('tutorials')) {
+      if (this.router.url.includes('blog')) {
         this.__tutService.setComment(this.req_data).subscribe(
           (response) => {
             if (response) {
