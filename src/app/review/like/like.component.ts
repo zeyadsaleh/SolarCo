@@ -60,6 +60,9 @@ export class LikeComponent implements OnInit {
           (res) => {
             console.log(res);
             this.like_id = res['id'];
+          },
+          (error) => {
+
           });
         if (this.islike) {
           this.likes++;
@@ -70,7 +73,10 @@ export class LikeComponent implements OnInit {
         this.__tutService.updateLike(this.like_id, { "islike": this.islike, "tutorial_id": this.tutorial_id }).subscribe(
           (res) => {
             console.log(res);
-          })
+          },
+          (error) => {
+
+          });
         if (this.islike) {
           this.likes++;
           this.dislikes--;

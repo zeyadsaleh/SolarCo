@@ -19,41 +19,44 @@ export class SystemsComponent implements OnInit {
   constructor(private data: PvCalculationService, private router: Router) { }
 
   ngOnInit(): void {
-    setTimeout(() => {this.timeOut()}, 40000);
+    setTimeout(() => { this.timeOut() }, 40000);
     this.getSystems();
   }
 
   getSystems() {
-    this.data.getSystems(response => {
-      if (response && response['length'] > 0) {
-        this.systems = response;
-      }
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 500);
-    });
+    this.data.getSystems(
+      response => {
+        if (response && response['length'] > 0) {
+          this.systems = response;
+        }
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500);
+      },
+      error => {
+        this.error = error.error.error;
+      });
   }
 
   delete(id) {
-    this.data.delCalculation(id, response => {
-      if (response && response['error']) {
-        if (response['error']) this.error = response['error'];
-      } else {
+    this.data.delCalculation(id,
+      response => {
         this.success = "Deleted Successfully!";
         this.systems = this.systems.filter((value) => {
           if (value['system']['id'] != id) return value;
         });
-      }
-    });
+      },
+      error => {
+        this.error = error.error.error;
+      });
   }
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }
-  }  
+  }
 
   //scroll up whenever you change the page on pagination
   pageChanged(event) {
@@ -65,6 +68,6 @@ export class SystemsComponent implements OnInit {
       } else {
         window.clearInterval(scrollToTop);
       }
-    }, 16);
+    }, 8);
   }
 }

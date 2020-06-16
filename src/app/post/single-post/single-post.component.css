@@ -235,3 +235,7 @@ body {
     text-align: center;
   }
 }
+
+.errorMessage{
+  margin: 230px auto;
+}

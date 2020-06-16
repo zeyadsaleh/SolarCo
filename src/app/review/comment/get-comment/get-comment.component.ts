@@ -23,6 +23,9 @@ export class GetCommentComponent implements OnInit {
             this.req_data = response;
             console.log(response);
           }
+        },
+        (error) => {
+          
         })
     }
   }

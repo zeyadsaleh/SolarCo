@@ -62,6 +62,9 @@ export class CreateCommentComponent implements OnInit {
                 this.shareService.setData(response);
                 this.req_data['review'] = '';
               }
+            },
+            (error) => {
+
             })
         } else {
           if (!this.edit) {
@@ -73,6 +76,9 @@ export class CreateCommentComponent implements OnInit {
                     this.show = false;
                   }, 200);
                 }
+              },
+              (error) => {
+
               })
           } else {
             this.__service.updateReview(this.req_data['offer_id'], this.req_data).subscribe(
@@ -83,6 +89,9 @@ export class CreateCommentComponent implements OnInit {
                     this.show = false;
                   }, 300);
                 }
+              },
+              (error) => {
+                
               })
           }
         }

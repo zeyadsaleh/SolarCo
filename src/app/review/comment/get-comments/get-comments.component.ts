@@ -31,6 +31,9 @@ export class GetCommentsComponent implements OnInit {
             this.setCommentDetails(response);
             this.addComment();
           }
+        },
+        (error) => {
+          
         })
     } else {
       this.__service.getReviews(this.contractor_id).subscribe(
@@ -38,6 +41,9 @@ export class GetCommentsComponent implements OnInit {
           if (response) {
             this.setCommentDetails(response);
           }
+        },
+        (error) => {
+          
         })
     }
   }
@@ -52,10 +58,6 @@ export class GetCommentsComponent implements OnInit {
     }
     if (this.comments && this.comments.length) this.users = this.comments.length;
     console.log(this.comments);
-  }
-
-  getComment(id) {
-
   }
 
   addComment() {
@@ -79,6 +81,6 @@ export class GetCommentsComponent implements OnInit {
       } else {
         window.clearInterval(scrollToTop);
       }
-    }, 16);
+    }, 8);
   }
 }

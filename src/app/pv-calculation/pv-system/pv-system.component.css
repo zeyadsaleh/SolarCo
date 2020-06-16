@@ -263,3 +263,7 @@ body { padding-top:30px; }
 		display: inline-block;
 		margin: 100px auto;
 	}
+
+	.unautherized{
+		margin: 230px auto;
+	  }

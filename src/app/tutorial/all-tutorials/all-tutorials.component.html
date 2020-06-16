@@ -3,37 +3,37 @@
 <!-- <div class="bar"></div> -->
 
 <div class="container" *ngIf="!isLoading && !noResponse">
-    <div class="row justify-content-center mt-3" *ngIf="user || contractor || category">
-        <h2 class="m-2 bg-dark text-white p-2 rounded shadow text-center"
+    <div class="row justify-content-center mt-2" *ngIf="user || contractor || category">
+        <h2 class="m-2 bg-dark text-white p-1 rounded shadow text-center"
             *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && user" [routerLink]="['/profile']">
             User: {{ user.name }}</h2>
-        <h2 class="m-2 bg-dark text-white p-2 rounded shadow text-center" *ngIf="contractor"
+        <h2 class="m-2 bg-dark text-white p-1 rounded shadow text-center" *ngIf="contractor"
             [routerLink]="['/profile/contractors',contractor.id]">Contractor: {{ contractor.name }}</h2>
-        <h2 class="m-2 bg-dark text-white p-2 rounded shadow text-center" *ngIf="category">
+        <h2 class="m-2 bg-dark text-white p-1 rounded shadow text-center" *ngIf="category">
             Category: {{ category.category }}
         </h2>
     </div>
-    <div class="row justify-content-center mt-2">
+    <div class="row justify-content-center mt-4">
         <a class="nav-link btn btn-lg shadow rounded btn-outline-success"
             *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn()"
             [routerLink]="['/blog/create']">Add More
             Posts!</a>
     </div>
-    <div *ngIf="successMsg" class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ successMsg }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="successMsg=''">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div *ngIf="warningMsg" class="alert alert-warning alert-dismissible fade show" role="alert">
-        {{ warningMsg }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="warningMsg=''">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="row justify-content-center body" *ngIf="tutorials.length > 0">
+    <div class="row justify-content-center body" *ngIf="tutorials && tutorials.length > 0">
+        <div *ngIf="successMsg" class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ successMsg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="successMsg=''">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div *ngIf="warningMsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ warningMsg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="warningMsg=''">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <section class="cards-wrapper">
-            <div class="card-grid-space col-lg-12 mb-4"
+            <div class="card-grid-space col-lg-12 mb-3"
                 *ngFor="let tutorial of tutorials | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
                 <div class="num">{{ i+1 }}
                     <a href="#delete" type="button" class="btn btn-danger btn-sm text-white" title="Delete"

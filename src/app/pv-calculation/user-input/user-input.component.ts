@@ -37,19 +37,6 @@ export class UserInputComponent implements OnInit {
     }
   }
 
-  // getLocation() {
-  // this.geolocation.requestLocation(location => {
-  //   if (location) {
-  //     console.log(location);
-  //     this.client_request["lat"] = +(location.latitude - 0.004553999999998837 * (location.accuracy / 8741)).toFixed(6);
-  //     this.client_request["long"] = +(location.longitude + 0.015978000000000492 * (location.accuracy / 8741)).toFixed(6);
-  //     this.client_request["src"] = this.geolocation.getMapLink(location);
-  //     console.log(this.geolocation.getMapLink(location));
-  //     this.ignore = true;
-  //   }
-  // });
-  // }
-
   getLoc() {
     this.location = !this.location;
   }

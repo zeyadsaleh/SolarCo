@@ -26,7 +26,7 @@
           <p>{{post.description}}</p>
           <mat-card class="text-center justify-content-center mt-2">
             <mat-card-content class="border border-danger p-1 text-center">
-              <table class="table table-sm table-borderless">
+              <table class="table table-sm table-borderless" [routerLink]="['/pv-system/',post.system_id]">
                 <tbody>
                   <tr>
                     <th>Panel_nums</th>
@@ -82,7 +82,7 @@
 
 </div>
 
-<div *ngIf="errorMessage">
+<div class="errorMessage" *ngIf="errorMessage">
   <h2 class="text-center mt-5 mb-5">{{errorMessage}}</h2>
 </div>
 

@@ -22,6 +22,9 @@ export class GetRatesComponent implements OnInit {
           this.setRateDetails(response);
           console.log(response);
         }
+      },
+      (error) => {
+        
       })
   }
 

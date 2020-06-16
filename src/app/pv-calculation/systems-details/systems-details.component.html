@@ -2,6 +2,12 @@
 
 <div class="container" *ngIf="!isLoading && !noResponse">
     <div class="row justify-content-center mb-2">
+        <div *ngIf="error" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+            {{ error }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <div class="col-md-9 col-lg-5 m-2"
             *ngFor="let system of systems_details | paginate: { itemsPerPage: 4, currentPage: p }">
             <div class="flip-card">

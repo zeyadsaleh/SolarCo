@@ -17,6 +17,7 @@ export class PvSystemComponent implements OnInit {
   panelOpenState2: boolean = false;
   panelOpenState3: boolean = false;
   error: string;
+  unautherized: string;
   isLoading: boolean = true;
   noResponse: boolean = false;
 
@@ -37,16 +38,23 @@ export class PvSystemComponent implements OnInit {
   }
 
   getSystemDetails(id) {
-    this.data.getCalculation(id, response => {
-      if (response) {        
-        this.system_data = response;
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 500);
-      } else {
-        this.router.navigate(['pv-system/user-info']);
-      }
-    });
+    this.data.getCalculation(id,
+      response => {
+        if (response) {
+          this.system_data = response;
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 400);
+        } else {
+          this.router.navigate(['pv-system/user-info']);
+        }
+      },
+      error => {
+        this.unautherized = error.error.error;
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 200);
+      });
   }
 
   publish() {
@@ -55,26 +63,25 @@ export class PvSystemComponent implements OnInit {
         this.__service.setData(this.system_data);
         this.router.navigate(['create/post']);
       } else {
-        console.log("this Post is published");
+        this.error = "this Post is published";
       }
     }
   }
 
   delete() {
     if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER' && this.tokenAuth['userData']['id'] == this.system_data['system']['user_id']) {
-      this.data.delCalculation(this.system_data['system']['id'], response => {
-        if (response && response['error']) {
-          if (response['error']) this.error = response['error'];
-        } else {
+      this.data.delCalculation(this.system_data['system']['id'],
+        (response) => {
           this.router.navigate(['profile/systems']);
-        }
-      });
+        },
+        (error) => {
+          this.error = error.error.error;
+        });
     }
   }
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }

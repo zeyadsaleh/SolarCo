@@ -42,6 +42,9 @@ export class CreateRateComponent implements OnInit {
               if (response) {
                 console.log(response);
               }
+            },
+            (error) => {
+
             })
         } else {
           this.__service.updateRate(this.request_data['offer_id'], this.request_data).subscribe(
@@ -49,6 +52,9 @@ export class CreateRateComponent implements OnInit {
               if (response) {
                 console.log(response);
               }
+            },
+            (error) => {
+
             })
         }
       }
@@ -71,6 +77,9 @@ export class CreateRateComponent implements OnInit {
             this.current_rate = response['rate'];
             console.log(response);
           }
+        },
+        (error) => {
+          
         })
     }
   }
