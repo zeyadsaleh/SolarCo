@@ -45,6 +45,7 @@ export class OfferComponent implements OnInit {
         //for approval dim
         if (o.status == 'accepted') {
           this.isApproved = true
+          console.log("o ->" + o);         
           this.onApproveOffer.emit(o.id);
         }
         // For permissions
