@@ -32,15 +32,12 @@ export class ForgetPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.__service.Data.subscribe((data) => {
       if (data) {
-        console.log(data); 
         this.userData.userType = data;
       }else{
-        console.log("err"+data);
       }
     });
 
     this._routeSubscription = this._actvaedRoutes.queryParamMap.subscribe((queryParamMap) => {
-      console.log(queryParamMap.has('access-token'));
       if (queryParamMap.has('access-token')) {
         this.is_reset = false;    
         this.title = "Change password";
@@ -57,11 +54,9 @@ export class ForgetPasswordComponent implements OnInit {
     }).subscribe(
       res => {
         this.submitted = false;
-        console.log(res);
       } ,   
       error => {
         this.submitted = false;
-        console.log(error);
         this.error = error.error.errors;
       } 
     );
@@ -75,12 +70,10 @@ export class ForgetPasswordComponent implements OnInit {
     }).subscribe(
       res => {
         this.submitted = false;
-        console.log(res);
         this.router.navigate(['']);
       }, 
       error => {
         this.submitted = false;
-        console.log(error);
         this.error = error.error.errors;
       } 
     );

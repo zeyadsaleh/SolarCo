@@ -26,9 +26,9 @@
             <li *ngIf="tokenAuthService.currentUserType == 'USER' && tokenAuthService.userSignedIn()" class="nav-item">
               <a class="nav-link " [routerLink]="['/profile/posts']" style="font-size: 16px;">POSTS</a> -->
             <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item mt-1"><a class="nav-link"
-                [routerLink]="['/notifications']">
+                [routerLink]="['/notifications']" (click)="updateAll()">
                 <p class="m-0 icon">
-                  <span class="circle">99</span>
+                  <span class="circle" *ngIf="countNotifications > 0">{{countNotifications}}</span>
                   <mat-icon matBadge="5454" matBadgeColor="warn" class="">notifications</mat-icon>
                 </p>
               </a>

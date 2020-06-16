@@ -95,7 +95,6 @@ export class ChatComponent implements OnInit {
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }

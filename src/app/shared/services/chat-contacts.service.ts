@@ -18,7 +18,7 @@ export class ChatContactsService {
 
     return usersRequest.fetchNext().then(users => {
       if (users instanceof Array) {
-        console.log(users);
+        // console.log(users);
         // tslint:disable-next-line: no-angle-bracket-type-assertion
         this.contacts = (<unknown>users) as CometChat.UserObj[];
       }
@@ -43,7 +43,7 @@ export class ChatContactsService {
   }
 
   private setUserStatus(usr: CometChat.UserObj, status: string) {
-    console.log(`Setting status: ${status} for ${usr}`);
+    // console.log(`Setting status: ${status} for ${usr}`);
 
     if (!this.contacts) {
       return;

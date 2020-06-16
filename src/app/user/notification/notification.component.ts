@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { AngularTokenService } from 'angular-token';
 
-@Component({
+@Component({ 
   selector: 'app-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css']
@@ -30,20 +30,15 @@ export class NotificationComponent implements OnInit {
 
     this.notificationService.getNotifications().subscribe((res) => {
       if (res) {
-        console.log("res: ", res)
         for (let notiObj of res.data) {
           this.notifications.push(notiObj);
         }
-        console.log("noti", this.notifications)
-      } else {
-        console.log("no notifications received")
       }
     });
   }
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }

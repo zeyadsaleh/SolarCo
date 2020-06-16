@@ -35,15 +35,16 @@ export class ContactUsComponent implements OnInit {
      this.http.post(this.offerUrl,this.contactObj).subscribe(
       res => {
          this.myAnchor.nativeElement.click();
-         console.log(res);
+        //  console.log(res);
          this.contactObj.name = '';
          this.contactObj.email = '';
          this.contactObj.phone = '';
          this.contactObj.message = '';
          this.submitted = false;
+         this.errorMessage = '';
       },
       error => {
-        console.log(error);
+        // console.log(error);
         this.submitted = false;
         this.errorMessage = error.error.error;
       }

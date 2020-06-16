@@ -35,7 +35,7 @@ export class HomepageComponent implements OnInit {
       if (res) {
         for (let o of res) {
           this.posts.push(o);
-          console.log(o)
+          // console.log(o)
         }
       } else {
       }

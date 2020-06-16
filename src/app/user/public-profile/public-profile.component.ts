@@ -26,7 +26,6 @@ export class PublicProfileComponent implements OnInit {
       if(this.router.url.includes('clients')) {
 
         this.userService.getClient(params.get('id')).subscribe(res => {
-          console.log(res);
           this.user = res;
           this.isContractor = false;
           this.user.posts.forEach(post => {
@@ -36,13 +35,12 @@ export class PublicProfileComponent implements OnInit {
           // this.setOffers(res['offers']);
           setTimeout(() => {
             this.isLoading = false;
-          }, 600);
+          }, 500);
         })
 
       } else if (this.router.url.includes('contractors')) {
 
         this.userService.getContractor(params.get('id')).subscribe(res => {
-          console.log(res);
           this.user = res;
           this.isContractor = true;
           this.setOffers(res['offers']);
@@ -50,7 +48,7 @@ export class PublicProfileComponent implements OnInit {
           // this.acceptedOffers = res.offers.lengthl;
           setTimeout(() => {
             this.isLoading = false;
-          }, 600);
+          }, 500);
         })
 
       }
@@ -62,13 +60,10 @@ export class PublicProfileComponent implements OnInit {
       if (offer['status'] == 'accepted') this.acceptedOffers++;
       this.allOffers++;
     }
-    console.log(this.acceptedOffers);
-    console.log(this.allOffers);
   }
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }

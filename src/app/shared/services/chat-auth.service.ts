@@ -19,7 +19,7 @@ export class ChatAuthService {
     CometChat.init(appId, appSetting).then(
       msg => console.log('Initialized succesfull: ', msg),
       err => {
-        console.log('App init failed', err);
+        // console.log('App init failed', err);
         // this.snackBar.open(
         //   'App initialization failed. Please refresh the page.'
         // );
@@ -31,7 +31,7 @@ export class ChatAuthService {
     return CometChat.login(userId, COMETCHAT_CONSTANTS.API_KEY)
       .then(usr => {
         this.currentUser = usr
-        console.log(usr);
+        // console.log(usr);
       }, (this.currentUser = null))
       .then(_ => console.log('User logged in'), console.error);
   }
@@ -49,7 +49,7 @@ export class ChatAuthService {
       },
       body: JSON.stringify(data) // body data type must match "Content-Type" header
     });
-    console.log(response);
+    // console.log(response);
     this.currentUser = response;
     return response.json(); // parses JSON response into native JavaScript objects
   }
