@@ -19,7 +19,8 @@ export class SinglePostComponent implements OnInit {
   currentUserID: any;
   applied: boolean = false;
   approved: boolean = false;
-  
+  offer_id: number;
+
   constructor(private postService: PostService,
     private route: ActivatedRoute,
     private router: Router,
@@ -75,11 +76,12 @@ export class SinglePostComponent implements OnInit {
 
   onDeleteOffer() {
     this.applied = false;
-    
+
   }
 
-  onApproveOffer(id) {
+  onApproveOffer($event) {
     this.approved = true;
+    this.offer_id = $event;
   }
 
   timeOut() {
