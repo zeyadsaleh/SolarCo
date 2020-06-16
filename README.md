@@ -1,5 +1,5 @@
 # QR-Code To Deployment web
-<img src="https://github.com/zeyadsaleh/SolarCo/blob/develop/solar-qr.png" alt="alt text" width="100">
+<img src="https://github.com/zeyadsaleh/SolarCo/blob/develop/solar-qr.png" alt="alt text" width="400">
 
 # SolarCo (Front End)
 
