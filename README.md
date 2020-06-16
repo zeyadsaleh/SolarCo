@@ -31,6 +31,9 @@ You should have `node` and `angular cli` installed. If you don't, install node f
 - **HTML** => Templates and views structure of the application
 - **CSS**, **Angular Material** & **Bootstrap** => Styling of the application
 
+# QR-Code To Deployment web
+<img src="https://github.com/zeyadsaleh/SolarCo/blob/develop/solar-qr.png" alt="alt text" width="250">
+
 ### License
 MIT License
 
