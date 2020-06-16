@@ -75,9 +75,10 @@ export class SinglePostComponent implements OnInit {
 
   onDeleteOffer() {
     this.applied = false;
+    
   }
 
-  onApproveOffer() {
+  onApproveOffer(id) {
     this.approved = true;
   }
 

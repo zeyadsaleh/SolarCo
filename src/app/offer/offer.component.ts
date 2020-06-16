@@ -22,7 +22,7 @@ export class OfferComponent implements OnInit {
   type: string = '';
   isApproved: boolean = false;
   @Output() onDeleteOffer = new EventEmitter()
-  @Output() onApproveOffer = new EventEmitter()
+  @Output() onApproveOffer = new EventEmitter<number>()
   submitted: boolean = false;
   currentOffer: any = {};
   offers_count = '';
@@ -45,6 +45,7 @@ export class OfferComponent implements OnInit {
         //for approval dim
         if (o.status == 'accepted') {
           this.isApproved = true
+          this.onApproveOffer.emit(o.id);
         }
         // For permissions
         if (this.type == 'CONTRACTOR' &&
@@ -97,7 +98,7 @@ export class OfferComponent implements OnInit {
     offer.status = 'accepted';
     this.onEdit(offer);
     this.isApproved = true;
-    this.onApproveOffer.emit(); //remove the update and delete post after approval of the post
+    this.onApproveOffer.emit(offer.id); //remove the update and delete post after approval of the post
     this.postService.updatePost(offer.post.id, { closed: true }).subscribe(
       res => {
         // this.shareService.setData(true);
