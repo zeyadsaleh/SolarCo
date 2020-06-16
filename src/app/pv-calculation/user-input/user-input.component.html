@@ -15,7 +15,6 @@
             </div>
             <mat-card-content class="border rounded p-1">
                 <mat-form-field class="example-form-field">
-                    <!-- <h5>Electricity Consumption</h5> -->
                     <mat-label>Electricity Consumption</mat-label>
                     <input matInput type="number" [(ngModel)]="client_request['consump']" min="0" max="1000" />
                     <mat-hint align="start"><strong>Consumption per month (kwh)</strong> </mat-hint>
@@ -33,7 +32,7 @@
                         electricity cut-off.. or to be a main source for light electric loads.. it's a best
                         choice to start with solar energy with less cost!</p>
                 </div>
-                <div class="" *ngIf="location">
+                <div *ngIf="location">
                     <hr>
                     <app-map></app-map>
                 </div>
@@ -41,15 +40,15 @@
             <mat-card-actions>
                 <button mbuttont-button class="btn rounded shadow btn-outline-success" *ngIf="!location"
                     (click)="getLoc()">Get Location</button>
-                <button mat-button class="btn rounded shadow btn-outline-primary m-3"
+                <button mat-button class="btn rounded shadow btn-outline-primary m-2"
                     [disabled]="client_request['consump'] < 1" (click)="confirm()">Confirm</button>
                 <button mat-button class="btn rounded btn-outline-dark" *ngIf="location" (click)="getLoc()">Ignore
                     Location</button>
             </mat-card-actions>
             <mat-card-footer class="text-center">
-                <p class="bg-warning text-dark m-2 rounded text-center" *ngIf="!location">ignore Get
-                    location for current location!</p>
-                <p class="bg-success text-dark m-3 rounded text-center" *ngIf="location">We are permitted to get
+                <p class="bg-warning text-dark mr-3 ml-3 rounded text-center p-1" *ngIf="!location">Ignoring Get
+                    location, will set system for your current location now!</p>
+                <p class="bg-success text-dark mr-3 ml-3 rounded text-center p-1" *ngIf="location">We are permitted to get
                     location!</p>
             </mat-card-footer>
         </mat-card>

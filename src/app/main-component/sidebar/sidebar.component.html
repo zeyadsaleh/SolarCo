@@ -1,6 +1,7 @@
 <div id="mySidenav" class="sidenav">
-    <a href= "#" id="projects">project</a>
-    <a href="tutorials" id="blog">Blog</a>
+    <a *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()" href="posts" id="posts">Posts</a>
+    <a *ngIf="tokenAuthService.currentUserType == 'USER' && tokenAuthService.userSignedIn()" href="profile/posts" id="posts">Posts</a>   
+    <a href="blog" id="blog">Blog</a>
     <a href="contact-us" id="contact">Contact</a>
     <a href="about-us" id="about">About</a>
 </div>

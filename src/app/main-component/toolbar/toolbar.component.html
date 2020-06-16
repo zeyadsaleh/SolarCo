@@ -18,10 +18,10 @@
 
           </ul>
           <ul class="nav navbar-nav menu_nav ml-auto">
-            <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()"
+            <!-- <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()"
               class="nav-item"><a class="nav-link " [routerLink]="['/posts']" style="font-size: 16px;">POSTS</a>
             <li *ngIf="tokenAuthService.currentUserType == 'USER' && tokenAuthService.userSignedIn()" class="nav-item">
-              <a class="nav-link " [routerLink]="['/profile/posts']" style="font-size: 16px;">POSTS</a>
+              <a class="nav-link " [routerLink]="['/profile/posts']" style="font-size: 16px;">POSTS</a> -->
             <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item mt-1"><a class="nav-link"
                 [routerLink]="['/notifications']">
                 <p class="m-0">
@@ -29,14 +29,14 @@
                 </p>
               </a>
             </li>
-            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link mt-1" [routerLink]="['/inbox']"
-                style="font-size: 16px;">
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link mt-1"
+                [routerLink]="['/inbox']" style="font-size: 16px;">
                 <span class="material-icons">
                   chat_bubble
                 </span></a>
             </li>
-            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link mt-1" [routerLink]="['/profile']"
-                style="font-size: 16px;">
+            <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link mt-1"
+                [routerLink]="['/profile']" style="font-size: 16px;">
                 <span class="material-icons">
                   account_box
                 </span></a>
@@ -46,7 +46,7 @@
             <li *ngIf="!tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link"
                 [routerLink]="['/register']" style="font-size: 16px;">Sign Up</a>
             <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link" [routerLink]="['/']"
-                (click)="signOut()" style="font-size: 16px;">Log Out</a>
+                (click)="signOut()" style="font-size: 16px;"> LOGOUT</a>
           </ul>
         </div>
       </div>

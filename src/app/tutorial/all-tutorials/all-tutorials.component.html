@@ -1,53 +1,112 @@
 <!-- <app-page-banner [title]="title"></app-page-banner> -->
 
 <div class="bar"></div>
+
 <div class="container" *ngIf="!isLoading && !noResponse">
     <div class="row justify-content-center mt-3" *ngIf="user || contractor || category">
-        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center"
+        <h2 class="m-2 bg-dark text-white p-2 rounded shadow text-center"
             *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && user" [routerLink]="['/profile']">
-            User: {{ user.name }}</h1>
-        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center"
-            *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor"
-            [routerLink]="['/profile/contractors',contractor.id]">Contractor: {{ contractor.name }}</h1>
-        <h1 class="m-3 bg-dark text-white p-3 rounded shadow text-center" *ngIf="category">
+            User: {{ user.name }}</h2>
+        <h2 class="m-2 bg-dark text-white p-2 rounded shadow text-center" *ngIf="contractor"
+            [routerLink]="['/profile/contractors',contractor.id]">Contractor: {{ contractor.name }}</h2>
+        <h2 class="m-2 bg-dark text-white p-2 rounded shadow text-center" *ngIf="category">
             Category: {{ category.category }}
-        </h1>
+        </h2>
     </div>
-    <div class="row justify-content-center mt-3">
+    <div class="row justify-content-center mt-2">
         <a class="nav-link btn btn-lg shadow rounded btn-outline-primary"
             *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn()"
-            [routerLink]="['/tutorials/create']">Add More
+            [routerLink]="['/blog/create']">Add More
             Posts!</a>
     </div>
-    <div *ngIf="msg" class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ msg }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="msg=''">
+    <div *ngIf="successMsg" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ successMsg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="successMsg=''">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div *ngIf="warningMsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ warningMsg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="warningMsg=''">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="row justify-content-center body" *ngIf="tutorials.length > 0">
         <section class="cards-wrapper">
-            <div class="card-grid-space"
-                *ngFor="let tutorial of tutorials | paginate: { itemsPerPage: 9, currentPage: p }; let i = index">
+            <div class="card-grid-space col-lg-12 mb-4"
+                *ngFor="let tutorial of tutorials | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
                 <div class="num">{{ i+1 }}
-                    <button *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor"
-                        class="btn btn-sm btn-danger" (click)="tutRemove(tutorial.id)">Remove</button>
-                    <button *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && user"
-                        class="btn btn-sm btn-danger" (click)="favRemove(tutorial.id)">Remove</button><button
-                        *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && !user"
-                        class="btn btn-sm btn-success" (click)="addFav(tutorial.id)">Add</button></div>
-                <a class="card" [routerLink]="['/tutorials',tutorial.id]"
-                    style="--bg-img: url(https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&resize_w=1500&url=https://codetheweb.blog/assets/img/posts/html-syntax/cover.jpg)">
+                    <a href="#delete" type="button" class="btn btn-danger btn-sm text-white" title="Delete"
+                        data-toggle="modal"
+                        *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor">
+                        <span class="fa fa-trash"></span>
+                    </a>
+                    <a href="#remove" type="button" class="btn btn-danger btn-sm text-white" title="Delete"
+                        data-toggle="modal"
+                        *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && user">
+                        <span class="fa fa-trash"></span>
+                    </a>
+                    <button *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && !user"
+                        class="btn btn-sm btn-success" (click)="addFav(tutorial.id)">Add</button>
+                </div>
+                <a class="card" [routerLink]="['/blog',tutorial.id]" style="--bg-img: url(assets/images/solars.jpg)">
                     <div>
                         <div class="date">{{ tutorial.created_at | slice:0:10 }}</div>
                         <h1 class="mt-3">{{ tutorial.title }}</h1>
-                        <p>{{ tutorial.body | slice:0:120 }}..</p>
+                        <p>{{ tutorial.body | slice:0:100 }}..</p>
                         <h5 class="mt-2 mb-3">By: {{tutorial.contractor.name }}</h5>
                         <div class="tags">
                             <div class="tag text-dark">{{tutorial.category.category }}</div>
                         </div>
                     </div>
                 </a>
+                <hr>
+                <div id="delete" class="modal fade"
+                    *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor">
+                    <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="icon-box">
+                                    <i class="material-icons">&#xE5CD;</i>
+                                </div>
+                                <h4 class="modal-title">Are you sure?</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Do you really want to Remove This from your Blog?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                    (click)="tutRemove(tutorial.id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="remove" class="modal fade"
+                    *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && user">
+                    <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="icon-box">
+                                    <i class="material-icons">&#xE5CD;</i>
+                                </div>
+                                <h4 class="modal-title">Are you sure?</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Do you really want to Remove This from your Favorite?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                    (click)="favRemove(tutorial.id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>

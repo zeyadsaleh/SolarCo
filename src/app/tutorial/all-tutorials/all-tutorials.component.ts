@@ -18,7 +18,8 @@ export class AllTutorialsComponent implements OnInit {
   category: any;
   contractor: any;
   user: any;
-  msg: string;
+  successMsg: string;
+  warningMsg: string;
 
   constructor(private __service: TutorialService,
     public tokenAuth: AngularTokenService,
@@ -134,9 +135,9 @@ export class AllTutorialsComponent implements OnInit {
       (res) => {
         console.log(res);
         if (res && res['exist']) {
-          this.msg = res['exist'];
+          this.warningMsg = res['exist'];
         } else {
-          this.msg = "added Successfully!";
+          this.successMsg = "added Successfully!";
         }
       });
   }
@@ -172,7 +173,7 @@ export class AllTutorialsComponent implements OnInit {
     let scrollToTop = window.setInterval(() => {
       let pos = window.pageYOffset;
       if (pos > 0) {
-        window.scrollTo(0, pos - 10); // how far to scroll on each step
+        window.scrollTo(0, pos - 30); // how far to scroll on each step
       } else {
         window.clearInterval(scrollToTop);
       }

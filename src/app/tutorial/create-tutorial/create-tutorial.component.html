@@ -5,31 +5,65 @@
         <div class="col-8 text-center m-3 p-3 border rounded shadow">
             <h1 class="bg-dark p-1 rounded shadow text-white">Create Tutorial</h1>
             <hr>
-            <!-- <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
-                <p *ngFor="let err of error">{{ err }}</p>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="error=[]">
+            <div class="alert alert-danger alert-dismissible fade show mt-1 p-auto" role="alert" *ngIf="error">
+                <span>{{ error }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float: right;">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div> -->
+            </div>
             <form #post="ngForm" (ngSubmit)="onSubmit(post)">
-
-                <div class="form-group border p-2">
+                <div class="form-group border p-4">
                     <h3 for="title" class="bg-primary text-white rounded">Title</h3>
-                    <input type="text" class="form-control" placeholder="title" required minlength="5" id="title"
-                        [(ngModel)]="post['title']" name="title" #title="ngModel" />
+                    <input type="text" class="form-control" placeholder="title" required minlength="3" maxlength="50"
+                        id="title" [(ngModel)]="post['title']" name="title" #title="ngModel" />
+                    <div class="alert alert-danger alert-dismissible fade show mt-1 p-auto" role="alert"
+                        *ngIf="title.touched && !title.valid">
+                        <span *ngIf="title.errors.required">Title is required </span>
+                        <span *ngIf="title.errors.minlength">Title should be minimum
+                            {{title.errors.minlength.requiredLength}}
+                            characters </span>
+                        <span *ngIf="title.errors.maxlength">Title should be maximum
+                            {{title.errors.maxlength.requiredLength}}
+                            characters </span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                            style="float: right;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group border p-2">
+                <div class="form-group border p-4">
                     <h3 for="body" class="bg-primary text-white rounded">Body</h3>
-                    <textarea class="form-control" id="body" placeholder="body" required minlength="50"
-                        [(ngModel)]="post['body']" name="body" #body="ngModel" rows="8"></textarea>
+                    <textarea class="form-control" id="body" placeholder="body" required minlength="50" maxlength="5000"
+                        [(ngModel)]="post['body']" name="body" #body="ngModel" rows="6"></textarea>
+                    <div class="alert alert-danger alert-dismissible fade show mt-1 p-auto" role="alert"
+                        *ngIf="body.touched && !body.valid">
+                        <span *ngIf="body.errors.required">Body is required </span>
+                        <span *ngIf="body.errors.minlength">Body should be minimum
+                            {{body.errors.minlength.requiredLength}}
+                            characters </span>
+                        <span *ngIf="body.errors.maxlength">Body should be maximum
+                            {{body.errors.maxlength.requiredLength}}
+                            characters </span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true" style="float: right;">&times;</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group border p-2">
+                <div class="form-group border p-4">
                     <h3 for="category" class="bg-primary text-white rounded">Categories</h3>
                     <select class="form-control" [(ngModel)]="post['category']" required name="category" id="category"
-                        #tag="ngModel">
+                        #category="ngModel">
                         <option *ngFor="let category of categories" [value]="category.category">{{category.category}}
                         </option>
                     </select>
+                    <div class="alert alert-danger alert-dismissible fade show mt-1 p-auto" role="alert"
+                        *ngIf="category.touched && !category.valid">
+                        <span *ngIf="category.errors.required">Category is required</span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                            style="float: right;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary rounded shadow mr-3"
                     [disabled]="!post.form.valid">Post</button>

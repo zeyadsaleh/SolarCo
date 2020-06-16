@@ -25,7 +25,7 @@
                       {{offer.proposal}}</a>
                     <div class="mic-info">
                       By: <a
-                        [routerLink]="type=='CONTRACTOR' && currentUserID == offer.contractor_id ? ['/profile'] : ['/profile/contractors/'+offer.contractor_id]">{{offer.contractor.name}}l</a>
+                        [routerLink]="type=='CONTRACTOR' && currentUserID == offer.contractor_id ? ['/profile'] : ['/profile/contractors/'+offer.contractor_id]">{{offer.contractor.name}}</a>
                       on {{offer.created_at}}
                     </div>
                   </div>

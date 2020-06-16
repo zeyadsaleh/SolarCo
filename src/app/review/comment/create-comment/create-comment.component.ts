@@ -68,7 +68,9 @@ export class CreateCommentComponent implements OnInit {
             (response) => {
               if (response) {
                 console.log(response);
-                this.show = true;
+                setTimeout(() => {
+                  this.show = false;
+                }, 200);
               }
             })
         } else {
@@ -76,7 +78,9 @@ export class CreateCommentComponent implements OnInit {
             (response) => {
               if (response) {
                 console.log(response);
-                this.show = true;
+                setTimeout(() => {
+                  this.show = false;
+                }, 300);
               }
             })
         }

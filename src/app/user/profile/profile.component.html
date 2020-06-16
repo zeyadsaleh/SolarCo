@@ -75,20 +75,20 @@
                   Pervious Posts </a>
 
               </li>
-              <li *ngIf="type=='CONTRACTOR'" class="nav-item" [routerLink]="['/tutorials/contractors', userData.id]"
-                [class]="subPage == 'tutorial' ? 'active' : ''" (click)="changeSubpage($event)">
+              <li *ngIf="type=='CONTRACTOR'" class="nav-item" [routerLink]="['/blog/contractors', userData.id]"
+                [class]="subPage == 'blog' ? 'active' : ''" (click)="changeSubpage($event)">
 
-                <a name="tutorial" class="nav-link" [class]="subPage == 'tutorial' ? 'active' : ''">
+                <a name="blog" class="nav-link" [class]="subPage == 'blog' ? 'active' : ''">
                   <i class="fa fa-check"></i>
-                  Tutorial </a>
+                  Blog </a>
 
               </li>
-              <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/tutorials/users',userData.id]"
+              <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/blog/users',userData.id]"
                 [class]="subPage == 'favorite' ? 'active' : ''" (click)="changeSubpage($event)">
 
                 <a name="favorite" class="nav-link" [class]="subPage == 'favorite' ? 'active' : ''">
                   <i class="fa fa-check"></i>
-                  Favorite Tutorial </a>
+                  Favorite Articles </a>
               </li>
               <li class="nav-item" [routerLink]="['/profile/edit']" [class]="subPage == 'edit' ? 'active' : ''"
                 (click)="changeSubpage($event)">

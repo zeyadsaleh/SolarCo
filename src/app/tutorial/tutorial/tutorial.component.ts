@@ -14,7 +14,9 @@ export class TutorialComponent implements OnInit {
   tutorial: any;
   isLoading: boolean = true;
   noResponse: boolean = false;
-  msg: string;
+  added: boolean = true;
+  successMsg: string;
+  warningMsg: string;
   contractor_id: number;
 
   constructor(private __service: TutorialService,
@@ -28,41 +30,73 @@ export class TutorialComponent implements OnInit {
       this.contractor_id = this.tokenAuth['userData']['id'];
     }
     this.route.params.subscribe(params => {
-      this.__service.getTutorial(+params['id']).subscribe(
-        (response) => {
-          if (response) {
-            console.log(response);
-            this.tutorial = response;
-            setTimeout(() => {
-              this.isLoading = false;
-            }, 300);
-          } else {
-            this.router.navigate(['404']);
-          }
-        })
+      if (Number.isInteger(+params['id'])) {
+        this.getTut(+params['id']);
+        this.checkIfAdded(+params['id']);
+      } else {
+        this.router.navigate(['404']);
+      }
     });
   }
 
-  addFav() {
-    this.__service.setFavorite({ "tutorial_id": this.tutorial['id'] }).subscribe(
-      (res) => {
-        console.log(res);
-        if (res && res['exist']) {
-          this.msg = res['exist'];
+  getTut(id) {
+    this.__service.getTutorial(id).subscribe(
+      (response) => {
+        if (response) {
+          console.log(response);
+          this.tutorial = response;
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 300);
         } else {
-          this.msg = "added Successfully!";
+          this.router.navigate(['404']);
         }
       });
+  }
+
+  checkIfAdded(id) {
+    this.__service.getFavorite(id).subscribe(
+      (response) => {
+        if (response) {
+          console.log(response);
+          this.added = true;
+        }
+      });
+  }
+
+  addFav() {
+    if (!this.added) {
+      this.__service.setFavorite({ "tutorial_id": this.tutorial['id'] }).subscribe(
+        (res) => {
+          console.log(res);
+          if (res && res['exist']) {
+            this.warningMsg = res['exist'];
+          } else {
+            this.successMsg = "added Successfully!";
+          }
+        });
+      this.added = true;
+    }
+  }
+
+  removeFav() {
+    if (this.added) {
+      this.__service.deleteFavorite(this.tutorial['id']).subscribe(
+        (res) => {
+          this.added = false;
+          this.successMsg = "Removed successfully!";
+        });
+    }
   }
 
   tutRemove() {
     if (this.tutorial.contractor_id == this.contractor_id) {
       this.__service.deleteTutorial(this.tutorial['id']).subscribe(
         (res) => {
-          this.router.navigate(['tutorials/contractors', this.contractor_id]);
+          this.router.navigate(['blog/contractors', this.contractor_id]);
         });
     } else {
-      this.msg = "Forbidden!";
+      this.successMsg = "Forbidden!";
     }
   }
 

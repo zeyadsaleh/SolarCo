@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class CreateTutorialComponent implements OnInit {
 
   post: Tutorial;
-  error = new Array;
+  error: string;
   categories = new Array;
 
   constructor(private __service: TutorialService, private router: Router) { }
@@ -30,11 +30,11 @@ export class CreateTutorialComponent implements OnInit {
       this.__service.setTutorial(post.value).subscribe(
         (response) => {
           console.log(response);
-          this.router.navigate(['tutorials/',response.id]);
+          this.router.navigate(['blog/',response.id]);
         },
         error => {
           console.log(error);
-          // this.error = error.error;
+          this.error = error.error.error;
         })
     }
   }
