@@ -12,7 +12,7 @@ import { AngularTokenService } from 'angular-token';
 })
 export class CreateCommentComponent implements OnInit {
 
-  @Input() offers;
+  @Input() offer_id: number;
   @Input() tutorial_id: number;
   req_data: object;
   edit: boolean = false;
@@ -31,9 +31,8 @@ export class CreateCommentComponent implements OnInit {
     if (this.router.url.includes('blog')) {
       this.req_data['tutorial_id'] = this.tutorial_id;
     } else {
-      this.getOfferId();
-      if (this.req_data && this.req_data['offer_id']) {
-        this.__service.getReview(this.req_data['offer_id']).subscribe(
+      if (this.offer_id) {
+        this.__service.getReview(this.offer_id).subscribe(
           (response) => {
             if (response) {
               if (response['review']) this.edit = true;
@@ -44,11 +43,11 @@ export class CreateCommentComponent implements OnInit {
     }
   }
 
-  getOfferId() {
-    for (let offer of this.offers) {
-      if (offer['status'] == 'accepted') this.req_data['offer_id'] = offer['id'];
-    }
-  }
+  // getOfferId() {
+  //   for (let offer of this.offers) {
+  //     if (offer['status'] == 'accepted') this.req_data['offer_id'] = offer['id'];
+  //   }
+  // }
 
   setComment() {
     if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
@@ -59,19 +58,24 @@ export class CreateCommentComponent implements OnInit {
               if (response) {
                 this.shareService.setData(response);
                 this.req_data['review'] = '';
+                setTimeout(() => {
+                  this.show = false;
+                }, 200);
               }
             },
             (error) => {
 
             })
         } else {
+          this.req_data['offer_id'] = this.offer_id;
           if (!this.edit) {
             this.__service.setReview(this.req_data).subscribe(
               (response) => {
                 if (response) {
+                  this.req_data['review'] = '';
                   setTimeout(() => {
                     this.show = false;
-                  }, 200);
+                  }, 300);
                 }
               },
               (error) => {
@@ -81,13 +85,14 @@ export class CreateCommentComponent implements OnInit {
             this.__service.updateReview(this.req_data['offer_id'], this.req_data).subscribe(
               (response) => {
                 if (response) {
+                  this.req_data['review'] = '';
                   setTimeout(() => {
                     this.show = false;
                   }, 300);
                 }
               },
               (error) => {
-                
+
               })
           }
         }

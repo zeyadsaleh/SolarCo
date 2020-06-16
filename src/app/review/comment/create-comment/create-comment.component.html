@@ -14,7 +14,7 @@
         </blockquote>
     </div>
     <div class="form-group" *ngIf="!edit || show">
-        <input class="form-control mb-2" minlength="5" maxlength="35" name="review" type="text"
+        <input class="form-control mb-2" minlength="5" maxlength="800" name="review" type="text"
             [(ngModel)]="req_data['review']">
         <button class="btn btn-success text-center" (click)="setComment()">Comment</button>
     </div>
