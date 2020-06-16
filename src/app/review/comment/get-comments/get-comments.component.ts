@@ -27,10 +27,12 @@ export class GetCommentsComponent implements OnInit {
       this.__tutService.getTutorialComments(this.tutorial_id).subscribe(
         (response) => {
           if (response) {
-            console.log(response);
             this.setCommentDetails(response);
             this.addComment();
           }
+        },
+        (error) => {
+          
         })
     } else {
       this.__service.getReviews(this.contractor_id).subscribe(
@@ -38,6 +40,9 @@ export class GetCommentsComponent implements OnInit {
           if (response) {
             this.setCommentDetails(response);
           }
+        },
+        (error) => {
+          
         })
     }
   }
@@ -50,12 +55,7 @@ export class GetCommentsComponent implements OnInit {
         this.comments.push({ "id": review['id'], "comment": review['review'], "date": review['updated_at'] });
       }
     }
-    this.users = this.comments.length;
-    console.log(this.comments);
-  }
-
-  getComment(id) {
-
+    if (this.comments && this.comments.length) this.users = this.comments.length;
   }
 
   addComment() {
@@ -79,6 +79,6 @@ export class GetCommentsComponent implements OnInit {
       } else {
         window.clearInterval(scrollToTop);
       }
-    }, 16);
+    }, 8);
   }
 }

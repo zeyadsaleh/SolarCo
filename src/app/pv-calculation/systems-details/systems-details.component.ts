@@ -11,6 +11,7 @@ import { AngularTokenService } from 'angular-token';
 export class SystemsDetailsComponent implements OnInit {
 
   systems_details = new Array;
+  error: string;
   isLoading: boolean = true;
   noResponse: boolean = false;
   title: string = 'Pv-Systems Details';
@@ -30,20 +31,22 @@ export class SystemsDetailsComponent implements OnInit {
   }
 
   getDetails() {
-    this.data.getCalculations(response => {
-      if (response && response['length'] > 0) {
-        this.systems_details = response;
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 500);
-        console.log(response);
-      }
-    });
+    this.data.getCalculations(
+      response => {
+        if (response && response['length'] > 0) {
+          this.systems_details = response;
+          setTimeout(() => {
+            this.isLoading = false;
+          }, 400);
+        }
+      },
+      error => {
+        this.error = error.error.error;
+      });
   }
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }
@@ -59,6 +62,6 @@ export class SystemsDetailsComponent implements OnInit {
       } else {
         window.clearInterval(scrollToTop);
       }
-    }, 16);
+    }, 8);
   }
 }

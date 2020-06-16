@@ -25,7 +25,7 @@ export class ChatComponent implements OnInit {
     private messagesService: MessagesService) {
 
     this.route.paramMap.subscribe(params => {
-      setTimeout(() => { this.timeOut() }, 40000);
+      setTimeout(() => { this.timeOut() }, 20000);
       if (params.has('id')) {
         this.userService.getContractor(params.get('id')).subscribe(res => {
           this.selectedUser = res;
@@ -33,8 +33,9 @@ export class ChatComponent implements OnInit {
         })
       } else {
         this.connected = true;
+        this.isLoading = false;
       }
-      this.isLoading = false;
+      // this.isLoading = false;
     })
   }
 
@@ -49,6 +50,7 @@ export class ChatComponent implements OnInit {
 
     this.chatService.channel.connected().subscribe(() => {
       this.connected = true;
+      this.isLoading = false;
     })
 
     this.chatService.channel.received().subscribe(res => {

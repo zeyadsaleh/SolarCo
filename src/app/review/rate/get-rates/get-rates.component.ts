@@ -8,9 +8,9 @@ import { OfferReviewService } from 'src/app/shared/services/offer-review.service
 })
 export class GetRatesComponent implements OnInit {
 
-  @Input() contractor_id:number;
+  @Input() contractor_id: number;
   rate: number = 0;
-  rate_obj: object = {"1":0, "2":0, "3":0, "4":0, "5":0}
+  rate_obj: object = { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 }
   users: number;
 
   constructor(private __service: OfferReviewService) { }
@@ -18,16 +18,18 @@ export class GetRatesComponent implements OnInit {
   ngOnInit(): void {
     this.__service.getRates(this.contractor_id).subscribe(
       (response) => {
-        if(response){
+        if (response) {
           this.setRateDetails(response);
-          console.log(response);
         }
+      },
+      (error) => {
+
       })
   }
 
-  setRateDetails(rates){
-    let tot_rates:number = 0;
-    for (let rate of rates){
+  setRateDetails(rates) {
+    let tot_rates: number = 0;
+    for (let rate of rates) {
       if (rate['rate'] == 1) this.rate_obj['1'] += 1;
       if (rate['rate'] == 2) this.rate_obj['2'] += 1;
       if (rate['rate'] == 3) this.rate_obj['3'] += 1;
@@ -36,10 +38,7 @@ export class GetRatesComponent implements OnInit {
       tot_rates += Number(rate['rate']);
     }
     this.users = rates['length']
-    this.rate = +(tot_rates/this.users).toFixed(2);
-    console.log(this.rate_obj);
-    console.log(this.rate);
-    console.log(this.users);
+    this.rate = +(tot_rates / this.users).toFixed(2);
   }
 
 }

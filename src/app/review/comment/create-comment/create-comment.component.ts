@@ -38,7 +38,6 @@ export class CreateCommentComponent implements OnInit {
             if (response) {
               if (response['review']) this.edit = true;
               this.req_data = response;
-              console.log(response);
             }
           })
       }
@@ -53,36 +52,42 @@ export class CreateCommentComponent implements OnInit {
 
   setComment() {
     if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
-      if (this.req_data['review'].length > 5) {
+      if (this.req_data['review'] && this.req_data['review'].length >= 5) {
         if (this.router.url.includes('blog')) {
           this.__tutService.setComment(this.req_data).subscribe(
             (response) => {
               if (response) {
-                console.log(response);
                 this.shareService.setData(response);
                 this.req_data['review'] = '';
               }
+            },
+            (error) => {
+
             })
         } else {
           if (!this.edit) {
             this.__service.setReview(this.req_data).subscribe(
               (response) => {
                 if (response) {
-                  console.log(response);
                   setTimeout(() => {
                     this.show = false;
                   }, 200);
                 }
+              },
+              (error) => {
+
               })
           } else {
             this.__service.updateReview(this.req_data['offer_id'], this.req_data).subscribe(
               (response) => {
                 if (response) {
-                  console.log(response);
                   setTimeout(() => {
                     this.show = false;
                   }, 300);
                 }
+              },
+              (error) => {
+                
               })
           }
         }

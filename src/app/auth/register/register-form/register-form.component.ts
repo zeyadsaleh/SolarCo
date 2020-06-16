@@ -110,6 +110,8 @@ export class RegisterFormComponent implements OnInit {
         res => {
           console.log(res);
           this.ability.update(res.data.rules); // Casl Abilities
+          this.userService.current_user = res.data;
+          this.userService.user_type = this.tokenAuthSerivce.currentUserType;
           this.submitted = false;
           this.router.navigate(['']);
         },

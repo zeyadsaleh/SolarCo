@@ -25,7 +25,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <h2 class="head bg-primary m-2 rounded shadow text-left text-white">{{ tutorial.title }}<a
+                        <h2 class="head bg-info m-2 p-2 rounded shadow text-left text-white">{{ tutorial.title }}<a
                                 *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER' && !added"
                                 style="float: right;" class="btn btn-sm btn-success rounded shadow"
                                 (click)="addFav()">Add To Favorite</a>
@@ -72,15 +72,15 @@
                 <div class="icon-box">
                     <i class="material-icons">&#xE5CD;</i>
                 </div>
-                <h4 class="modal-title">Are you sure?</h4>
+                <h4 class="modal-title text-center">Are you sure?</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-center">
                 <p>Do you really want to Remove This from your Blog?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="tutRemove()">Delete</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="tutRemove()">Remove</button>
             </div>
         </div>
     </div>

@@ -38,7 +38,6 @@ export class GeoLoactionService {
   // get
   getLocation(client_data, callback) {
     this.http.post(`${this.api.host}/geocoder`, client_data).subscribe(response => {
-      console.log(response);
       callback(response);
     });
   }

@@ -63,7 +63,6 @@ export class AllTutorialsComponent implements OnInit {
     this.__service.getTutorials().subscribe(
       (response) => {
         if (response) {
-          console.log(response);
           this.tutorials = response;
         }
         setTimeout(() => {
@@ -71,8 +70,11 @@ export class AllTutorialsComponent implements OnInit {
         }, 300);
       },
       (error) => {
-        console.log(error);
-      })
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 300);
+        this.warningMsg = error.error.error;
+      });
   }
 
   tutorialsByCat(id) {
@@ -80,7 +82,6 @@ export class AllTutorialsComponent implements OnInit {
     this.__service.getTutorialsByCategory(id).subscribe(
       (response) => {
         if (response) {
-          console.log(response);
           this.tutorials = response;
           if (response['length'] > 0) this.category = response[0].category;
         }
@@ -89,8 +90,11 @@ export class AllTutorialsComponent implements OnInit {
         }, 300);
       },
       (error) => {
-        console.log(error);
-      })
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 300);
+        this.warningMsg = error.error.error;
+      });
   }
 
   tutorialsByCon(id) {
@@ -98,18 +102,19 @@ export class AllTutorialsComponent implements OnInit {
     this.__service.getTutorialsByContractor(id).subscribe(
       (response) => {
         if (response) {
-          console.log(response);
           this.tutorials = response;
           if (response['length'] > 0) this.contractor = response[0].contractor;
-          // if (this.contractor.id != id) this.allowed = false;
         }
         setTimeout(() => {
           this.isLoading = false;
         }, 300);
       },
       (error) => {
-        console.log(error);
-      })
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 300);
+        this.warningMsg = error.error.error;
+      });
   }
 
   tutorialsByFav(id) {
@@ -127,20 +132,25 @@ export class AllTutorialsComponent implements OnInit {
         }, 300);
       },
       (error) => {
-        console.log(error);
-      })
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 300);
+        this.warningMsg = error.error.error;
+      });
   }
 
   addFav(tutorial_id) {
     if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
       this.__service.setFavorite({ "tutorial_id": tutorial_id }).subscribe(
         (res) => {
-          console.log(res);
           if (res && res['exist']) {
             this.warningMsg = res['exist'];
           } else {
             this.successMsg = "added Successfully!";
           }
+        },
+        (error) => {
+          this.warningMsg = error.error.error;
         });
     }
   }
@@ -151,6 +161,9 @@ export class AllTutorialsComponent implements OnInit {
         this.__service.deleteFavorite(tutorial_id).subscribe(
           (res) => {
             this.tutorials = this.tutorials.filter(item => item.id !== tutorial_id);
+          },
+          (error) => {
+            this.warningMsg = error.error.error;
           });
       }
     }
@@ -162,13 +175,15 @@ export class AllTutorialsComponent implements OnInit {
         this.__service.deleteTutorial(tutorial_id).subscribe(
           (res) => {
             this.tutorials = this.tutorials.filter(item => item.id !== tutorial_id);
+          },
+          (error) => {
+            this.warningMsg = error.error.error;
           });
       }
     }
   }
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }
@@ -184,7 +199,7 @@ export class AllTutorialsComponent implements OnInit {
       } else {
         window.clearInterval(scrollToTop);
       }
-    }, 16);
+    }, 8);
   }
 
 }

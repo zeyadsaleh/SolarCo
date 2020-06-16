@@ -35,7 +35,7 @@
           <!-- SIDEBAR MENU -->
           <div class="profile-usermenu sidebar-sticky">
             <ul class="nav flex-column">
-              <li class="nav-item" [routerLink]="['/profile']" [class]="subPage == 'overview' ? 'active' : ''"
+              <li class="nav-item" [routerLink]="['/profile/overview']" [class]="subPage == 'overview' ? 'active' : ''"
                 (click)="changeSubpage($event)" *ngIf="type == 'CONTRACTOR'">
 
                 <a name="overview" class="nav-link" [class]="subPage == 'overview' ? 'active' : ''">
@@ -55,7 +55,7 @@
                 [class]="subPage == 'offers' ? 'active' : ''" (click)="changeSubpage($event)">
 
                 <a name="offers" class="nav-link" [class]="subPage == 'offers' ? 'active' : ''">
-                  <i class="fa fa-check"></i>
+                  <i class="fas fa-hand-paper"></i>
                   Offers </a>
 
               </li>
@@ -79,8 +79,8 @@
                 [class]="subPage == 'blog' ? 'active' : ''" (click)="changeSubpage($event)">
 
                 <a name="blog" class="nav-link" [class]="subPage == 'blog' ? 'active' : ''">
-                  <i class="fa fa-check"></i>
-                  Blog </a>
+                  <i class="fas fa-blog"></i>
+                  Blog Articles </a>
 
               </li>
               <li *ngIf="type=='USER'" class="nav-item" [routerLink]="['/blog/users',userData.id]"

@@ -14,7 +14,7 @@ export class TutorialComponent implements OnInit {
   tutorial: any;
   isLoading: boolean = true;
   noResponse: boolean = false;
-  added: boolean = true;
+  added: boolean = false;
   successMsg: string;
   warningMsg: string;
   contractor_id: number;
@@ -32,7 +32,6 @@ export class TutorialComponent implements OnInit {
     }
     this.route.params.subscribe(params => {
       if (Number.isInteger(+params['id'])) {
-        if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') this.checkIfAdded(+params['id']);
         this.getTut(+params['id']);
       } else {
         this.router.navigate(['404']);
@@ -49,9 +48,13 @@ export class TutorialComponent implements OnInit {
           setTimeout(() => {
             this.isLoading = false;
           }, 300);
+          if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') this.checkIfAdded(this.tutorial.id);
         } else {
           this.router.navigate(['404']);
         }
+      },
+      (error) => {
+        this.warningMsg = error.error.error;
       });
   }
 
@@ -59,9 +62,11 @@ export class TutorialComponent implements OnInit {
     this.__service.getFavorite(id).subscribe(
       (response) => {
         if (response) {
-          console.log(response);
           this.added = true;
         }
+      },
+      (error) => {
+        this.warningMsg = error.error.error;
       });
   }
 
@@ -69,12 +74,14 @@ export class TutorialComponent implements OnInit {
     if (!this.added) {
       this.__service.setFavorite({ "tutorial_id": this.tutorial['id'] }).subscribe(
         (res) => {
-          console.log(res);
           if (res && res['exist']) {
             this.warningMsg = res['exist'];
           } else {
             this.successMsg = "added Successfully!";
           }
+        },
+        (error) => {
+          this.warningMsg = error.error.error;
         });
       this.added = true;
     }
@@ -86,6 +93,9 @@ export class TutorialComponent implements OnInit {
         (res) => {
           this.added = false;
           this.successMsg = "Removed successfully!";
+        },
+        (error) => {
+          this.warningMsg = error.error.error;
         });
     }
   }
@@ -95,15 +105,17 @@ export class TutorialComponent implements OnInit {
       this.__service.deleteTutorial(this.tutorial['id']).subscribe(
         (res) => {
           this.router.navigate(['blog/contractors', this.contractor_id]);
+        },
+        (error) => {
+          this.warningMsg = error.error.error;
         });
     } else {
-      this.successMsg = "Forbidden!";
+      this.warningMsg = "Forbidden!";
     }
   }
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }

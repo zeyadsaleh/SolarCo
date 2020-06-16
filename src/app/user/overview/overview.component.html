@@ -1,0 +1,21 @@
+<div class="container">
+    <mat-card class="my-5 mx-3 p-4 shadow rounded">
+        <mat-card-title class="mb-5">{{userData.name}}'s Info</mat-card-title>
+        <mat-card-content>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <h4>Address</h4>
+                    <p>{{userData.address ? userData.address : 'N/A'}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                    <h4>Fax</h4>
+                    <p>{{userData.fax ? userData.fax : 'N/A'}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                    <h4>Mobile Number</h4>
+                    <p>{{userData.mobileNumber ? userData.mobileNumber : 'N/A'}}</p>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

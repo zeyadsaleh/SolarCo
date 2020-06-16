@@ -30,7 +30,6 @@ export class SinglePostComponent implements OnInit {
     this.tokenAuth.validateToken().subscribe(
       res => {
         this.userData = this.tokenAuth.currentUserData;
-        console.log(this.userData)
         this.route.params.subscribe(params => {
           if (Number.isInteger(+params['id'])) {
             this.getPost(+params['id']);
@@ -52,7 +51,6 @@ export class SinglePostComponent implements OnInit {
       }, 500);
        // For Apply button
       let userOffer = this.post.offers.filter(offer => offer.contractor_id == this.currentUserID);
-      console.log(userOffer);
       if (userOffer.length > 0) {
         this.applied = true;
       }
@@ -85,7 +83,6 @@ export class SinglePostComponent implements OnInit {
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }

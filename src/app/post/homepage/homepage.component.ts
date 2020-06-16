@@ -33,15 +33,12 @@ export class HomepageComponent implements OnInit {
 
     this.postService.getPosts().subscribe((res) => {
       if (res) {
-        console.log("res: ", res)
         for (let o of res) {
           this.posts.push(o);
           console.log(o)
         }
       } else {
-        console.log("no posts received")
       }
-
       setTimeout(() => {
         this.isLoading = false;
       }, 500);
@@ -68,7 +65,6 @@ export class HomepageComponent implements OnInit {
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }
@@ -84,6 +80,6 @@ export class HomepageComponent implements OnInit {
       } else {
         window.clearInterval(scrollToTop);
       }
-    }, 16);
+    }, 8);
   }
 }

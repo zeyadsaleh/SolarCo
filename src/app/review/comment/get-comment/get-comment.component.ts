@@ -21,8 +21,10 @@ export class GetCommentComponent implements OnInit {
         (response) => {
           if (response) {
             this.req_data = response;
-            console.log(response);
           }
+        },
+        (error) => {
+          
         })
     }
   }
