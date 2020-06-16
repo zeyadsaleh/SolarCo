@@ -21,15 +21,18 @@ mat-icon {
 }
 
 .circle {
-    width: 9px;
-    height: 9px;
+        /* width: 21px; */
+    /* display: inline-block; */
+    /* height: 21px; */
+    font-size: 1.em;
+    border-radius: 50%;
+    padding: 1px 4px;
     background-color: red;
-    position: absolute;
-    top: 86%;
-    right: 46%;
+    /* position: absolute; */
+    position: relative;
+    top: -26%;
+    left: 73%;
+    /* right: -10%; */
+    /* right: 46%; */
     z-index: 2;
-    /* content: '\25CF'; */
-    /* color: red; */
-    /* left: 54%; */
-    /* top: -39%; */
 }

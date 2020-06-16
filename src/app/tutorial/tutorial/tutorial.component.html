@@ -1,5 +1,5 @@
-<!-- <app-page-banner [title]="title"></app-page-banner> -->
-<div class="bar"></div>
+<app-page-banner [title]="title"></app-page-banner>
+<!-- <div class="bar"></div> -->
 
 <div class="container mt-5 mb-5" *ngIf="!isLoading && !noResponse && tutorial">
     <div class="row justify-content-center body">
@@ -25,7 +25,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <h2 class="head bg-primary m-2 rounded shadow text-left">{{ tutorial.title }}<a
+                        <h2 class="head bg-primary m-2 rounded shadow text-left text-white">{{ tutorial.title }}<a
                                 *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER' && !added"
                                 style="float: right;" class="btn btn-sm btn-success rounded shadow"
                                 (click)="addFav()">Add To Favorite</a>

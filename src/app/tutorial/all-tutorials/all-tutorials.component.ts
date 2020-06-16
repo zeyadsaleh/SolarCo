@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AllTutorialsComponent implements OnInit {
 
-  title: string = "Tutorial";
+  title: string = "Blog";
   tutorials = new Array;
   p: number = 1;
   isLoading: boolean = true;
