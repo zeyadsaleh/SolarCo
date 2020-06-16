@@ -41,6 +41,7 @@ export class ContactUsComponent implements OnInit {
          this.contactObj.phone = '';
          this.contactObj.message = '';
          this.submitted = false;
+         this.errorMessage = '';
       },
       error => {
         console.log(error);

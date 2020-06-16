@@ -56,6 +56,7 @@ export class SinglePostComponent implements OnInit {
       if (userOffer.length > 0) {
         this.applied = true;
       }
+      this.title = `${this.post.user.name}\'s Post`;
       console.log(this.post)
     }, (err) => {
       this.errorMessage = err.error.error;
