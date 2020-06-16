@@ -353,10 +353,6 @@ hr {
     font-weight: 700;
   }
 
-  .contact-social {}
-
-  .contact-social ul {}
-
   .contact-social ul li {
     float: left;
   }
@@ -378,10 +374,6 @@ hr {
     margin-bottom: 20px;
     background-color: #fff;
   }
-
-  .location-content {}
-
-  .location-block ul {}
 
   .location-block ul li {
     line-height: 2.2;
