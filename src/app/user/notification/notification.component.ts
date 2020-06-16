@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { AngularTokenService } from 'angular-token';
 
-@Component({
+@Component({ 
   selector: 'app-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css']

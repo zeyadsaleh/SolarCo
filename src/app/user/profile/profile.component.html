@@ -63,7 +63,7 @@
                 [class]="subPage == 'posts' ? 'active' : ''" (click)="changeSubpage($event)">
 
                 <a name="posts" class="nav-link" [class]="subPage == 'posts' ? 'active' : ''">
-                  <i class="fa fa-check"></i>
+                  <i class="fas fa-share-alt"></i>
                   Posts </a>
 
               </li>
@@ -71,7 +71,7 @@
                 [class]="subPage == 'perviousPosts' ? 'active' : ''" (click)="changeSubpage($event)">
 
                 <a name="perviousPosts" class="nav-link" [class]="subPage == 'perviousPosts' ? 'active' : ''">
-                  <i class="fa fa-check"></i>
+                  <i class="fas fa-bookmark"></i>
                   Pervious Posts </a>
 
               </li>
@@ -87,7 +87,7 @@
                 [class]="subPage == 'favorite' ? 'active' : ''" (click)="changeSubpage($event)">
 
                 <a name="favorite" class="nav-link" [class]="subPage == 'favorite' ? 'active' : ''">
-                  <i class="fa fa-check"></i>
+                  <i class="fas fa-heart"></i>
                   Favorite Articles </a>
               </li>
               <li class="nav-item" [routerLink]="['/profile/edit']" [class]="subPage == 'edit' ? 'active' : ''"
@@ -96,11 +96,11 @@
                   <i class="fas fa-pen"></i>
                   Edit </a>
               </li>
-              <li class="nav-item" [class]="subPage == 'help' ? 'active' : ''" (click)="changeSubpage($event)">
+              <!-- <li class="nav-item" [class]="subPage == 'help' ? 'active' : ''" (click)="changeSubpage($event)">
 
                 <a name="help" class="nav-link" [class]="subPage == 'help' ? 'active' : ''">
                   <i class="fa fa-flag"></i>Help</a>
-              </li>
+              </li> -->
             </ul>
           </div>
           <!-- END MENU -->
