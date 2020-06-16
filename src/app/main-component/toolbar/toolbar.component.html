@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
           <ul class="nav navbar-nav menu_nav">
             <li *ngIf="tokenAuthService.userSignedIn() && tokenAuthService.currentUserType == 'USER'" class="nav-item"><a class="nav-link"
-              [routerLink]="['/pv-system/user-info']" style="font-size: 16px;"> Calculate</a></li>
+              [routerLink]="['/pv-system/user-info']" style="font-size: 16px;"> Get a System</a></li>
               <li *ngIf="tokenAuthService.currentUserType == 'CONTRACTOR' && tokenAuthService.userSignedIn()"
               class="nav-item"><a class="nav-link " [routerLink]="['/posts']" style="font-size: 16px;">POSTS</a></li>
           </ul>
@@ -34,7 +34,7 @@
               </a>
             </li>
             <li *ngIf="tokenAuthService.userSignedIn()" class="nav-item"><a class="nav-link"
-                [routerLink]="['/inbox']" style="font-size: 16px;"> Chat
+                [routerLink]="['/inbox']" style="font-size: 16px;"> Inbox
                 <!-- <span class="material-icons">
                   chat_bubble
                 </span> -->
