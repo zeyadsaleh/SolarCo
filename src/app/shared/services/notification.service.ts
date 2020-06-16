@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GlobalService } from './global.service';
 
-@Injectable({
+@Injectable({ 
   providedIn: 'root'
 })
 export class NotificationService {
@@ -16,5 +16,13 @@ export class NotificationService {
 
   getNotifications():Observable<any> {
     return this.http.get(this.postURl);
+  }
+
+  updateNotifications():Observable<any> {
+    return this.http.get(this.postURl+'/update');
+  }
+
+  getUncheckedNotifications():Observable<any> {
+    return this.http.get(this.postURl+'/count');
   }
 }
