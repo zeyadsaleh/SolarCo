@@ -1,6 +1,6 @@
-<!-- <app-page-banner [title]="title"></app-page-banner> -->
+<app-page-banner [title]="title"></app-page-banner>
 
-<div class="bar"></div>
+<!-- <div class="bar"></div> -->
 
 <div class="container" *ngIf="!isLoading && !noResponse">
     <div class="row justify-content-center mt-3" *ngIf="user || contractor || category">
@@ -47,7 +47,7 @@
                         <span class="fa fa-trash"></span>
                     </a>
                     <button *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && !user"
-                        class="btn btn-sm btn-success" (click)="addFav(tutorial.id)">Add</button>
+                        class="btn btn-sm btn-success" (click)="addFav(tutorial.id)">Add to Favorites</button>
                 </div>
                 <a class="card" [routerLink]="['/blog',tutorial.id]" style="--bg-img: url(assets/images/solars.jpg)">
                     <div>

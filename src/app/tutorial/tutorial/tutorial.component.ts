@@ -10,7 +10,7 @@ import { AngularTokenService } from 'angular-token';
 })
 export class TutorialComponent implements OnInit {
 
-  title: string = '';
+  title: string = 'Blog Post';
   tutorial: any;
   isLoading: boolean = true;
   noResponse: boolean = false;
