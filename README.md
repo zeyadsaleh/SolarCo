@@ -1,7 +1,3 @@
-# QR-Code To Deployment web
-
-![alt text](https://github.com/zeyadsaleh/SolarCo/solar-qr.jpg?raw=true)
-
 # SolarCo (Front End)
 
 You could find the API part with Rails from [here](https://github.com/MuAladdinIbrahim/SolarCo)
