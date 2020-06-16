@@ -11,25 +11,38 @@
                     </div>
                     <div class="title-total">
 
-                        <div *ngIf="msg" class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ msg }}
+                        <div *ngIf="successMsg" class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ successMsg }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close"
-                                (click)="msg=''">
+                                (click)="successMsg=''">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <h2 class="head bg-success m-2 rounded shadow text-left">{{ tutorial.title }}<a
-                                *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'"
-                                style="float: right;" class="btn btn-sm btn-danger rounded shadow"
-                                (click)="addFav()">Add To Favorite</a><a
-                                *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'CONTRACTOR' && tutorial.contractor_id == contractor_id"
-                                style="float: right;" class="btn btn-sm btn-danger rounded shadow"
-                                (click)="tutRemove()">Remove Tutorial</a></h2>
-                        <div class="desc">{{ tutorial.body }}</div>
+                        <div *ngIf="warningMsg" class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{ warningMsg }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                (click)="warningMsg=''">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <h2 class="head bg-primary m-2 rounded shadow text-left">{{ tutorial.title }}<a
+                                *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER' && !added"
+                                style="float: right;" class="btn btn-sm btn-success rounded shadow"
+                                (click)="addFav()">Add To Favorite</a>
+                            <a *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER' && added"
+                                href="#remove" type="button" class="btn btn-danger btn-sm text-white" title="Delete"
+                                data-toggle="modal" style="float: right;"><span class="fa fa-trash"></span></a>
+                            <a href="#delete" type="button" class="btn btn-danger btn-sm text-white" title="Delete"
+                                data-toggle="modal" style="float: right;"
+                                *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn()"><span
+                                    class="fa fa-trash"></span></a></h2>
+                        <div class="desc">{{ tutorial.body }}
+                        </div>
                         <div class="title" [routerLink]="['/blog/contractors',tutorial.contractor_id]">
                             By: {{ tutorial.contractor.name }}</div>
                         <hr>
-                        <div class="desc" [routerLink]="['/blog/categories',tutorial.category_id]">Category:
+                        <div class="desc border-info rounded p-auto"
+                            [routerLink]="['/blog/categories',tutorial.category_id]">Category:
                             {{ tutorial.category.category }}</div>
                         <hr>
                         <div class="border p-2 m-1 rounded">
@@ -46,6 +59,49 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="delete" class="modal fade"
+    *ngIf="(tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn()) || (tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && added)">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                </div>
+                <h4 class="modal-title">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to Remove This from your Blog?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="tutRemove()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="remove" class="modal fade" *ngIf="tokenAuth.currentUserType == 'USER' && tokenAuth.userSignedIn() && added">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                </div>
+                <h4 class="modal-title">Are you sure?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to Remove This from your Favorite?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="removeFav()">Delete</button>
             </div>
         </div>
     </div>

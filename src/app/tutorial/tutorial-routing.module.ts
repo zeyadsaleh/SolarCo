@@ -13,7 +13,7 @@ const routes: Routes = [
     component: AllTutorialsComponent,
   },
   {
-    path: 'tutorials/users/:id',
+    path: 'blog/users/:id',
     component: AllTutorialsComponent,
     canActivate: [AuthGuard],
   },

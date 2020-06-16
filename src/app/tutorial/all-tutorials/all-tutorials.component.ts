@@ -18,7 +18,8 @@ export class AllTutorialsComponent implements OnInit {
   category: any;
   contractor: any;
   user: any;
-  msg: string;
+  successMsg: string;
+  warningMsg: string;
 
   constructor(private __service: TutorialService,
     public tokenAuth: AngularTokenService,
@@ -134,9 +135,9 @@ export class AllTutorialsComponent implements OnInit {
       (res) => {
         console.log(res);
         if (res && res['exist']) {
-          this.msg = res['exist'];
+          this.warningMsg = res['exist'];
         } else {
-          this.msg = "added Successfully!";
+          this.successMsg = "added Successfully!";
         }
       });
   }
