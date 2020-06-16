@@ -1,7 +1,3 @@
-# QR-Code To Deployment web
-
-![alt text](https://github.com/zeyadsaleh/SolarCo/solar-qr.jpg?raw=true)
-
 # SolarCo (Front End)
 
 You could find the API part with Rails from [here](https://github.com/MuAladdinIbrahim/SolarCo)
@@ -34,6 +30,9 @@ You should have `node` and `angular cli` installed. If you don't, install node f
 - **Express.js** => Creation of web server for for Deploying on Heroku
 - **HTML** => Templates and views structure of the application
 - **CSS**, **Angular Material** & **Bootstrap** => Styling of the application
+
+# QR-Code To Deployment web
+<img src="https://github.com/zeyadsaleh/SolarCo/blob/develop/solar-qr.png" alt="alt text" width="250">
 
 ### License
 MIT License
