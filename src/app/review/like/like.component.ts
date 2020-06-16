@@ -42,13 +42,15 @@ export class LikeComponent implements OnInit {
             this.dislikes++;
           }
         }
-      })
+      },
+      (error) => {
+
+      });
   }
 
   setIfLike() {
     this.__tutService.getUserLike(this.tutorial_id).subscribe(
       (res) => {
-        console.log(res);
       })
   }
 
@@ -58,32 +60,30 @@ export class LikeComponent implements OnInit {
       if (!this.like_id) {
         this.__tutService.setLike({ "islike": this.islike, "tutorial_id": this.tutorial_id }).subscribe(
           (res) => {
-            console.log(res);
             this.like_id = res['id'];
+            if (this.islike) {
+              this.likes++;
+            } else {
+              this.dislikes++;
+            }
           },
           (error) => {
 
           });
-        if (this.islike) {
-          this.likes++;
-        } else {
-          this.dislikes++;
-        }
       } else {
         this.__tutService.updateLike(this.like_id, { "islike": this.islike, "tutorial_id": this.tutorial_id }).subscribe(
           (res) => {
-            console.log(res);
+            if (this.islike) {
+              this.likes++;
+              this.dislikes--;
+            } else {
+              this.likes--;
+              this.dislikes++;
+            }
           },
           (error) => {
 
           });
-        if (this.islike) {
-          this.likes++;
-          this.dislikes--;
-        } else {
-          this.likes--;
-          this.dislikes++;
-        }
       }
     }
   }

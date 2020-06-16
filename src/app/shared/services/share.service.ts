@@ -6,7 +6,6 @@ export class ShareService {
 
   setData(input){
     this._data.next(input);
-    console.log(input);  
   }
 
   get Data(){

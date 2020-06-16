@@ -40,15 +40,12 @@ export class CreatePostFormComponent implements OnInit {
 
   onSubmit(post: NgForm) {
     if (post.valid) {
-      console.log(post.value);
       post.value['system_id'] = (this.system_id)
       this.postService.createPost(post.value).subscribe(
         res => {
-          console.log(res);
           this.router.navigate([`posts/${res.id}`]);
         },
         error => {
-          console.log(error);
           this.errorMessage = error.error.error;
         }
       );
@@ -57,7 +54,6 @@ export class CreatePostFormComponent implements OnInit {
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }

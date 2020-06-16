@@ -14,11 +14,9 @@ export class PvCalculationService {
   getCalculation(calc_id, successback, errorback) {
     this.http.get(`${this.apiCal}/${calc_id}`).subscribe(
       success => {
-        console.log(success);
         successback(success);
       },
       error => {
-        console.log(error);
         errorback(error);
       });
   }
@@ -26,11 +24,9 @@ export class PvCalculationService {
   getCalculations(successback, errorback) {
     this.http.get(`${this.apiCal}`).subscribe(
       success => {
-        console.log(success);
         successback(success);
       },
       error => {
-        console.log(error);
         errorback(error);
       });
   }
@@ -41,11 +37,9 @@ export class PvCalculationService {
   delCalculation(sys_id, successback, errorback) {
     this.http.delete(`${this.apiSys}/${sys_id}`).subscribe(
       success => {
-        console.log(success);
         successback(success);
       },
       error => {
-        console.log(error);
         errorback(error);
       });
   }
@@ -54,11 +48,9 @@ export class PvCalculationService {
   setSystem(system_data, successback, errorback) {
     this.http.post(`${this.apiSys}`, system_data).subscribe(
       success => {
-        console.log(success);
         successback(success);
       },
       error => {
-        console.log(error);
         errorback(error);
       });
   }
@@ -67,11 +59,9 @@ export class PvCalculationService {
   getSystems(successback, errorback) {
     this.http.get(`${this.apiSys}`).subscribe(
       success => {
-        console.log(success);
         successback(success);
       },
       error => {
-        console.log(error);
         errorback(error);
       });
   }

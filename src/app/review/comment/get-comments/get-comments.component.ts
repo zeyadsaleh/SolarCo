@@ -27,7 +27,6 @@ export class GetCommentsComponent implements OnInit {
       this.__tutService.getTutorialComments(this.tutorial_id).subscribe(
         (response) => {
           if (response) {
-            console.log(response);
             this.setCommentDetails(response);
             this.addComment();
           }
@@ -57,7 +56,6 @@ export class GetCommentsComponent implements OnInit {
       }
     }
     if (this.comments && this.comments.length) this.users = this.comments.length;
-    console.log(this.comments);
   }
 
   addComment() {

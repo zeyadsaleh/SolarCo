@@ -56,7 +56,6 @@ export class OfferComponent implements OnInit {
       if (this.offers.length > 0) {
         this.has_offers = true;
       }
-      console.log(this.offers);
     });
   }
 
@@ -83,14 +82,12 @@ export class OfferComponent implements OnInit {
     this.submitted = true;
     this.offerService.updateOffer(offer.id, offer).subscribe(
       res => {
-        console.log(res);
         this.offers = new Array();
         this.getOffers();
         this.editOffer = 0;
         this.submitted = false;
       },
       error => {
-        console.log(error);
         this.submitted = false;
       }
     );
@@ -104,10 +101,8 @@ export class OfferComponent implements OnInit {
     this.postService.updatePost(offer.post.id, { closed: true }).subscribe(
       res => {
         // this.shareService.setData(true);
-        console.log(res);
       },
       error => {
-        console.log(error);
 
       });
   }
@@ -127,6 +122,6 @@ export class OfferComponent implements OnInit {
       } else {
         window.clearInterval(scrollToTop);
       }
-    }, 16);
+    }, 8);
   }
 }

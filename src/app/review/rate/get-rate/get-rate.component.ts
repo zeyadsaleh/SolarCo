@@ -22,7 +22,6 @@ export class GetRateComponent implements OnInit {
         (response) => {
           if (response) {
             this.current_rate = response['rate'];
-            console.log(response);
           }
         },
         (error) => {

@@ -22,7 +22,6 @@ export class CreateRateComponent implements OnInit {
   ngOnInit(): void {
     this.request_data = new Object;
     this.getOfferId();
-    // this.Appear();
     this.currentRate();
   }
 
@@ -39,9 +38,7 @@ export class CreateRateComponent implements OnInit {
         if (!this.current_rate) {
           this.__service.setRate(this.request_data).subscribe(
             (response) => {
-              if (response) {
-                console.log(response);
-              }
+
             },
             (error) => {
 
@@ -49,9 +46,7 @@ export class CreateRateComponent implements OnInit {
         } else {
           this.__service.updateRate(this.request_data['offer_id'], this.request_data).subscribe(
             (response) => {
-              if (response) {
-                console.log(response);
-              }
+
             },
             (error) => {
 
@@ -75,11 +70,10 @@ export class CreateRateComponent implements OnInit {
         (response) => {
           if (response) {
             this.current_rate = response['rate'];
-            console.log(response);
           }
         },
         (error) => {
-          
+
         })
     }
   }

@@ -33,12 +33,10 @@ export class PerviousPostsComponent implements OnInit {
 
     this.postService.getApprovedPosts().subscribe((res) => {
       if (res) {
-        console.log("res: ", res)
         for (let o of res) {
           this.posts.push(o);
         }
       } else {
-        console.log("no posts received")
       }
 
       setTimeout(() => {
@@ -66,7 +64,6 @@ export class PerviousPostsComponent implements OnInit {
 
   timeOut() {
     if (this.isLoading == true) {
-      console.log("noresponse");
       this.noResponse = true;
       this.isLoading = false;
     }
@@ -82,7 +79,7 @@ export class PerviousPostsComponent implements OnInit {
       } else {
         window.clearInterval(scrollToTop);
       }
-    }, 16);
+    }, 8);
   }
 }
 

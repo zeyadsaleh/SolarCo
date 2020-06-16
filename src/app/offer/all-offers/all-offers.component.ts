@@ -26,7 +26,6 @@ export class AllOffersComponent implements OnInit {
       if (this.offers.length > 0) {
         this.has_offers = true;
       }
-      console.log(this.offers);
     });
   }
 
@@ -40,7 +39,7 @@ export class AllOffersComponent implements OnInit {
       } else {
         window.clearInterval(scrollToTop);
       }
-    }, 16);
+    }, 8);
   }
 
 }

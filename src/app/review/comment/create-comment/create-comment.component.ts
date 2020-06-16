@@ -38,7 +38,6 @@ export class CreateCommentComponent implements OnInit {
             if (response) {
               if (response['review']) this.edit = true;
               this.req_data = response;
-              console.log(response);
             }
           })
       }
@@ -58,7 +57,6 @@ export class CreateCommentComponent implements OnInit {
           this.__tutService.setComment(this.req_data).subscribe(
             (response) => {
               if (response) {
-                console.log(response);
                 this.shareService.setData(response);
                 this.req_data['review'] = '';
               }
@@ -71,7 +69,6 @@ export class CreateCommentComponent implements OnInit {
             this.__service.setReview(this.req_data).subscribe(
               (response) => {
                 if (response) {
-                  console.log(response);
                   setTimeout(() => {
                     this.show = false;
                   }, 200);
@@ -84,7 +81,6 @@ export class CreateCommentComponent implements OnInit {
             this.__service.updateReview(this.req_data['offer_id'], this.req_data).subscribe(
               (response) => {
                 if (response) {
-                  console.log(response);
                   setTimeout(() => {
                     this.show = false;
                   }, 300);
