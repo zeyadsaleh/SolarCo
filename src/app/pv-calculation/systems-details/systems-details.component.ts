@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PvCalculationService } from 'src/app/shared/services/pv-calculation.service';
 import { Router } from '@angular/router';
+import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-systems-details',
@@ -16,11 +17,16 @@ export class SystemsDetailsComponent implements OnInit {
   p: number = 1;
 
   constructor(private data: PvCalculationService,
-    private router: Router) { }
+    private router: Router,
+    private tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
-    setTimeout(() => { this.timeOut() }, 40000);
-    this.getDetails();
+    if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
+      setTimeout(() => { this.timeOut() }, 40000);
+      this.getDetails();
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
   getDetails() {

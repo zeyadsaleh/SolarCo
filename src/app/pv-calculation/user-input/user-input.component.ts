@@ -5,6 +5,7 @@ import { ShareService } from 'src/app/shared/services/share.service';
 import { Router } from '@angular/router';
 import { UserRequest } from 'src/app/shared/interfaces/user-request';
 import { MapComponent } from './map/map.component';
+import { AngularTokenService } from 'angular-token';
 @Component({
   selector: 'app-user-input',
   templateUrl: './user-input.component.html',
@@ -25,10 +26,15 @@ export class UserInputComponent implements OnInit {
   constructor(private geolocation: GeoLoactionService,
     private http: HttpClient,
     private router: Router,
-    private __service: ShareService) { }
+    private __service: ShareService,
+    private tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
-    this.client_request = new Object();
+    if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
+      this.client_request = new Object();
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
   // getLocation() {

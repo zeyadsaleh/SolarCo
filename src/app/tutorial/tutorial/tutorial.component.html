@@ -34,7 +34,7 @@
                                 data-toggle="modal" style="float: right;"><span class="fa fa-trash"></span></a>
                             <a href="#delete" type="button" class="btn btn-danger btn-sm text-white" title="Delete"
                                 data-toggle="modal" style="float: right;"
-                                *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn()"><span
+                                *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor_id == tutorial.contractor_id"><span
                                     class="fa fa-trash"></span></a></h2>
                         <div class="desc">{{ tutorial.body }}
                         </div>

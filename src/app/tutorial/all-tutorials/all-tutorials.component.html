@@ -38,7 +38,7 @@
                 <div class="num">{{ i+1 }}
                     <a href="#delete" type="button" class="btn btn-danger btn-sm text-white" title="Delete"
                         data-toggle="modal"
-                        *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor">
+                        *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor && this.tokenAuth['userData']['id'] == this.contractor.id">
                         <span class="fa fa-trash"></span>
                     </a>
                     <a href="#remove" type="button" class="btn btn-danger btn-sm text-white" title="Delete"
@@ -62,7 +62,7 @@
                 </a>
                 <hr>
                 <div id="delete" class="modal fade"
-                    *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor">
+                    *ngIf="tokenAuth.currentUserType == 'CONTRACTOR' && tokenAuth.userSignedIn() && contractor && this.tokenAuth['userData']['id'] == this.contractor.id">
                     <div class="modal-dialog modal-confirm">
                         <div class="modal-content">
                             <div class="modal-header">

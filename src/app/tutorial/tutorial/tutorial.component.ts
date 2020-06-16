@@ -26,13 +26,14 @@ export class TutorialComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => { this.timeOut() }, 40000);
-    if (this.tokenAuth && this.tokenAuth['userData']) {
+    console.log(this.tokenAuth.userSignedIn());
+    if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'CONTRACTOR' && this.tokenAuth['userData']['id']) {
       this.contractor_id = this.tokenAuth['userData']['id'];
     }
     this.route.params.subscribe(params => {
       if (Number.isInteger(+params['id'])) {
+        if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') this.checkIfAdded(+params['id']);
         this.getTut(+params['id']);
-        if (this.tokenAuth && this.tokenAuth['userData']) this.checkIfAdded(+params['id']);
       } else {
         this.router.navigate(['404']);
       }

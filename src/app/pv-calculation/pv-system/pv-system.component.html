@@ -5,7 +5,9 @@
         <div class="col-lg-12 justify-content-center align-content-center">
             <mat-card>
                 <mat-card-title class="rounded shadow text-white p-3 mb-3 display-3">PV System Num
-                    #{{system_data['system']['id']}} <div style="float: right;">
+                    #{{system_data['system']['id']}}
+                    <div *ngIf="this.tokenAuth.userSignedIn() && this.tokenAuth.currentUserType == 'USER' && this.tokenAuth['userData']['id'] == system_data['system']['user_id']"
+                        style="float: right;">
                         <a mat-button class="btn shadow rounded btn-outline-primary mr-4" (click)="publish()"
                             *ngIf="!system_data['published']">Publish</a>
                         <a mat-button class="btn shadow rounded btn-outline-warning mr-4"

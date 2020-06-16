@@ -31,8 +31,8 @@ export class LikeComponent implements OnInit {
   tutorialLikes() {
     this.__tutService.getTutorialLikes(this.tutorial_id).subscribe(
       (res) => {
-        for (let rs of res) {          
-          if (this.tokenAuth['userData'] && rs['user_id'] == this.tokenAuth['userData']['id']) {
+        for (let rs of res) {
+          if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER' && rs['user_id'] == this.tokenAuth['userData']['id']) {
             this.islike = rs['islike'];
             this.like_id = rs['id'];
           }
@@ -54,28 +54,30 @@ export class LikeComponent implements OnInit {
 
   Tlike() {
     this.islike = !this.islike;
-    if (!this.like_id) {
-      this.__tutService.setLike({ "islike": this.islike, "tutorial_id": this.tutorial_id }).subscribe(
-        (res) => {
-          console.log(res);
-          this.like_id = res['id'];
-        });
-      if (this.islike) {
-        this.likes++;
+    if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
+      if (!this.like_id) {
+        this.__tutService.setLike({ "islike": this.islike, "tutorial_id": this.tutorial_id }).subscribe(
+          (res) => {
+            console.log(res);
+            this.like_id = res['id'];
+          });
+        if (this.islike) {
+          this.likes++;
+        } else {
+          this.dislikes++;
+        }
       } else {
-        this.dislikes++;
-      }
-    } else {
-      this.__tutService.updateLike(this.like_id, { "islike": this.islike, "tutorial_id": this.tutorial_id }).subscribe(
-        (res) => {
-          console.log(res);
-        })
-      if (this.islike) {
-        this.likes++;
-        this.dislikes--;
-      } else {
-        this.likes--;
-        this.dislikes++;
+        this.__tutService.updateLike(this.like_id, { "islike": this.islike, "tutorial_id": this.tutorial_id }).subscribe(
+          (res) => {
+            console.log(res);
+          })
+        if (this.islike) {
+          this.likes++;
+          this.dislikes--;
+        } else {
+          this.likes--;
+          this.dislikes++;
+        }
       }
     }
   }

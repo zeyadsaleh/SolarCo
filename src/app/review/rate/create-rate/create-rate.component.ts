@@ -15,7 +15,7 @@ export class CreateRateComponent implements OnInit {
   request_data: object;
   show: boolean = false;
 
-  constructor(private __service: OfferReviewService, 
+  constructor(private __service: OfferReviewService,
     private shareService: ShareService,
     public tokenAuth: AngularTokenService) { }
 
@@ -33,22 +33,24 @@ export class CreateRateComponent implements OnInit {
   }
 
   setRate(event) {
-    if (event.target.value > 0 && event.target.value <= 5) {
-      this.request_data['rate'] = event.target.value;
-      if (!this.current_rate) {
-        this.__service.setRate(this.request_data).subscribe(
-          (response) => {
-            if (response) {
-              console.log(response);
-            }
-          })
-      } else {
-        this.__service.updateRate(this.request_data['offer_id'], this.request_data).subscribe(
-          (response) => {
-            if (response) {
-              console.log(response);
-            }
-          })
+    if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
+      if (event.target.value > 0 && event.target.value <= 5) {
+        this.request_data['rate'] = event.target.value;
+        if (!this.current_rate) {
+          this.__service.setRate(this.request_data).subscribe(
+            (response) => {
+              if (response) {
+                console.log(response);
+              }
+            })
+        } else {
+          this.__service.updateRate(this.request_data['offer_id'], this.request_data).subscribe(
+            (response) => {
+              if (response) {
+                console.log(response);
+              }
+            })
+        }
       }
     }
   }

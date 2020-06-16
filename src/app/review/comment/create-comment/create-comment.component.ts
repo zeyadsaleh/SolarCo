@@ -52,41 +52,43 @@ export class CreateCommentComponent implements OnInit {
   }
 
   setComment() {
-    if (this.req_data['review'].length > 5) {
-      if (this.router.url.includes('blog')) {
-        this.__tutService.setComment(this.req_data).subscribe(
-          (response) => {
-            if (response) {
-              console.log(response);
-              this.shareService.setData(response);
-              this.req_data['review'] = '';
-            }
-          })
-      } else {
-        if (!this.edit) {
-          this.__service.setReview(this.req_data).subscribe(
+    if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
+      if (this.req_data['review'].length > 5) {
+        if (this.router.url.includes('blog')) {
+          this.__tutService.setComment(this.req_data).subscribe(
             (response) => {
               if (response) {
                 console.log(response);
-                setTimeout(() => {
-                  this.show = false;
-                }, 200);
+                this.shareService.setData(response);
+                this.req_data['review'] = '';
               }
             })
         } else {
-          this.__service.updateReview(this.req_data['offer_id'], this.req_data).subscribe(
-            (response) => {
-              if (response) {
-                console.log(response);
-                setTimeout(() => {
-                  this.show = false;
-                }, 300);
-              }
-            })
+          if (!this.edit) {
+            this.__service.setReview(this.req_data).subscribe(
+              (response) => {
+                if (response) {
+                  console.log(response);
+                  setTimeout(() => {
+                    this.show = false;
+                  }, 200);
+                }
+              })
+          } else {
+            this.__service.updateReview(this.req_data['offer_id'], this.req_data).subscribe(
+              (response) => {
+                if (response) {
+                  console.log(response);
+                  setTimeout(() => {
+                    this.show = false;
+                  }, 300);
+                }
+              })
+          }
         }
+      } else {
+        this.error = "comment must be more than 5 characters";
       }
-    } else {
-      this.error = "comment must be more than 5 characters";
     }
   }
 

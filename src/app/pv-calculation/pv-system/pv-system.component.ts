@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PvCalculationService } from '../../shared/services/pv-calculation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShareService } from 'src/app/shared/services/share.service';
+import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-pv-system',
@@ -22,7 +23,8 @@ export class PvSystemComponent implements OnInit {
   constructor(private data: PvCalculationService,
     private route: ActivatedRoute,
     private router: Router,
-    private __service: ShareService) { }
+    private __service: ShareService,
+    public tokenAuth: AngularTokenService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -32,12 +34,11 @@ export class PvSystemComponent implements OnInit {
         this.router.navigate(['404']);
       }
     });
-
   }
 
   getSystemDetails(id) {
     this.data.getCalculation(id, response => {
-      if (response) {
+      if (response) {        
         this.system_data = response;
         setTimeout(() => {
           this.isLoading = false;
@@ -49,22 +50,26 @@ export class PvSystemComponent implements OnInit {
   }
 
   publish() {
-    if (!this.system_data['published']) {
-      this.__service.setData(this.system_data);
-      this.router.navigate(['create/post']);
-    } else {
-      console.log("this Post is published");
+    if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER' && this.tokenAuth['userData']['id'] == this.system_data['system']['user_id']) {
+      if (!this.system_data['published']) {
+        this.__service.setData(this.system_data);
+        this.router.navigate(['create/post']);
+      } else {
+        console.log("this Post is published");
+      }
     }
   }
 
   delete() {
-    this.data.delCalculation(this.system_data['system']['id'], response => {
-      if (response && response['error']) {
-        if (response['error']) this.error = response['error'];
-      } else {
-        this.router.navigate(['profile/systems']);
-      }
-    });
+    if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER' && this.tokenAuth['userData']['id'] == this.system_data['system']['user_id']) {
+      this.data.delCalculation(this.system_data['system']['id'], response => {
+        if (response && response['error']) {
+          if (response['error']) this.error = response['error'];
+        } else {
+          this.router.navigate(['profile/systems']);
+        }
+      });
+    }
   }
 
   timeOut() {

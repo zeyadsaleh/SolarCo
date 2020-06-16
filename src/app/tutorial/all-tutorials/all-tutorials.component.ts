@@ -45,7 +45,7 @@ export class AllTutorialsComponent implements OnInit {
           this.router.navigate(['404']);
         }
       })
-    } else if (this.router.url.includes('users')) {
+    } else if (this.router.url.includes('users') && this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
       this.route.params.subscribe(params => {
         if (Number.isInteger(+params['id'])) {
           this.tutorialsByFav(+params['id']);
@@ -101,6 +101,7 @@ export class AllTutorialsComponent implements OnInit {
           console.log(response);
           this.tutorials = response;
           if (response['length'] > 0) this.contractor = response[0].contractor;
+          // if (this.contractor.id != id) this.allowed = false;
         }
         setTimeout(() => {
           this.isLoading = false;
@@ -131,32 +132,38 @@ export class AllTutorialsComponent implements OnInit {
   }
 
   addFav(tutorial_id) {
-    this.__service.setFavorite({ "tutorial_id": tutorial_id }).subscribe(
-      (res) => {
-        console.log(res);
-        if (res && res['exist']) {
-          this.warningMsg = res['exist'];
-        } else {
-          this.successMsg = "added Successfully!";
-        }
-      });
-  }
-
-  favRemove(tutorial_id) {
-    if (this.user) {
-      this.__service.deleteFavorite(tutorial_id).subscribe(
+    if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
+      this.__service.setFavorite({ "tutorial_id": tutorial_id }).subscribe(
         (res) => {
-          this.tutorials = this.tutorials.filter(item => item.id !== tutorial_id);
+          console.log(res);
+          if (res && res['exist']) {
+            this.warningMsg = res['exist'];
+          } else {
+            this.successMsg = "added Successfully!";
+          }
         });
     }
   }
 
+  favRemove(tutorial_id) {
+    if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
+      if (this.user) {
+        this.__service.deleteFavorite(tutorial_id).subscribe(
+          (res) => {
+            this.tutorials = this.tutorials.filter(item => item.id !== tutorial_id);
+          });
+      }
+    }
+  }
+
   tutRemove(tutorial_id) {
-    if (this.contractor) {
-      this.__service.deleteTutorial(tutorial_id).subscribe(
-        (res) => {
-          this.tutorials = this.tutorials.filter(item => item.id !== tutorial_id);
-        });
+    if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'CONTRACTOR' && this.tokenAuth['userData']['id'] == this.contractor.id) {
+      if (this.contractor) {
+        this.__service.deleteTutorial(tutorial_id).subscribe(
+          (res) => {
+            this.tutorials = this.tutorials.filter(item => item.id !== tutorial_id);
+          });
+      }
     }
   }
   timeOut() {
