@@ -31,13 +31,14 @@ export class CreateCommentComponent implements OnInit {
     if (this.router.url.includes('blog')) {
       this.req_data['tutorial_id'] = this.tutorial_id;
     } else {
-      this.currentReview();      
+      this.currentReview();
     }
   }
 
   currentReview() {
-    if (this.offer_id) {
-      this.__service.getReview(this.offer_id).subscribe(
+    this.req_data['offer_id'] = this.offer_id;
+    if (this.req_data['offer_id']) {
+      this.__service.getReview(this.req_data['offer_id']).subscribe(
         (response) => {
           if (response) {
             if (response['review']) this.edit = true;

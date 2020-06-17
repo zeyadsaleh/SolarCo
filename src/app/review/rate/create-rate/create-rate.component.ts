@@ -29,7 +29,7 @@ export class CreateRateComponent implements OnInit {
     if (this.tokenAuth.userSignedIn() && this.tokenAuth['currentUserType'] == 'USER') {
       if (event.target.value > 0 && event.target.value <= 5) {
         this.request_data['rate'] = event.target.value;
-        this.request_data['offer_id'] = this.offer_id;
+        if(!this.request_data['offer_id']) this.request_data['offer_id'] = this.offer_id;
         if (!this.current_rate) {
           this.__service.setRate(this.request_data).subscribe(
             (response) => {
@@ -60,6 +60,8 @@ export class CreateRateComponent implements OnInit {
   }
 
   currentRate() {
+    this.request_data['offer_id'] = this.offer_id;
+    console.log(this.request_data['offer_id']);
     if (this.request_data && this.request_data['offer_id']) {
       this.__service.getRate(this.request_data['offer_id']).subscribe(
         (response) => {
