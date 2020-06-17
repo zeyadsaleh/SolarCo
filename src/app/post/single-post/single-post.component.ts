@@ -29,7 +29,6 @@ export class SinglePostComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => { this.timeOut() }, 40000);
-
     this.tokenAuth.validateToken().subscribe(
       res => {
         this.userData = this.tokenAuth.currentUserData;
@@ -41,7 +40,7 @@ export class SinglePostComponent implements OnInit {
           }
         });
       },
-      error => {}
+      error => { }
     );
   }
 
@@ -49,11 +48,15 @@ export class SinglePostComponent implements OnInit {
     this.currentUserID = this.tokenAuth.currentUserData.id.toString();
     this.postService.getPost(id).subscribe((res) => {
       this.post = res;
+      // For Apply button
+      let userOffer = this.post.offers.filter(offer => offer.contractor_id == this.currentUserID);
+      let offer = this.post.offers.filter(offer => offer.status == 'accepted');
+      if (offer.length > 0) this.offer_id = offer[0].id;
+
       setTimeout(() => {
         this.isLoading = false;
       }, 500);
-       // For Apply button
-      let userOffer = this.post.offers.filter(offer => offer.contractor_id == this.currentUserID);
+
       if (userOffer.length > 0) {
         this.applied = true;
       }
