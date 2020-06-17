@@ -16,7 +16,9 @@
             (click)="sendId(post.id)">Apply</button>
           <h4 class="border border-primary p-1 m-2 text-center rounded"><span>Estimated
               Cost:</span>&nbsp;{{post.system.cost}} EG</h4>
-          <h5><span>Posted by:</span>&nbsp;<a [routerLink]="tokenAuth.currentUserType=='USER' && userData.id == post.user.id ? ['/profile'] : ['/profile/clients/'+post.user.id]" >{{post.user.name}}</a></h5>
+          <h5><span>Posted by:</span>&nbsp;<a
+              [routerLink]="tokenAuth.currentUserType=='USER' && userData.id == post.user.id ? ['/profile'] : ['/profile/clients/'+post.user.id]">{{post.user.name}}</a>
+          </h5>
           <h5><span>Has:</span>&nbsp;{{post.offers_count == 1 ? 'One Offer' : post.offers_count + ' Offers'}}</h5>
           <h4 *ngIf="post.system.address">
             <span>Location:</span>&nbsp;{{post.system.address}}, {{post.system.city}}, {{post.system.country}}</h4>
@@ -57,8 +59,8 @@
             </mat-card-content>
           </mat-card>
           <div class="text-center mt-4">
-            <button class="btn btn-danger mr-2" *ngIf="('destroy' | able: 'Post') && !post.closed && !approved"
-              (click)="deletePost(post.id)">Delete</button>
+            <button href="#delete" data-toggle="modal" class="btn btn-danger mr-2"
+              *ngIf="('destroy' | able: 'Post') && !post.closed && !approved">Delete</button>
             <button class="btn btn-success" *ngIf="('update' | able: 'Post') && !post.closed && !approved"
               [routerLink]="['/update/posts',post.id]">Update</button>
           </div>
@@ -74,12 +76,40 @@
           </div>
         </div>
       </div>
+
+
+
+      <!-- Modal delete HTML -->
+      <div id="delete" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="icon-box">
+                <i class="material-icons">&#xE5CD;</i>
+              </div>
+              <h4 class="modal-title">Are you sure?</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+              <p>Do you really want to delete your post? This process cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"
+                (click)="deletePost(post.id)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     </div>
     <div class="col-lg-4 p-2 m-2 shadow rounded">
-      <app-offer [post_id]="post.id" [postOwner_id]="post.user_id" (onDeleteOffer)="onDeleteOffer()" (onApproveOffer)="onApproveOffer($event)"></app-offer>
+      <app-offer [post_id]="post.id" [postOwner_id]="post.user_id" (onDeleteOffer)="onDeleteOffer()"
+        (onApproveOffer)="onApproveOffer($event)"></app-offer>
     </div>
   </div>
-
 </div>
 
 <div class="errorMessage" *ngIf="errorMessage">
