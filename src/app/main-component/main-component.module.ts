@@ -58,7 +58,7 @@ import { UnautherizedComponent } from './errors/unautherized/unautherized.compon
     NoResponseComponent,
     ForbiddenComponent,
     UnautherizedComponent,
-    GoToTopComponent
+    GoToTopComponent,
   ],
 })
 export class MainComponentModule { }

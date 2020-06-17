@@ -3,11 +3,13 @@
   <div class="banner_inner">
     <div class="container">
       <div class="banner_content">
-        <h2>Install your System today <br/>to save money tomorrow</h2>
-        <p>If you're looking to reduce your electricity bill and have a positive impact on the environment, You should find out the required parts for your solar system.</p>
+        <h2>Install your System today <br />to save money tomorrow</h2>
+        <p>If you're looking to reduce your electricity bill and have a positive impact on the environment, You should
+          find out the required parts for your solar system.</p>
         <!-- Different buttons for getting started -->
         <span *ngIf="tokenAuth.userSignedIn()">
-          <a class="banner_btn" [routerLink]="('create' | able: 'Calculation') ? ['/pv-system/user-info'] : ['/posts']">Get
+          <a class="banner_btn"
+            [routerLink]="('create' | able: 'Calculation') ? ['/pv-system/user-info'] : ['/posts']">Get
             Started</a>
         </span>
         <span *ngIf="!tokenAuth.userSignedIn()">
@@ -57,29 +59,58 @@
   <div class="container">
     <div class="main_title">
       <h2>Why go solar</h2>
-      <p>A wide range of benefits will arise from using this type of clean energy whether for you, for the economy or for the environment.</p>
+      <p>A wide range of benefits will arise from using this type of clean energy whether for you, for the economy or
+        for the environment.</p>
     </div>
-    <div class="feature_inner row text-center">
+    <div class="feature_inner row text-center p_120">
       <div class="col-lg-4">
         <div class="feature_item">
           <i class="fas fa-globe-africa"></i>
           <h4>Applicable Everywhere</h4>
-          <p>As long as there is sunshine, solar energy can be deployed anywhere. This is particularly useful for remote regions with no access to any other source of electricity. There is a vast amount of people around the world with no access to electricity..</p>
+          <p>As long as there is sunshine, solar energy can be deployed anywhere. This is particularly useful for remote
+            regions with no access to any other source of electricity. There is a vast amount of people around the world
+            with no access to electricity..</p>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="feature_item">
           <i class="fas fa-heartbeat"></i>
           <h4>Benefits the Environment</h4>
-          <p>Solar energy has the least negative impact on the environment compared to any other energy source. It does not produce greenhouse gases and does not pollute the water. It does not create any noise, which is major benefit.</p>
+          <p>Solar energy has the least negative impact on the environment compared to any other energy source. It does
+            not produce greenhouse gases and does not pollute the water. It does not create any noise, which is major
+            benefit.</p>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="feature_item">
           <i class="fas fa-dollar-sign"></i>
           <h4>Save Money</h4>
-          <p>Generating your own electricity means that you will be using less from the utility supplier. This will immediately translate to savings on your energy bill. Plus, you can also make money by selling the unused electricity, which you have generated, back to the grid</p>
+          <p>Generating your own electricity means that you will be using less from the utility supplier. This will
+            immediately translate to savings on your energy bill. Plus, you can also make money by selling the unused
+            electricity, which you have generated, back to the grid</p>
         </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <!-- <iframe class="col-7 my-2" src="https://www.youtube.com/embed?v=vcAtiKmv5R0"></iframe>
+      <iframe class="col-7 my-2" src="https://www.youtube.com/embed?v=cS8d1jc3Lvs"></iframe> -->
+      <div class="mb-3">
+        <div class="main_title">
+          <h2>Why do we need Solar Power?</h2>
+        </div>
+        <video controls class="col-8 mb-5">
+          <source src="../../../assets/videos/solar-video-1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="mb-3">
+        <div class="main_title">
+          <h2>Is SOLAR Worth It?</h2>
+        </div>
+        <video controls class="col-8 mb-5">
+          <source src="../../../assets/videos/solar-video-2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   </div>

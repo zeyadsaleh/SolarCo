@@ -23,6 +23,7 @@ import { AboutUsComponent } from './main-component/sidebar/about-us/about-us.com
 
 // Servies ##START##
 import { AuthGuard } from './shared/guards/auth.guard';
+import { ClientGuard } from './shared/guards/client.guard';
 // ########### Services END ##########
 
 const routes: Routes = [
@@ -39,7 +40,7 @@ const routes: Routes = [
   {
     path: 'chat/:id',
     component: ChatComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, ClientGuard]
   },
   {
     path: 'inbox',

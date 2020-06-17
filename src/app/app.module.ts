@@ -37,6 +37,7 @@ import { ChatComponent } from './rails-chat/chat/chat.component';
 import { MessagesViewComponent } from './rails-chat/chat/messages-view/messages-view.component';
 import { ContactsListComponent } from './rails-chat/chat/contacts-list/contacts-list.component';
 import { TutorialModule } from './tutorial/tutorial.module';
+import { CloseNavDirective } from './shared/directives/close-nav.directive';
 // ########### App Modules END ##########
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { TutorialModule } from './tutorial/tutorial.module';
     ChatComponent,
     MessagesViewComponent,
     ContactsListComponent,
+    CloseNavDirective,
   ],
   imports: [
     BrowserModule,

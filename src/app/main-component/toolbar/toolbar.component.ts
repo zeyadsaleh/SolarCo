@@ -13,6 +13,9 @@ export class ToolbarComponent implements OnInit {
 
   isCollapsed: boolean = true;
   countNotifications: number = 0;
+  @ViewChild('toggler') toggler;
+  @ViewChild('content') content;
+
   constructor(public tokenAuthService: AngularTokenService, private ability: Ability, private notificationService: NotificationService,
     private router: Router) { }
 
@@ -28,6 +31,19 @@ export class ToolbarComponent implements OnInit {
       },
       error => {}
     );
+  }
+
+  closeNav() {
+    // if (document.documentElement.clientWidth > 768) { return }
+    // const links = document.getElementById('navbarSupportedContent');
+    // const navToggler = document.getElementById('navbarToggler');
+    // console.log(links)
+    // console.log(navToggler)
+    console.log('hello')
+    if (this.content.nativeElement.classList.contains('show')) { 
+        // navToggler.click();
+        this.toggler.nativeElement.click();
+    }
   }
 
   getNotifications() {
