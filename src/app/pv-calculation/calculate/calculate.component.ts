@@ -58,4 +58,5 @@ export class CalculateComponent implements OnInit {
       this.isLoading = false;
     }
   }
+  
 }
