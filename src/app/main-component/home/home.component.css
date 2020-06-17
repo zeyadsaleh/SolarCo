@@ -9,8 +9,8 @@ video {
     outline:none;
     display: inherit;
     margin: auto;
-    min-width: 600px;
-    min-height: 315px;
+    width: 100%;
+    min-height: 50%
 }
 
 .videos {
