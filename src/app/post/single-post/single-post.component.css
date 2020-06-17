@@ -1,14 +1,17 @@
 @import 'https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700';
 @import 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,700';
-* {
+
+/* * {
   margin: 0;
   paddin: 0;
   box-sizing: border-box;
-}
+} */
+
 a {
   color: white;
   text-decoration: none;
 }
+
 body {
   font-family: 'Montserrat', 'Roboto', sans-serif;
   background-color: #ddd;
@@ -19,18 +22,22 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .container .post-card {
   background-color: white;
   /* width: 50vw; */
   height: auto;
-  box-shadow: 0 1px 5px rgb(0, 24, 48);  display: flex;
+  box-shadow: 0 1px 5px rgb(0, 24, 48);
+  display: flex;
   border-radius: 0.3rem;
   margin: 10px;
 }
+
 .container .post-card .post-card__nav {
   display: flex;
   border-radius: 0.3rem;
 }
+
 .container .post-card .post-card__nav ul {
   list-style-type: none;
   margin: 0;
@@ -40,6 +47,7 @@ body {
   border-bottom-left-radius: 0.3rem;
   border-top-left-radius: 0.3rem;
 }
+
 .container .post-card .post-card__nav ul li {
   text-align: center;
   border-bottom: 2px solid rgb(0, 24, 48);
@@ -48,6 +56,7 @@ body {
 .container .post-card .post-card__nav ul li:last-child {
   border: none;
 }
+
 .container .post-card .post-card__nav ul li a {
   display: block;
   color: #fff;
@@ -55,9 +64,11 @@ body {
   line-height: 90px;
   text-decoration: none;
 }
+
 .container .post-card .post-card__nav ul li:first-child a {
   border-top-left-radius: 0.3rem;
 }
+
 .container .post-card .post-card__nav ul li:last-child a {
   border-bottom-left-radius: 0.3rem;
 }
@@ -66,6 +77,7 @@ body {
   background-color: rgb(0, 24, 48);
   height: 90px;
 }
+
 .active {
   background-color: #f44242;
   color: white;
@@ -90,24 +102,29 @@ body {
   font-weght: 100;
   color: rgb(0, 24, 48);
 }
+
 .post-card__info h5 {
   display: block;
   margin-top: 0.7rem;
   font-weight: 100;
 }
+
 .post-card__info h5 span {
   color: rgb(0, 24, 48);
-  font-weight:300;
+  font-weight: 300;
 }
+
 .post-card__info h4 {
   display: block;
   margin-top: 0.7rem;
   font-weight: 200;
 }
+
 .post-card__info h4 span {
   color: rgb(0, 24, 48);
-  font-weight:300;
+  font-weight: 300;
 }
+
 .post-card__info p {
   margin-top: 1rem;
   color: rgb(0, 24, 48);
@@ -116,6 +133,7 @@ body {
   line-height: 1.3rem;
   text-align: left;
 }
+
 .post-card__info a {
   color: #f44242;
   text-decoration: none;
@@ -123,6 +141,7 @@ body {
   display: inline-block;
   font-size: 0.7em;
 }
+
 .post-card__info a:hover {
   text-decoration: underline;
 }
@@ -140,6 +159,7 @@ body {
   border-top-right-radius: 0.3rem;
   transition: all 1s;
 }
+
 .post-card__img .post-card__social ul {
   list-style-type: none;
   margin: 0;
@@ -148,34 +168,42 @@ body {
   text-align: right;
   color: white;
 }
+
 .post-card__img .post-card__social ul li {
   display: inline-block;
   text-shadow: 0 1px rgb(0, 24, 48);
 }
+
 .post-card__img .post-card__social ul li:first-child {
   margin-right: 2rem;
 }
+
 .post-card__img .post-card__social ul li i {
   margin-right: 0.6rem;
   transition: 0.2s all;
 }
+
 .post-card__img .post-card__social ul li a {
   transition: 0.2s all;
 }
-.post-card__img .post-card__social ul li a:hover > i.ion-heart {
+
+.post-card__img .post-card__social ul li a:hover>i.ion-heart {
   color: #f44242;
   transform: rotate(-15deg) scale(1.5);
 }
-.post-card__img .post-card__social ul li a:hover > i.ion-chatbox {
+
+.post-card__img .post-card__social ul li a:hover>i.ion-chatbox {
   color: rgb(0, 24, 48);
   transform: rotate(-15deg) scale(1.5);
 }
+
 .post-card__img .post-card__social ul li span {
   display: inline-block;
   vertical-align: 3px;
   font-family: 'Roboto', 'Montserrat', sans-serif;
   font-weight: 400;
 }
+
 @media (max-width: 34rem) {
   .container .post-card {
     /* width: 304px; */
@@ -190,18 +218,21 @@ body {
   .container .post-card .post-card__nav {
     width: 100%;
   }
+
   .container .post-card .post-card__nav ul {
     height: 70px;
     width: 100%;
     border-top-right-radius: 0.3rem;
     border-top-left-radius: 0.3rem;
   }
-  .container .post-card .post-card__nav ul li{
+
+  .container .post-card .post-card__nav ul li {
     float: left;
     display: inline-block;
     border-bottom: none;
     border-right: 2px solid rgb(0, 24, 48);
   }
+
   .container .post-card .post-card__nav ul li a {
     height: 70px;
     max-width: 100px;
@@ -209,10 +240,12 @@ body {
     line-height: 80px;
     text-decoration: none;
   }
+
   .container .post-card .post-card__nav ul li:last-child a {
     border-radius: 0;
     border-top-right-radius: 0.3rem;
   }
+
   .container .post-card .post-card__nav ul li a:hover:not(.active) {
     width: 100px;
     height: 70px;
@@ -228,14 +261,119 @@ body {
     width: 100%;
     align-items: center;
   }
+
   .post-card__info {
     text-align: center;
   }
-  .post-card__info h1, .post-card__info p {
+
+  .post-card__info h1,
+  .post-card__info p {
     text-align: center;
   }
 }
 
-.errorMessage{
+.errorMessage {
   margin: 230px auto;
+}
+
+
+#delete .modal-confirm {
+  color: #636363;
+  width: 400px;
+}
+
+#delete .modal-confirm .modal-content {
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+}
+
+#delete .modal-confirm .modal-header {
+  border-bottom: none;
+  position: relative;
+}
+
+#delete .modal-confirm h4 {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 -10px;
+}
+
+#delete .modal-confirm .close {
+  position: absolute;
+  top: -5px;
+  right: -2px;
+}
+
+#delete .modal-confirm .modal-body {
+  color: #999;
+}
+
+#delete .modal-confirm .modal-footer {
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 10px 15px 25px;
+}
+
+#delete .modal-confirm .modal-footer a {
+  color: #999;
+}
+
+#delete .modal-confirm .icon-box {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  z-index: 9;
+  text-align: center;
+  border: 3px solid #f15e5e;
+}
+
+#delete .modal-confirm .icon-box i {
+  color: #f15e5e;
+  font-size: 46px;
+  display: inline-block;
+  margin-top: 13px;
+}
+
+#delete .modal-confirm .btn {
+  color: #fff;
+  border-radius: 4px;
+  background: #60c7c1;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  min-width: 120px;
+  border: none;
+  min-height: 40px;
+  border-radius: 3px;
+  margin: 0 5px;
+  outline: none !important;
+}
+
+#delete .modal-confirm .btn-info {
+  background: #c1c1c1;
+}
+
+#delete .modal-confirm .btn-info:hover,
+.modal-confirm .btn-info:focus {
+  background: #a8a8a8;
+}
+
+#delete .modal-confirm .btn-danger {
+  background: #f15e5e;
+}
+
+#delete .modal-confirm .btn-danger:hover,
+.modal-confirm .btn-danger:focus {
+  background: #ee3535;
+}
+
+#delete .trigger-btn {
+  display: inline-block;
+  margin: 100px auto;
 }

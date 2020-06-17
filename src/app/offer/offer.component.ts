@@ -39,13 +39,16 @@ export class OfferComponent implements OnInit {
     this.type = this.tokenAuth.currentUserType;
     this.offerService.getOffers(this.post_id).subscribe((res) => {
       for (let o of res) {
+        console.log(o);
+        
         this.offers.push(o);
         //fir offers_count
         this.offers_count = o.post.offers_count;
         //for approval dim
         if (o.status == 'accepted') {
           this.isApproved = true
-          console.log("o ->" + o);         
+          console.log("o ->" + o.id);  
+          console.log(o)       
           this.onApproveOffer.emit(o.id);
         }
         // For permissions
