@@ -1,5 +1,5 @@
 <div class="text-center m-1 p-3" *ngIf="tokenAuth.userSignedIn() && tokenAuth.currentUserType == 'USER'">
-    <h4 class="bg-dark rounded text-white p-1">Comment<a *ngIf="!tutorial_id && !show" (click)="show=!show" class="btn btn-sm"
+    <h4 class="bg-dark rounded text-white p-1">Comment<a *ngIf="!tutorial_id" (click)="show=!show" class="btn btn-sm"
             style="float: right;">edit</a></h4>
     <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
         {{ error }}
@@ -10,7 +10,7 @@
     <div class="animated-border-quote" *ngIf="edit && !show">
         <blockquote>
             <p>{{ req_data['review'] }}</p>
-            <cite class="text-center text-dark">Date: <b>{{ req_data['updated_at'] }}</b></cite>
+            <cite class="text-center text-dark">Date: <b>{{ req_data['updated_at'] | slice:0:10}}</b></cite>
         </blockquote>
     </div>
     <div class="form-group" *ngIf="!edit || show">
