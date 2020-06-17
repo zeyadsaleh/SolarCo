@@ -26,7 +26,7 @@
                     <div class="mic-info">
                       By: <a
                         [routerLink]="type=='CONTRACTOR' && currentUserID == offer.contractor_id ? ['/profile'] : ['/profile/contractors/'+offer.contractor_id]">{{offer.contractor.name}}</a>
-                      on {{offer.created_at}}
+                      on {{offer.created_at | slice:0:10}}
                     </div>
                   </div>
                   <div class="comment-text">
@@ -51,7 +51,7 @@
                       *ngIf="isApproved && offer.status == 'rejected'" [disabled]="true">
                       <span class="fa fa-square">Rejected!</span>
                     </button>
-                    <a href="#delete" type="button" class="btn btn-danger btn-xs m-1"
+                    <a href="#deleteOffer" type="button" class="btn btn-danger btn-xs m-1"
                       *ngIf="offer.canManage && !isApproved" title="Delete" data-toggle="modal"
                       (click)="setCurrrentOffer(offer)">
                       <span class="fa fa-trash"></span>
@@ -151,7 +151,7 @@
 
 
           <!-- Modal delete HTML -->
-          <div id="delete" class="modal fade">
+          <div id="deleteOffer" class="modal fade">
             <div class="modal-dialog modal-confirm">
               <div class="modal-content">
                 <div class="modal-header">

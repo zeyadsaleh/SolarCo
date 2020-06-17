@@ -59,7 +59,7 @@
             </mat-card-content>
           </mat-card>
           <div class="text-center mt-4">
-            <button href="#delete" data-toggle="modal" class="btn btn-danger mr-2"
+            <button href="#deletePost" data-toggle="modal" class="btn btn-danger mr-2"
               *ngIf="('destroy' | able: 'Post') && !post.closed && !approved">Delete</button>
             <button class="btn btn-success" *ngIf="('update' | able: 'Post') && !post.closed && !approved"
               [routerLink]="['/update/posts',post.id]">Update</button>
@@ -80,7 +80,7 @@
 
 
       <!-- Modal delete HTML -->
-      <div id="delete" class="modal fade">
+      <div id="deletePost" class="modal fade">
         <div class="modal-dialog modal-confirm">
           <div class="modal-content">
             <div class="modal-header">
