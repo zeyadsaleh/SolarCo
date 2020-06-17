@@ -29,7 +29,7 @@ export class SinglePostComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => { this.timeOut() }, 40000);
-    console.log(this.offer_id);
+
     this.tokenAuth.validateToken().subscribe(
       res => {
         this.userData = this.tokenAuth.currentUserData;
