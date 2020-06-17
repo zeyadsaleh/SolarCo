@@ -14,7 +14,7 @@
           <div class="post-card__info">
             <h1> Post Title: {{offer.post.title}}</h1>
             <h4><span>Price:</span>&nbsp;{{offer.price}} EP</h4>
-            <h5><span>Offerd at</span>&nbsp;{{offer.created_at}}</h5>
+            <h5><span>Offerd at</span>&nbsp;{{offer.created_at | slice:0:10}}</h5>
             <h4><strong> Your Proposal: </strong> {{offer.proposal}}</h4>
             <h3 class="text-dark" *ngIf="offer.post.closed">Status: <span
                 [ngClass]="{'text-success': offer.status == 'accepted', 'text-danger': offer.status == 'rejected'}">
