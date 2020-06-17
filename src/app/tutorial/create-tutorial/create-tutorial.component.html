@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group border p-4">
                     <h3 for="body" class="bg-primary text-white rounded">Body</h3>
-                    <textarea class="form-control" id="body" placeholder="body" required minlength="50" maxlength="5000"
+                    <textarea class="form-control" id="body" placeholder="body" required minlength="50" maxlength="8000"
                         [(ngModel)]="post['body']" name="body" #body="ngModel" rows="6"></textarea>
                     <div class="alert alert-danger alert-dismissible fade show mt-1 p-auto" role="alert"
                         *ngIf="body.touched && !body.valid">

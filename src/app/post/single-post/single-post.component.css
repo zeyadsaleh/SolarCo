@@ -17,6 +17,8 @@ body {
   background-color: #ddd;
 }
 
+.row {width: inherit;}
+
 .container {
   display: flex;
   justify-content: center;

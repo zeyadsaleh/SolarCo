@@ -3,3 +3,16 @@ i {
     font-size: 4rem;
     margin-bottom: 2rem;
 }
+
+video {
+    border: none;
+    outline:none;
+    display: inherit;
+    margin: auto;
+    min-width: 600px;
+    min-height: 315px;
+}
+
+.videos {
+    padding: 2rem;
+}
