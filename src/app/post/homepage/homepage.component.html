@@ -23,13 +23,11 @@
             <h1 [routerLink]="['/posts/',post.id]">{{post.title}}</h1>
             <button class="btn btn-dark btn-sm mt-2" *ngIf="('manage' | able: 'Offer')"
               (click)="sendId(post.id)">Apply</button>
-            <h4 class="border border-primary p-1 m-2 text-center rounded"><span>Estimated
-                Cost:</span>&nbsp;{{post.system.cost}} EG</h4>
             <h5><span>Posted by:</span>&nbsp;{{post.user.name}}</h5>
             <h4 *ngIf="post.system.address">
               <span>Location:</span>&nbsp;{{post.system.address}}, {{post.system.city}}, {{post.system.country}}</h4>
             <h4 *ngIf="!post.system.address">
-              <span>Location:</span>&nbsp;{{post.system.address}},{{post.system.city}},{{post.system.country}}</h4>
+              <span>Location:</span>&nbsp;{{post.system.city}},{{post.system.country}}</h4>
             <h5><span>Posted at</span>&nbsp;{{post.created_at | slice:0:10 }}</h5>
             <p>{{post.description | slice:0:150 }}..</p>
             <mat-card class="text-center mt-2">

@@ -6,14 +6,14 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <a class="navbar-brand logo_h" [routerLink]="['']"><span class="text-white white mr-4"><img class="icon"
               src="assets/icon/solar.png" alt="Solar"> SolarCo</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" id="navbarToggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" #toggler>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse offset" id="navbarSupportedContent" #content>
           <ul class="nav navbar-nav menu_nav">
             <li *ngIf="tokenAuthService.userSignedIn() && tokenAuthService.currentUserType == 'USER'" class="nav-item"><a class="nav-link"
               [routerLink]="['/pv-system/user-info']" style="font-size: 16px;"> Get a System</a></li>
